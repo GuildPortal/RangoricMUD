@@ -4,6 +4,7 @@ RangoricMUD
 A browser based MUD
 
 Goals:
+
 One Website, Many Possible Games.
 
 Each game can be a shared world, or a "single player" world.
