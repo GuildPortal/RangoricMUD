@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
 }
 <div class="Page">
+    @Html.Partial("Homepage")
     @Html.Partial("../Accounts/LoginPage", Model.LoginAccount)
     @Html.Partial("../Accounts/CreateAccount", Model.CreateAccount)
 </div>

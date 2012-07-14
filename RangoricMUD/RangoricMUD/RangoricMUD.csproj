@@ -315,6 +315,7 @@
     <Content Include="Assets\Styles\Reset.less" />
     <Content Include="Assets\Styles\Theme.less" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Homepage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
