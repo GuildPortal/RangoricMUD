@@ -11,6 +11,8 @@ _ReSharper.RangoricMUD
 #User Settings
 RangoricMUD.v11.suo
 RangoricMUD.sln.DotSettings.user
+RangoricMUD.csproj.user
+RangoricMUD.Tests.csproj.user
 
 #Ignore Nuget Packages
 packages
