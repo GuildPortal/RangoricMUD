@@ -18,6 +18,7 @@ packages
 #Ignore NCrunch Stuff
 RangoricMUD.ncrunchsolution
 RangoricMUD.ncrunchproject
+RangoricMUD.Tests.ncrunchproject
 RangoricMUD.ncrunchsolution.user
 RangoricMUD.crunchsolution.cache
 
