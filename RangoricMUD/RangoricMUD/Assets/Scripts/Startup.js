@@ -6,6 +6,7 @@
 /// <reference path="~/Assets/Scripts/Accounts/LoginPage.js"/>
 /// <reference path="~/Assets/Scripts/Accounts/LoginButton.js"/>
 /// <reference path="~/Assets/Scripts/Accounts/CreateAccountButton.js"/>
+/// <reference path="~/Assets/Scripts/Accounts/CreateAccountPage.js"/>
 /// <reference path="~/Assets/Scripts/Administration/AdminButton.js"/>
 
 $(function () {
@@ -13,6 +14,9 @@ $(function () {
     vAccountManager.Start();
 
     var vPageManager = new PageManager();
+
+    ePages.LoginPage.ViewModel = new LoginPage({ AccountManager: vAccountManager });
+    ePages.CreateAccount.ViewModel = new CreateAccountPage({ AccountManager: vAccountManager });
 
     var vButtons = {};
     vButtons.Buttons = ko.observableArray();

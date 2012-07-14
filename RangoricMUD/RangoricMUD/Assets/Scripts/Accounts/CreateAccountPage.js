@@ -1,5 +1,6 @@
-﻿function CreateAccountPage() {
+﻿function CreateAccountPage(tSettings) {
     var vThis = this;
+    vThis.AccountManager = tSettings.AccountManager;
     vThis.Name = ko.observable("Create Account");
 }
 
@@ -9,6 +10,4 @@ CreateAccountPage.prototype = {
     }
 };
 
-ePages.CreateAccount = {
-    ViewModel: new CreateAccountPage()
-};
+ePages.CreateAccount = {};
