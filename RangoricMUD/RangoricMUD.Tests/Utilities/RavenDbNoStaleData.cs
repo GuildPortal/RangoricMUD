@@ -19,7 +19,7 @@ using Raven.Client.Listeners;
 
 #endregion
 
-namespace Rangoric.UnitTests.Utilities
+namespace RangoricMUD.Tests.Utilities
 {
     public class RavenDbNoStaleData : IDocumentQueryListener
     {

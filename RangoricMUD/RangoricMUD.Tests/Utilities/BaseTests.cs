@@ -19,7 +19,7 @@ using Raven.Client.Embedded;
 
 #endregion
 
-namespace Rangoric.UnitTests.Utilities
+namespace RangoricMUD.Tests.Utilities
 {
     public class BaseTests
     {

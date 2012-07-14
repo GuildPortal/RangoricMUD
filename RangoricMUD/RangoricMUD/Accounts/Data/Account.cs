@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Data
+namespace RangoricMUD.Accounts.Data
 {
     public class Account : IAccount
     {

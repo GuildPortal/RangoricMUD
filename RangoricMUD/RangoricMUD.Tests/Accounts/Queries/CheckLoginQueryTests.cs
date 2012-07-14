@@ -17,17 +17,17 @@
 using System.Linq;
 using Moq;
 using NUnit.Framework;
-using Rangoric.UnitTests.Utilities;
-using Rangoric.Website.Accounts.Commands;
-using Rangoric.Website.Accounts.Data;
-using Rangoric.Website.Accounts.Models;
-using Rangoric.Website.Accounts.Queries;
-using Rangoric.Website.Security;
+using RangoricMUD.Accounts.Commands;
+using RangoricMUD.Accounts.Data;
+using RangoricMUD.Accounts.Models;
+using RangoricMUD.Accounts.Queries;
+using RangoricMUD.Security;
+using RangoricMUD.Tests.Utilities;
 using Raven.Client.Embedded;
 
 #endregion
 
-namespace Rangoric.UnitTests.Accounts.Queries
+namespace RangoricMUD.Tests.Accounts.Queries
 {
     [TestFixture]
     public class CheckLoginQueryTests

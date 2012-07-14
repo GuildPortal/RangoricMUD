@@ -1,0 +1,152 @@
+
+@BackgroundColor: #afafff;
+@InteractionColor: #a020a0;
+@HighlightPercent: 5%;
+@TextInputBackground: lightness(@InteractionColor, @HighlightPercent*10);
+
+@BaseFontSize: 16px;
+
+@BaseMargin: @BaseFontSize/4;
+
+@TextButtonSize: @BaseFontSize * 4;
+
+/* A Text Input is to be the width of 3 buttons and the margins between them */
+@TextInputWidth: @TextButtonSize * 3 + @BaseMargin;
+@TextInputBorder: @BaseMargin/2;
+
+@PanelWidth: @BaseFontSize*20;
+@PanelHeight: @BaseFontSize*8;
+
+
+html{
+	height:100%;
+	width:100%;
+}
+
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: @BaseFontSize;
+    background-color: @BackgroundColor;
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+}
+.Menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+	left: @BaseMargin*2 + @TextButtonSize * 3;
+    height: @TextButtonSize+@BaseMargin*2;
+	button{
+		float:right;
+	}
+}
+.Heading {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+h1 {
+    margin: @BaseMargin;
+	img {
+		height: @TextButtonSize;
+		width: @TextButtonSize*3;
+	}
+}
+.Page {
+	position:absolute;
+	top:@TextButtonSize+@BaseMargin*2;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	.LoginContainer	{
+		position:relative;
+		margin-top:@TextButtonSize+@BaseMargin*2;
+		margin-left:auto;
+		margin-right:auto;
+		width:@TextInputWidth + @BaseMargin*4+@TextButtonSize;
+		height: @BaseFontSize*5+@BaseMargin*9.5;
+		label, legend,
+		input[type="text"],
+		input[type="password"]{
+			float:left;
+		}
+		.Buttons{
+			height:@TextButtonSize+@BaseMargin*2;
+			width:@TextButtonSize+@BaseMargin*2;
+			position:absolute;
+			bottom:0px;
+			right:0px;
+		}
+	}
+	.CreateAccountContainer {
+		position: relative;
+		margin-top: @TextButtonSize+@BaseMargin*2;
+		margin-left:auto;
+		margin-right:auto;
+		width:@TextInputWidth + @BaseMargin*4+@TextButtonSize;
+		label, legend,
+		input[type="text"],
+		input[type="password"]{
+			float:left;
+		}
+		.Buttons{
+			height:@TextButtonSize+@BaseMargin*2;
+			width:@TextButtonSize+@BaseMargin*2;
+			position:absolute;
+			bottom:0px;
+			right:0px;
+		}
+	}
+}
+button {
+    font-size: @BaseFontSize;
+    border: 0em;
+    background-color: @InteractionColor;
+    color: white;
+    text-align: center;
+    display: block;
+    width: @TextButtonSize;
+    height: @TextButtonSize;
+    line-height: @BaseFontSize;
+    margin: @BaseMargin;
+    cursor: pointer;
+    float: left;
+	padding:0px;
+}
+button:hover {
+    background-color: lightness(@InteractionColor, @HighlightPercent);
+}
+button:active {
+    background-color: lightness(@InteractionColor, 0-@HighlightPercent);
+}
+input[type="text"],
+input[type="password"] {
+	width:@TextInputWidth;
+	margin:0 @BaseMargin @BaseMargin @BaseMargin;
+	font-size:@BaseFontSize;
+	border:@TextInputBorder solid @InteractionColor;
+	padding:0px;
+	background-color: @TextInputBackground;
+}
+input[type="text"]:focus,
+input[type="password"]:focus{
+	outline:none;
+	border:@TextInputBorder solid lightness(@InteractionColor, @HighlightPercent);
+	background-color: lightness(@TextInputBackground, @HighlightPercent);
+}
+label{
+	margin:@BaseMargin @BaseMargin 0 @BaseMargin;
+}
+legend {
+	margin:@BaseMargin;
+}
+.Hidden {
+    display: none;
+}
+
+.ActiveGameList {
+
+}
+.PossibleGameList {
+}

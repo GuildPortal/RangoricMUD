@@ -18,7 +18,7 @@ using Raven.Client;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers.Crews
+namespace RangoricMUD.Bootstrappers.Crews
 {
     public class DatabaseCrew : BaseCrew
     {

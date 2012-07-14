@@ -18,7 +18,7 @@ using System;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers
+namespace RangoricMUD.Bootstrappers
 {
     public class Boot : IBoot
     {

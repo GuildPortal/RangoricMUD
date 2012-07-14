@@ -12,7 +12,7 @@
 
 #endregion
 
-namespace Rangoric.Website.Queries
+namespace RangoricMUD.Queries
 {
     public interface IQuery<out TType>
     {

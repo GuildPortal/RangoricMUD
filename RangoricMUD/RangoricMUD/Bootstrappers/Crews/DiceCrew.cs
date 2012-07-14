@@ -14,11 +14,11 @@
 
 #region References
 
-using Rangoric.Website.Dice;
+using RangoricMUD.Dice;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers.Crews
+namespace RangoricMUD.Bootstrappers.Crews
 {
     public class DiceCrew : BaseCrew
     {

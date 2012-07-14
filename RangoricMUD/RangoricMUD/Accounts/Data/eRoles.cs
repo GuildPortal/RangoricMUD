@@ -12,7 +12,7 @@
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Data
+namespace RangoricMUD.Accounts.Data
 {
     public enum eRoles
     {

@@ -18,7 +18,7 @@ using System.Web.Mvc;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers.Crews
+namespace RangoricMUD.Bootstrappers.Crews
 {
     public class WindsorCrew : BaseCrew
     {

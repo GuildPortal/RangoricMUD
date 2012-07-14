@@ -18,7 +18,7 @@ using System.Web.Mvc;
 
 #endregion
 
-namespace Rangoric.Website.Controllers
+namespace RangoricMUD.Controllers
 {
     public class BaseController : AsyncController
     {

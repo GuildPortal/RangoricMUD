@@ -18,11 +18,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Rangoric.Website.Accounts.Crews;
-using Rangoric.Website.Bootstrappers;
-using Rangoric.Website.Bootstrappers.Crews;
-using Rangoric.Website.Web;
+using RangoricMUD.Accounts.Crews;
 using RangoricMUD.App_Start;
+using RangoricMUD.Bootstrappers;
+using RangoricMUD.Bootstrappers.Crews;
+using RangoricMUD.Web;
 using Raven.Client.Embedded;
 using StackExchange.Profiling;
 
@@ -41,7 +41,8 @@ namespace RangoricMUD
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Start();
         }
-        public void Application_End()
+
+        protected void Application_End()
         {
             End();
         }
@@ -51,7 +52,7 @@ namespace RangoricMUD
         }
         protected void Application_EndRequest()
         {
-            MiniProfiler.Stop(true);
+            MiniProfiler.Stop(false);
         }
 
         private IShip mShip;

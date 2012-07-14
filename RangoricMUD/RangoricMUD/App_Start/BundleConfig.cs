@@ -15,52 +15,39 @@
 #region References
 
 using System.Web.Optimization;
-using dotless.Core;
 
 #endregion
 
 namespace RangoricMUD.App_Start
 {
-    internal class LessMinify : CssMinify
-    {
-        public override void Process(BundleContext context, BundleResponse vResponse)
-        {
-            vResponse.Content = Less.Parse(vResponse.Content);
-            base.Process(context, vResponse);
-        }
-    }
-
     public static class BundleConfig
     {
         public static void RegisterBundles(BundleCollection tBundleCollection)
         {
-            var vCssBundle = new Bundle("~/Assets/Stylesheets", new LessMinify());
-            vCssBundle.IncludeDirectory("~/Assets/Stylesheets", "Reset.less");
-            vCssBundle.IncludeDirectory("~/Assets/Stylesheets", "Theme.less");
+            var vCssBundle =
+                new Bundle("~/Assets/Styles", new LessMinify())
+                    .Include("~/Assets/Styles/Reset.less",
+                             "~/Assets/Styles/Theme.less");
+
             tBundleCollection.Add(vCssBundle);
 
-            var vJavaScriptBundle = new Bundle("~/Assets/JavaScript", new JsMinify());
-
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Libraries", "jquery.js");
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Libraries", "jquery.validate.js");
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Libraries", "jquery.validate.unobtrusive.js");
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Libraries", "knockout.js");
-
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Settings", "Urls.js");
-
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Components", "Button.js");
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Components", "Ajax.js");
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Components", "PageManager.js");
-
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Accounts", "AccountManager.js");
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Accounts", "LoginPage.js");
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Accounts", "LoginButton.js");
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Accounts", "CreateAccountPage.js");
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Accounts", "CreateAccountButton.js");
-
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript/Administration", "AdminButton.js");
-
-            vJavaScriptBundle.IncludeDirectory("~/Assets/JavaScript", "Startup.js");
+            var vJavaScriptBundle =
+                new ScriptBundle("~/Assets/Scripts")
+                    .Include("~/Assets/Scripts/Libraries/jquery.js",
+                             "~/Assets/Scripts/Libraries/jquery.validate.js",
+                             "~/Assets/Scripts/Libraries/jquery.validate.unobtrusive.js",
+                             "~/Assets/Scripts/Libraries/knockout.js",
+                             "~/Assets/Scripts/Settings/Urls.js",
+                             "~/Assets/Scripts/Components/Button.js",
+                             "~/Assets/Scripts/Components/Ajax.js",
+                             "~/Assets/Scripts/Components/PageManager.js",
+                             "~/Assets/Scripts/Accounts/AccountManager.js",
+                             "~/Assets/Scripts/Accounts/LoginPage.js",
+                             "~/Assets/Scripts/Accounts/LoginButton.js",
+                             "~/Assets/Scripts/Accounts/CreateAccountPage.js",
+                             "~/Assets/Scripts/Accounts/CreateAccountButton.js",
+                             "~/Assets/Scripts/Administration/AdminButton.js",
+                             "~/Assets/Scripts/Startup.js");
 
             tBundleCollection.Add(vJavaScriptBundle);
         }

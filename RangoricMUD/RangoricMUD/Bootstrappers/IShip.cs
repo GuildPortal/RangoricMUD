@@ -20,7 +20,7 @@ using System.Web.Mvc;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers
+namespace RangoricMUD.Bootstrappers
 {
     public interface IShip : IDependencyResolver,
                              IControllerActivator,

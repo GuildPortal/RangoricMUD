@@ -21,7 +21,7 @@ using Moq;
 
 #endregion
 
-namespace Rangoric.UnitTests.Utilities
+namespace RangoricMUD.Tests.Utilities
 {
     public class TestWebRequestCreate : IWebRequestCreate
     {

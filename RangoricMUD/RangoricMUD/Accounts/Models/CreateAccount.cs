@@ -12,7 +12,7 @@
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Models
+namespace RangoricMUD.Accounts.Models
 {
     public class CreateAccount : ICreateAccount
     {

@@ -21,7 +21,7 @@ using System.Web.Security;
 
 #endregion
 
-namespace Rangoric.Website.Security
+namespace RangoricMUD.Security
 {
     public class SignInPersistance : ISignInPersistance
     {

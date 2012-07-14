@@ -15,14 +15,14 @@
 #region References
 
 using System.Web.Mvc;
-using Rangoric.Website.Accounts.Commands;
-using Rangoric.Website.Accounts.Models;
-using Rangoric.Website.Controllers;
-using Rangoric.Website.Security;
+using RangoricMUD.Accounts.Commands;
+using RangoricMUD.Accounts.Models;
+using RangoricMUD.Controllers;
+using RangoricMUD.Security;
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Controllers
+namespace RangoricMUD.Accounts.Controllers
 {
     public class AccountController : BaseController
     {

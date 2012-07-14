@@ -16,19 +16,19 @@
 
 using System;
 using NUnit.Framework;
-using Rangoric.UnitTests.Utilities;
-using Rangoric.Website.Accounts.Commands;
-using Rangoric.Website.Accounts.Controllers;
-using Rangoric.Website.Accounts.Crews;
-using Rangoric.Website.Accounts.Data;
-using Rangoric.Website.Accounts.Models;
-using Rangoric.Website.Bootstrappers;
-using Rangoric.Website.Bootstrappers.Crews;
+using RangoricMUD.Accounts.Commands;
+using RangoricMUD.Accounts.Controllers;
+using RangoricMUD.Accounts.Crews;
+using RangoricMUD.Accounts.Data;
+using RangoricMUD.Accounts.Models;
+using RangoricMUD.Bootstrappers;
+using RangoricMUD.Bootstrappers.Crews;
+using RangoricMUD.Tests.Utilities;
 using Raven.Client.Embedded;
 
 #endregion
 
-namespace Rangoric.UnitTests.Accounts.Crews
+namespace RangoricMUD.Tests.Accounts.Crews
 {
     [TestFixture]
     public class AccountCrewsTests : IDisposable

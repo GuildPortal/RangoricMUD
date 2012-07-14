@@ -12,7 +12,7 @@
 
 #endregion
 
-namespace Rangoric.Website.Queries
+namespace RangoricMUD.Queries
 {
     public abstract class BaseQuery<TType> : IQuery<TType>
     {

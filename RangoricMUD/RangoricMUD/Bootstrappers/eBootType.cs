@@ -12,7 +12,7 @@
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers
+namespace RangoricMUD.Bootstrappers
 {
     public enum eBootType
     {

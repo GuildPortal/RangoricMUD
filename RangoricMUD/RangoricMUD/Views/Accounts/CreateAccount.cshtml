@@ -1,0 +1,20 @@
+﻿@model RangoricMUD.Accounts.Models.ICreateAccount
+<div class="CreateAccountContainer" data-bind="visible: Name() === 'Create Account', if: Name() === 'Create Account'">
+    <form action="/" method="POST" data-bind="submit: Submit">
+        <fieldset>
+            <legend>Create your account</legend>
+            @Html.LabelFor(t => t.Name)
+            @Html.TextBoxFor(t => t.Name)
+            @Html.ValidationMessageFor(t => t.Name)
+            @Html.LabelFor(t => t.Password)
+            @Html.PasswordFor(t => t.Password)
+            @Html.ValidationMessageFor(t => t.Password)
+            @Html.LabelFor(t => t.Email)
+            @Html.TextBoxFor(t => t.Email)
+            @Html.ValidationMessageFor(t => t.Email)
+            <div class="Buttons">
+                <button type="submit">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

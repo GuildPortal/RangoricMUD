@@ -14,11 +14,11 @@
 
 #region References
 
-using Rangoric.Website.Commands;
+using RangoricMUD.Commands;
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Commands
+namespace RangoricMUD.Accounts.Commands
 {
     public interface ILoginAccountCommand : ICommand<bool>
     {

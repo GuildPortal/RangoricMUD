@@ -14,11 +14,11 @@
 
 #region References
 
-using Rangoric.Website.Security;
+using RangoricMUD.Security;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers.Crews
+namespace RangoricMUD.Bootstrappers.Crews
 {
     public class SecurityCrew : BaseCrew
     {

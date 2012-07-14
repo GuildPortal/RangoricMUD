@@ -10,8 +10,15 @@ _ReSharper.RangoricMUD
 
 #User Settings
 RangoricMUD.v11.suo
-RangoricMUD.ncrunchsolution
-RangoricMUD.ncrunchsolution.user
+RangoricMUD.sln.DotSettings.user
 
 #Ignore Nuget Packages
 packages
+
+#Ignore NCrunch Stuff
+RangoricMUD.ncrunchsolution
+RangoricMUD.ncrunchsolution.user
+RangoricMUD.crunchsolution.cache
+
+#Ignore RavenDB Data Directory
+App_Data

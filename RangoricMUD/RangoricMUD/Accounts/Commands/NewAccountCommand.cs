@@ -16,15 +16,15 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Rangoric.Website.Accounts.Data;
-using Rangoric.Website.Accounts.Models;
-using Rangoric.Website.Commands;
-using Rangoric.Website.Security;
+using RangoricMUD.Accounts.Data;
+using RangoricMUD.Accounts.Models;
+using RangoricMUD.Commands;
+using RangoricMUD.Security;
 using Raven.Client;
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Commands
+namespace RangoricMUD.Accounts.Commands
 {
     public class NewAccountCommand : BaseCommand<eAccountCreationStatus>, INewAccountCommand
     {

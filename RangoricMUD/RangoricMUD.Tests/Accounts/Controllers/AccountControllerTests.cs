@@ -16,15 +16,15 @@
 
 using Moq;
 using NUnit.Framework;
-using Rangoric.Website.Accounts.Commands;
-using Rangoric.Website.Accounts.Controllers;
-using Rangoric.Website.Accounts.Models;
-using Rangoric.Website.Accounts.Queries;
-using Rangoric.Website.Security;
+using RangoricMUD.Accounts.Commands;
+using RangoricMUD.Accounts.Controllers;
+using RangoricMUD.Accounts.Models;
+using RangoricMUD.Accounts.Queries;
+using RangoricMUD.Security;
 
 #endregion
 
-namespace Rangoric.UnitTests.Accounts.Controllers
+namespace RangoricMUD.Tests.Accounts.Controllers
 {
     [TestFixture]
     public class AccountControllerTests

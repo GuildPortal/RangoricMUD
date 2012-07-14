@@ -14,16 +14,16 @@
 
 #region References
 
-using Rangoric.Website.Accounts.Commands;
-using Rangoric.Website.Accounts.Controllers;
-using Rangoric.Website.Accounts.Data;
-using Rangoric.Website.Accounts.Models;
-using Rangoric.Website.Accounts.Queries;
-using Rangoric.Website.Bootstrappers.Crews;
+using RangoricMUD.Accounts.Commands;
+using RangoricMUD.Accounts.Controllers;
+using RangoricMUD.Accounts.Data;
+using RangoricMUD.Accounts.Models;
+using RangoricMUD.Accounts.Queries;
+using RangoricMUD.Bootstrappers.Crews;
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Crews
+namespace RangoricMUD.Accounts.Crews
 {
     public class AccountCrew : BaseCrew
     {

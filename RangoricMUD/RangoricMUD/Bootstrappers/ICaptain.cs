@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers
+namespace RangoricMUD.Bootstrappers
 {
     public interface ICaptain : IDisposable
     {

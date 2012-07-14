@@ -12,7 +12,7 @@
 
 #endregion
 
-namespace Rangoric.Website.Commands
+namespace RangoricMUD.Commands
 {
     public abstract class BaseCommand<TType> : ICommand<TType>
     {

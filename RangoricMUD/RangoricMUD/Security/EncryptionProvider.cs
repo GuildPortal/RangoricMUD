@@ -16,11 +16,11 @@
 
 using System.Security.Cryptography;
 using System.Text;
-using Rangoric.Website.Configuration;
+using RangoricMUD.Configuration;
 
 #endregion
 
-namespace Rangoric.Website.Security
+namespace RangoricMUD.Security
 {
     public class EncryptionProvider : IEncryptionProvider
     {

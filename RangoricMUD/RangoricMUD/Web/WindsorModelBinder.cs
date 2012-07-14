@@ -19,7 +19,7 @@ using System.Web.Mvc;
 
 #endregion
 
-namespace Rangoric.Website.Web
+namespace RangoricMUD.Web
 {
     public class WindsorModelBinder : DefaultModelBinder
     {

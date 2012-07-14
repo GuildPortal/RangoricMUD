@@ -12,7 +12,7 @@
 
 #endregion
 
-namespace Rangoric.Website.Security
+namespace RangoricMUD.Security
 {
     public interface ISignInPersistance
     {

@@ -17,13 +17,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http.Dependencies;
 using System.Web.Mvc;
 using System.Web.Routing;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers
+namespace RangoricMUD.Bootstrappers
 {
     public class PirateShip : IShip
     {

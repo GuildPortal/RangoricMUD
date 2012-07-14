@@ -15,11 +15,11 @@
 #region References
 
 using NUnit.Framework;
-using Rangoric.Website.Security;
+using RangoricMUD.Security;
 
 #endregion
 
-namespace Rangoric.UnitTests.Security
+namespace RangoricMUD.Tests.Security
 {
     [TestFixture]
     public class CustomHashProviderTests

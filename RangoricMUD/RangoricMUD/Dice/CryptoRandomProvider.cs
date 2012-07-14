@@ -20,7 +20,7 @@ using System.Security.Cryptography;
 
 #endregion
 
-namespace Rangoric.Website.Dice
+namespace RangoricMUD.Dice
 {
     public class CryptoRandomProvider : IRandomProvider
     {

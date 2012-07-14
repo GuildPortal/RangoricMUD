@@ -12,7 +12,7 @@
 
 #endregion
 
-namespace Rangoric.Website.Configuration
+namespace RangoricMUD.Configuration
 {
     public interface IRangoricConfiguration
     {

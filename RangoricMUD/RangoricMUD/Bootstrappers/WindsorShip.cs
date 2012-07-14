@@ -15,11 +15,11 @@
 #region References
 
 using System.Collections.Generic;
-using Rangoric.Website.Bootstrappers.Crews;
+using RangoricMUD.Bootstrappers.Crews;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers
+namespace RangoricMUD.Bootstrappers
 {
     public class WindsorShip : PirateShip
     {

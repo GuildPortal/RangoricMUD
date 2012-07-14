@@ -21,7 +21,7 @@ using System.Web.Routing;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers
+namespace RangoricMUD.Bootstrappers
 {
     public class ControllerFactoryShip : DefaultControllerFactory
     {

@@ -14,12 +14,12 @@
 
 #region References
 
-using Rangoric.Website.Accounts.Models;
-using Rangoric.Website.Accounts.Queries;
+using RangoricMUD.Accounts.Models;
+using RangoricMUD.Accounts.Queries;
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Commands
+namespace RangoricMUD.Accounts.Commands
 {
     public interface IAccountCommandFactory
     {

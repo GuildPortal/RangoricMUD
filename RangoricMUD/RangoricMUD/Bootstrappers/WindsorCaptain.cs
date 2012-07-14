@@ -25,7 +25,7 @@ using Castle.Windsor;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers
+namespace RangoricMUD.Bootstrappers
 {
     public class WindsorCaptain : PirateCaptain, ICaptain
     {

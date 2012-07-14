@@ -12,7 +12,7 @@
 
 #endregion
 
-namespace Rangoric.Website.Dice
+namespace RangoricMUD.Dice
 {
     public interface IRandomProvider
     {

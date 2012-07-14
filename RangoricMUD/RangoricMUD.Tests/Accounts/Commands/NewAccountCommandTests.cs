@@ -16,15 +16,15 @@
 
 using Moq;
 using NUnit.Framework;
-using Rangoric.UnitTests.Utilities;
-using Rangoric.Website.Accounts.Commands;
-using Rangoric.Website.Accounts.Models;
-using Rangoric.Website.Security;
+using RangoricMUD.Accounts.Commands;
+using RangoricMUD.Accounts.Models;
+using RangoricMUD.Security;
+using RangoricMUD.Tests.Utilities;
 using Raven.Client.Embedded;
 
 #endregion
 
-namespace Rangoric.UnitTests.Accounts.Commands
+namespace RangoricMUD.Tests.Accounts.Commands
 {
     [TestFixture]
     public class NewAccountCommandTests

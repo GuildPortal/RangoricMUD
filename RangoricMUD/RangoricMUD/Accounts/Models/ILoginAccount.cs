@@ -18,7 +18,7 @@ using System.ComponentModel.DataAnnotations;
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Models
+namespace RangoricMUD.Accounts.Models
 {
     public interface ILoginAccount
     {

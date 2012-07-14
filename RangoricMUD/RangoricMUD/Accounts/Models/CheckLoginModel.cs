@@ -15,11 +15,11 @@
 #region References
 
 using System.Collections.Generic;
-using Rangoric.Website.Accounts.Data;
+using RangoricMUD.Accounts.Data;
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Models
+namespace RangoricMUD.Accounts.Models
 {
     public class CheckLoginModel : ICheckLoginModel
     {

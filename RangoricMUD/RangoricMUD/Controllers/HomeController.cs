@@ -15,15 +15,14 @@
 #region References
 
 using System.Web.Mvc;
-using Rangoric.Website.Controllers.Models;
+using RangoricMUD.Controllers.Models;
 
 #endregion
 
-namespace Rangoric.Website.Controllers
+namespace RangoricMUD.Controllers
 {
     public class HomeController : BaseController
     {
-        [OutputCache(Duration = 60)]
         public ViewResult Index()
         {
             return View("Index", new IndexModel());

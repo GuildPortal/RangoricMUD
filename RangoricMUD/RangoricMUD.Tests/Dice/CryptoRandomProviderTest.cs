@@ -15,11 +15,11 @@
 #region References
 
 using NUnit.Framework;
-using Rangoric.Website.Dice;
+using RangoricMUD.Dice;
 
 #endregion
 
-namespace Rangoric.UnitTests.Dice
+namespace RangoricMUD.Tests.Dice
 {
     ///<summary>
     ///  This is a test class for CryptoRandomProviderTest and is intended to contain all CryptoRandomProviderTest Unit Tests

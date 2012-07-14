@@ -14,11 +14,11 @@
 
 #region References
 
-using Rangoric.Website.Accounts.Models;
+using RangoricMUD.Accounts.Models;
 
 #endregion
 
-namespace Rangoric.Website.Controllers.Models
+namespace RangoricMUD.Controllers.Models
 {
     public class IndexModel
     {

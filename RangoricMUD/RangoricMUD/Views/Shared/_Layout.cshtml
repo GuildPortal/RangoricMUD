@@ -1,0 +1,19 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+    @StackExchange.Profiling.MiniProfiler.RenderIncludes()
+    @Styles.Render("~/Assets/Styles")
+    @Scripts.Render("~/Assets/Scripts")
+</head>
+    <body>
+        <div id="Main-Menu" class="Menu" data-bind="foreach: Buttons">
+            <button data-bind="text: DisplayText, visible: IsVisible, click: Click"></button>
+        </div>
+        @RenderBody()
+
+    </body>
+</html>

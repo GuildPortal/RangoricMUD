@@ -18,7 +18,7 @@ using System.Configuration;
 
 #endregion
 
-namespace Rangoric.Website.Configuration
+namespace RangoricMUD.Configuration
 {
     public class RangoricConfiguration : IRangoricConfiguration
 

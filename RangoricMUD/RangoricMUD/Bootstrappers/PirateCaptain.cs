@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers
+namespace RangoricMUD.Bootstrappers
 {
     public abstract class PirateCaptain
     {

@@ -14,50 +14,14 @@
 
 #region References
 
-using System.Collections.Generic;
-using System.Linq;
-using Rangoric.Website.Accounts.Data;
-using Rangoric.Website.Accounts.Models;
-using Rangoric.Website.Queries;
-using Rangoric.Website.Security;
-using Raven.Client;
+using RangoricMUD.Accounts.Models;
+using RangoricMUD.Queries;
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Queries
+namespace RangoricMUD.Accounts.Queries
 {
     public interface ICheckLoginQuery : IQuery<ICheckLoginModel>
     {
-    }
-
-    public class CheckLoginQuery : BaseQuery<ICheckLoginModel>, ICheckLoginQuery
-    {
-        private readonly IDocumentStore mDocumentStore;
-        private readonly ISignInPersistance mSignInPersistance;
-
-        public CheckLoginQuery(ISignInPersistance tSignInPersistance, IDocumentStore tDocumentStore)
-        {
-            mSignInPersistance = tSignInPersistance;
-            mDocumentStore = tDocumentStore;
-        }
-
-        protected override ICheckLoginModel GetResult()
-        {
-            var vAccountName = mSignInPersistance.AccountName;
-
-            Account vAccount;
-            using (var vSession = mDocumentStore.OpenSession())
-            {
-                vAccount =
-                    vSession.Query<Account>().SingleOrDefault(t => t.Name == vAccountName);
-            }
-            var vResult = new CheckLoginModel
-                              {
-                                  IsLoggedIn = !string.IsNullOrWhiteSpace(vAccountName),
-                                  Name = vAccount != null ? vAccount.Name : "",
-                                  Roles = vAccount != null ? vAccount.Roles : new List<eRoles>()
-                              };
-            return vResult;
-        }
     }
 }

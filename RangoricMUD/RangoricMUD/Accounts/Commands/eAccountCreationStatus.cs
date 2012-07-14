@@ -12,7 +12,7 @@
 
 #endregion
 
-namespace Rangoric.Website.Accounts.Commands
+namespace RangoricMUD.Accounts.Commands
 {
     public enum eAccountCreationStatus
     {

@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace Rangoric.Website.Bootstrappers.Crews
+namespace RangoricMUD.Bootstrappers.Crews
 {
     public abstract class BaseCrew : ICrew
     {
