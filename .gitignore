@@ -22,7 +22,7 @@ RangoricMUD.ncrunchsolution
 RangoricMUD.ncrunchproject
 RangoricMUD.Tests.ncrunchproject
 RangoricMUD.ncrunchsolution.user
-RangoricMUD.crunchsolution.cache
+_NCrunch_RangoricMUD
 
 #Ignore RavenDB Data Directory
 App_Data
