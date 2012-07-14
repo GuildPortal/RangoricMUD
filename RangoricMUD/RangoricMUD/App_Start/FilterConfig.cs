@@ -18,7 +18,7 @@ using System.Web.Mvc;
 
 #endregion
 
-namespace RangoricMUD
+namespace RangoricMUD.App_Start
 {
     public class FilterConfig
     {

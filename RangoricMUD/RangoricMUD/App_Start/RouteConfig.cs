@@ -20,7 +20,7 @@ using System.Web.Routing;
 
 #endregion
 
-namespace RangoricMUD
+namespace RangoricMUD.App_Start
 {
     public class RouteConfig
     {
