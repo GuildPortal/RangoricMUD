@@ -43,7 +43,7 @@ namespace RangoricMUD.Accounts.Controllers
         }
 
         [HttpPost]
-        public JsonResult Login(ILoginAccount tLoginAccount)
+        public JsonResult Login(LoginAccount tLoginAccount)
         {
             var vResult = false;
             if (ModelState.IsValid)
@@ -55,7 +55,7 @@ namespace RangoricMUD.Accounts.Controllers
         }
 
         [HttpPost]
-        public JsonResult CreateAccount(ICreateAccount tCreateAccount)
+        public JsonResult CreateAccount(CreateAccount tCreateAccount)
         {
             var vResult = false;
             if (ModelState.IsValid)

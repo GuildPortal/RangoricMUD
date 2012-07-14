@@ -12,14 +12,26 @@
 
 #endregion
 
+using System.ComponentModel.DataAnnotations;
+using DataAnnotationsExtensions;
+
 namespace RangoricMUD.Accounts.Models
 {
-    public class CreateAccount : ICreateAccount
+    public class CreateAccount
     {
         #region ICreateAccount Members
-
+        [Required]
+        [Display(Name = "Account Name")]
+        [StringLength(100, MinimumLength = 3)]
         public string Name { get; set; }
+        [Required]
+        [Display(Name = "Email Address")]
+        [Email]
+        [StringLength(100, MinimumLength = 5)]
         public string Email { get; set; }
+        [Required]
+        [Display(Name = "Password")]
+        [StringLength(100, MinimumLength = 10)]
         public string Password { get; set; }
 
         #endregion

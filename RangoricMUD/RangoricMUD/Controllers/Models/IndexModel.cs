@@ -28,7 +28,7 @@ namespace RangoricMUD.Controllers.Models
             LoginAccount = new LoginAccount();
         }
 
-        public ICreateAccount CreateAccount { get; private set; }
-        public ILoginAccount LoginAccount { get; private set; }
+        public CreateAccount CreateAccount { get; private set; }
+        public LoginAccount LoginAccount { get; private set; }
     }
 }

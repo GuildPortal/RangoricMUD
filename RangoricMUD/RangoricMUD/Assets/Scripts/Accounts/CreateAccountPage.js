@@ -6,7 +6,11 @@
 
 CreateAccountPage.prototype = {
     Submit: function (tForm) {
-        
+        var vThis = this;
+        var vForm = $(tForm);
+        if(vForm.valid()) {
+            vThis.AccountManager.CreateAccount(vForm.serialize());
+        }
     }
 };
 

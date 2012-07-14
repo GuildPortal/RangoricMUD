@@ -12,14 +12,23 @@
 
 #endregion
 
+using System.ComponentModel.DataAnnotations;
+
 namespace RangoricMUD.Accounts.Models
 {
-    public class LoginAccount : ILoginAccount
+    public class LoginAccount
     {
         #region ILoginAccount Members
 
-        public string Password { get; set; }
+        [Required]
+        [Display(Name = "Account Name", Prompt = "Account Name")]
+        [StringLength(100, MinimumLength = 3)]
         public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Password")]
+        [StringLength(100, MinimumLength = 10)]
+        public string Password { get; set; }
 
         #endregion
     }

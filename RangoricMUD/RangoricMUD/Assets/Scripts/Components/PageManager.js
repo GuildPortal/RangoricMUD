@@ -17,6 +17,7 @@ function PageManager() {
         },
         write: function (tPage) {
             vThis.Page(tPage.ViewModel);
+            jQuery.validator.unobtrusive.parse($(".Page"));
         },
         owner: vThis
     });

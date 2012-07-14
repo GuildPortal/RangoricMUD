@@ -33,10 +33,10 @@ namespace RangoricMUD.Tests.Accounts.Controllers
 
         private AccountController mAccountController;
 
-        private Mock<ILoginAccount> mGoodLoginAccount;
-        private Mock<ILoginAccount> mBadLoginAccount;
-        private Mock<ICreateAccount> mGoodNewAccount;
-        private Mock<ICreateAccount> mBadNewAccount;
+        private LoginAccount mGoodLoginAccount;
+        private LoginAccount mBadLoginAccount;
+        private CreateAccount mGoodNewAccount;
+        private CreateAccount mBadNewAccount;
 
         private Mock<ISignInPersistance> mSignInPersistance;
         private Mock<IAccountCommandFactory> mCommandFactory;
@@ -49,16 +49,16 @@ namespace RangoricMUD.Tests.Accounts.Controllers
 
         private void Setup()
         {
-            mGoodLoginAccount = new Mock<ILoginAccount>();
-            mBadLoginAccount = new Mock<ILoginAccount>();
+            mGoodLoginAccount = new LoginAccount();
+            mBadLoginAccount = new LoginAccount();
 
             mGoodLoginCommand = new Mock<ILoginAccountCommand>();
             mBadLoginCommand = new Mock<ILoginAccountCommand>();
             mGoodLoginCommand.Setup(t => t.Execute()).Returns(true);
             mBadLoginCommand.Setup(t => t.Execute()).Returns(false);
 
-            mGoodNewAccount = new Mock<ICreateAccount>();
-            mBadNewAccount = new Mock<ICreateAccount>();
+            mGoodNewAccount = new CreateAccount();
+            mBadNewAccount = new CreateAccount();
 
             mSignInPersistance = new Mock<ISignInPersistance>();
 
@@ -74,16 +74,16 @@ namespace RangoricMUD.Tests.Accounts.Controllers
 
             mCommandFactory = new Mock<IAccountCommandFactory>();
             mCommandFactory
-                .Setup(t => t.CreateNewAccountCommand(mGoodNewAccount.Object))
+                .Setup(t => t.CreateNewAccountCommand(mGoodNewAccount))
                 .Returns(mGoodNewAccountCommand.Object);
             mCommandFactory
-                .Setup(t => t.CreateNewAccountCommand(mBadNewAccount.Object))
+                .Setup(t => t.CreateNewAccountCommand(mBadNewAccount))
                 .Returns(mBadNewAccountCommand.Object);
             mCommandFactory
-                .Setup(t => t.CreateLoginAccountCommand(mGoodLoginAccount.Object))
+                .Setup(t => t.CreateLoginAccountCommand(mGoodLoginAccount))
                 .Returns(mGoodLoginCommand.Object);
             mCommandFactory
-                .Setup(t => t.CreateLoginAccountCommand(mBadLoginAccount.Object))
+                .Setup(t => t.CreateLoginAccountCommand(mBadLoginAccount))
                 .Returns(mBadLoginCommand.Object);
 
             mAccountController = new AccountController(mSignInPersistance.Object, mCommandFactory.Object);
@@ -126,14 +126,14 @@ namespace RangoricMUD.Tests.Accounts.Controllers
         public void LoginCanLoginIfLoginAccountIsCorrect()
         {
             Setup();
-            Assert.IsTrue((bool) mAccountController.Login(mGoodLoginAccount.Object).Data);
+            Assert.IsTrue((bool) mAccountController.Login(mGoodLoginAccount).Data);
         }
 
         [Test]
         public void LoginCantLoginIfLoginAccountIsBad()
         {
             Setup();
-            Assert.IsFalse((bool) mAccountController.Login(mBadLoginAccount.Object).Data);
+            Assert.IsFalse((bool) mAccountController.Login(mBadLoginAccount).Data);
         }
 
 
@@ -141,7 +141,7 @@ namespace RangoricMUD.Tests.Accounts.Controllers
         public void LoginUsesLoginCommand()
         {
             Setup();
-            mAccountController.Login(mGoodLoginAccount.Object);
+            mAccountController.Login(mGoodLoginAccount);
             mGoodLoginCommand.Verify(t => t.Execute());
         }
 
@@ -157,14 +157,14 @@ namespace RangoricMUD.Tests.Accounts.Controllers
         public void RegisterReturnsDuplicateNameWhenNewAccountIsDup()
         {
             Setup();
-            Assert.AreEqual(false, mAccountController.CreateAccount(mBadNewAccount.Object).Data);
+            Assert.AreEqual(false, mAccountController.CreateAccount(mBadNewAccount).Data);
         }
 
         [Test]
         public void RegisterReturnsSuccessWhenNewAccountIsGood()
         {
             Setup();
-            Assert.AreEqual(true, mAccountController.CreateAccount(mGoodNewAccount.Object).Data);
+            Assert.AreEqual(true, mAccountController.CreateAccount(mGoodNewAccount).Data);
         }
     }
 }

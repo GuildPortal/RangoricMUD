@@ -217,8 +217,6 @@
     <Compile Include="Accounts\Models\CheckLoginModel.cs" />
     <Compile Include="Accounts\Models\CreateAccount.cs" />
     <Compile Include="Accounts\Models\ICheckLoginModel.cs" />
-    <Compile Include="Accounts\Models\ICreateAccount.cs" />
-    <Compile Include="Accounts\Models\ILoginAccount.cs" />
     <Compile Include="Accounts\Models\LoginAccount.cs" />
     <Compile Include="Accounts\Queries\CheckLoginQuery.cs" />
     <Compile Include="Accounts\Queries\ICheckLoginQuery.cs" />

@@ -28,12 +28,12 @@ namespace RangoricMUD.Accounts.Commands
 {
     public class NewAccountCommand : BaseCommand<eAccountCreationStatus>, INewAccountCommand
     {
-        private readonly ICreateAccount mCreateAccount;
+        private readonly CreateAccount mCreateAccount;
         private readonly IDocumentStore mDocumentStore;
         private readonly IHashProvider mHashProvider;
 
         public NewAccountCommand(IDocumentStore tDocumentStore, IHashProvider tHashProvider,
-                                 ICreateAccount tCreateAccount)
+                                 CreateAccount tCreateAccount)
         {
             mDocumentStore = tDocumentStore;
             mHashProvider = tHashProvider;

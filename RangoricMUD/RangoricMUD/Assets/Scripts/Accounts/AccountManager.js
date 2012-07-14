@@ -70,7 +70,9 @@ AccountManager.prototype = {
                 .IsJson()
                 .Success(function (tData) {
                     vThis.IsWorking(false);
-                    vThis.Login(tCreateAccountData);
+                    if (tData) {
+                        vThis.Login(tCreateAccountData);
+                    }
                 });
             vThis.Ajax.Start();
         }

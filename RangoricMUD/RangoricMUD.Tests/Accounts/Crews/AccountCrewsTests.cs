@@ -60,8 +60,6 @@ namespace RangoricMUD.Tests.Accounts.Crews
         }
 
         [TestCase(typeof (IAccount))]
-        [TestCase(typeof (ILoginAccount))]
-        [TestCase(typeof (ICreateAccount))]
         [TestCase(typeof (IAccountCommandFactory))]
         [TestCase(typeof (AccountController))]
         public void ServicesResolve(Type tType)

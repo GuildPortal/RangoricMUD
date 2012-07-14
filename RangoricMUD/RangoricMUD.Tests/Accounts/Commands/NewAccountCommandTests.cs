@@ -34,7 +34,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
         private const string cEmail = "Email";
         private const string cPassword = "Password";
         private INewAccountCommand mNewAccountCommand;
-        private ICreateAccount mCreateAccount;
+        private CreateAccount mCreateAccount;
         private Mock<IHashProvider> mHashProvider;
         private EmbeddableDocumentStore mDocumentStore;
 
