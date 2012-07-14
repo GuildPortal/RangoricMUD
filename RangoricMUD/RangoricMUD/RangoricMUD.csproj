@@ -44,12 +44,91 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\WebGrease.1.0.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="BCrypt.Net">
+      <HintPath>..\packages\BCrypt-Official.0.1.107\lib\BCrypt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.0.0.4001\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.0.0.4001\lib\net40\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions">
+      <HintPath>..\packages\DataAnnotationsExtensions.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions.ClientValidation">
+      <HintPath>..\packages\DataAnnotationsExtensions.MVC3.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.ClientOnly">
+      <HintPath>..\packages\DotlessClientOnly.1.3.0.4\lib\dotless.ClientOnly.dll</HintPath>
+    </Reference>
+    <Reference Include="Esent.Interop">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\Esent.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.Spatial">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\Lucene.Net.Contrib.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net.Contrib.SpellChecker">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\Lucene.Net.Contrib.SpellChecker.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MiniProfiler">
+      <HintPath>..\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcMiniProfiler.RavenDb">
+      <HintPath>..\packages\MiniProfiler.RavenDb.2.1.0\lib\MvcMiniProfiler.RavenDb.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.7\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Abstractions">
+      <HintPath>..\packages\RavenDB.Client.1.2.2033-Unstable\lib\net40\Raven.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Backup">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\Raven.Backup.exe</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Embedded">
+      <HintPath>..\packages\RavenDB.Embedded.1.2.2033-Unstable\lib\net40\Raven.Client.Embedded.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\packages\RavenDB.Client.1.2.2033-Unstable\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Database">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\Raven.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Imports.SignalR">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\Raven.Imports.SignalR.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Imports.SignalR.Client">
+      <HintPath>..\packages\RavenDB.Client.1.2.2033-Unstable\lib\net40\Raven.Imports.SignalR.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Imports.SignalR.Hosting.Common">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\Raven.Imports.SignalR.Hosting.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Imports.SignalR.Hosting.Self">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\Raven.Imports.SignalR.Hosting.Self.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Smuggler">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\Raven.Smuggler.exe</HintPath>
+    </Reference>
+    <Reference Include="Spatial4n.Core">
+      <HintPath>..\packages\RavenDB.Database.1.2.2033-Unstable\lib\net40\Spatial4n.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
@@ -115,16 +194,75 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.2.0.0\lib\NETFramework40\WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.0.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts\Commands\eAccountCreationStatus.cs" />
+    <Compile Include="Accounts\Commands\eAccountDeletionStatus.cs" />
+    <Compile Include="Accounts\Commands\IAccountCommandFactory.cs" />
+    <Compile Include="Accounts\Commands\ILoginAccountCommand.cs" />
+    <Compile Include="Accounts\Commands\INewAccountCommand.cs" />
+    <Compile Include="Accounts\Commands\LoginAccountCommand.cs" />
+    <Compile Include="Accounts\Commands\NewAccountCommand.cs" />
+    <Compile Include="Accounts\Controllers\AccountController.cs" />
+    <Compile Include="Accounts\Crews\AccountCrew.cs" />
+    <Compile Include="Accounts\Data\Account.cs" />
+    <Compile Include="Accounts\Data\eRoles.cs" />
+    <Compile Include="Accounts\Data\IAccount.cs" />
+    <Compile Include="Accounts\Models\CheckLoginModel.cs" />
+    <Compile Include="Accounts\Models\CreateAccount.cs" />
+    <Compile Include="Accounts\Models\ICheckLoginModel.cs" />
+    <Compile Include="Accounts\Models\ICreateAccount.cs" />
+    <Compile Include="Accounts\Models\ILoginAccount.cs" />
+    <Compile Include="Accounts\Models\LoginAccount.cs" />
+    <Compile Include="Accounts\Queries\ICheckLoginQuery.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Bootstrappers\Boot.cs" />
+    <Compile Include="Bootstrappers\ControllerFactoryShip.cs" />
+    <Compile Include="Bootstrappers\Crews\BaseCrew.cs" />
+    <Compile Include="Bootstrappers\Crews\ControllerCrew.cs" />
+    <Compile Include="Bootstrappers\Crews\DatabaseCrew.cs" />
+    <Compile Include="Bootstrappers\Crews\DiceCrew.cs" />
+    <Compile Include="Bootstrappers\Crews\SecurityCrew.cs" />
+    <Compile Include="Bootstrappers\Crews\WindsorCrew.cs" />
+    <Compile Include="Bootstrappers\eBootType.cs" />
+    <Compile Include="Bootstrappers\eLifeStyle.cs" />
+    <Compile Include="Bootstrappers\IBoot.cs" />
+    <Compile Include="Bootstrappers\ICaptain.cs" />
+    <Compile Include="Bootstrappers\ICrew.cs" />
+    <Compile Include="Bootstrappers\IShip.cs" />
+    <Compile Include="Bootstrappers\PirateCaptain.cs" />
+    <Compile Include="Bootstrappers\PirateShip.cs" />
+    <Compile Include="Bootstrappers\WindsorCaptain.cs" />
+    <Compile Include="Bootstrappers\WindsorShip.cs" />
+    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Configuration\IRangoricConfiguration.cs" />
+    <Compile Include="Configuration\RangoricConfiguration.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Models\IndexModel.cs" />
+    <Compile Include="Dice\CryptoRandomProvider.cs" />
+    <Compile Include="Dice\IRandomProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\BaseQuery.cs" />
+    <Compile Include="Queries\IQuery.cs" />
+    <Compile Include="Security\CustomHashProvider.cs" />
+    <Compile Include="Security\EncryptionProvider.cs" />
+    <Compile Include="Security\IEncryptionProvider.cs" />
+    <Compile Include="Security\IHashProvider.cs" />
+    <Compile Include="Security\ISignInPersistance.cs" />
+    <Compile Include="Security\SignInPersistance.cs" />
+    <Compile Include="Web\WindsorModelBinder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -144,8 +282,6 @@
     <Folder Include="Assets\Images\" />
     <Folder Include="Assets\Scripts\" />
     <Folder Include="Assets\Styles\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
