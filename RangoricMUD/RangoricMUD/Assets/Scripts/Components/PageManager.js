@@ -1,6 +1,9 @@
 ﻿function HomePage() {
     var vThis = this;
     vThis.Name = ko.observable("Home Page");
+    vThis.IsVisible = ko.computed(function () {
+        return true;
+    });
 }
 var ePages = {
     HomePage: {
@@ -16,7 +19,15 @@ function PageManager() {
             return vThis.Page();
         },
         write: function (tPage) {
+            if(vThis.PageStillVisible) {
+                vThis.PageStillVisible.dispose();
+            }
             vThis.Page(tPage.ViewModel);
+            vThis.PageStillVisible = tPage.ViewModel.IsVisible.subscribe(function(tData) {
+                if(!tData) {
+                    vThis.ActivePage(ePages.HomePage);
+                }
+            });
             jQuery.validator.unobtrusive.parse($(".Page"));
         },
         owner: vThis

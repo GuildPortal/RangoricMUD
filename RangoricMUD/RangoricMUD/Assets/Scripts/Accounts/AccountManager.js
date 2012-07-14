@@ -53,7 +53,9 @@ AccountManager.prototype = {
                 .IsJson()
                 .Success(function (tData) {
                     vThis.IsWorking(false);
-                    vThis.CheckLogin();
+                    if(tData) {
+                        vThis.CheckLogin();
+                    }
                 });
             vThis.Ajax.Start();
         }

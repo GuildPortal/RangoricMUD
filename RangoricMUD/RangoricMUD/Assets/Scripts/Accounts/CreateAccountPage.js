@@ -2,6 +2,9 @@
     var vThis = this;
     vThis.AccountManager = tSettings.AccountManager;
     vThis.Name = ko.observable("Create Account");
+    vThis.IsVisible = ko.computed(function() {
+        return !vThis.AccountManager.IsLoggedIn();
+    });
 }
 
 CreateAccountPage.prototype = {

@@ -2,6 +2,9 @@
     var vThis = this;
     vThis.AccountManager = tSettings.AccountManager;
     vThis.Name = ko.observable("Login Page");
+    vThis.IsVisible = ko.computed(function () {
+        return !vThis.AccountManager.IsLoggedIn();
+    });
 }
 
 LoginPage.prototype = {
