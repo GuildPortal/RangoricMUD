@@ -7,11 +7,13 @@
 /// <reference path="~/Assets/Scripts/Accounts/LoginButton.js"/>
 /// <reference path="~/Assets/Scripts/Accounts/CreateAccountButton.js"/>
 /// <reference path="~/Assets/Scripts/Accounts/CreateAccountPage.js"/>
+/// <reference path="~/Assets/Scripts/Administration/AdminManager.js"/>
 /// <reference path="~/Assets/Scripts/Administration/AdminButton.js"/>
 
 $(function () {
     var vDependencies = {
-        AjaxFactory: Ajax
+        AjaxFactory: Ajax,
+        Connection: $.connection
     };
     vDependencies.AccountManager = new AccountManager(vDependencies);
     vDependencies.AccountManager.Start();
@@ -28,6 +30,7 @@ $(function () {
     vButtons.Buttons.push(new CreateAccountButton(vDependencies));
     
     //Administration Main Buttons
+    vDependencies.AdminManager = new AdminManager(vDependencies);
     vButtons.Buttons.push(new AdminButton(vDependencies));
 
     ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);

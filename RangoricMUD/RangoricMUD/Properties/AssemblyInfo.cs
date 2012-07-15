@@ -37,7 +37,6 @@ using System.Runtime.InteropServices;
 // COM, set the ComVisible attribute to true on that type.
 
 [assembly: ComVisible(false)]
-[assembly: CLSCompliant(true)]
 
 // Version information for an assembly consists of the following four values:
 //

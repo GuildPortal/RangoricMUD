@@ -37,6 +37,7 @@ namespace RangoricMUD.App_Start
                              "~/Assets/Scripts/Libraries/jquery.validate.js",
                              "~/Assets/Scripts/Libraries/jquery.validate.unobtrusive.js",
                              "~/Assets/Scripts/Libraries/jquery.signalR.js",
+                             "~/Assets/Scripts/Libraries/jquery.signalR.hubs.js",
                              "~/Assets/Scripts/Libraries/knockout.js",
                              "~/Assets/Scripts/Settings/Urls.js",
                              "~/Assets/Scripts/Components/Button.js",
@@ -47,6 +48,7 @@ namespace RangoricMUD.App_Start
                              "~/Assets/Scripts/Accounts/LoginButton.js",
                              "~/Assets/Scripts/Accounts/CreateAccountPage.js",
                              "~/Assets/Scripts/Accounts/CreateAccountButton.js",
+                             "~/Assets/Scripts/Administration/AdminManager.js",
                              "~/Assets/Scripts/Administration/AdminButton.js",
                              "~/Assets/Scripts/Startup.js");
 
