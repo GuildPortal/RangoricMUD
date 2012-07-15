@@ -313,12 +313,9 @@
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
     <Content Include="Assets\Scripts\Libraries\knockout.js" />
-    <Content Include="Assets\Scripts\Libraries\qunit.js" />
     <Content Include="Assets\Scripts\Settings\Urls.js" />
     <Content Include="Assets\Scripts\Startup.js" />
     <Content Include="Assets\Scripts\UnitTesting\Accounts\AccountManagerTests.js" />
-    <Content Include="Assets\Scripts\UnitTesting\qunit.css" />
-    <Content Include="Assets\Scripts\UnitTesting\qunit.js" />
     <Content Include="Content\qunit.css" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.7.2.intellisense.js">
