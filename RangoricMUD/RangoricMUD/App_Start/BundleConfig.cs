@@ -36,6 +36,7 @@ namespace RangoricMUD.App_Start
                     .Include("~/Assets/Scripts/Libraries/jquery.js",
                              "~/Assets/Scripts/Libraries/jquery.validate.js",
                              "~/Assets/Scripts/Libraries/jquery.validate.unobtrusive.js",
+                             "~/Assets/Scripts/Libraries/jquery.signalR.js",
                              "~/Assets/Scripts/Libraries/knockout.js",
                              "~/Assets/Scripts/Settings/Urls.js",
                              "~/Assets/Scripts/Components/Button.js",
