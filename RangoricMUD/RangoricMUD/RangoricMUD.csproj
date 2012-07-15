@@ -283,6 +283,7 @@
     <Content Include="Assets\Scripts\Accounts\LoginButton.js" />
     <Content Include="Assets\Scripts\Accounts\LoginPage.js" />
     <Content Include="Assets\Scripts\Administration\AdminButton.js" />
+    <Content Include="Assets\Scripts\Administration\AdminManager.js" />
     <Content Include="Assets\Scripts\Components\Ajax.js" />
     <Content Include="Assets\Scripts\Components\Button.js" />
     <Content Include="Assets\Scripts\Components\PageManager.js" />

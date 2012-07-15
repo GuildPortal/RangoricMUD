@@ -10,24 +10,26 @@
 /// <reference path="~/Assets/Scripts/Administration/AdminButton.js"/>
 
 $(function () {
-    var vAccountManager = new AccountManager({ AjaxFactory: Ajax });
-    vAccountManager.Start();
+    var vDependencies = {
+        AjaxFactory: Ajax
+    };
+    vDependencies.AccountManager = new AccountManager(vDependencies);
+    vDependencies.AccountManager.Start();
 
-    var vPageManager = new PageManager();
-
-    ePages.LoginPage.ViewModel = new LoginPage({ AccountManager: vAccountManager });
-    ePages.CreateAccount.ViewModel = new CreateAccountPage({ AccountManager: vAccountManager });
+    vDependencies.PageManager =  new PageManager();
+    ePages.LoginPage.ViewModel = new LoginPage(vDependencies);
+    ePages.CreateAccount.ViewModel = new CreateAccountPage(vDependencies);
 
     var vButtons = {};
     vButtons.Buttons = ko.observableArray();
     
     //Account Management Main Buttons
-    vButtons.Buttons.push(new LoginButton({ AccountManager: vAccountManager, PageManager: vPageManager }));
-    vButtons.Buttons.push(new CreateAccountButton({ AccountManager: vAccountManager, PageManager: vPageManager }));
+    vButtons.Buttons.push(new LoginButton(vDependencies));
+    vButtons.Buttons.push(new CreateAccountButton(vDependencies));
     
     //Administration Main Buttons
-    vButtons.Buttons.push(new AdminButton({ AccountManager: vAccountManager }));
+    vButtons.Buttons.push(new AdminButton(vDependencies));
 
     ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);
-    ko.applyBindings(vPageManager.Page, $('.Page').get()[0]);
+    ko.applyBindings(vDependencies.PageManager.Page, $('.Page').get()[0]);
 })

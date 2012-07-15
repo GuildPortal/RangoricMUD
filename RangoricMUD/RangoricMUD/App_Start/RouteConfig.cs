@@ -17,15 +17,19 @@
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using SignalR;
 
 #endregion
 
 namespace RangoricMUD.App_Start
 {
-    public class RouteConfig
+    public static class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+
+            routes.MapHubs();
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapHttpRoute(
