@@ -1,7 +1,9 @@
-﻿function CreateAccountPage(tSettings) {
+﻿ePages.CreateAccount = {};
+
+function CreateAccountPage(tSettings) {
     var vThis = this;
     vThis.AccountManager = tSettings.AccountManager;
-    vThis.Name = ko.observable("Create Account");
+    vThis.Page = ko.observable(ePages.CreateAccount);
     vThis.IsVisible = ko.computed(function() {
         return !vThis.AccountManager.IsLoggedIn();
     });
@@ -16,5 +18,3 @@ CreateAccountPage.prototype = {
         }
     }
 };
-
-ePages.CreateAccount = {};

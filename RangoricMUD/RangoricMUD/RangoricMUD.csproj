@@ -262,6 +262,7 @@
     <Compile Include="Controllers\Models\IndexModel.cs" />
     <Compile Include="Dice\CryptoRandomProvider.cs" />
     <Compile Include="Dice\IRandomProvider.cs" />
+    <Compile Include="Games\Controllers\GameHub.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -292,6 +293,9 @@
     <None Include="Assets\Scripts\Libraries\jquery.intellisense.js">
       <DependentUpon>jquery.js</DependentUpon>
     </None>
+    <Content Include="Assets\Scripts\Games\GameButton.js" />
+    <Content Include="Assets\Scripts\Games\GameManager.js" />
+    <Content Include="Assets\Scripts\Games\GamePage.js" />
     <Content Include="Assets\Scripts\Libraries\jquery.js" />
     <Content Include="Assets\Scripts\Libraries\jquery.min.js">
       <DependentUpon>jquery.js</DependentUpon>
@@ -355,6 +359,7 @@
     <Content Include="Assets\Styles\Theme.less" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
+    <Content Include="Views\Games\GamePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

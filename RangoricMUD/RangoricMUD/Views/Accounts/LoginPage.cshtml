@@ -1,5 +1,5 @@
 ﻿@model RangoricMUD.Accounts.Models.LoginAccount
-<div class="LoginContainer" data-bind="visible: Name() === 'Login Page', if: Name() === 'Login Page'">
+<div class="LoginContainer" data-bind="visible: Page() === ePages.LoginPage, if: Page() === ePages.LoginPage">
     <form action="/" method="POST" data-bind="submit: Submit">
         <fieldset>
             <legend>Login to your account</legend>

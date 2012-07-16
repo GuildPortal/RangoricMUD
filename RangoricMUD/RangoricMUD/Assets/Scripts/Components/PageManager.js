@@ -1,15 +1,15 @@
-﻿function HomePage() {
+﻿var ePages = { };
+ePages.HomePage = { };
+
+function HomePage() {
     var vThis = this;
-    vThis.Name = ko.observable("Home Page");
+    vThis.Page = ko.observable(ePages.HomePage);
     vThis.IsVisible = ko.computed(function () {
         return true;
     });
 }
-var ePages = {
-    HomePage: {
-        ViewModel: new HomePage()
-    }
-};
+
+ePages.HomePage.ViewModel = new HomePage();
 
 function PageManager() {
     var vThis = this;

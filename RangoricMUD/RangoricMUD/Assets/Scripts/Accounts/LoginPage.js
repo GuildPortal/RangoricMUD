@@ -1,7 +1,9 @@
-﻿function LoginPage(tSettings) {
+﻿ePages.LoginPage = {};
+
+function LoginPage(tSettings) {
     var vThis = this;
     vThis.AccountManager = tSettings.AccountManager;
-    vThis.Name = ko.observable("Login Page");
+    vThis.Page = ko.observable(ePages.LoginPage);
     vThis.IsVisible = ko.computed(function () {
         return !vThis.AccountManager.IsLoggedIn();
     });
@@ -17,5 +19,4 @@ LoginPage.prototype = {
     }
 };
 
-ePages.LoginPage = { };
     

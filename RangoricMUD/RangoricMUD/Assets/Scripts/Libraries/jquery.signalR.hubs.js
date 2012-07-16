@@ -159,6 +159,14 @@
             testMethod: function (callback) {
                 return serverCall(this, "TestMethod", $.makeArray(arguments));
             }
+        },
+        gameHub: {
+            _: {
+                hubName: 'GameHub',
+                ignoreMembers: ['namespace', 'ignoreMembers', 'callbacks'],
+                connection: function () { return signalR.hub; }
+            }
+
         }
     });
 

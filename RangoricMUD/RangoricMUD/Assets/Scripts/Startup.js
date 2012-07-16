@@ -9,6 +9,9 @@
 /// <reference path="~/Assets/Scripts/Accounts/CreateAccountPage.js"/>
 /// <reference path="~/Assets/Scripts/Administration/AdminManager.js"/>
 /// <reference path="~/Assets/Scripts/Administration/AdminButton.js"/>
+/// <reference path="~/Assets/Scripts/Games/GameManager.js"/>
+/// <reference path="~/Assets/Scripts/Games/GamePage.js"/>
+/// <reference path="~/Assets/Scripts/Games/GameButton.js"/>
 
 $(function () {
     var vDependencies = {
@@ -17,10 +20,12 @@ $(function () {
     };
     vDependencies.AccountManager = new AccountManager(vDependencies);
     vDependencies.AccountManager.Start();
+    vDependencies.GameManager = new GameManager(vDependencies);
 
     vDependencies.PageManager =  new PageManager();
     ePages.LoginPage.ViewModel = new LoginPage(vDependencies);
     ePages.CreateAccount.ViewModel = new CreateAccountPage(vDependencies);
+    ePages.GamePage.ViewModel = new GamePage(vDependencies);
 
     var vButtons = {};
     vButtons.Buttons = ko.observableArray();
@@ -32,6 +37,10 @@ $(function () {
     //Administration Main Buttons
     vDependencies.AdminManager = new AdminManager(vDependencies);
     vButtons.Buttons.push(new AdminButton(vDependencies));
+    
+    //Game List Stuff
+    vButtons.Buttons.push(new GameButton(vDependencies));
+    
 
     ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);
     ko.applyBindings(vDependencies.PageManager.Page, $('.Page').get()[0]);
