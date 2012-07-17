@@ -30,15 +30,17 @@ namespace RangoricMUD.Accounts.Commands
         private readonly IDocumentStore mDocumentStore;
         private readonly IHashProvider mHashProvider;
         private readonly LoginAccount mLogin;
+        private readonly string mConnectionID;
         private readonly ISignInPersistance mSignInPersistance;
 
         public LoginAccountCommand(ISignInPersistance tSignInPersistance, IDocumentStore tDocumentStore,
-                                   IHashProvider tHashProvider, LoginAccount tLoginAccount)
+                                   IHashProvider tHashProvider, LoginAccount tLoginAccount, string tConnectionID)
         {
             mSignInPersistance = tSignInPersistance;
             mDocumentStore = tDocumentStore;
             mHashProvider = tHashProvider;
             mLogin = tLoginAccount;
+            mConnectionID = tConnectionID;
         }
 
         #region ILoginAccountCommand Members
@@ -59,7 +61,7 @@ namespace RangoricMUD.Accounts.Commands
             var vGood = mHashProvider.CheckHash(mLogin.Password, vAccount.PasswordHash);
             if (vGood)
             {
-                mSignInPersistance.AccountName = vAccount.Name;
+                mSignInPersistance.Login(vAccount.Name, mConnectionID);
             }
             return vGood;
         }

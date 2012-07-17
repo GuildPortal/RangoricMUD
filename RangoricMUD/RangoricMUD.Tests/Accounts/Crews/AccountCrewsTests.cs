@@ -17,7 +17,6 @@
 using System;
 using NUnit.Framework;
 using RangoricMUD.Accounts.Commands;
-using RangoricMUD.Accounts.Controllers;
 using RangoricMUD.Accounts.Crews;
 using RangoricMUD.Accounts.Data;
 using RangoricMUD.Accounts.Models;
@@ -61,7 +60,6 @@ namespace RangoricMUD.Tests.Accounts.Crews
 
         [TestCase(typeof (IAccount))]
         [TestCase(typeof (IAccountCommandFactory))]
-        [TestCase(typeof (AccountController))]
         public void ServicesResolve(Type tType)
         {
             TestService(tType);
@@ -82,7 +80,7 @@ namespace RangoricMUD.Tests.Accounts.Crews
         public void AccountCommandFactoryCanGenerateLoginAccountCommand()
         {
             var vFactory = mShip.GetService(typeof (IAccountCommandFactory)) as IAccountCommandFactory;
-            var vLoginAccountCommand = vFactory.CreateLoginAccountCommand(new LoginAccount());
+            var vLoginAccountCommand = vFactory.CreateLoginAccountCommand(new LoginAccount(), "");
             Assert.IsNotNull(vLoginAccountCommand);
         }
 

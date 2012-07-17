@@ -5,11 +5,11 @@
             <legend>Login to your account</legend>
 
             @Html.LabelFor(t => t.Name)
-            @Html.TextBoxFor(t => t.Name)
+            @Html.TextBoxFor(t => t.Name, new {data_bind="value:Name"})
             @Html.ValidationMessageFor(t => t.Name)
 
             @Html.LabelFor(t => t.Password)
-            @Html.PasswordFor(t => t.Password)
+            @Html.PasswordFor(t => t.Password, new {data_bind="value: Password"})
             @Html.ValidationMessageFor(t => t.Password)
 
             <div class="Buttons">

@@ -7,6 +7,10 @@ function CreateAccountPage(tSettings) {
     vThis.IsVisible = ko.computed(function() {
         return !vThis.AccountManager.IsLoggedIn();
     });
+
+    vThis.Name = ko.observable("");
+    vThis.Password = ko.observable("");
+    vThis.Email = ko.observable("");
 }
 
 CreateAccountPage.prototype = {
@@ -14,7 +18,7 @@ CreateAccountPage.prototype = {
         var vThis = this;
         var vForm = $(tForm);
         if(vForm.valid()) {
-            vThis.AccountManager.CreateAccount(vForm.serialize());
+            vThis.AccountManager.CreateAccount({ Name: vThis.Name(), Password: vThis.Password(), Email: vThis.Email() });
         }
     }
 };

@@ -27,5 +27,6 @@ namespace RangoricMUD.Bootstrappers
         object Resolve(Type tServiceType);
         IEnumerable<object> ResolveAll(Type tServiceType);
         void Release(object tObject);
+        void Register(Type tServiceType, Func<object> tActivator);
     }
 }

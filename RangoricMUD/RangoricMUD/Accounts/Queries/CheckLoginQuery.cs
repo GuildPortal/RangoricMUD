@@ -29,17 +29,19 @@ namespace RangoricMUD.Accounts.Queries
     public class CheckLoginQuery : BaseQuery<ICheckLoginModel>, ICheckLoginQuery
     {
         private readonly IDocumentStore mDocumentStore;
+        private readonly string mConnectionID;
         private readonly ISignInPersistance mSignInPersistance;
 
-        public CheckLoginQuery(ISignInPersistance tSignInPersistance, IDocumentStore tDocumentStore)
+        public CheckLoginQuery(ISignInPersistance tSignInPersistance, IDocumentStore tDocumentStore, string tConnectionID)
         {
             mSignInPersistance = tSignInPersistance;
             mDocumentStore = tDocumentStore;
+            mConnectionID = tConnectionID;
         }
 
         protected override ICheckLoginModel GetResult()
         {
-            var vAccountName = mSignInPersistance.AccountName;
+            var vAccountName = mSignInPersistance.AccountName(mConnectionID);
 
             Account vAccount;
             using (var vSession = mDocumentStore.OpenSession())

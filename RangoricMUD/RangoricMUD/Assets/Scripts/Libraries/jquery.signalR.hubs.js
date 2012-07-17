@@ -149,6 +149,29 @@
 
     // Create hub signalR instance
     $.extend(signalR, {
+        accountHub: {
+            _: {
+                hubName: 'AccountHub',
+                ignoreMembers: ['checkLogin', 'createAccount', 'login', 'logout', 'namespace', 'ignoreMembers', 'callbacks'],
+                connection: function () { return signalR.hub; }
+            },
+
+            logout: function (callback) {
+                return serverCall(this, "Logout", $.makeArray(arguments));
+            },
+
+            login: function (tLoginAccount, callback) {
+                return serverCall(this, "Login", $.makeArray(arguments));
+            },
+
+            createAccount: function (tCreateAccount, callback) {
+                return serverCall(this, "CreateAccount", $.makeArray(arguments));
+            },
+
+            checkLogin: function (callback) {
+                return serverCall(this, "CheckLogin", $.makeArray(arguments));
+            }
+        },
         administrationHub: {
             _: {
                 hubName: 'AdministrationHub',

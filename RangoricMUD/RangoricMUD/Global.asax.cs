@@ -24,6 +24,8 @@ using RangoricMUD.Bootstrappers;
 using RangoricMUD.Bootstrappers.Crews;
 using RangoricMUD.Web;
 using Raven.Client.Embedded;
+using SignalR;
+using SignalR.Hubs;
 using StackExchange.Profiling;
 
 #endregion
@@ -34,12 +36,14 @@ namespace RangoricMUD
     {
         protected void Application_Start()
         {
+            Start();
+            GlobalHost.DependencyResolver.Register(typeof (IHubActivator), () => mShip);
+
             AreaRegistration.RegisterAllAreas();
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Start();
         }
 
         protected void Application_End()

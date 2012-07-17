@@ -3,7 +3,7 @@
 function AccountManager(tSettings) {
     var vThis = this;
 
-    vThis.AjaxFactory = tSettings.AjaxFactory;
+    vThis.Connection = tSettings.Connection;
     
     vThis.IsLoggedIn = ko.observable(false);
     vThis.Name = ko.observable(null);
@@ -20,63 +20,41 @@ function AccountManager(tSettings) {
 AccountManager.prototype = {
     Start: function () {
         var vThis = this;
-        vThis.CheckLogin();
+        vThis.Hub = vThis.Connection.accountHub;
+        vThis.Hub.AccountInfo = function (tData) {
+            vThis.IsLoggedIn(tData.IsLoggedIn);
+            vThis.Name(tData.Name);
+            vThis.Roles.removeAll();
+            for (var vIndex = 0; vIndex < tData.Roles.length; vIndex++) {
+                vThis.Roles.push(tData.Roles[vIndex]);
+            }
+        };
     },
     CheckLogin: function () {
         var vThis = this;
-        vThis.IsWorking(true);
-        vThis.Ajax = new vThis.AjaxFactory();
-
-        vThis.Ajax.Settings
-            .Url(vUrls.CheckLogin)
-            .IsPost()
-            .IsJson()
-            .Success(function(tData) {
-                vThis.IsLoggedIn(tData.IsLoggedIn);
-                vThis.Name(tData.Name);
-                for (var vIndex = 0; vIndex < tData.Roles.length;vIndex++) {
-                    vThis.Roles.push(tData.Roles[vIndex]);
-                }
-                vThis.IsWorking(false);
-            });
-        vThis.Ajax.Start();
+        vThis.Hub.checkLogin();
     },
     Login: function (tLoginData) {
         var vThis = this;
-        if(!vThis.IsWorking()) {
-            vThis.IsWorking(true);
-            vThis.Ajax = new vThis.AjaxFactory();
-            vThis.Ajax.Settings
-                .Url(vUrls.Login)
-                .UsingData(tLoginData)
-                .IsPost()
-                .IsJson()
-                .Success(function (tData) {
-                    vThis.IsWorking(false);
-                    if(tData) {
-                        vThis.CheckLogin();
-                    }
-                });
-            vThis.Ajax.Start();
-        }
+        vThis.Hub
+            .login(tLoginData)
+            .done(function(tData) {
+                if(tData) {
+                    vThis.CheckLogin();
+                }
+            });
     },
     CreateAccount: function (tCreateAccountData) {
         var vThis = this;
-        if(!vThis.IsWorking()) {
-            vThis.IsWorking(true);
-            vThis.Ajax = new vThis.AjaxFactory();
-            vThis.Ajax.Settings
-                .Url(vUrls.CreateAccount)
-                .UsingData(tCreateAccountData)
-                .IsPost()
-                .IsJson()
-                .Success(function (tData) {
-                    vThis.IsWorking(false);
-                    if (tData) {
-                        vThis.Login(tCreateAccountData);
-                    }
-                });
-            vThis.Ajax.Start();
-        }
+        vThis.Hub.createAccount(tCreateAccountData)
+            .done(function (tResult) {
+                if(tResult) {
+                    var vData = {
+                        Name: tCreateAccountData.Name,
+                        Password: tCreateAccountData.Password
+                    };
+                    vThis.Login(vData);
+                }
+            });
     }
 }

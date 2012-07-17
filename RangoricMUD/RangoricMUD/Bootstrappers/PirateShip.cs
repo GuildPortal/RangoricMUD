@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
+using SignalR.Hubs;
 
 #endregion
 
@@ -78,7 +79,7 @@ namespace RangoricMUD.Bootstrappers
 
         public void Register(Type tServiceType, Func<object> tActivator)
         {
-            throw new NotImplementedException();
+            mCaptain.Register(tServiceType, tActivator);
         }
 
         public void Register(Type tServiceType, IEnumerable<Func<object>> tActivators)
@@ -89,6 +90,11 @@ namespace RangoricMUD.Bootstrappers
         protected virtual void Dispose(bool tAll)
         {
             mCaptain.Dispose();
+        }
+
+        public IHub Create(HubDescriptor descriptor)
+        {
+            return (IHub)mCaptain.Resolve(descriptor.Type);
         }
     }
 }

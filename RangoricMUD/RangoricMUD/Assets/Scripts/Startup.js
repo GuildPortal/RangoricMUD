@@ -19,7 +19,6 @@ $(function () {
         Connection: $.connection
     };
     vDependencies.AccountManager = new AccountManager(vDependencies);
-    vDependencies.AccountManager.Start();
     vDependencies.GameManager = new GameManager(vDependencies);
 
     vDependencies.PageManager =  new PageManager();
@@ -40,7 +39,8 @@ $(function () {
     
     //Game List Stuff
     vButtons.Buttons.push(new GameButton(vDependencies));
-    
+    vDependencies.AccountManager.Start();
+    $.connection.hub.start();
 
     ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);
     ko.applyBindings(vDependencies.PageManager.Page, $('.Page').get()[0]);

@@ -7,6 +7,9 @@ function LoginPage(tSettings) {
     vThis.IsVisible = ko.computed(function () {
         return !vThis.AccountManager.IsLoggedIn();
     });
+
+    vThis.Name = ko.observable("");
+    vThis.Password = ko.observable("");
 }
 
 LoginPage.prototype = {
@@ -14,7 +17,7 @@ LoginPage.prototype = {
         var vThis = this;
         var vForm = $(tForm);
         if (vForm.valid()) {
-            vThis.AccountManager.Login(vForm.serialize());
+            vThis.AccountManager.Login({Name: vThis.Name(), Password: vThis.Password()});
         }
     }
 };

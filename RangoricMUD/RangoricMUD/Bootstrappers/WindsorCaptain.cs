@@ -27,7 +27,7 @@ using Castle.Windsor;
 
 namespace RangoricMUD.Bootstrappers
 {
-    public class WindsorCaptain : PirateCaptain, ICaptain
+    public class WindsorCaptain : ICaptain
     {
         private readonly IWindsorContainer mContainer;
 
@@ -49,7 +49,6 @@ namespace RangoricMUD.Bootstrappers
             }
             catch (Exception)
             {
-                //We should return null when there is an error.
             }
             return vResult;
         }
@@ -64,10 +63,30 @@ namespace RangoricMUD.Bootstrappers
             mContainer.Release(tObject);
         }
 
+        public void Register(Type tServiceType, Func<object> tActivator)
+        {
+            mContainer.Register(Component.For(tServiceType).UsingFactoryMethod(tActivator));
+        }
+
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public void InspectCrew(IEnumerable<ICrew> tCrew)
+        {
+            var vBoots = new List<IBoot>();
+            var vBootCollections = new List<IBoot>();
+
+            foreach (var vCrew in tCrew)
+            {
+                vCrew.StrapOn(vBoots);
+                vCrew.StrapOnCollections(vBootCollections);
+            }
+
+            InspectBoots(vBoots);
+            InspectBootCollections(vBootCollections);
         }
 
         #endregion
@@ -94,7 +113,7 @@ namespace RangoricMUD.Bootstrappers
             return vReturn;
         }
 
-        protected override void InspectBoots(List<IBoot> tBoots)
+        private void InspectBoots(List<IBoot> tBoots)
         {
             InspectBasics(tBoots);
             InspectInstances(tBoots);
@@ -135,7 +154,7 @@ namespace RangoricMUD.Bootstrappers
             }
         }
 
-        protected override void InspectBootCollections(List<IBoot> tBoots)
+        private void InspectBootCollections(List<IBoot> tBoots)
         {
             foreach (var vBoot in tBoots)
             {

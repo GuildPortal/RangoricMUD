@@ -23,6 +23,7 @@ using System.Web.Mvc;
 namespace RangoricMUD.Bootstrappers
 {
     public interface IShip : IDependencyResolver,
+                             SignalR.Hubs.IHubActivator,
                              IControllerActivator,
                              IDisposable
     {

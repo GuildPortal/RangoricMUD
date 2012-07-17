@@ -63,7 +63,8 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 vObjects.SignInPersistance.Object,
                 vObjects.DocumentStore,
                 vObjects.HashProvider.Object,
-                vLogin);
+                vLogin,
+                vLogin.Name);
             return vObjects;
         }
 
@@ -71,7 +72,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
         public void GoodLoginSetsUpSignInPersistance() {
             var vObjects = Setup();
             vObjects.GoodLoginAccountCommand.Execute();
-            vObjects.SignInPersistance.VerifySet(t => t.AccountName = cName);
+            vObjects.SignInPersistance.Verify(t => t.AccountName("Test"));
         }
 
         [Test]
@@ -95,7 +96,8 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 vObjects.SignInPersistance.Object,
                 vObjects.DocumentStore,
                 vObjects.HashProvider.Object,
-                vLogin);
+                vLogin,
+                vLogin.Name);
             var vResult = vBadLoginAccountCommand.Execute();
             Assert.IsFalse(vResult);
         }

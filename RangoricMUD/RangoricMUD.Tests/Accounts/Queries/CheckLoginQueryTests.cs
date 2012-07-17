@@ -60,7 +60,7 @@ namespace RangoricMUD.Tests.Accounts.Queries
                                                         });
             vNewAccount.Execute();
 
-            vReturn.Query = new CheckLoginQuery(vReturn.SignInPersistance.Object, vReturn.DocumentStore);
+            vReturn.Query = new CheckLoginQuery(vReturn.SignInPersistance.Object, vReturn.DocumentStore, "Test");
             return vReturn;
         }
 
@@ -68,7 +68,7 @@ namespace RangoricMUD.Tests.Accounts.Queries
         public void CanGetLoggedInInformationWhenNameIsRight()
         {
             var vObjects = Setup();
-            vObjects.SignInPersistance.SetupGet(t => t.AccountName).Returns(cTestName);
+            vObjects.SignInPersistance.Setup(t => t.AccountName("Test")).Returns(cTestName);
             var vResult = vObjects.Query.Result;
             Assert.IsTrue(vResult.IsLoggedIn);
             Assert.AreEqual(vResult.Name, cTestName);
@@ -78,7 +78,7 @@ namespace RangoricMUD.Tests.Accounts.Queries
         public void DefaultRoleOfPlayerIsGotten()
         {
             var vObjects = Setup();
-            vObjects.SignInPersistance.SetupGet(t => t.AccountName).Returns(cTestName);
+            vObjects.SignInPersistance.Setup(t => t.AccountName("Test")).Returns(cTestName);
             var vResult = vObjects.Query.Result;
             Assert.AreEqual(eRoles.Player, vResult.Roles.First());
         }
@@ -102,7 +102,7 @@ namespace RangoricMUD.Tests.Accounts.Queries
         {
             var vObjects = Setup();
             var vResult = vObjects.Query.Result;
-            vObjects.SignInPersistance.VerifyGet(t => t.AccountName);
+            vObjects.SignInPersistance.Verify(t => t.AccountName("Test"));
         }
     }
 }

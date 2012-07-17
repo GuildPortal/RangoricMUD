@@ -15,6 +15,7 @@
 #region References
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -25,39 +26,39 @@ namespace RangoricMUD.Security
 {
     public class SignInPersistance : ISignInPersistance
     {
-        private const string cCookieName = "Website Authentication";
-
+        private static Dictionary<string, string> Logins = new Dictionary<string, string>();
         #region ISignInPersistance Members
 
-        public string AccountName
+        public string AccountName(string tConnectionID)
         {
-            get
+            if (Logins.ContainsKey(tConnectionID))
             {
-                string vReturn = null;
-                HttpCookie vCookie = null;
-                if (HttpContext.Current.Request.Cookies.AllKeys.Any(t => t == cCookieName))
-                {
-                    vCookie = HttpContext.Current.Request.Cookies[cCookieName];
-                }
-                if (vCookie != null)
-                {
-                    vReturn = FormsAuthentication.Decrypt(vCookie.Value).Name;
-                }
-                return vReturn;
+                return Logins[tConnectionID];
             }
-            set
+            else
             {
-                var vCookie = FormsAuthentication.GetAuthCookie(value, true);
-                vCookie.Name = cCookieName;
-                HttpContext.Current.Response.Cookies.Add(vCookie);
+                return null;
             }
+
         }
 
-        public void SignOut()
+        public void Login(string tName, string tConnectionID)
         {
-            var vCookie = HttpContext.Current.Request.Cookies[cCookieName];
-            vCookie.Expires = DateTime.Now.AddDays(-1);
-            HttpContext.Current.Response.Cookies.Add(vCookie);
+            if(Logins.ContainsKey(tConnectionID))
+            {
+                Logins.Remove(tConnectionID);
+            }
+            Logins.Add(tConnectionID, tName);
+        }
+
+        public void Logout(string tAccountName)
+        {
+            var vIDs = Logins.Where(t => t.Value == tAccountName).Select(t => t.Key);
+
+            foreach(var vID in vIDs)
+            {
+                Logins.Remove(vID);
+            }
         }
 
         #endregion

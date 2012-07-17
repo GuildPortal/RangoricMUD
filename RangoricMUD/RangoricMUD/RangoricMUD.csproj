@@ -220,7 +220,7 @@
     <Compile Include="Accounts\Commands\INewAccountCommand.cs" />
     <Compile Include="Accounts\Commands\LoginAccountCommand.cs" />
     <Compile Include="Accounts\Commands\NewAccountCommand.cs" />
-    <Compile Include="Accounts\Controllers\AccountController.cs" />
+    <Compile Include="Accounts\Controllers\AccountHub.cs" />
     <Compile Include="Accounts\Crews\AccountCrew.cs" />
     <Compile Include="Accounts\Data\Account.cs" />
     <Compile Include="Accounts\Data\eRoles.cs" />
@@ -249,7 +249,6 @@
     <Compile Include="Bootstrappers\ICaptain.cs" />
     <Compile Include="Bootstrappers\ICrew.cs" />
     <Compile Include="Bootstrappers\IShip.cs" />
-    <Compile Include="Bootstrappers\PirateCaptain.cs" />
     <Compile Include="Bootstrappers\PirateShip.cs" />
     <Compile Include="Bootstrappers\WindsorCaptain.cs" />
     <Compile Include="Bootstrappers\WindsorShip.cs" />
@@ -275,6 +274,7 @@
     <Compile Include="Security\IHashProvider.cs" />
     <Compile Include="Security\ISignInPersistance.cs" />
     <Compile Include="Security\SignInPersistance.cs" />
+    <Compile Include="Web\ModelValidator.cs" />
     <Compile Include="Web\WindsorModelBinder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -364,6 +364,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
+    <Folder Include="Games\Commands\" />
+    <Folder Include="Games\Crews\" />
+    <Folder Include="Games\Data\" />
+    <Folder Include="Games\Models\" />
+    <Folder Include="Games\Queries\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
