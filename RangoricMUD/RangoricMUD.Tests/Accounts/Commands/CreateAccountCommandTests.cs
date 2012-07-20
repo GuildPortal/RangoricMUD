@@ -27,7 +27,7 @@ using Raven.Client.Embedded;
 namespace RangoricMUD.Tests.Accounts.Commands
 {
     [TestFixture]
-    public class NewAccountCommandTests
+    public class CreateAccountCommandTests
     {
         private const string cHash = "Hash";
         private const string cName = "Name";

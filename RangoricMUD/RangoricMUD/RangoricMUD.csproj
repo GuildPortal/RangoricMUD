@@ -260,6 +260,7 @@
     <Compile Include="Controllers\Models\IndexModel.cs" />
     <Compile Include="Dice\CryptoRandomProvider.cs" />
     <Compile Include="Dice\IRandomProvider.cs" />
+    <Compile Include="Games\Commands\ICreateGameCommand.cs" />
     <Compile Include="Games\Controllers\GameHub.cs" />
     <Compile Include="Games\Data\Game.cs" />
     <Compile Include="Games\Models\CreateGameModel.cs" />
@@ -365,7 +366,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
-    <Folder Include="Games\Commands\" />
     <Folder Include="Games\Crews\" />
     <Folder Include="Games\Queries\" />
   </ItemGroup>
