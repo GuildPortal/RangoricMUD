@@ -58,7 +58,6 @@ namespace RangoricMUD.Tests.Accounts.Crews
             mShip.ReleaseService(vResult);
         }
 
-        [TestCase(typeof (IAccount))]
         [TestCase(typeof (IAccountCommandFactory))]
         public void ServicesResolve(Type tType)
         {
@@ -88,7 +87,7 @@ namespace RangoricMUD.Tests.Accounts.Crews
         public void AccountCommandFactoryCanGenerateNewAccountCommand()
         {
             var vFactory = mShip.GetService(typeof (IAccountCommandFactory)) as IAccountCommandFactory;
-            var vNewAccountCommand = vFactory.CreateNewAccountCommand(new CreateAccount());
+            var vNewAccountCommand = vFactory.CreateCreateAccountCommand(new CreateAccount());
             Assert.IsNotNull(vNewAccountCommand);
         }
     }

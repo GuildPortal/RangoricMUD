@@ -24,21 +24,21 @@ namespace RangoricMUD.Tests.Security
     [TestFixture]
     public class CustomHashProviderTests
     {
-        [Test]
-        public void HashingReturnsSomethingNew()
+        [TestCase("A")]
+        [TestCase("AB")]
+        public void HashingReturnsSomethingNew(string tString)
         {
             var vProvider = new CustomHashProvider();
-            const string cString = "Test";
-            Assert.AreNotEqual(cString, vProvider.Hash(cString));
+            Assert.AreNotEqual(tString, vProvider.Hash(tString));
         }
 
-        [Test]
-        public void HashingReturnsTheSameThingForTheSameInputs()
+        [TestCase("A")]
+        [TestCase("AB")]
+        public void HashingReturnsTheSameThingForTheSameInputs(string tString)
         {
             var vProvider = new CustomHashProvider();
-            const string cString = "Test";
-            var vResult = vProvider.Hash(cString);
-            Assert.IsTrue(vProvider.CheckHash(cString, vResult));
+            var vResult = vProvider.Hash(tString);
+            Assert.IsTrue(vProvider.CheckHash(tString, vResult));
         }
     }
 }

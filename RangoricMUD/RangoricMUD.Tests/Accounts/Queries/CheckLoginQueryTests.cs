@@ -51,7 +51,7 @@ namespace RangoricMUD.Tests.Accounts.Queries
             vReturn.DocumentStore.RegisterListener(new RavenDbNoStaleData());
 
             //Make sure there is an account to get. Since this deals with getting an account.
-            var vNewAccount = new NewAccountCommand(vReturn.DocumentStore, new CustomHashProvider(),
+            var vNewAccount = new CreateAccountCommand(vReturn.DocumentStore, new CustomHashProvider(),
                                                     new CreateAccount
                                                         {
                                                             Email = "test@email.com",

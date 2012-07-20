@@ -47,7 +47,7 @@ namespace RangoricMUD.Accounts.Controllers
             var vResult = false;
             if(ModelValidator.IsValid(tCreateAccount))
             {
-                var vCommand = mAccountCommandFactory.CreateNewAccountCommand(tCreateAccount);
+                var vCommand = mAccountCommandFactory.CreateCreateAccountCommand(tCreateAccount);
                 vResult = vCommand.Execute() == eAccountCreationStatus.Success;
             }
             Caller.CreateAccountResult(vResult);

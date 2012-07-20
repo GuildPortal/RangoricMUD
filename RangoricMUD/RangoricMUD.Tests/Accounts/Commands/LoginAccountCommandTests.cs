@@ -1,9 +1,18 @@
-﻿// LoginAccountCommandTests.cs is a part of Rangoric and covered by the Open Gaming License
-// available to be viewed at: https://bitbucket.org/Rangoric/rangoric
+﻿#region License
+
+// RangoricMUD is licensed under the Open Game License.
+// The original code and assets provided in this repository are Open Game Content,
+// The name RangoricMUD is product identity, and can only be used as a part of the code,
+//   or in reference to this project.
 // 
-// The original source code of this file are to be considered OGC.
+// More details and the full text of the license are available at:
+//   https://github.com/Rangoric/RangoricMUD/wiki/Open-Game-License
 // 
-// Copyright 2012: Wilson Mead III
+// RangoricMUD's home is at: https://github.com/Rangoric/RangoricMUD
+
+#endregion
+
+#region References
 
 using Moq;
 using NUnit.Framework;
@@ -13,6 +22,8 @@ using RangoricMUD.Security;
 using RangoricMUD.Tests.Utilities;
 using Raven.Client.Embedded;
 
+#endregion
+
 namespace RangoricMUD.Tests.Accounts.Commands
 {
     [TestFixture]
@@ -20,15 +31,17 @@ namespace RangoricMUD.Tests.Accounts.Commands
     {
         private class TestObjects
         {
-            public Mock<IHashProvider> HashProvider;
-            public Mock<ISignInPersistance> SignInPersistance;
             public EmbeddableDocumentStore DocumentStore;
             public LoginAccountCommand GoodLoginAccountCommand;
+            public Mock<IHashProvider> HashProvider;
+            public Mock<ISignInPersistance> SignInPersistance;
         }
+
         private const string cName = "Name";
         private const string cEmail = "Email";
         private const string cPassword = "Password";
         private const string cHash = "Hash";
+        private const string cConnectionID = "ConnectionID";
 
         private TestObjects Setup()
         {
@@ -39,59 +52,61 @@ namespace RangoricMUD.Tests.Accounts.Commands
 
             vObjects.SignInPersistance = new Mock<ISignInPersistance>();
 
-            vObjects.DocumentStore = new EmbeddableDocumentStore { RunInMemory = true };
+            vObjects.DocumentStore = new EmbeddableDocumentStore {RunInMemory = true};
             vObjects.DocumentStore.Initialize();
             vObjects.DocumentStore.RegisterListener(new RavenDbNoStaleData());
             var vNewAccount = new CreateAccount
-                              {
-                                  Name = cName,
-                                  Email = cEmail,
-                                  Password = cPassword
-                              };
-            var vNewAccountCommand = new NewAccountCommand(
+                                  {
+                                      Name = cName,
+                                      Email = cEmail,
+                                      Password = cPassword
+                                  };
+            var vNewAccountCommand = new CreateAccountCommand(
                 vObjects.DocumentStore,
                 vObjects.HashProvider.Object,
                 vNewAccount);
             vNewAccountCommand.Execute();
 
             var vLogin = new LoginAccount
-                         {
-                             Name = cName,
-                             Password = cPassword
-                         };
+                             {
+                                 Name = cName,
+                                 Password = cPassword
+                             };
             vObjects.GoodLoginAccountCommand = new LoginAccountCommand(
                 vObjects.SignInPersistance.Object,
                 vObjects.DocumentStore,
                 vObjects.HashProvider.Object,
                 vLogin,
-                vLogin.Name);
+                cConnectionID);
             return vObjects;
         }
 
         [Test]
-        public void GoodLoginSetsUpSignInPersistance() {
+        public void GoodLoginSetsUpSignInPersistance()
+        {
             var vObjects = Setup();
             vObjects.GoodLoginAccountCommand.Execute();
-            vObjects.SignInPersistance.Verify(t => t.AccountName("Test"));
+            vObjects.SignInPersistance.Verify(t => t.Login(cName, cConnectionID));
         }
 
         [Test]
-        public void GoodLoginUsesHashProviderToRehash() {
+        public void GoodLoginUsesHashProviderToRehash()
+        {
             var vObjects = Setup();
             vObjects.GoodLoginAccountCommand.Execute();
             vObjects.HashProvider.Verify(t => t.Hash(cPassword));
         }
 
-        [Test]
         [TestCase(cName, cEmail)]
         [TestCase(cEmail, cPassword)]
-        public void LoginReturnsFalseWithBadLoginInfo(string tName, string tPassword) {
+        public void LoginReturnsFalseWithBadLoginInfo(string tName, string tPassword)
+        {
             var vObjects = Setup();
             var vLogin = new LoginAccount
-                         {
-                             Name = tName,
-                             Password = tPassword,
-                         };
+                             {
+                                 Name = tName,
+                                 Password = tPassword,
+                             };
             var vBadLoginAccountCommand = new LoginAccountCommand(
                 vObjects.SignInPersistance.Object,
                 vObjects.DocumentStore,
@@ -103,7 +118,8 @@ namespace RangoricMUD.Tests.Accounts.Commands
         }
 
         [Test]
-        public void LoginReturnsTrueWhenGoodLoginInfo() {
+        public void LoginReturnsTrueWhenGoodLoginInfo()
+        {
             var vObjects = Setup();
             var vResult = vObjects.GoodLoginAccountCommand.Execute();
             Assert.IsTrue(vResult);

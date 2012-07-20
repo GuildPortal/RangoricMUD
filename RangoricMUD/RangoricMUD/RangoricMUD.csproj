@@ -217,14 +217,13 @@
     <Compile Include="Accounts\Commands\eAccountDeletionStatus.cs" />
     <Compile Include="Accounts\Commands\IAccountCommandFactory.cs" />
     <Compile Include="Accounts\Commands\ILoginAccountCommand.cs" />
-    <Compile Include="Accounts\Commands\INewAccountCommand.cs" />
+    <Compile Include="Accounts\Commands\ICreateAccountCommand.cs" />
     <Compile Include="Accounts\Commands\LoginAccountCommand.cs" />
-    <Compile Include="Accounts\Commands\NewAccountCommand.cs" />
+    <Compile Include="Accounts\Commands\CreateAccountCommand.cs" />
     <Compile Include="Accounts\Controllers\AccountHub.cs" />
     <Compile Include="Accounts\Crews\AccountCrew.cs" />
     <Compile Include="Accounts\Data\Account.cs" />
     <Compile Include="Accounts\Data\eRoles.cs" />
-    <Compile Include="Accounts\Data\IAccount.cs" />
     <Compile Include="Accounts\Models\CheckLoginModel.cs" />
     <Compile Include="Accounts\Models\CreateAccount.cs" />
     <Compile Include="Accounts\Models\ICheckLoginModel.cs" />
@@ -262,6 +261,8 @@
     <Compile Include="Dice\CryptoRandomProvider.cs" />
     <Compile Include="Dice\IRandomProvider.cs" />
     <Compile Include="Games\Controllers\GameHub.cs" />
+    <Compile Include="Games\Data\Game.cs" />
+    <Compile Include="Games\Models\CreateGameModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -366,8 +367,6 @@
     <Folder Include="Assets\Images\" />
     <Folder Include="Games\Commands\" />
     <Folder Include="Games\Crews\" />
-    <Folder Include="Games\Data\" />
-    <Folder Include="Games\Models\" />
     <Folder Include="Games\Queries\" />
   </ItemGroup>
   <ItemGroup>

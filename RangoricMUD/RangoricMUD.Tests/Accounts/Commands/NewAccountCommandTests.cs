@@ -33,7 +33,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
         private const string cName = "Name";
         private const string cEmail = "Email";
         private const string cPassword = "Password";
-        private INewAccountCommand mNewAccountCommand;
+        private ICreateAccountCommand mCreateAccountCommand;
         private CreateAccount mCreateAccount;
         private Mock<IHashProvider> mHashProvider;
         private EmbeddableDocumentStore mDocumentStore;
@@ -52,7 +52,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                      Email = cEmail,
                                      Password = cPassword
                                  };
-            mNewAccountCommand = new NewAccountCommand(
+            mCreateAccountCommand = new CreateAccountCommand(
                 mDocumentStore,
                 mHashProvider.Object,
                 mCreateAccount);
@@ -62,8 +62,8 @@ namespace RangoricMUD.Tests.Accounts.Commands
         public void ExecuteReturnsDuplicateWhenDuplicateName()
         {
             Setup();
-            mNewAccountCommand.Execute();
-            var vResult = mNewAccountCommand.Execute();
+            mCreateAccountCommand.Execute();
+            var vResult = mCreateAccountCommand.Execute();
             Assert.AreEqual(eAccountCreationStatus.DuplicateName, vResult);
         }
 
@@ -71,7 +71,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
         public void ExecuteReturnsSuccessWhenGood()
         {
             Setup();
-            var vResult = mNewAccountCommand.Execute();
+            var vResult = mCreateAccountCommand.Execute();
             Assert.AreEqual(eAccountCreationStatus.Success, vResult);
         }
 
@@ -79,7 +79,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
         public void ExecuteUsesHashProviderForHashWithSalt()
         {
             Setup();
-            mNewAccountCommand.Execute();
+            mCreateAccountCommand.Execute();
             mHashProvider.Verify(t => t.Hash(cPassword));
         }
 

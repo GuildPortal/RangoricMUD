@@ -14,17 +14,13 @@
 
 #region References
 
-using System.Collections.Generic;
+using RangoricMUD.Commands;
 
 #endregion
 
-namespace RangoricMUD.Accounts.Data
+namespace RangoricMUD.Accounts.Commands
 {
-    public interface IAccount
+    public interface ICreateAccountCommand : ICommand<eAccountCreationStatus>
     {
-        string Name { get; set; }
-        string Email { get; set; }
-        string PasswordHash { get; set; }
-        List<eRoles> Roles { get; set; }
     }
 }

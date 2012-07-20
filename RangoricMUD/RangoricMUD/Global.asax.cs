@@ -52,7 +52,11 @@ namespace RangoricMUD
         }
         protected void Application_BeginRequest()
         {
-            MiniProfiler.Start();
+            if(!Request.Url.OriginalString.Contains("signalr"))
+            {
+                MiniProfiler.Start();    
+            }
+            
         }
         protected void Application_EndRequest()
         {

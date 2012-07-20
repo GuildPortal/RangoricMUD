@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 namespace RangoricMUD.Accounts.Data
 {
-    public class Account : IAccount
+    public class Account
     {
         #region IAccount Members
 

@@ -26,13 +26,13 @@ using Raven.Client;
 
 namespace RangoricMUD.Accounts.Commands
 {
-    public class NewAccountCommand : BaseCommand<eAccountCreationStatus>, INewAccountCommand
+    public class CreateAccountCommand : BaseCommand<eAccountCreationStatus>, ICreateAccountCommand
     {
         private readonly CreateAccount mCreateAccount;
         private readonly IDocumentStore mDocumentStore;
         private readonly IHashProvider mHashProvider;
 
-        public NewAccountCommand(IDocumentStore tDocumentStore, IHashProvider tHashProvider,
+        public CreateAccountCommand(IDocumentStore tDocumentStore, IHashProvider tHashProvider,
                                  CreateAccount tCreateAccount)
         {
             mDocumentStore = tDocumentStore;
@@ -40,7 +40,7 @@ namespace RangoricMUD.Accounts.Commands
             mCreateAccount = tCreateAccount;
         }
 
-        #region INewAccountCommand Members
+        #region ICreateAccountCommand Members
 
         public override eAccountCreationStatus Execute()
         {
