@@ -31,7 +31,7 @@ using Raven.Client.Embedded;
 namespace RangoricMUD.Tests.Accounts.Crews
 {
     [TestFixture]
-    public class AccountCrewsTests : BaseTests
+    public class AccountCrewTests : BaseTests
     {
         private WindsorShip mShip;
         private IDocumentStore mDocumentStore;

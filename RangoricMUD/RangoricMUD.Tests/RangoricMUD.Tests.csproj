@@ -192,7 +192,8 @@
   <ItemGroup>
     <Compile Include="Accounts\Commands\LoginAccountCommandTests.cs" />
     <Compile Include="Accounts\Commands\CreateAccountCommandTests.cs" />
-    <Compile Include="Accounts\Crews\AccountCrewsTests.cs" />
+    <Compile Include="Accounts\Crews\AccountCrewTests.cs" />
+    <Compile Include="Accounts\Crews\GameCrewTests.cs" />
     <Compile Include="Accounts\Queries\CheckLoginQueryTests.cs" />
     <Compile Include="Dice\CryptoRandomProviderTest.cs" />
     <Compile Include="Games\Commands\CreateGameCommandTests.cs" />

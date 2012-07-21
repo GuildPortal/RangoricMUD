@@ -265,6 +265,7 @@
     <Compile Include="Games\Commands\ICreateGameCommand.cs" />
     <Compile Include="Games\Commands\IGameCommandFactory.cs" />
     <Compile Include="Games\Controllers\GameHub.cs" />
+    <Compile Include="Games\Crews\GameCrew.cs" />
     <Compile Include="Games\Data\Game.cs" />
     <Compile Include="Games\Models\CreateGameModel.cs" />
     <Compile Include="Games\Models\GetGameModel.cs" />
@@ -375,7 +376,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
-    <Folder Include="Games\Crews\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
