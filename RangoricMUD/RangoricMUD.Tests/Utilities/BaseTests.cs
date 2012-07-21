@@ -14,6 +14,9 @@
 
 #region References
 
+using NUnit.Framework;
+using RangoricMUD.Games.Commands;
+using RangoricMUD.Games.Models;
 using Raven.Client;
 using Raven.Client.Embedded;
 
@@ -32,6 +35,15 @@ namespace RangoricMUD.Tests.Utilities
                 vResult.Initialize();
                 return vResult;
             }
+        }
+        protected void AddGameToDatabase(string tGameName, IDocumentStore tDatabase)
+        {
+            var vModel = new CreateGameModel
+                             {
+                                 Name = tGameName
+                             };
+            var vCommand = new CreateGameCommand(vModel, tDatabase);
+            Assert.AreEqual(eGameCreationStatus.Success, vCommand.Execute());
         }
     }
 }

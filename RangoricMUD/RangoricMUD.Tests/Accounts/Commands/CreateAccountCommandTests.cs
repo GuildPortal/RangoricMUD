@@ -20,6 +20,7 @@ using RangoricMUD.Accounts.Commands;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Security;
 using RangoricMUD.Tests.Utilities;
+using Raven.Client;
 using Raven.Client.Embedded;
 
 #endregion
@@ -27,7 +28,7 @@ using Raven.Client.Embedded;
 namespace RangoricMUD.Tests.Accounts.Commands
 {
     [TestFixture]
-    public class CreateAccountCommandTests
+    public class CreateAccountCommandTests : BaseTests
     {
         private const string cHash = "Hash";
         private const string cName = "Name";
@@ -36,7 +37,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
         private ICreateAccountCommand mCreateAccountCommand;
         private CreateAccount mCreateAccount;
         private Mock<IHashProvider> mHashProvider;
-        private EmbeddableDocumentStore mDocumentStore;
+        private IDocumentStore mDocumentStore;
 
         private void Setup()
         {
@@ -44,9 +45,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
             mHashProvider.Setup(t => t.Hash(cPassword)).Returns(cHash);
             mHashProvider.Setup(t => t.Hash(cPassword + cPassword)).Returns(cHash + cHash);
 
-            mDocumentStore = new EmbeddableDocumentStore {RunInMemory = true};
-            mDocumentStore.Initialize();
-            mDocumentStore.RegisterListener(new RavenDbNoStaleData());
+            mDocumentStore = GetEmbeddedDatabase;
             mCreateAccount = new CreateAccount
                                  {
                                      Name = cName,

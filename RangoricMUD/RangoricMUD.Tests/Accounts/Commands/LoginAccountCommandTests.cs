@@ -20,6 +20,7 @@ using RangoricMUD.Accounts.Commands;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Security;
 using RangoricMUD.Tests.Utilities;
+using Raven.Client;
 using Raven.Client.Embedded;
 
 #endregion
@@ -27,11 +28,11 @@ using Raven.Client.Embedded;
 namespace RangoricMUD.Tests.Accounts.Commands
 {
     [TestFixture]
-    public class LoginAccountCommandTests
+    public class LoginAccountCommandTests : BaseTests
     {
         private class TestObjects
         {
-            public EmbeddableDocumentStore DocumentStore;
+            public IDocumentStore DocumentStore;
             public LoginAccountCommand GoodLoginAccountCommand;
             public Mock<IHashProvider> HashProvider;
             public Mock<ISignInPersistance> SignInPersistance;
@@ -52,9 +53,8 @@ namespace RangoricMUD.Tests.Accounts.Commands
 
             vObjects.SignInPersistance = new Mock<ISignInPersistance>();
 
-            vObjects.DocumentStore = new EmbeddableDocumentStore {RunInMemory = true};
-            vObjects.DocumentStore.Initialize();
-            vObjects.DocumentStore.RegisterListener(new RavenDbNoStaleData());
+            vObjects.DocumentStore = GetEmbeddedDatabase;
+
             var vNewAccount = new CreateAccount
                                   {
                                       Name = cName,
