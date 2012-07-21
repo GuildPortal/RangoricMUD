@@ -14,21 +14,21 @@ namespace RangoricMUD.Tests.Games.Controllers
     [TestFixture]
     public class CreateGameCommandTests
     {
-        private EmbeddableDocumentStore mDocumentStore;
+        
 
         [TestCase("ABC")]
         public void CreatesGameInRaven(string tName)
         {
-            mDocumentStore = new EmbeddableDocumentStore { RunInMemory = true };
-            mDocumentStore.Initialize();
-            mDocumentStore.RegisterListener(new RavenDbNoStaleData());
+            var vDocumentStore = new EmbeddableDocumentStore { RunInMemory = true };
+            vDocumentStore.Initialize();
+            vDocumentStore.RegisterListener(new RavenDbNoStaleData());
 
             var vModel = new CreateGameModel() {Name = tName};
 
-            var vCommand = new CreateGameCommand(vModel, mDocumentStore);
+            var vCommand = new CreateGameCommand(vModel, vDocumentStore);
             vCommand.Execute();
 
-            var vSession = mDocumentStore.OpenSession();
+            var vSession = vDocumentStore.OpenSession();
             var vObjects = vSession.Query<Game>().Where(t => t.Name == tName);
 
             Assert.AreEqual(1, vObjects.Count());
