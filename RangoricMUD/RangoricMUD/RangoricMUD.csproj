@@ -263,12 +263,16 @@
     <Compile Include="Games\Commands\CreateGameCommand.cs" />
     <Compile Include="Games\Commands\eGameCreationStatus.cs" />
     <Compile Include="Games\Commands\ICreateGameCommand.cs" />
+    <Compile Include="Games\Commands\IGameCommandFactory.cs" />
     <Compile Include="Games\Controllers\GameHub.cs" />
     <Compile Include="Games\Data\Game.cs" />
     <Compile Include="Games\Models\CreateGameModel.cs" />
     <Compile Include="Games\Models\GetGameModel.cs" />
     <Compile Include="Games\Queries\GetAllGamesQuery.cs" />
     <Compile Include="Games\Queries\GetGameQuery.cs" />
+    <Compile Include="Games\Queries\IGameQueryFactory.cs" />
+    <Compile Include="Games\Queries\IGetAllGamesQuery.cs" />
+    <Compile Include="Games\Queries\IGetGameQuery.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

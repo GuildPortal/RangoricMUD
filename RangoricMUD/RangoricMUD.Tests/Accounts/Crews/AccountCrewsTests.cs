@@ -23,6 +23,7 @@ using RangoricMUD.Accounts.Models;
 using RangoricMUD.Bootstrappers;
 using RangoricMUD.Bootstrappers.Crews;
 using RangoricMUD.Tests.Utilities;
+using Raven.Client;
 using Raven.Client.Embedded;
 
 #endregion
@@ -30,10 +31,10 @@ using Raven.Client.Embedded;
 namespace RangoricMUD.Tests.Accounts.Crews
 {
     [TestFixture]
-    public class AccountCrewsTests : IDisposable
+    public class AccountCrewsTests : BaseTests
     {
         private WindsorShip mShip;
-        private EmbeddableDocumentStore mDocumentStore;
+        private IDocumentStore mDocumentStore;
 
         [TestFixtureSetUp]
         public void Setup()
@@ -42,9 +43,7 @@ namespace RangoricMUD.Tests.Accounts.Crews
             mShip.Crew.Add(new DiceCrew());
             mShip.Crew.Add(new SecurityCrew());
 
-            mDocumentStore = new EmbeddableDocumentStore {RunInMemory = true};
-            mDocumentStore.Initialize();
-            mDocumentStore.RegisterListener(new RavenDbNoStaleData());
+            mDocumentStore = GetEmbeddedDatabase;
             mShip.Crew.Add(new DatabaseCrew(mDocumentStore));
 
             mShip.Crew.Add(new AccountCrew());
@@ -62,17 +61,6 @@ namespace RangoricMUD.Tests.Accounts.Crews
         public void ServicesResolve(Type tType)
         {
             TestService(tType);
-        }
-
-        protected virtual void Dispose(bool tManaged)
-        {
-            mShip.Dispose();
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
         [Test]

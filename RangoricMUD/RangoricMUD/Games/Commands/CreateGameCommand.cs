@@ -29,7 +29,7 @@ namespace RangoricMUD.Games.Commands
         private readonly CreateGameModel mCreateGameModel;
         private readonly IDocumentStore mDocumentStore;
 
-        public CreateGameCommand(CreateGameModel tCreateGameModel, IDocumentStore tDocumentStore)
+        public CreateGameCommand(IDocumentStore tDocumentStore, CreateGameModel tCreateGameModel)
         {
             mCreateGameModel = tCreateGameModel;
             mDocumentStore = tDocumentStore;

@@ -17,17 +17,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using RangoricMUD.Games.Data;
-using RangoricMUD.Queries;
 using Raven.Client;
 
 #endregion
 
 namespace RangoricMUD.Games.Queries
 {
-    public interface IGetAllGamesQuery : IQuery<List<Game>>
-    {
-    }
-
     public class GetAllGamesQuery : IGetAllGamesQuery
     {
         private readonly IDocumentStore mDocumentStore;

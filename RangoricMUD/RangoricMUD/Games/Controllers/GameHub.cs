@@ -14,6 +14,11 @@
 
 #region References
 
+using System.Collections.Generic;
+using RangoricMUD.Games.Commands;
+using RangoricMUD.Games.Data;
+using RangoricMUD.Games.Models;
+using RangoricMUD.Games.Queries;
 using SignalR.Hubs;
 
 #endregion
@@ -22,5 +27,34 @@ namespace RangoricMUD.Games.Controllers
 {
     public class GameHub : Hub
     {
+        private readonly IGameCommandFactory mCommandFactory;
+        private readonly IGameQueryFactory mQueryFactory;
+
+        public GameHub(IGameCommandFactory tCommandFactory, IGameQueryFactory tQueryFactory)
+        {
+            mCommandFactory = tCommandFactory;
+            mQueryFactory = tQueryFactory;
+        }
+
+        public eGameCreationStatus CreateGame(CreateGameModel tCreateGameModel)
+        {
+            var vCommand = mCommandFactory.CreateCreateGameCommand(tCreateGameModel);
+
+            return vCommand.Execute();
+        }
+
+        public List<Game> GetAll()
+        {
+            var vQuery = mQueryFactory.CreateGetAllGamesQuery();
+
+            return vQuery.Result;
+        }
+
+        public Game GetGame(GetGameModel tGetGameModel)
+        {
+            var vQuery = mQueryFactory.CreateGetGameQuery(tGetGameModel);
+
+            return vQuery.Result;
+        }
     }
 }

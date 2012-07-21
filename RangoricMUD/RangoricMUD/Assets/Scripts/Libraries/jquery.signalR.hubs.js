@@ -186,10 +186,21 @@
         gameHub: {
             _: {
                 hubName: 'GameHub',
-                ignoreMembers: ['namespace', 'ignoreMembers', 'callbacks'],
+                ignoreMembers: ['createGame', 'getAll', 'getGame', 'namespace', 'ignoreMembers', 'callbacks'],
                 connection: function () { return signalR.hub; }
-            }
+            },
 
+            createGame: function (tCreateGameModel, callback) {
+                return serverCall(this, "CreateGame", $.makeArray(arguments));
+            },
+
+            getAll: function (callback) {
+                return serverCall(this, "GetAll", $.makeArray(arguments));
+            },
+
+            getGame: function (tGetGameModel, callback) {
+                return serverCall(this, "GetGame", $.makeArray(arguments));
+            }
         }
     });
 

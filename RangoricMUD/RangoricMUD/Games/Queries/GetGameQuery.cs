@@ -16,17 +16,12 @@
 
 using RangoricMUD.Games.Data;
 using RangoricMUD.Games.Models;
-using RangoricMUD.Queries;
 using Raven.Client;
 
 #endregion
 
 namespace RangoricMUD.Games.Queries
 {
-    public interface IGetGameQuery : IQuery<Game>
-    {
-    }
-
     public class GetGameQuery : IGetGameQuery
     {
         private readonly IDocumentStore mDocumentStore;

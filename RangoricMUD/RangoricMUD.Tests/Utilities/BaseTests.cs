@@ -42,7 +42,7 @@ namespace RangoricMUD.Tests.Utilities
                              {
                                  Name = tGameName
                              };
-            var vCommand = new CreateGameCommand(vModel, tDatabase);
+            var vCommand = new CreateGameCommand(tDatabase, vModel);
             Assert.AreEqual(eGameCreationStatus.Success, vCommand.Execute());
         }
     }

@@ -36,7 +36,7 @@ namespace RangoricMUD.Tests.Games.Commands
 
             var vModel = new CreateGameModel {Name = tName};
 
-            var vCommand = new CreateGameCommand(vModel, vDocumentStore);
+            var vCommand = new CreateGameCommand(vDocumentStore, vModel);
             vCommand.Execute();
 
             var vSession = vDocumentStore.OpenSession();
@@ -52,7 +52,7 @@ namespace RangoricMUD.Tests.Games.Commands
 
             var vModel = new CreateGameModel {Name = tName};
 
-            var vCommand = new CreateGameCommand(vModel, vDocumentStore);
+            var vCommand = new CreateGameCommand(vDocumentStore, vModel);
             vCommand.Execute();
             Assert.AreEqual(eGameCreationStatus.DuplicateName, vCommand.Execute());
         }
