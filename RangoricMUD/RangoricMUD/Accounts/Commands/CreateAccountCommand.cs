@@ -20,6 +20,7 @@ using RangoricMUD.Accounts.Data;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Commands;
 using RangoricMUD.Security;
+using Raven.Abstractions.Exceptions;
 using Raven.Client;
 
 #endregion
@@ -46,24 +47,25 @@ namespace RangoricMUD.Accounts.Commands
         {
             using(var vSession = mDocumentStore.OpenSession())
             {
+                vSession.Advanced.UseOptimisticConcurrency = true;
                 var vAccount = new Account
-                {
-                    Name = mCreateAccount.Name,
-                    Email = mCreateAccount.Email,
-                    PasswordHash = mHashProvider.Hash(mCreateAccount.Password),
-                    Roles = new List<eRoles> { eRoles.Player }
-                };
+                                   {
+                                       Name = mCreateAccount.Name,
+                                       Email = mCreateAccount.Email,
+                                       PasswordHash = mHashProvider.Hash(mCreateAccount.Password),
+                                       Roles = new List<eRoles> {eRoles.Player}
+                                   };
+
                 vSession.Store(vAccount, vAccount.Name);
-                vSession.SaveChanges();
 
-                var vTestAccount = vSession.Load<Account>(mCreateAccount.Name);
-
-                if (vTestAccount.Email != vAccount.Email ||
-                    vTestAccount.PasswordHash != vAccount.PasswordHash)
+                try
                 {
-                    return eAccountCreationStatus.DuplicateName;
+                    vSession.SaveChanges();
                 }
-                
+                catch(ConcurrencyException)
+                {
+                    return eAccountCreationStatus.DuplicateName; 
+                }
             }
 
             return eAccountCreationStatus.Success;

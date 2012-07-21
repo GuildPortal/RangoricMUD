@@ -5,6 +5,7 @@ using System.Web;
 using RangoricMUD.Commands;
 using RangoricMUD.Games.Data;
 using RangoricMUD.Games.Models;
+using Raven.Abstractions.Exceptions;
 using Raven.Client;
 
 namespace RangoricMUD.Games.Commands
@@ -33,10 +34,20 @@ namespace RangoricMUD.Games.Commands
         {
             using (var vSession = mDocumentStore.OpenSession())
             {
+                vSession.Advanced.UseOptimisticConcurrency = true;
+
                 var vGame = new Game {Name = mCreateGameModel.Name};
 
                 vSession.Store(vGame, vGame.Name);
-                vSession.SaveChanges();
+
+                try
+                {
+                    vSession.SaveChanges();
+                }
+                catch(ConcurrencyException)
+                {
+                    return eGameCreationStatus.DuplicateName;
+                }
             }
 
             return eGameCreationStatus.Success;

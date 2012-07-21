@@ -195,7 +195,7 @@
     <Compile Include="Accounts\Crews\AccountCrewsTests.cs" />
     <Compile Include="Accounts\Queries\CheckLoginQueryTests.cs" />
     <Compile Include="Dice\CryptoRandomProviderTest.cs" />
-    <Compile Include="Games\Controllers\CreateGameCommandTests.cs" />
+    <Compile Include="Games\Commands\CreateGameCommandTests.cs" />
     <Compile Include="Games\Models\CreateGameModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\CustomHashProviderTests.cs" />
@@ -215,7 +215,7 @@
   <ItemGroup>
     <Folder Include="Accounts\Controllers\" />
     <Folder Include="App_Start\" />
-    <Folder Include="Games\Commands\" />
+    <Folder Include="Games\Controllers\" />
     <Folder Include="Games\Crews\" />
     <Folder Include="Games\Data\" />
     <Folder Include="Games\Queries\" />

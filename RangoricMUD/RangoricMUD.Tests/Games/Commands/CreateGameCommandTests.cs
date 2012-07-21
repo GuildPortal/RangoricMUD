@@ -14,8 +14,6 @@ namespace RangoricMUD.Tests.Games.Controllers
     [TestFixture]
     public class CreateGameCommandTests
     {
-        
-
         [TestCase("ABC")]
         public void CreatesGameInRaven(string tName)
         {
@@ -32,6 +30,20 @@ namespace RangoricMUD.Tests.Games.Controllers
             var vObjects = vSession.Query<Game>().Where(t => t.Name == tName);
 
             Assert.AreEqual(1, vObjects.Count());
+        }
+
+        [TestCase("ABC")]
+        public void DuplicateNamedGameIsCatchAndNotAllowed(string tName)
+        {
+            var vDocumentStore = new EmbeddableDocumentStore { RunInMemory = true };
+            vDocumentStore.Initialize();
+            vDocumentStore.RegisterListener(new RavenDbNoStaleData());
+
+            var vModel = new CreateGameModel() { Name = tName };
+
+            var vCommand = new CreateGameCommand(vModel, vDocumentStore);
+            vCommand.Execute();
+            Assert.AreEqual(eGameCreationStatus.DuplicateName, vCommand.Execute());
         }
     }
 }
