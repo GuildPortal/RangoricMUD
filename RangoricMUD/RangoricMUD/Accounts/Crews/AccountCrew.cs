@@ -29,7 +29,6 @@ namespace RangoricMUD.Accounts.Crews
     {
         protected override void StrapOn()
         {
-            Add().OfInterface<Account>().WithImplementation<Account>();
             Add().OfInterface<AccountHub>().WithImplementation<AccountHub>();
             Add().OfInterface<ILoginAccountCommand>().WithImplementation<LoginAccountCommand>();
             Add().OfInterface<ICreateAccountCommand>().WithImplementation<CreateAccountCommand>();

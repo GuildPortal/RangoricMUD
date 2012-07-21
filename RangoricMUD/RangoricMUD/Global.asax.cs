@@ -22,6 +22,7 @@ using RangoricMUD.Accounts.Crews;
 using RangoricMUD.App_Start;
 using RangoricMUD.Bootstrappers;
 using RangoricMUD.Bootstrappers.Crews;
+using RangoricMUD.Tests.Games.Crews;
 using RangoricMUD.Web;
 using Raven.Client.Embedded;
 using SignalR;
@@ -34,6 +35,8 @@ namespace RangoricMUD
 {
     public class MvcApplication : HttpApplication
     {
+        private IShip mShip;
+
         protected void Application_Start()
         {
             Start();
@@ -50,40 +53,44 @@ namespace RangoricMUD
         {
             End();
         }
+
         protected void Application_BeginRequest()
         {
-            if(!Request.Url.OriginalString.Contains("signalr"))
+            if (!Request.Url.OriginalString.Contains("signalr"))
             {
-                MiniProfiler.Start();    
+                MiniProfiler.Start();
             }
-            
         }
+
         protected void Application_EndRequest()
         {
             MiniProfiler.Stop(false);
         }
 
-        private IShip mShip;
         private void Start()
         {
-            var mStore = new EmbeddableDocumentStore
-            {
-                ConnectionStringName = "RavenDB"
-            };
-            mStore.Initialize();
+            var vStore = new EmbeddableDocumentStore
+                             {
+                                 ConnectionStringName = "RavenDB"
+                             };
+            vStore.Initialize();
 
-            MvcMiniProfiler.RavenDb.Profiler.AttachTo(mStore);
+            MvcMiniProfiler.RavenDb.Profiler.AttachTo(vStore);
             mShip = new WindsorShip();
             mShip.Crew.Add(new DiceCrew());
             mShip.Crew.Add(new SecurityCrew());
-            mShip.Crew.Add(new DatabaseCrew(mStore));
+            mShip.Crew.Add(new DatabaseCrew(vStore));
             mShip.Crew.Add(new AccountCrew());
             mShip.Crew.Add(new ControllerCrew());
+            mShip.Crew.Add(new GameCrew());
             mShip.SetSail();
+
             ControllerBuilder.Current.SetControllerFactory(
-                mShip.GetService(typeof(IControllerFactory)) as IControllerFactory);
+                mShip.GetService(typeof (IControllerFactory)) as IControllerFactory);
+
             ModelBinders.Binders.DefaultBinder = new WindsorModelBinder(mShip);
         }
+
         private void End()
         {
             mShip.Dispose();
