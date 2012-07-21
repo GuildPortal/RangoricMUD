@@ -1,4 +1,4 @@
-﻿#region License
+#region License
 
 // RangoricMUD is licensed under the Open Game License.
 // The original code and assets provided in this repository are Open Game Content,
@@ -12,15 +12,11 @@
 
 #endregion
 
-#region References
-
-using SignalR.Hubs;
-
-#endregion
-
-namespace RangoricMUD.Games.Controllers
+namespace RangoricMUD.Games.Commands
 {
-    public class GameHub : Hub
+    public enum eGameCreationStatus
     {
+        Success = 0,
+        DuplicateName = 1
     }
 }

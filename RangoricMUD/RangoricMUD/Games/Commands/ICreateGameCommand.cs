@@ -1,56 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿#region License
+
+// RangoricMUD is licensed under the Open Game License.
+// The original code and assets provided in this repository are Open Game Content,
+// The name RangoricMUD is product identity, and can only be used as a part of the code,
+//   or in reference to this project.
+// 
+// More details and the full text of the license are available at:
+//   https://github.com/Rangoric/RangoricMUD/wiki/Open-Game-License
+// 
+// RangoricMUD's home is at: https://github.com/Rangoric/RangoricMUD
+
+#endregion
+
+#region References
+
 using RangoricMUD.Commands;
-using RangoricMUD.Games.Data;
-using RangoricMUD.Games.Models;
-using Raven.Abstractions.Exceptions;
-using Raven.Client;
+
+#endregion
 
 namespace RangoricMUD.Games.Commands
 {
-    public enum eGameCreationStatus
-    {
-        Success = 0,
-        DuplicateName = 1
-    }
     public interface ICreateGameCommand : ICommand<eGameCreationStatus>
     {
-    }
-
-    public class CreateGameCommand : BaseCommand<eGameCreationStatus>, ICreateGameCommand
-    {
-        private readonly CreateGameModel mCreateGameModel;
-        private readonly IDocumentStore mDocumentStore;
-
-        public CreateGameCommand(CreateGameModel tCreateGameModel, IDocumentStore tDocumentStore)
-        {
-            mCreateGameModel = tCreateGameModel;
-            mDocumentStore = tDocumentStore;
-        }
-
-        public override eGameCreationStatus Execute()
-        {
-            using (var vSession = mDocumentStore.OpenSession())
-            {
-                vSession.Advanced.UseOptimisticConcurrency = true;
-
-                var vGame = new Game {Name = mCreateGameModel.Name};
-
-                vSession.Store(vGame, vGame.Name);
-
-                try
-                {
-                    vSession.SaveChanges();
-                }
-                catch(ConcurrencyException)
-                {
-                    return eGameCreationStatus.DuplicateName;
-                }
-            }
-
-            return eGameCreationStatus.Success;
-        }
     }
 }

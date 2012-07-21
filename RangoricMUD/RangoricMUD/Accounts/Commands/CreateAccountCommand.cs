@@ -15,7 +15,6 @@
 #region References
 
 using System.Collections.Generic;
-using System.Linq;
 using RangoricMUD.Accounts.Data;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Commands;
@@ -34,7 +33,7 @@ namespace RangoricMUD.Accounts.Commands
         private readonly IHashProvider mHashProvider;
 
         public CreateAccountCommand(IDocumentStore tDocumentStore, IHashProvider tHashProvider,
-                                 CreateAccount tCreateAccount)
+                                    CreateAccount tCreateAccount)
         {
             mDocumentStore = tDocumentStore;
             mHashProvider = tHashProvider;
@@ -45,7 +44,7 @@ namespace RangoricMUD.Accounts.Commands
 
         public override eAccountCreationStatus Execute()
         {
-            using(var vSession = mDocumentStore.OpenSession())
+            using (var vSession = mDocumentStore.OpenSession())
             {
                 vSession.Advanced.UseOptimisticConcurrency = true;
                 var vAccount = new Account
@@ -62,9 +61,9 @@ namespace RangoricMUD.Accounts.Commands
                 {
                     vSession.SaveChanges();
                 }
-                catch(ConcurrencyException)
+                catch (ConcurrencyException)
                 {
-                    return eAccountCreationStatus.DuplicateName; 
+                    return eAccountCreationStatus.DuplicateName;
                 }
             }
 

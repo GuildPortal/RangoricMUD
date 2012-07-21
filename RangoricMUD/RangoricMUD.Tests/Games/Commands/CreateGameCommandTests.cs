@@ -1,7 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region License
+
+// RangoricMUD is licensed under the Open Game License.
+// The original code and assets provided in this repository are Open Game Content,
+// The name RangoricMUD is product identity, and can only be used as a part of the code,
+//   or in reference to this project.
+// 
+// More details and the full text of the license are available at:
+//   https://github.com/Rangoric/RangoricMUD/wiki/Open-Game-License
+// 
+// RangoricMUD's home is at: https://github.com/Rangoric/RangoricMUD
+
+#endregion
+
+#region References
+
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using RangoricMUD.Games.Commands;
 using RangoricMUD.Games.Data;
@@ -9,19 +22,19 @@ using RangoricMUD.Games.Models;
 using RangoricMUD.Tests.Utilities;
 using Raven.Client.Embedded;
 
-namespace RangoricMUD.Tests.Games.Controllers
+#endregion
+
+namespace RangoricMUD.Tests.Games.Commands
 {
     [TestFixture]
-    public class CreateGameCommandTests
+    public class CreateGameCommandTests : BaseTests
     {
         [TestCase("ABC")]
         public void CreatesGameInRaven(string tName)
         {
-            var vDocumentStore = new EmbeddableDocumentStore { RunInMemory = true };
-            vDocumentStore.Initialize();
-            vDocumentStore.RegisterListener(new RavenDbNoStaleData());
+            var vDocumentStore = GetEmbeddedDatabase;
 
-            var vModel = new CreateGameModel() {Name = tName};
+            var vModel = new CreateGameModel {Name = tName};
 
             var vCommand = new CreateGameCommand(vModel, vDocumentStore);
             vCommand.Execute();
@@ -35,11 +48,9 @@ namespace RangoricMUD.Tests.Games.Controllers
         [TestCase("ABC")]
         public void DuplicateNamedGameIsCatchAndNotAllowed(string tName)
         {
-            var vDocumentStore = new EmbeddableDocumentStore { RunInMemory = true };
-            vDocumentStore.Initialize();
-            vDocumentStore.RegisterListener(new RavenDbNoStaleData());
+            var vDocumentStore = GetEmbeddedDatabase;
 
-            var vModel = new CreateGameModel() { Name = tName };
+            var vModel = new CreateGameModel {Name = tName};
 
             var vCommand = new CreateGameCommand(vModel, vDocumentStore);
             vCommand.Execute();

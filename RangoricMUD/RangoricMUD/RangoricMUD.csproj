@@ -260,10 +260,13 @@
     <Compile Include="Controllers\Models\IndexModel.cs" />
     <Compile Include="Dice\CryptoRandomProvider.cs" />
     <Compile Include="Dice\IRandomProvider.cs" />
+    <Compile Include="Games\Commands\CreateGameCommand.cs" />
+    <Compile Include="Games\Commands\eGameCreationStatus.cs" />
     <Compile Include="Games\Commands\ICreateGameCommand.cs" />
     <Compile Include="Games\Controllers\GameHub.cs" />
     <Compile Include="Games\Data\Game.cs" />
     <Compile Include="Games\Models\CreateGameModel.cs" />
+    <Compile Include="Games\Queries\GetAllGamesQuery.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -367,7 +370,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
     <Folder Include="Games\Crews\" />
-    <Folder Include="Games\Queries\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
