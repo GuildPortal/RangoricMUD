@@ -40,7 +40,9 @@ namespace RangoricMUD.Tests.Games.Controllers
 
             var vGameHub = new GameHub(vFactory.Object, null);
 
-            vGameHub.CreateGame(vModel);
+            var vTask = vGameHub.CreateGame(vModel);
+
+            vTask.Wait();
 
             vCommand.Verify(t => t.Execute());
         }
@@ -56,7 +58,9 @@ namespace RangoricMUD.Tests.Games.Controllers
 
             var vGameHub = new GameHub(vFactory.Object, null);
 
-            vGameHub.CreateGame(vModel);
+            var vTask = vGameHub.CreateGame(vModel);
+
+            vTask.Wait();
 
             vFactory.VerifyAll();
         }
@@ -69,7 +73,9 @@ namespace RangoricMUD.Tests.Games.Controllers
             vFactory.Setup(t => t.CreateGetAllGamesQuery()).Returns(vQuery.Object);
 
             var vGameHub = new GameHub(null, vFactory.Object);
-            vGameHub.GetAll();
+            var vTask = vGameHub.GetAll();
+
+            vTask.Wait();
 
             vFactory.VerifyAll();
         }
@@ -83,7 +89,9 @@ namespace RangoricMUD.Tests.Games.Controllers
             vFactory.Setup(t => t.CreateGetGameQuery(vModel)).Returns(vQuery.Object);
 
             var vGameHub = new GameHub(null, vFactory.Object);
-            vGameHub.GetGame(vModel);
+            var vTask = vGameHub.GetGame(vModel);
+
+            vTask.Wait();
 
             vFactory.VerifyAll();
         }
@@ -97,7 +105,9 @@ namespace RangoricMUD.Tests.Games.Controllers
             vFactory.Setup(t => t.CreateGetGameQuery(vModel)).Returns(vQuery.Object);
 
             var vGameHub = new GameHub(null, vFactory.Object);
-            vGameHub.GetGame(vModel);
+            var vTask = vGameHub.GetGame(vModel);
+
+            vTask.Wait();
 
             vQuery.VerifyGet(t => t.Result);
         }
@@ -110,7 +120,9 @@ namespace RangoricMUD.Tests.Games.Controllers
             vFactory.Setup(t => t.CreateGetAllGamesQuery()).Returns(vQuery.Object);
 
             var vGameHub = new GameHub(null, vFactory.Object);
-            vGameHub.GetAll();
+            var vTask = vGameHub.GetAll();
+
+            vTask.Wait();
 
             vQuery.VerifyGet(t => t.Result);
         }

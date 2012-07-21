@@ -40,6 +40,8 @@ $(function () {
     //Game List Stuff
     vButtons.Buttons.push(new GameButton(vDependencies));
     vDependencies.AccountManager.Start();
+    vDependencies.GameManager.Start();
+    
     $.connection.hub.start();
 
     ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);

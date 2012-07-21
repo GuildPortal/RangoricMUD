@@ -42,22 +42,29 @@ namespace RangoricMUD.Accounts.Controllers
 
         }
 
-        public void CreateAccount(CreateAccount tCreateAccount)
+        public Task<eAccountCreationStatus> CreateAccount(CreateAccount tCreateAccount)
         {
-            var vResult = false;
-            if(ModelValidator.IsValid(tCreateAccount))
-            {
-                var vCommand = mAccountCommandFactory.CreateCreateAccountCommand(tCreateAccount);
-                vResult = vCommand.Execute() == eAccountCreationStatus.Success;
-            }
-            Caller.CreateAccountResult(vResult);
+            return Task.Factory.StartNew(() =>
+                                             {
+                                                 if (ModelValidator.IsValid(tCreateAccount))
+                                                 {
+                                                     var vCommand =
+                                                         mAccountCommandFactory.CreateCreateAccountCommand(
+                                                             tCreateAccount);
+                                                     return vCommand.Execute();
+                                                 }
+                                                 return eAccountCreationStatus.InvalidModel;
+                                             });
         }
 
-        public void CheckLogin()
+        public Task<ICheckLoginModel> CheckLogin()
         {
-            
-            var vQuery = mAccountCommandFactory.CreateCheckLoginQuery(Context.ConnectionId);
-            Caller.AccountInfo(vQuery.Result);
+            return Task.Factory.StartNew(() =>
+                                             {
+                                                 var vQuery =
+                                                     mAccountCommandFactory.CreateCheckLoginQuery(Context.ConnectionId);
+                                                 return vQuery.Result;
+                                             });
         }
     }
 }

@@ -21,18 +21,18 @@ AccountManager.prototype = {
     Start: function () {
         var vThis = this;
         vThis.Hub = vThis.Connection.accountHub;
-        vThis.Hub.AccountInfo = function (tData) {
-            vThis.IsLoggedIn(tData.IsLoggedIn);
-            vThis.Name(tData.Name);
-            vThis.Roles.removeAll();
-            for (var vIndex = 0; vIndex < tData.Roles.length; vIndex++) {
-                vThis.Roles.push(tData.Roles[vIndex]);
-            }
-        };
     },
     CheckLogin: function () {
         var vThis = this;
-        vThis.Hub.checkLogin();
+        vThis.Hub.checkLogin()
+            .done(function (tData) {
+                vThis.IsLoggedIn(tData.IsLoggedIn);
+                vThis.Name(tData.Name);
+                vThis.Roles.removeAll();
+                for (var vIndex = 0; vIndex < tData.Roles.length; vIndex++) {
+                    vThis.Roles.push(tData.Roles[vIndex]);
+                }
+            });
     },
     Login: function (tLoginData) {
         var vThis = this;

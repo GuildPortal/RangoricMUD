@@ -15,6 +15,7 @@
 #region References
 
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using RangoricMUD.Games.Commands;
 using RangoricMUD.Games.Data;
 using RangoricMUD.Games.Models;
@@ -36,25 +37,41 @@ namespace RangoricMUD.Games.Controllers
             mQueryFactory = tQueryFactory;
         }
 
-        public eGameCreationStatus CreateGame(CreateGameModel tCreateGameModel)
+        public Task<eGameCreationStatus> CreateGame(CreateGameModel tCreateGameModel)
         {
-            var vCommand = mCommandFactory.CreateCreateGameCommand(tCreateGameModel);
+            return
+                Task.Factory.StartNew(
+                    () =>
+                        {
+                            var
+                                vCommand = mCommandFactory.CreateCreateGameCommand(tCreateGameModel);
 
-            return vCommand.Execute();
+                            return vCommand.Execute();
+                        });
         }
 
-        public List<Game> GetAll()
+        public Task<List<Game>> GetAll()
         {
-            var vQuery = mQueryFactory.CreateGetAllGamesQuery();
+            return
+                Task.Factory.StartNew(
+                    () =>
+                        {
+                            var vQuery = mQueryFactory.CreateGetAllGamesQuery();
 
-            return vQuery.Result;
+                            return vQuery.Result;
+                        });
         }
 
-        public Game GetGame(GetGameModel tGetGameModel)
+        public Task<Game> GetGame(GetGameModel tGetGameModel)
         {
-            var vQuery = mQueryFactory.CreateGetGameQuery(tGetGameModel);
+            return
+                Task.Factory.StartNew(
+                    () =>
+                        {
+                            var vQuery = mQueryFactory.CreateGetGameQuery(tGetGameModel);
 
-            return vQuery.Result;
+                            return vQuery.Result;
+                        });
         }
     }
 }

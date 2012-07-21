@@ -18,5 +18,6 @@ namespace RangoricMUD.Accounts.Commands
     {
         Success = 0,
         DuplicateName,
+        InvalidModel
     }
 }
