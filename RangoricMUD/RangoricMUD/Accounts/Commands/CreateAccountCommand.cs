@@ -44,23 +44,27 @@ namespace RangoricMUD.Accounts.Commands
 
         public override eAccountCreationStatus Execute()
         {
-            var vSession = mDocumentStore.OpenSession();
-            var vAccount = vSession.Query<Account>().SingleOrDefault(t => t.Name == mCreateAccount.Name);
-            if (vAccount != null)
+            using(var vSession = mDocumentStore.OpenSession())
             {
-                return eAccountCreationStatus.DuplicateName;
-            }
+                var vAccount = new Account
+                {
+                    Name = mCreateAccount.Name,
+                    Email = mCreateAccount.Email,
+                    PasswordHash = mHashProvider.Hash(mCreateAccount.Password),
+                    Roles = new List<eRoles> { eRoles.Player }
+                };
+                vSession.Store(vAccount, vAccount.Name);
+                vSession.SaveChanges();
 
-            vAccount = new Account
-                           {
-                               Name = mCreateAccount.Name,
-                               Email = mCreateAccount.Email,
-                               PasswordHash = mHashProvider.Hash(mCreateAccount.Password),
-                               Roles = new List<eRoles> {eRoles.Player}
-                           };
-            vSession.Store(vAccount);
-            vSession.SaveChanges();
-            vSession.Dispose();
+                var vTestAccount = vSession.Load<Account>(mCreateAccount.Name);
+
+                if (vTestAccount.Email != vAccount.Email ||
+                    vTestAccount.PasswordHash != vAccount.PasswordHash)
+                {
+                    return eAccountCreationStatus.DuplicateName;
+                }
+                
+            }
 
             return eAccountCreationStatus.Success;
         }

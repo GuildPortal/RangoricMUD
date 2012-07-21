@@ -31,11 +31,13 @@ namespace RangoricMUD.Games.Commands
 
         public override eGameCreationStatus Execute()
         {
-            var vSession = mDocumentStore.OpenSession();
-            var vGame = new Game {Name = mCreateGameModel.Name};
+            using (var vSession = mDocumentStore.OpenSession())
+            {
+                var vGame = new Game {Name = mCreateGameModel.Name};
 
-            vSession.Store(vGame, vGame.Name);
-            vSession.SaveChanges();
+                vSession.Store(vGame, vGame.Name);
+                vSession.SaveChanges();
+            }
 
             return eGameCreationStatus.Success;
         }

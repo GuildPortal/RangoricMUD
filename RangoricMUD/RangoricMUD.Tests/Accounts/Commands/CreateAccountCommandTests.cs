@@ -42,6 +42,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
         {
             mHashProvider = new Mock<IHashProvider>();
             mHashProvider.Setup(t => t.Hash(cPassword)).Returns(cHash);
+            mHashProvider.Setup(t => t.Hash(cPassword + cPassword)).Returns(cHash + cHash);
 
             mDocumentStore = new EmbeddableDocumentStore {RunInMemory = true};
             mDocumentStore.Initialize();
@@ -63,6 +64,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
         {
             Setup();
             mCreateAccountCommand.Execute();
+            mCreateAccount.Password = cPassword + cPassword;
             var vResult = mCreateAccountCommand.Execute();
             Assert.AreEqual(eAccountCreationStatus.DuplicateName, vResult);
         }
