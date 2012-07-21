@@ -198,6 +198,7 @@
     <Compile Include="Games\Commands\CreateGameCommandTests.cs" />
     <Compile Include="Games\Models\CreateGameModelTests.cs" />
     <Compile Include="Games\Queries\GetAllGamesQueryTests.cs" />
+    <Compile Include="Games\Queries\GetGameQueryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\CustomHashProviderTests.cs" />
     <Compile Include="Utilities\BaseTests.cs" />
