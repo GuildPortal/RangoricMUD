@@ -42,12 +42,14 @@ namespace RangoricMUD.Accounts.Queries
         protected override ICheckLoginModel GetResult()
         {
             var vAccountName = mSignInPersistance.AccountName(mConnectionID);
-
+            if(string.IsNullOrWhiteSpace(vAccountName))
+            {
+                return null;
+            }
             Account vAccount;
             using (var vSession = mDocumentStore.OpenSession())
             {
-                vAccount =
-                    vSession.Query<Account>().SingleOrDefault(t => t.Name == vAccountName);
+                vAccount = vSession.Load<Account>(vAccountName);
             }
             var vResult = new CheckLoginModel
                               {

@@ -26,11 +26,13 @@ AccountManager.prototype = {
         var vThis = this;
         vThis.Hub.checkLogin()
             .done(function (tData) {
-                vThis.IsLoggedIn(tData.IsLoggedIn);
-                vThis.Name(tData.Name);
-                vThis.Roles.removeAll();
-                for (var vIndex = 0; vIndex < tData.Roles.length; vIndex++) {
-                    vThis.Roles.push(tData.Roles[vIndex]);
+                if(tData) {
+                    vThis.IsLoggedIn(tData.IsLoggedIn);
+                    vThis.Name(tData.Name);
+                    vThis.Roles.removeAll();
+                    for (var vIndex = 0; vIndex < tData.Roles.length; vIndex++) {
+                        vThis.Roles.push(tData.Roles[vIndex]);
+                    }
                 }
             });
     },
@@ -39,7 +41,7 @@ AccountManager.prototype = {
         vThis.Hub
             .login(tLoginData)
             .done(function(tData) {
-                if(tData) {
+                if(tData === true) {
                     vThis.CheckLogin();
                 }
             });
@@ -48,7 +50,7 @@ AccountManager.prototype = {
         var vThis = this;
         vThis.Hub.createAccount(tCreateAccountData)
             .done(function (tResult) {
-                if(tResult) {
+                if(tResult === 0) {
                     var vData = {
                         Name: tCreateAccountData.Name,
                         Password: tCreateAccountData.Password
