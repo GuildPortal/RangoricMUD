@@ -94,7 +94,7 @@ namespace RangoricMUD.Tests.Accounts.Queries
         {
             var vObjects = Setup();
             var vResult = vObjects.Query.Result;
-            Assert.IsFalse(vResult.IsLoggedIn);
+            Assert.IsNull(vResult);
         }
 
         [Test]
