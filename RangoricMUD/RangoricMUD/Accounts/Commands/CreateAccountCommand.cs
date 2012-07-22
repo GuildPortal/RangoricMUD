@@ -15,6 +15,7 @@
 #region References
 
 using System.Collections.Generic;
+using System.Configuration;
 using RangoricMUD.Accounts.Data;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Commands;
@@ -55,6 +56,10 @@ namespace RangoricMUD.Accounts.Commands
                                        Roles = new List<eRoles> {eRoles.Player}
                                    };
 
+                if(IsAdmin())
+                {
+                    vAccount.Roles.Add(eRoles.Admin);
+                }
                 vSession.Store(vAccount, vAccount.Name);
 
                 try
@@ -70,6 +75,16 @@ namespace RangoricMUD.Accounts.Commands
             return eAccountCreationStatus.Success;
         }
 
+        private bool IsAdmin()
+        {
+            var vAdminName = ConfigurationManager.AppSettings["Accounts/Admin/Name"];
+            var vAdminEmail = ConfigurationManager.AppSettings["Accounts/Admin/Email"];
+
+            return
+                mCreateAccount.Name == vAdminName &&
+                mCreateAccount.Email == vAdminEmail;
+
+        }
         #endregion
     }
 }

@@ -14,14 +14,14 @@
 
 #region References
 
+using System.Linq;
 using Moq;
 using NUnit.Framework;
 using RangoricMUD.Accounts.Commands;
+using RangoricMUD.Accounts.Data;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Security;
 using RangoricMUD.Tests.Utilities;
-using Raven.Client;
-using Raven.Client.Embedded;
 
 #endregion
 
@@ -30,64 +30,85 @@ namespace RangoricMUD.Tests.Accounts.Commands
     [TestFixture]
     public class CreateAccountCommandTests : BaseTests
     {
-        private const string cHash = "Hash";
-        private const string cName = "Name";
-        private const string cEmail = "Email";
-        private const string cPassword = "Password";
-        private ICreateAccountCommand mCreateAccountCommand;
-        private CreateAccount mCreateAccount;
-        private Mock<IHashProvider> mHashProvider;
-        private IDocumentStore mDocumentStore;
-
-        private void Setup()
+        [TestCase("Admin", "ABCDEFGHIJ", "test@email.com")]
+        public void NewAccountIsAdminWhenMatchesConfigForAdmin(string tName, string tPassword, string tEmail)
         {
-            mHashProvider = new Mock<IHashProvider>();
-            mHashProvider.Setup(t => t.Hash(cPassword)).Returns(cHash);
-            mHashProvider.Setup(t => t.Hash(cPassword + cPassword)).Returns(cHash + cHash);
+            var vHashProvider = new Mock<IHashProvider>();
+            var vDocumentStore = GetEmbeddedDatabase;
 
-            mDocumentStore = GetEmbeddedDatabase;
-            mCreateAccount = new CreateAccount
-                                 {
-                                     Name = cName,
-                                     Email = cEmail,
-                                     Password = cPassword
-                                 };
-            mCreateAccountCommand = new CreateAccountCommand(
-                mDocumentStore,
-                mHashProvider.Object,
-                mCreateAccount);
+            var vCreateAccount = new CreateAccount
+                                     {
+                                         Name = tName,
+                                         Password = tPassword,
+                                         Email = tEmail
+                                     };
+
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vCreateAccount);
+            vCreateAccountCommand.Execute();
+
+            using(var vSession = vDocumentStore.OpenSession())
+            {
+                var vAccount = vSession.Load<Account>(tName);
+
+                Assert.IsTrue(vAccount.Roles.Any(t => t == eRoles.Admin));
+            }
         }
-
-        [Test]
-        public void ExecuteReturnsDuplicateWhenDuplicateName()
+        [TestCase("ABC", "ABCDEFGHIJ", "test@email.com")]
+        public void ExecuteReturnsDuplicateWhenDuplicateName(string tName, string tPassword, string tEmail)
         {
-            Setup();
-            mCreateAccountCommand.Execute();
-            mCreateAccount.Password = cPassword + cPassword;
-            var vResult = mCreateAccountCommand.Execute();
+            var vHashProvider = new Mock<IHashProvider>();
+            var vDocumentStore = GetEmbeddedDatabase;
+
+            var vCreateAccount = new CreateAccount
+                                     {
+                                         Name = tName,
+                                         Password = tPassword,
+                                         Email = tEmail
+                                     };
+
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vCreateAccount);
+
+            vCreateAccountCommand.Execute();
+            var vResult = vCreateAccountCommand.Execute();
             Assert.AreEqual(eAccountCreationStatus.DuplicateName, vResult);
         }
 
-        [Test]
-        public void ExecuteReturnsSuccessWhenGood()
+        [TestCase("ABC", "ABCDEFGHIJ", "test@email.com")]
+        public void ExecuteReturnsSuccessWhenGood(string tName, string tPassword, string tEmail)
         {
-            Setup();
-            var vResult = mCreateAccountCommand.Execute();
+            var vHashProvider = new Mock<IHashProvider>();
+            var vDocumentStore = GetEmbeddedDatabase;
+
+            var vCreateAccount = new CreateAccount
+                                     {
+                                         Name = tName,
+                                         Password = tPassword,
+                                         Email = tEmail
+                                     };
+
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vCreateAccount);
+
+            var vResult = vCreateAccountCommand.Execute();
             Assert.AreEqual(eAccountCreationStatus.Success, vResult);
         }
 
-        [Test]
-        public void ExecuteUsesHashProviderForHashWithSalt()
+        [TestCase("ABC", "ABCDEFGHIJ", "test@email.com")]
+        public void ExecuteUsesHashProviderForHashWithSalt(string tName, string tPassword, string tEmail)
         {
-            Setup();
-            mCreateAccountCommand.Execute();
-            mHashProvider.Verify(t => t.Hash(cPassword));
-        }
+            var vHashProvider = new Mock<IHashProvider>();
+            var vDocumentStore = GetEmbeddedDatabase;
 
-        [Test]
-        public void MinimumDependencies()
-        {
-            Setup();
+            var vCreateAccount = new CreateAccount
+                                     {
+                                         Name = tName,
+                                         Password = tPassword,
+                                         Email = tEmail
+                                     };
+
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vCreateAccount);
+
+            vCreateAccountCommand.Execute();
+            vHashProvider.Verify(t => t.Hash(tPassword));
         }
     }
 }
