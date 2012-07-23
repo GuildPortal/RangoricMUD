@@ -29,6 +29,8 @@ namespace RangoricMUD.Accounts.Data
 
         public string PasswordHash { get; set; }
 
+        public bool IsConfirmed { get; set; }
+
         public List<eRoles> Roles { get; set; }
 
         #endregion
