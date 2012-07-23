@@ -27,12 +27,24 @@ using Raven.Client;
 
 namespace RangoricMUD.Accounts.Commands
 {
+    /// <summary>
+    /// Creates and account in a ravendb document store.
+    ///     Will make the account as a player automaically, and add admin
+    ///     if the name and email match the correct settings in the web.config
+    /// 
+    /// </summary>
     public class CreateAccountCommand : BaseCommand<eAccountCreationStatus>, ICreateAccountCommand
     {
         private readonly CreateAccount mCreateAccount;
         private readonly IDocumentStore mDocumentStore;
         private readonly IHashProvider mHashProvider;
 
+        /// <summary>
+        /// Creates an instance of this command.
+        /// </summary>
+        /// <param name="tDocumentStore">The RavenDB Document Store</param>
+        /// <param name="tHashProvider">A hash provider to make sure we srore no passwords</param>
+        /// <param name="tCreateAccount">The data needed to create the account</param>
         public CreateAccountCommand(IDocumentStore tDocumentStore, IHashProvider tHashProvider,
                                     CreateAccount tCreateAccount)
         {
@@ -42,7 +54,10 @@ namespace RangoricMUD.Accounts.Commands
         }
 
         #region ICreateAccountCommand Members
-
+        /// <summary>
+        /// Actually creates the account and returns the result.
+        /// </summary>
+        /// <returns>Success when the account is created. Duplicate Name when the name is already in use.</returns>
         public override eAccountCreationStatus Execute()
         {
             using (var vSession = mDocumentStore.OpenSession())

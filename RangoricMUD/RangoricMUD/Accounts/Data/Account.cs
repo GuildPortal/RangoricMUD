@@ -23,14 +23,27 @@ namespace RangoricMUD.Accounts.Data
     public class Account
     {
         #region IAccount Members
-
+        /// <summary>
+        /// The unique name of this account.
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// The email for this account.
+        /// </summary>
         public string Email { get; set; }
-
+        /// <summary>
+        /// The hashed password.
+        /// </summary>
         public string PasswordHash { get; set; }
 
+        /// <summary>
+        /// Has the user confirmed their account?
+        /// </summary>
         public bool IsConfirmed { get; set; }
 
+        /// <summary>
+        /// The roles this user belongs to.
+        /// </summary>
         public List<eRoles> Roles { get; set; }
 
         #endregion

@@ -191,8 +191,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts\Commands\ConfirmAccountCommandTests.cs" />
     <Compile Include="Accounts\Commands\LoginAccountCommandTests.cs" />
     <Compile Include="Accounts\Commands\CreateAccountCommandTests.cs" />
+    <Compile Include="Accounts\Commands\SendConfirmationCommandTests.cs" />
     <Compile Include="Accounts\Crews\AccountCrewTests.cs" />
     <Compile Include="Games\Crews\GameCrewTests.cs" />
     <Compile Include="Accounts\Queries\CheckLoginQueryTests.cs" />
@@ -206,6 +208,7 @@
     <Compile Include="Security\CustomHashProviderTests.cs" />
     <Compile Include="Utilities\BaseTests.cs" />
     <Compile Include="Utilities\RavenDbNoStaleData.cs" />
+    <Compile Include="Web\Commands\SendEmailCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
