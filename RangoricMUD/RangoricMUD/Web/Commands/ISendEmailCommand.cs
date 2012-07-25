@@ -5,7 +5,7 @@ using RangoricMUD.Commands;
 
 namespace RangoricMUD.Web.Commands
 {
-    public interface ISendEmailCommand:ICommand<bool>
+    public interface ISendEmailCommand<TType>:ICommand<bool>
     {
     }
 }

@@ -233,6 +233,7 @@
     <Compile Include="Accounts\Models\CreateAccount.cs" />
     <Compile Include="Accounts\Models\ICheckLoginModel.cs" />
     <Compile Include="Accounts\Models\LoginAccount.cs" />
+    <Compile Include="Accounts\Models\SendConfirmationModel.cs" />
     <Compile Include="Accounts\Queries\CheckLoginQuery.cs" />
     <Compile Include="Accounts\Queries\ICheckLoginQuery.cs" />
     <Compile Include="Administration\Controllers\AdministrationHub.cs" />
@@ -292,7 +293,9 @@
     <Compile Include="Security\ISignInPersistance.cs" />
     <Compile Include="Security\SignInPersistance.cs" />
     <Compile Include="Web\Commands\ISendEmailCommand.cs" />
+    <Compile Include="Web\Commands\IWebCommandFactory.cs" />
     <Compile Include="Web\Commands\SendEmailCommand.cs" />
+    <Compile Include="Web\Crews\WebCrews.cs" />
     <Compile Include="Web\Models\SendEmailModel.cs" />
     <Compile Include="Web\ModelValidator.cs" />
     <Compile Include="Web\WindsorModelBinder.cs" />
