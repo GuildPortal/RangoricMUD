@@ -38,42 +38,56 @@ namespace RangoricMUD.Tests.Dice
         [Test]
         public void RandomByte()
         {
-            var vResultOne = mDice.GetByte();
-            var vResultTwo = mDice.GetByte();
-            Assert.AreNotEqual(vResultTwo, vResultOne);
+            var vGood = false;
+            for(var vIndex = 0;vIndex < 100;vIndex++)
+            {
+                vGood |= mDice.GetByte() != default(byte);
+            }
+            Assert.IsTrue(vGood);
         }
 
         [Test]
         public void RandomCharacter()
         {
-            var vResultOne = mDice.GetCharacter();
-            var vResultTwo = mDice.GetCharacter();
-            Assert.AreNotEqual(vResultOne, vResultTwo);
+            var vGood = false;
+            for (var vIndex = 0; vIndex < 100; vIndex++)
+            {
+                vGood |= mDice.GetCharacter() != default(char);
+            }
+            Assert.IsTrue(vGood);
         }
 
-        [Test]
-        public void RandomInteger()
-
+        [TestCase(1, 6)]
+        [TestCase(1, 1)]
+        [TestCase(7, 200)]
+        [TestCase(100000, 2000000000)]
+        public void RandomIntegerInRange(int tMin, int tMax)
         {
-            var vResultOne = mDice.GetInteger(1, 10000);
-            var vResultTwo = mDice.GetInteger(1, 10000);
-            Assert.AreNotEqual(vResultOne, vResultTwo);
-        }
-
-        [Test]
-        public void RandomIntegerInRange()
-        {
-            var vResult = mDice.GetInteger();
-            Assert.True(vResult >= 1);
-            Assert.True(vResult <= 6);
+            var vResult = mDice.GetInteger(tMin, tMax);
+            Assert.True(vResult >= tMin);
+            Assert.True(vResult <= tMax);
         }
 
         [Test]
         public void RandomString()
         {
-            var vResultOne = mDice.GetString(512);
-            var vResultTwo = mDice.GetString(512);
-            Assert.AreNotEqual(vResultOne, vResultTwo);
+            var vGood = false;
+            for (var vIndex = 0; vIndex < 100; vIndex++)
+            {
+                vGood |= mDice.GetString(512) != default(string);
+            }
+            Assert.IsTrue(vGood);
+        }
+        [Test]
+        public void RandomStringDoesntGiveEmptyString()
+        {
+            var vGood = false;
+            for (var vIndex = 0; vIndex < 100; vIndex++)
+            {
+                vGood |= mDice.GetString(512) != string.Empty;
+            }
+            Assert.IsTrue(vGood);
+
         }
     }
 }

@@ -24,6 +24,7 @@ using RangoricMUD.Bootstrappers;
 using RangoricMUD.Bootstrappers.Crews;
 using RangoricMUD.Tests.Games.Crews;
 using RangoricMUD.Web;
+using RangoricMUD.Web.Crews;
 using Raven.Client.Embedded;
 using SignalR;
 using SignalR.Hubs;
@@ -83,6 +84,7 @@ namespace RangoricMUD
             mShip.Crew.Add(new AccountCrew());
             mShip.Crew.Add(new ControllerCrew());
             mShip.Crew.Add(new GameCrew());
+            mShip.Crew.Add(new WebCrews());
             mShip.SetSail();
 
             ControllerBuilder.Current.SetControllerFactory(

@@ -21,8 +21,11 @@ using RangoricMUD.Accounts.Commands;
 using RangoricMUD.Accounts.Data;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Accounts.Queries;
+using RangoricMUD.Dice;
 using RangoricMUD.Security;
 using RangoricMUD.Tests.Utilities;
+using RangoricMUD.Web.Commands;
+using RangoricMUD.Web.Models;
 using Raven.Client.Embedded;
 
 #endregion
@@ -49,9 +52,14 @@ namespace RangoricMUD.Tests.Accounts.Queries
             vReturn.DocumentStore = new EmbeddableDocumentStore {RunInMemory = true};
             vReturn.DocumentStore.Initialize();
             vReturn.DocumentStore.RegisterListener(new RavenDbNoStaleData());
-
+            var vWebCommandFactory = new Mock<IWebCommandFactory>();
+            var vSendEmailCommand = new Mock<ISendEmailCommand<SendConfirmationModel>>();
+            vWebCommandFactory
+                .Setup(t => t.CreateSendEmailCommand(It.IsAny<SendEmailModel<SendConfirmationModel>>()))
+                .Returns(vSendEmailCommand.Object);
+            
             //Make sure there is an account to get. Since this deals with getting an account.
-            var vNewAccount = new CreateAccountCommand(vReturn.DocumentStore, new CustomHashProvider(),
+            var vNewAccount = new CreateAccountCommand(vReturn.DocumentStore, new CustomHashProvider(), vWebCommandFactory.Object,new CryptoRandomProvider(), 
                                                     new CreateAccount
                                                         {
                                                             Email = "test@email.com",

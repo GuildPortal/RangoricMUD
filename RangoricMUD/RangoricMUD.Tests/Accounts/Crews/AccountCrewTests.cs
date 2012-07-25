@@ -23,6 +23,7 @@ using RangoricMUD.Accounts.Models;
 using RangoricMUD.Bootstrappers;
 using RangoricMUD.Bootstrappers.Crews;
 using RangoricMUD.Tests.Utilities;
+using RangoricMUD.Web.Crews;
 using Raven.Client;
 using Raven.Client.Embedded;
 
@@ -47,6 +48,7 @@ namespace RangoricMUD.Tests.Accounts.Crews
             mShip.Crew.Add(new DatabaseCrew(mDocumentStore));
 
             mShip.Crew.Add(new AccountCrew());
+            mShip.Crew.Add(new WebCrews());
             mShip.SetSail();
         }
 

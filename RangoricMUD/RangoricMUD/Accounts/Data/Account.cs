@@ -46,6 +46,8 @@ namespace RangoricMUD.Accounts.Data
         /// </summary>
         public List<eRoles> Roles { get; set; }
 
+        public int ConfirmationNumber { get; set; }
+
         #endregion
     }
 }

@@ -18,8 +18,11 @@ using Moq;
 using NUnit.Framework;
 using RangoricMUD.Accounts.Commands;
 using RangoricMUD.Accounts.Models;
+using RangoricMUD.Dice;
 using RangoricMUD.Security;
 using RangoricMUD.Tests.Utilities;
+using RangoricMUD.Web.Commands;
+using RangoricMUD.Web.Models;
 using Raven.Client;
 using Raven.Client.Embedded;
 
@@ -61,9 +64,16 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                       Email = cEmail,
                                       Password = cPassword
                                   };
+            var vWebCommandFactory = new Mock<IWebCommandFactory>();
+            var vSendEmailCommand = new Mock<ISendEmailCommand<SendConfirmationModel>>();
+            vWebCommandFactory
+                .Setup(t => t.CreateSendEmailCommand(It.IsAny<SendEmailModel<SendConfirmationModel>>()))
+                .Returns(vSendEmailCommand.Object);
+            var vRandomProvider = new Mock<IRandomProvider>();
+            
             var vNewAccountCommand = new CreateAccountCommand(
                 vObjects.DocumentStore,
-                vObjects.HashProvider.Object,
+                vObjects.HashProvider.Object, vWebCommandFactory.Object,new CryptoRandomProvider(), 
                 vNewAccount);
             vNewAccountCommand.Execute();
 
