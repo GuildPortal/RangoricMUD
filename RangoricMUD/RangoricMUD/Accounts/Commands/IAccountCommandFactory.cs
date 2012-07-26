@@ -24,7 +24,7 @@ namespace RangoricMUD.Accounts.Commands
     public interface IAccountCommandFactory
     {
         ICreateAccountCommand CreateCreateAccountCommand(CreateAccount tCreateAccount);
-        ILoginAccountCommand CreateLoginAccountCommand(LoginAccount tLoginAccount, string tConnectionID);
+        ILoginAccountCommand CreateLoginAccountCommand(LoginAccount tLoginAccount);
         ICheckLoginQuery CreateCheckLoginQuery(string tConnectionID);
     }
 }

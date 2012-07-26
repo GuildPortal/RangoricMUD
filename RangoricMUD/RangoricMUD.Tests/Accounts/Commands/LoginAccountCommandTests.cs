@@ -69,7 +69,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
             vWebCommandFactory
                 .Setup(t => t.CreateSendEmailCommand(It.IsAny<SendEmailModel<SendConfirmationModel>>()))
                 .Returns(vSendEmailCommand.Object);
-            var vRandomProvider = new Mock<IRandomProvider>();
+          
             
             var vNewAccountCommand = new CreateAccountCommand(
                 vObjects.DocumentStore,
@@ -83,20 +83,11 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                  Password = cPassword
                              };
             vObjects.GoodLoginAccountCommand = new LoginAccountCommand(
-                vObjects.SignInPersistance.Object,
+                
                 vObjects.DocumentStore,
                 vObjects.HashProvider.Object,
-                vLogin,
-                cConnectionID);
+                vLogin);
             return vObjects;
-        }
-
-        [Test]
-        public void GoodLoginSetsUpSignInPersistance()
-        {
-            var vObjects = Setup();
-            vObjects.GoodLoginAccountCommand.Execute();
-            vObjects.SignInPersistance.Verify(t => t.Login(cName, cConnectionID));
         }
 
         [Test]
@@ -118,11 +109,9 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                  Password = tPassword,
                              };
             var vBadLoginAccountCommand = new LoginAccountCommand(
-                vObjects.SignInPersistance.Object,
                 vObjects.DocumentStore,
                 vObjects.HashProvider.Object,
-                vLogin,
-                vLogin.Name);
+                vLogin);
             var vResult = vBadLoginAccountCommand.Execute();
             Assert.IsFalse(vResult);
         }

@@ -69,7 +69,7 @@ namespace RangoricMUD.Tests.Accounts.Crews
         public void AccountCommandFactoryCanGenerateLoginAccountCommand()
         {
             var vFactory = mShip.GetService(typeof (IAccountCommandFactory)) as IAccountCommandFactory;
-            var vLoginAccountCommand = vFactory.CreateLoginAccountCommand(new LoginAccount(), "");
+            var vLoginAccountCommand = vFactory.CreateLoginAccountCommand(new LoginAccount());
             Assert.IsNotNull(vLoginAccountCommand);
         }
 

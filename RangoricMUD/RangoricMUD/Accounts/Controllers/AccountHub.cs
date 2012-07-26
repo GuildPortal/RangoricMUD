@@ -34,8 +34,13 @@ namespace RangoricMUD.Accounts.Controllers
                                                  if (ModelValidator.IsValid(tLoginAccount))
                                                  {
                                                      var vCommand =
-                                                         mAccountCommandFactory.CreateLoginAccountCommand(tLoginAccount, Context.ConnectionId);
+                                                         mAccountCommandFactory.CreateLoginAccountCommand(tLoginAccount);
                                                      vResult = vCommand.Execute();
+                                                     if(vResult)
+                                                     {
+                                                         mSignInPersistance.Login(tLoginAccount.Name,
+                                                                                  Context.ConnectionId);
+                                                     }
                                                  }
                                                  return vResult;
                                              });
