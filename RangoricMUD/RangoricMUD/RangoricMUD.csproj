@@ -140,6 +140,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -296,6 +297,7 @@
     <Compile Include="Web\Commands\IWebCommandFactory.cs" />
     <Compile Include="Web\Commands\SendEmailCommand.cs" />
     <Compile Include="Web\Crews\WebCrews.cs" />
+    <Compile Include="Web\Extensions.cs" />
     <Compile Include="Web\Models\SendEmailModel.cs" />
     <Compile Include="Web\ModelValidator.cs" />
     <Compile Include="Web\WindsorModelBinder.cs" />

@@ -15,7 +15,9 @@ namespace RangoricMUD.Web.Commands
 
         public override bool Execute()
         {
-            throw new NotImplementedException();
+            var vBody = Extensions.RenderPartialToString(mSendEmailModel.View, mSendEmailModel);
+
+
         }
     }
 }
