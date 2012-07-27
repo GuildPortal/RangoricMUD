@@ -5,11 +5,10 @@ using System.Web;
 
 namespace RangoricMUD.Accounts.Models
 {
-    public class ConfirmationEmailModel
+    public class ConfirmAccountModel
     {
-        public string SiteName { get; set; }
-        public string AccountName { get; set; }
-        public string AccountEmail { get; set; }
+        public string Name { get; set; }
+
         public int ConfirmationNumber { get; set; }
     }
 }

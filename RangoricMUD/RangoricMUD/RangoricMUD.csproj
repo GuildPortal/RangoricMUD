@@ -230,7 +230,8 @@
     <Compile Include="Accounts\Data\Account.cs" />
     <Compile Include="Accounts\Data\eRoles.cs" />
     <Compile Include="Accounts\Models\CheckLoginModel.cs" />
-    <Compile Include="Accounts\Models\ConfirmationEmailModel.cs" />
+    <Compile Include="Accounts\Models\ConfirmAccountModel.cs" />
+    <Compile Include="Accounts\Models\ConfirmAccountPageModel.cs" />
     <Compile Include="Accounts\Models\CreateAccount.cs" />
     <Compile Include="Accounts\Models\ICheckLoginModel.cs" />
     <Compile Include="Accounts\Models\LoginAccount.cs" />
@@ -385,6 +386,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
     <Content Include="Views\Games\GamePage.cshtml" />
+    <Content Include="Views\Accounts\ConfirmAccountPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

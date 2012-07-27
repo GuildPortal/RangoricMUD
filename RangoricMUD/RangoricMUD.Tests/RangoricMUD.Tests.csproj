@@ -208,9 +208,12 @@
     <Compile Include="Security\CustomHashProviderTests.cs" />
     <Compile Include="Utilities\BaseTests.cs" />
     <Compile Include="Utilities\RavenDbNoStaleData.cs" />
+    <Compile Include="Web\Commands\SendMailCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -223,7 +226,6 @@
     <Folder Include="Accounts\Controllers\" />
     <Folder Include="App_Start\" />
     <Folder Include="Games\Data\" />
-    <Folder Include="Web\Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

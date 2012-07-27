@@ -9,5 +9,7 @@ namespace RangoricMUD.Web.Models
     {
         public TType Data { get; set; }
         public string View { get; set; }
+
+        public string ToAddress { get; set; }
     }
 }
