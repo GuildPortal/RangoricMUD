@@ -1,1 +1,24 @@
-﻿@model RangoricMUD.Accounts
+﻿@model RangoricMUD.Accounts.Models.ConfirmAccountPageModel
+<div class="ConfirmAccountPage" data-bind="visible: Page() === ePages.ConfirmAccountPage, if: Page() === ePages.ConfirmAccountPage">
+    <form action="/" method="POST" data-bind="submit: Submit">
+        <fieldset>
+            <legend>Please give your credentials and the Confirmation Number from the email</legend>
+
+            @Html.LabelFor(t => t.Name)
+            @Html.TextBoxFor(t => t.Name, new {data_bind="value:Name"})
+            @Html.ValidationMessageFor(t => t.Name)
+
+            @Html.LabelFor(t => t.Password)
+            @Html.PasswordFor(t => t.Password, new {data_bind="value: Password"})
+            @Html.ValidationMessageFor(t => t.Password)
+            
+            @Html.LabelFor(t => t.ConfirmationNumber)
+            @Html.TextBoxFor(t => t.ConfirmationNumber, new {data_bind="value: ConfirmationNumber"})
+            @Html.ValidationMessageFor(t => t.ConfirmationNumber)
+
+            <div class="Buttons">
+                <button type="submit">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

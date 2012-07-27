@@ -22,7 +22,7 @@ namespace RangoricMUD.Accounts.Commands
             var vModel = new SendEmailModel<SendConfirmationModel>
                              {
                                  Data = mSendConfirmationModel,
-                                 View = "",
+                                 View = "~/Views/Accounts/ConfirmAccountEmail",
                              };
 
             var vSendMailCommand = mWebCommandFactory.CreateSendEmailCommand(vModel);

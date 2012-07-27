@@ -25,41 +25,17 @@ namespace RangoricMUD.Web
     {
         public static string RenderPartialToString<TType>(string tControlName, TType tModel)
         {
-            var vPage = new ViewPage<TType>
-                            {
-                                ViewContext = new ViewContext(),
-                                Url = GetUrlHelper(),
-                                ViewData = new ViewDataDictionary<TType>(tModel)
-                            };
-
-            vPage.Controls.Add(vPage.LoadControl(tControlName));
+            var vEngine = new RazorViewEngine();
+            var vTemp = new RazorEngine<RazorTemplateBase>();
+            vEngine.C;
+            var vView = new RazorView(new ControllerContext(), tControlName, null, false, null);
 
             var vBuilder = new StringBuilder();
             using(var vWriter = new StringWriter(vBuilder))
             {
-                using(var vHtmlWriter = new HtmlTextWriter(vWriter))
-                {
-                    vPage.RenderControl(vHtmlWriter);
-                }
+                vView.Render(new ViewContext() { ViewData = new ViewDataDictionary(tModel) }, vWriter);
             }
             return vBuilder.ToString();
-        }
-
-        private static UrlHelper GetUrlHelper()
-        {
-            var vContext = HttpContext.Current;
-
-            if(vContext == null)
-            {
-                var vRequest = new HttpRequest("/", "http://www.test.com", "");
-                var vResponse = new HttpResponse(new StringWriter());
-                vContext = new HttpContext(vRequest, vResponse);
-            }
-
-            var vContextBase = new HttpContextWrapper(vContext);
-            var vData = new RouteData();
-            var vRequestContext = new RequestContext(vContextBase, vData);
-            return new UrlHelper(vRequestContext);
         }
     }
 }

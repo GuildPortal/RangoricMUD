@@ -62,6 +62,31 @@ namespace RangoricMUD.Accounts.Controllers
                                              });
         }
 
+        public Task<bool> ConfirmAccount(ConfirmAccountPageModel tConfirmAccountPageModel)
+        {
+            return Task.Factory.StartNew(() =>
+                                             {
+                                                 var vGood = false;
+
+                                                 if(ModelValidator.IsValid(tConfirmAccountPageModel))
+                                                 {
+                                                     var vCommand =
+                                                         mAccountCommandFactory.CreateLoginAccountCommand(
+                                                             tConfirmAccountPageModel);
+
+                                                     if(vCommand.Execute())
+                                                     {
+                                                         var vConfirmCommand =
+                                                             mAccountCommandFactory.CreateConfirmAccountCommand(
+                                                                 tConfirmAccountPageModel);
+                                                         vGood = vConfirmCommand.Execute();
+                                                     }
+                                                 }
+
+                                                 return vGood;
+                                             });
+        }
+
         public Task<ICheckLoginModel> CheckLogin()
         {
             return Task.Factory.StartNew(() =>

@@ -152,7 +152,7 @@
         accountHub: {
             _: {
                 hubName: 'AccountHub',
-                ignoreMembers: ['checkLogin', 'createAccount', 'login', 'logout', 'namespace', 'ignoreMembers', 'callbacks'],
+                ignoreMembers: ['checkLogin', 'confirmAccount', 'createAccount', 'login', 'logout', 'namespace', 'ignoreMembers', 'callbacks'],
                 connection: function () { return signalR.hub; }
             },
 
@@ -166,6 +166,10 @@
 
             createAccount: function (tCreateAccount, callback) {
                 return serverCall(this, "CreateAccount", $.makeArray(arguments));
+            },
+
+            confirmAccount: function (tConfirmAccountPageModel, callback) {
+                return serverCall(this, "ConfirmAccount", $.makeArray(arguments));
             },
 
             checkLogin: function (callback) {

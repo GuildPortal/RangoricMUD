@@ -16,7 +16,7 @@ namespace RangoricMUD.Web.Commands
         public override bool Execute()
         {
             var vBody = !string.IsNullOrWhiteSpace(mSendEmailModel.View)
-                            ? Extensions.RenderPartialToString(mSendEmailModel.View, mSendEmailModel)
+                            ? Extensions.RenderPartialToString(mSendEmailModel.View, mSendEmailModel.Data)
                             : mSendEmailModel.Data.ToString();
 
             const string vSubject = "Please confirm your new account";

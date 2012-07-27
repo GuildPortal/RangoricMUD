@@ -31,28 +31,29 @@ using Raven.Client;
 namespace RangoricMUD.Accounts.Commands
 {
     /// <summary>
-    /// Creates and account in a ravendb document store.
-    ///     Will make the account as a player automaically, and add admin
-    ///     if the name and email match the correct settings in the web.config
-    /// 
+    ///   Creates and account in a ravendb document store.
+    ///   Will make the account as a player automaically, and add admin
+    ///   if the name and email match the correct settings in the web.config
     /// </summary>
     public class CreateAccountCommand : BaseCommand<eAccountCreationStatus>, ICreateAccountCommand
     {
         private readonly CreateAccount mCreateAccount;
         private readonly IDocumentStore mDocumentStore;
         private readonly IHashProvider mHashProvider;
-        private readonly IWebCommandFactory mWebCommandFactory;
         private readonly IRandomProvider mRandomProvider;
+        private readonly IWebCommandFactory mWebCommandFactory;
 
         /// <summary>
-        /// Creates an instance of this command.
+        ///   Creates an instance of this command.
         /// </summary>
-        /// <param name="tDocumentStore">The RavenDB Document Store</param>
-        /// <param name="tHashProvider">A hash provider to make sure we srore no passwords</param>
-        /// <param name="tWebCommandFactory">A factory to get the email command for confirmation </param>
-        /// <param name="tRandomProvider">How we generate the confirmation number </param>
-        /// <param name="tCreateAccount">The data needed to create the account</param>
-        public CreateAccountCommand(IDocumentStore tDocumentStore, IHashProvider tHashProvider, IWebCommandFactory tWebCommandFactory, IRandomProvider tRandomProvider, CreateAccount tCreateAccount)
+        /// <param name="tDocumentStore"> The RavenDB Document Store </param>
+        /// <param name="tHashProvider"> A hash provider to make sure we srore no passwords </param>
+        /// <param name="tWebCommandFactory"> A factory to get the email command for confirmation </param>
+        /// <param name="tRandomProvider"> How we generate the confirmation number </param>
+        /// <param name="tCreateAccount"> The data needed to create the account </param>
+        public CreateAccountCommand(IDocumentStore tDocumentStore, IHashProvider tHashProvider,
+                                    IWebCommandFactory tWebCommandFactory, IRandomProvider tRandomProvider,
+                                    CreateAccount tCreateAccount)
         {
             mDocumentStore = tDocumentStore;
             mHashProvider = tHashProvider;
@@ -62,10 +63,11 @@ namespace RangoricMUD.Accounts.Commands
         }
 
         #region ICreateAccountCommand Members
+
         /// <summary>
-        /// Actually creates the account and returns the result.
+        ///   Actually creates the account and returns the result.
         /// </summary>
-        /// <returns>Success when the account is created. Duplicate Name when the name is already in use.</returns>
+        /// <returns> Success when the account is created. Duplicate Name when the name is already in use. </returns>
         public override eAccountCreationStatus Execute()
         {
             using (var vSession = mDocumentStore.OpenSession())
@@ -77,11 +79,11 @@ namespace RangoricMUD.Accounts.Commands
                                        Email = mCreateAccount.Email,
                                        PasswordHash = mHashProvider.Hash(mCreateAccount.Password),
                                        IsConfirmed = false,
-                                       ConfirmationNumber = mRandomProvider.GetInteger(100000,2000000000),
+                                       ConfirmationNumber = mRandomProvider.GetInteger(100000, 2000000000),
                                        Roles = new List<eRoles> {eRoles.Player}
                                    };
-                
-                if(IsAdmin())
+
+                if (IsAdmin())
                 {
                     vAccount.Roles.Add(eRoles.Admin);
                 }
@@ -90,27 +92,30 @@ namespace RangoricMUD.Accounts.Commands
                 try
                 {
                     vSession.SaveChanges();
-                 }
+                }
                 catch (ConcurrencyException)
                 {
                     return eAccountCreationStatus.DuplicateName;
                 }
                 var vModel = new SendEmailModel<SendConfirmationModel>
-                {
-                    Data =
-                        new SendConfirmationModel(vAccount.Name, vAccount.Email,
-                                                  vAccount.ConfirmationNumber)
-                };
+                                 {
+                                     Data =
+                                         new SendConfirmationModel(vAccount.Name, vAccount.Email,
+                                                                   vAccount.ConfirmationNumber),
+                                     ToAddress = vAccount.Email,
+                                     View = "~/Views/Accounts/ConfirmAccountEmail.cshtml"
+                                 };
                 var vCommand = mWebCommandFactory.CreateSendEmailCommand(vModel);
-                if(!vCommand.Execute())
+                if (!vCommand.Execute())
                 {
                     return eAccountCreationStatus.ConfirmationEmailFailed;
                 }
-
             }
 
             return eAccountCreationStatus.Success;
         }
+
+        #endregion
 
         private bool IsAdmin()
         {
@@ -120,8 +125,6 @@ namespace RangoricMUD.Accounts.Commands
             return
                 mCreateAccount.Name == vAdminName &&
                 mCreateAccount.Email == vAdminEmail;
-
         }
-        #endregion
     }
 }

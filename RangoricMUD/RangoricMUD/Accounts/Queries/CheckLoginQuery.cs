@@ -14,8 +14,6 @@
 
 #region References
 
-using System.Collections.Generic;
-using System.Linq;
 using RangoricMUD.Accounts.Data;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Queries;
@@ -28,11 +26,12 @@ namespace RangoricMUD.Accounts.Queries
 {
     public class CheckLoginQuery : BaseQuery<ICheckLoginModel>, ICheckLoginQuery
     {
-        private readonly IDocumentStore mDocumentStore;
         private readonly string mConnectionID;
+        private readonly IDocumentStore mDocumentStore;
         private readonly ISignInPersistance mSignInPersistance;
 
-        public CheckLoginQuery(ISignInPersistance tSignInPersistance, IDocumentStore tDocumentStore, string tConnectionID)
+        public CheckLoginQuery(ISignInPersistance tSignInPersistance, IDocumentStore tDocumentStore,
+                               string tConnectionID)
         {
             mSignInPersistance = tSignInPersistance;
             mDocumentStore = tDocumentStore;
@@ -42,7 +41,7 @@ namespace RangoricMUD.Accounts.Queries
         protected override ICheckLoginModel GetResult()
         {
             var vAccountName = mSignInPersistance.AccountName(mConnectionID);
-            if(string.IsNullOrWhiteSpace(vAccountName))
+            if (string.IsNullOrWhiteSpace(vAccountName))
             {
                 return null;
             }
@@ -53,9 +52,10 @@ namespace RangoricMUD.Accounts.Queries
             }
             var vResult = new CheckLoginModel
                               {
-                                  IsLoggedIn = !string.IsNullOrWhiteSpace(vAccountName),
-                                  Name = vAccount != null ? vAccount.Name : "",
-                                  Roles = vAccount != null ? vAccount.Roles : new List<eRoles>()
+                                  IsLoggedIn = vAccount != null,
+                                  IsConfirmed = vAccount.IsConfirmed,
+                                  Name = vAccount.Name,
+                                  Roles = vAccount.Roles
                               };
             return vResult;
         }

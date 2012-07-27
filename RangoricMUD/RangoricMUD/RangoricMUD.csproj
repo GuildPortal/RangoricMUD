@@ -307,6 +307,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Content Include="Assets\Scripts\Accounts\AccountManager.js" />
+    <Content Include="Assets\Scripts\Accounts\ConfirmAccountButton.js" />
+    <Content Include="Assets\Scripts\Accounts\ConfirmAccountPage.js" />
     <Content Include="Assets\Scripts\Accounts\CreateAccountButton.js" />
     <Content Include="Assets\Scripts\Accounts\CreateAccountPage.js" />
     <Content Include="Assets\Scripts\Accounts\LoginButton.js" />
@@ -387,6 +389,7 @@
     <Content Include="Views\Home\Homepage.cshtml" />
     <Content Include="Views\Games\GamePage.cshtml" />
     <Content Include="Views\Accounts\ConfirmAccountPage.cshtml" />
+    <Content Include="Views\Accounts\ConfirmAccountEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

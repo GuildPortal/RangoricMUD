@@ -7,6 +7,8 @@
 /// <reference path="~/Assets/Scripts/Accounts/LoginButton.js"/>
 /// <reference path="~/Assets/Scripts/Accounts/CreateAccountButton.js"/>
 /// <reference path="~/Assets/Scripts/Accounts/CreateAccountPage.js"/>
+/// <reference path="~/Assets/Scripts/Accounts/ConfirmAccountPage.js"/>
+/// <reference path="~/Assets/Scripts/Accounts/ConfirmAccountButton.js"/>
 /// <reference path="~/Assets/Scripts/Administration/AdminManager.js"/>
 /// <reference path="~/Assets/Scripts/Administration/AdminButton.js"/>
 /// <reference path="~/Assets/Scripts/Games/GameManager.js"/>
@@ -25,6 +27,7 @@ $(function () {
     ePages.LoginPage.ViewModel = new LoginPage(vDependencies);
     ePages.CreateAccount.ViewModel = new CreateAccountPage(vDependencies);
     ePages.GamePage.ViewModel = new GamePage(vDependencies);
+    ePages.ConfirmAccountPage.ViewModel = new ConfirmAccountPage(vDependencies);
 
     var vButtons = {};
     vButtons.Buttons = ko.observableArray();
@@ -32,6 +35,7 @@ $(function () {
     //Account Management Main Buttons
     vButtons.Buttons.push(new LoginButton(vDependencies));
     vButtons.Buttons.push(new CreateAccountButton(vDependencies));
+    vButtons.Buttons.push(new ConfirmAccountButton(vDependencies));
     
     //Administration Main Buttons
     vDependencies.AdminManager = new AdminManager(vDependencies);

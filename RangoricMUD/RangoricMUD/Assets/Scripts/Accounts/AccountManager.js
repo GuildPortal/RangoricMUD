@@ -6,6 +6,7 @@ function AccountManager(tSettings) {
     vThis.Connection = tSettings.Connection;
     
     vThis.IsLoggedIn = ko.observable(false);
+    vThis.IsConfirmed = ko.observable(false);
     vThis.Name = ko.observable(null);
     vThis.Roles = ko.observableArray();
     vThis.IsPlayer = ko.computed(function() {
@@ -28,6 +29,7 @@ AccountManager.prototype = {
             .done(function (tData) {
                 if(tData) {
                     vThis.IsLoggedIn(tData.IsLoggedIn);
+                    vThis.IsConfirmed(tData.IsConfirmed);
                     vThis.Name(tData.Name);
                     vThis.Roles.removeAll();
                     for (var vIndex = 0; vIndex < tData.Roles.length; vIndex++) {
@@ -57,6 +59,13 @@ AccountManager.prototype = {
                     };
                     vThis.Login(vData);
                 }
+            });
+    },
+    ConfirmAccount: function (tConfirmAccountData) {
+        var vThis = this;
+        vThis.Hub.confirmAccount(tConfirmAccountData)
+            .done(function(tResult) {
+                vThis.IsConfirmed(tResult);
             });
     }
 }

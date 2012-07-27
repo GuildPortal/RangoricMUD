@@ -48,6 +48,8 @@ namespace RangoricMUD.App_Start
                              "~/Assets/Scripts/Accounts/LoginButton.js",
                              "~/Assets/Scripts/Accounts/CreateAccountPage.js",
                              "~/Assets/Scripts/Accounts/CreateAccountButton.js",
+                             "~/Assets/Scripts/Accounts/ConfirmAccountPage.js",
+                             "~/Assets/Scripts/Accounts/ConfirmAccountButton.js",
                              "~/Assets/Scripts/Administration/AdminManager.js",
                              "~/Assets/Scripts/Administration/AdminButton.js",
                              "~/Assets/Scripts/Games/GameManager.js",

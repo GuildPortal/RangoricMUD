@@ -29,6 +29,8 @@ namespace RangoricMUD.Accounts.Models
         public string Name { get; set; }
         public List<eRoles> Roles { get; set; }
 
+        public bool IsConfirmed { get; set; }
+
         #endregion
     }
 }

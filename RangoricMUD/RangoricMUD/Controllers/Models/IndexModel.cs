@@ -14,6 +14,7 @@
 
 #region References
 
+using System.Web.Mvc;
 using RangoricMUD.Accounts.Models;
 
 #endregion
@@ -26,9 +27,12 @@ namespace RangoricMUD.Controllers.Models
         {
             CreateAccount = new CreateAccount();
             LoginAccount = new LoginAccount();
+            ConfirmAccountPageModel = new ConfirmAccountPageModel();
         }
 
         public CreateAccount CreateAccount { get; private set; }
         public LoginAccount LoginAccount { get; private set; }
+
+        public ConfirmAccountPageModel ConfirmAccountPageModel { get; private set; }
     }
 }
