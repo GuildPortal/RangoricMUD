@@ -4,7 +4,7 @@ function AccountManager(tSettings) {
     var vThis = this;
 
     vThis.Connection = tSettings.Connection;
-    
+
     vThis.IsLoggedIn = ko.observable(false);
     vThis.IsConfirmed = ko.observable(false);
     vThis.Name = ko.observable(null);
@@ -15,19 +15,20 @@ function AccountManager(tSettings) {
     vThis.IsAdmin = ko.computed(function() {
         return vThis.Roles.indexOf(1) >= 0;
     });
-    
+
     vThis.IsWorking = ko.observable(false);
 }
+
 AccountManager.prototype = {
-    Start: function () {
+    Start: function() {
         var vThis = this;
         vThis.Hub = vThis.Connection.accountHub;
     },
-    CheckLogin: function () {
+    CheckLogin: function() {
         var vThis = this;
         vThis.Hub.checkLogin()
-            .done(function (tData) {
-                if(tData) {
+            .done(function(tData) {
+                if (tData) {
                     vThis.IsLoggedIn(tData.IsLoggedIn);
                     vThis.IsConfirmed(tData.IsConfirmed);
                     vThis.Name(tData.Name);
@@ -38,21 +39,21 @@ AccountManager.prototype = {
                 }
             });
     },
-    Login: function (tLoginData) {
+    Login: function(tLoginData) {
         var vThis = this;
         vThis.Hub
             .login(tLoginData)
             .done(function(tData) {
-                if(tData === true) {
+                if (tData === true) {
                     vThis.CheckLogin();
                 }
             });
     },
-    CreateAccount: function (tCreateAccountData) {
+    CreateAccount: function(tCreateAccountData) {
         var vThis = this;
         vThis.Hub.createAccount(tCreateAccountData)
-            .done(function (tResult) {
-                if(tResult === 0) {
+            .done(function(tResult) {
+                if (tResult === 0) {
                     var vData = {
                         Name: tCreateAccountData.Name,
                         Password: tCreateAccountData.Password
@@ -61,11 +62,11 @@ AccountManager.prototype = {
                 }
             });
     },
-    ConfirmAccount: function (tConfirmAccountData) {
+    ConfirmAccount: function(tConfirmAccountData) {
         var vThis = this;
         vThis.Hub.confirmAccount(tConfirmAccountData)
             .done(function(tResult) {
                 vThis.IsConfirmed(tResult);
             });
     }
-}
+};

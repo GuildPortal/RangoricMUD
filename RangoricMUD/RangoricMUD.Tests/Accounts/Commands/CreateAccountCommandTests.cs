@@ -23,8 +23,6 @@ using RangoricMUD.Accounts.Models;
 using RangoricMUD.Dice;
 using RangoricMUD.Security;
 using RangoricMUD.Tests.Utilities;
-using RangoricMUD.Web.Commands;
-using RangoricMUD.Web.Models;
 
 #endregion
 
@@ -44,7 +42,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
                 .Returns(vSendConfirmationCommand.Object);
 
-            
+
             var vCreateAccount = new CreateAccount
                                      {
                                          Name = tName,
@@ -53,16 +51,19 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                      };
             var vRandomProvider = new Mock<IRandomProvider>();
 
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object,
+                                                                 vAccountCommandFactory.Object, vRandomProvider.Object,
+                                                                 vCreateAccount);
             vCreateAccountCommand.Execute();
 
-            using(var vSession = vDocumentStore.OpenSession())
+            using (var vSession = vDocumentStore.OpenSession())
             {
                 var vAccount = vSession.Load<Account>(tName);
 
                 Assert.IsTrue(vAccount.Roles.Any(t => t == eRoles.Admin));
             }
         }
+
         [TestCase("ABC", "ABCDEFGHIJ", "test@email.com")]
         public void ExecuteReturnsDuplicateWhenDuplicateName(string tName, string tPassword, string tEmail)
         {
@@ -74,7 +75,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
                 .Returns(vSendConfirmationCommand.Object);
 
-            
+
             var vCreateAccount = new CreateAccount
                                      {
                                          Name = tName,
@@ -83,7 +84,9 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                      };
             var vRandomProvider = new Mock<IRandomProvider>();
 
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object,
+                                                                 vAccountCommandFactory.Object, vRandomProvider.Object,
+                                                                 vCreateAccount);
 
             vCreateAccountCommand.Execute();
             var vResult = vCreateAccountCommand.Execute();
@@ -102,7 +105,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 .Returns(vSendConfirmationCommand.Object);
             vSendConfirmationCommand.Setup(t => t.Execute()).Returns(true);
 
-            
+
             var vCreateAccount = new CreateAccount
                                      {
                                          Name = tName,
@@ -111,7 +114,9 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                      };
             var vRandomProvider = new Mock<IRandomProvider>();
 
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object,
+                                                                 vAccountCommandFactory.Object, vRandomProvider.Object,
+                                                                 vCreateAccount);
 
             var vResult = vCreateAccountCommand.Execute();
             Assert.AreEqual(eAccountCreationStatus.Success, vResult);
@@ -128,7 +133,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
                 .Returns(vSendConfirmationCommand.Object);
 
-            
+
             var vCreateAccount = new CreateAccount
                                      {
                                          Name = tName,
@@ -137,13 +142,15 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                      };
             var vRandomProvider = new Mock<IRandomProvider>();
 
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object,
+                                                                 vAccountCommandFactory.Object, vRandomProvider.Object,
+                                                                 vCreateAccount);
 
             vCreateAccountCommand.Execute();
             vHashProvider.Verify(t => t.Hash(tPassword));
         }
 
-        [TestCase("ABC","1234567890", "test@email.com")]
+        [TestCase("ABC", "1234567890", "test@email.com")]
         public void UsesSendEmailCommand(string tName, string tPassword, string tEmail)
         {
             var vHashProvider = new Mock<IHashProvider>();
@@ -155,21 +162,23 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
                 .Returns(vSendConfirmationCommand.Object);
 
-            
-            var vCreateAccount = new CreateAccount
-            {
-                Name = tName,
-                Password = tPassword,
-                Email = tEmail
-            };
 
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
+            var vCreateAccount = new CreateAccount
+                                     {
+                                         Name = tName,
+                                         Password = tPassword,
+                                         Email = tEmail
+                                     };
+
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object,
+                                                                 vAccountCommandFactory.Object, vRandomProvider.Object,
+                                                                 vCreateAccount);
 
             vCreateAccountCommand.Execute();
 
             vSendConfirmationCommand.Verify(t => t.Execute());
-
         }
+
         [TestCase("ABC", "1234567890", "test@email.com")]
         public void UsesRandomProvider(string tName, string tPassword, string tEmail)
         {
@@ -183,13 +192,15 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 .Returns(vSendConfirmationCommand.Object);
 
             var vCreateAccount = new CreateAccount
-            {
-                Name = tName,
-                Password = tPassword,
-                Email = tEmail
-            };
+                                     {
+                                         Name = tName,
+                                         Password = tPassword,
+                                         Email = tEmail
+                                     };
 
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object,
+                                                                 vAccountCommandFactory.Object, vRandomProvider.Object,
+                                                                 vCreateAccount);
 
             vCreateAccountCommand.Execute();
 

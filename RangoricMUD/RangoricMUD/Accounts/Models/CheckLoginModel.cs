@@ -23,13 +23,13 @@ namespace RangoricMUD.Accounts.Models
 {
     public class CheckLoginModel : ICheckLoginModel
     {
+        public bool IsConfirmed { get; set; }
+
         #region ICheckLoginModel Members
 
         public bool IsLoggedIn { get; set; }
         public string Name { get; set; }
         public List<eRoles> Roles { get; set; }
-
-        public bool IsConfirmed { get; set; }
 
         #endregion
     }

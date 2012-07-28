@@ -23,8 +23,6 @@ using RangoricMUD.Dice;
 using RangoricMUD.Games.Commands;
 using RangoricMUD.Games.Models;
 using RangoricMUD.Security;
-using RangoricMUD.Web.Commands;
-using RangoricMUD.Web.Models;
 using Raven.Client;
 using Raven.Client.Embedded;
 
@@ -44,6 +42,7 @@ namespace RangoricMUD.Tests.Utilities
                 return vResult;
             }
         }
+
         protected void AddGameToDatabase(string tGameName, IDocumentStore tDatabase)
         {
             var vModel = new CreateGameModel
@@ -53,7 +52,9 @@ namespace RangoricMUD.Tests.Utilities
             var vCommand = new CreateGameCommand(tDatabase, vModel);
             Assert.AreEqual(eGameCreationStatus.Success, vCommand.Execute());
         }
-        protected void AddAccountToDataStore(IDocumentStore tDocumentStore, string tName, string tPassword, string tEmail, int tConfirmationNumber = 1)
+
+        protected void AddAccountToDataStore(IDocumentStore tDocumentStore, string tName, string tPassword,
+                                             string tEmail, int tConfirmationNumber = 1)
         {
             var vRandom = new Mock<IRandomProvider>();
             vRandom.Setup(t => t.GetInteger(100000, 2000000000)).Returns(tConfirmationNumber);
@@ -68,7 +69,8 @@ namespace RangoricMUD.Tests.Utilities
             var vEmailCommand = new Mock<ISendConfirmationCommand>();
             vFactory.Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>())).Returns(
                 vEmailCommand.Object);
-            var vCommand = new CreateAccountCommand(tDocumentStore, new CustomHashProvider(),vFactory.Object , vRandom.Object, vModel);
+            var vCommand = new CreateAccountCommand(tDocumentStore, new CustomHashProvider(), vFactory.Object,
+                                                    vRandom.Object, vModel);
             vCommand.Execute();
         }
     }

@@ -388,7 +388,6 @@
     <Content Include="Views\Home\Homepage.cshtml" />
     <Content Include="Views\Games\GamePage.cshtml" />
     <Content Include="Views\Accounts\ConfirmAccountPage.cshtml" />
-    <Content Include="Views\Accounts\ConfirmAccountEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

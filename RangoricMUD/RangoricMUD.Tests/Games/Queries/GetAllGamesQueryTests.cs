@@ -17,8 +17,6 @@
 using NUnit.Framework;
 using RangoricMUD.Games.Queries;
 using RangoricMUD.Tests.Utilities;
-using Raven.Client;
-using Raven.Client.Embedded;
 
 #endregion
 
@@ -39,6 +37,5 @@ namespace RangoricMUD.Tests.Games.Queries
 
             Assert.AreEqual(2, vQuery.Result.Count);
         }
-
     }
 }

@@ -21,8 +21,6 @@ using RangoricMUD.Accounts.Models;
 using RangoricMUD.Commands;
 using RangoricMUD.Dice;
 using RangoricMUD.Security;
-using RangoricMUD.Web.Commands;
-using RangoricMUD.Web.Models;
 using Raven.Abstractions.Exceptions;
 using Raven.Client;
 
@@ -37,10 +35,10 @@ namespace RangoricMUD.Accounts.Commands
     /// </summary>
     public class CreateAccountCommand : BaseCommand<eAccountCreationStatus>, ICreateAccountCommand
     {
+        private readonly IAccountCommandFactory mAccountCommandFactory;
         private readonly CreateAccount mCreateAccount;
         private readonly IDocumentStore mDocumentStore;
         private readonly IHashProvider mHashProvider;
-        private readonly IAccountCommandFactory mAccountCommandFactory;
         private readonly IRandomProvider mRandomProvider;
 
         /// <summary>

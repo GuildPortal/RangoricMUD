@@ -1,25 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿#region License
+
+// RangoricMUD is licensed under the Open Game License.
+// The original code and assets provided in this repository are Open Game Content,
+// The name RangoricMUD is product identity, and can only be used as a part of the code,
+//   or in reference to this project.
+// 
+// More details and the full text of the license are available at:
+//   https://github.com/Rangoric/RangoricMUD/wiki/Open-Game-License
+// 
+// RangoricMUD's home is at: https://github.com/Rangoric/RangoricMUD
+
+#endregion
+
+#region References
+
 using RangoricMUD.Accounts.Data;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Commands;
 using Raven.Client;
 
+#endregion
+
 namespace RangoricMUD.Accounts.Commands
 {
-    public class ConfirmAccountCommand: BaseCommand<bool>, IConfirmAccountCommand
+    public class ConfirmAccountCommand : BaseCommand<bool>, IConfirmAccountCommand
     {
+        private readonly ConfirmAccountModel mConfirmAccountModel;
+
+        private readonly IDocumentStore mDocumentStore;
+
         public ConfirmAccountCommand(IDocumentStore tDocumentStore, ConfirmAccountModel tConfirmAccountModel)
         {
             mDocumentStore = tDocumentStore;
             mConfirmAccountModel = tConfirmAccountModel;
         }
 
-        private readonly ConfirmAccountModel mConfirmAccountModel;
-
-        private readonly IDocumentStore mDocumentStore;
+        #region IConfirmAccountCommand Members
 
         public override bool Execute()
         {
@@ -43,5 +59,7 @@ namespace RangoricMUD.Accounts.Commands
 
             return vGood;
         }
+
+        #endregion
     }
 }

@@ -20,7 +20,6 @@ using RangoricMUD.Games.Commands;
 using RangoricMUD.Games.Data;
 using RangoricMUD.Games.Models;
 using RangoricMUD.Tests.Utilities;
-using Raven.Client.Embedded;
 
 #endregion
 

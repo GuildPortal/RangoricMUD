@@ -22,10 +22,7 @@ using RangoricMUD.Accounts.Models;
 using RangoricMUD.Dice;
 using RangoricMUD.Security;
 using RangoricMUD.Tests.Utilities;
-using RangoricMUD.Web.Commands;
-using RangoricMUD.Web.Models;
 using Raven.Client;
-using Raven.Client.Embedded;
 
 #endregion
 
@@ -70,11 +67,11 @@ namespace RangoricMUD.Tests.Accounts.Commands
             vAccountCommandFactory
                 .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
                 .Returns(vSendConfirmationCommand.Object);
-          
-            
+
+
             var vNewAccountCommand = new CreateAccountCommand(
                 vObjects.DocumentStore,
-                vObjects.HashProvider.Object, vAccountCommandFactory.Object,new CryptoRandomProvider(), 
+                vObjects.HashProvider.Object, vAccountCommandFactory.Object, new CryptoRandomProvider(),
                 vNewAccount);
             vNewAccountCommand.Execute();
 
@@ -84,19 +81,10 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                  Password = cPassword
                              };
             vObjects.GoodLoginAccountCommand = new LoginAccountCommand(
-                
                 vObjects.DocumentStore,
                 vObjects.HashProvider.Object,
                 vLogin);
             return vObjects;
-        }
-
-        [Test]
-        public void GoodLoginUsesHashProviderToRehash()
-        {
-            var vObjects = Setup();
-            vObjects.GoodLoginAccountCommand.Execute();
-            vObjects.HashProvider.Verify(t => t.Hash(cPassword));
         }
 
         [TestCase(cName, cEmail)]
@@ -115,6 +103,14 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 vLogin);
             var vResult = vBadLoginAccountCommand.Execute();
             Assert.IsFalse(vResult);
+        }
+
+        [Test]
+        public void GoodLoginUsesHashProviderToRehash()
+        {
+            var vObjects = Setup();
+            vObjects.GoodLoginAccountCommand.Execute();
+            vObjects.HashProvider.Verify(t => t.Hash(cPassword));
         }
 
         [Test]

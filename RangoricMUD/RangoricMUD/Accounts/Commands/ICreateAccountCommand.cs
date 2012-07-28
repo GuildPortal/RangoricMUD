@@ -21,7 +21,7 @@ using RangoricMUD.Commands;
 namespace RangoricMUD.Accounts.Commands
 {
     /// <summary>
-    /// Interface for a command that can create an account.
+    ///   Interface for a command that can create an account.
     /// </summary>
     public interface ICreateAccountCommand : ICommand<eAccountCreationStatus>
     {
