@@ -40,24 +40,24 @@ namespace RangoricMUD.Accounts.Commands
         private readonly CreateAccount mCreateAccount;
         private readonly IDocumentStore mDocumentStore;
         private readonly IHashProvider mHashProvider;
+        private readonly IAccountCommandFactory mAccountCommandFactory;
         private readonly IRandomProvider mRandomProvider;
-        private readonly IWebCommandFactory mWebCommandFactory;
 
         /// <summary>
         ///   Creates an instance of this command.
         /// </summary>
         /// <param name="tDocumentStore"> The RavenDB Document Store </param>
         /// <param name="tHashProvider"> A hash provider to make sure we srore no passwords </param>
-        /// <param name="tWebCommandFactory"> A factory to get the email command for confirmation </param>
+        /// <param name="tAccountCommandFactory"> </param>
         /// <param name="tRandomProvider"> How we generate the confirmation number </param>
         /// <param name="tCreateAccount"> The data needed to create the account </param>
         public CreateAccountCommand(IDocumentStore tDocumentStore, IHashProvider tHashProvider,
-                                    IWebCommandFactory tWebCommandFactory, IRandomProvider tRandomProvider,
+                                    IAccountCommandFactory tAccountCommandFactory, IRandomProvider tRandomProvider,
                                     CreateAccount tCreateAccount)
         {
             mDocumentStore = tDocumentStore;
             mHashProvider = tHashProvider;
-            mWebCommandFactory = tWebCommandFactory;
+            mAccountCommandFactory = tAccountCommandFactory;
             mRandomProvider = tRandomProvider;
             mCreateAccount = tCreateAccount;
         }
@@ -97,15 +97,7 @@ namespace RangoricMUD.Accounts.Commands
                 {
                     return eAccountCreationStatus.DuplicateName;
                 }
-                var vModel = new SendEmailModel<SendConfirmationModel>
-                                 {
-                                     Data =
-                                         new SendConfirmationModel(vAccount.Name, vAccount.Email,
-                                                                   vAccount.ConfirmationNumber),
-                                     ToAddress = vAccount.Email,
-                                     View = "~/Views/Accounts/ConfirmAccountEmail.cshtml"
-                                 };
-                var vCommand = mWebCommandFactory.CreateSendEmailCommand(vModel);
+                var vCommand = mAccountCommandFactory.CreateSendConfirmationCommand(vAccount);
                 if (!vCommand.Execute())
                 {
                     return eAccountCreationStatus.ConfirmationEmailFailed;

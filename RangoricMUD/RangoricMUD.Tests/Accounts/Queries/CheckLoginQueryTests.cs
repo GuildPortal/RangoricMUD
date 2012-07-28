@@ -52,14 +52,14 @@ namespace RangoricMUD.Tests.Accounts.Queries
             vReturn.DocumentStore = new EmbeddableDocumentStore {RunInMemory = true};
             vReturn.DocumentStore.Initialize();
             vReturn.DocumentStore.RegisterListener(new RavenDbNoStaleData());
-            var vWebCommandFactory = new Mock<IWebCommandFactory>();
-            var vSendEmailCommand = new Mock<ISendEmailCommand<SendConfirmationModel>>();
-            vWebCommandFactory
-                .Setup(t => t.CreateSendEmailCommand(It.IsAny<SendEmailModel<SendConfirmationModel>>()))
-                .Returns(vSendEmailCommand.Object);
+            var vAccountCommandFactory = new Mock<IAccountCommandFactory>();
+            var vSendConfirmationCommand = new Mock<ISendConfirmationCommand>();
+            vAccountCommandFactory
+                .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
+                .Returns(vSendConfirmationCommand.Object);
             
             //Make sure there is an account to get. Since this deals with getting an account.
-            var vNewAccount = new CreateAccountCommand(vReturn.DocumentStore, new CustomHashProvider(), vWebCommandFactory.Object,new CryptoRandomProvider(), 
+            var vNewAccount = new CreateAccountCommand(vReturn.DocumentStore, new CustomHashProvider(), vAccountCommandFactory.Object, new CryptoRandomProvider(), 
                                                     new CreateAccount
                                                         {
                                                             Email = "test@email.com",

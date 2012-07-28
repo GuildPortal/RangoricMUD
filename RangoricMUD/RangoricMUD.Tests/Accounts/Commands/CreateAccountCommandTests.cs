@@ -38,11 +38,12 @@ namespace RangoricMUD.Tests.Accounts.Commands
         {
             var vHashProvider = new Mock<IHashProvider>();
             var vDocumentStore = GetEmbeddedDatabase;
-            var vWebCommandFactory = new Mock<IWebCommandFactory>();
-            var vSendEmailCommand = new Mock<ISendEmailCommand<SendConfirmationModel>>();
-            vWebCommandFactory
-                .Setup(t => t.CreateSendEmailCommand(It.IsAny<SendEmailModel<SendConfirmationModel>>()))
-                .Returns(vSendEmailCommand.Object);
+            var vAccountCommandFactory = new Mock<IAccountCommandFactory>();
+            var vSendConfirmationCommand = new Mock<ISendConfirmationCommand>();
+            vAccountCommandFactory
+                .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
+                .Returns(vSendConfirmationCommand.Object);
+
             
             var vCreateAccount = new CreateAccount
                                      {
@@ -51,8 +52,8 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                          Email = tEmail
                                      };
             var vRandomProvider = new Mock<IRandomProvider>();
-            
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vWebCommandFactory.Object, vRandomProvider.Object,vCreateAccount);
+
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
             vCreateAccountCommand.Execute();
 
             using(var vSession = vDocumentStore.OpenSession())
@@ -67,11 +68,12 @@ namespace RangoricMUD.Tests.Accounts.Commands
         {
             var vHashProvider = new Mock<IHashProvider>();
             var vDocumentStore = GetEmbeddedDatabase;
-            var vWebCommandFactory = new Mock<IWebCommandFactory>();
-            var vSendEmailCommand = new Mock<ISendEmailCommand<SendConfirmationModel>>();
-            vWebCommandFactory
-                .Setup(t => t.CreateSendEmailCommand(It.IsAny<SendEmailModel<SendConfirmationModel>>()))
-                .Returns(vSendEmailCommand.Object);
+            var vAccountCommandFactory = new Mock<IAccountCommandFactory>();
+            var vSendConfirmationCommand = new Mock<ISendConfirmationCommand>();
+            vAccountCommandFactory
+                .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
+                .Returns(vSendConfirmationCommand.Object);
+
             
             var vCreateAccount = new CreateAccount
                                      {
@@ -80,8 +82,8 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                          Email = tEmail
                                      };
             var vRandomProvider = new Mock<IRandomProvider>();
-            
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vWebCommandFactory.Object, vRandomProvider.Object,vCreateAccount);
+
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
 
             vCreateAccountCommand.Execute();
             var vResult = vCreateAccountCommand.Execute();
@@ -93,12 +95,13 @@ namespace RangoricMUD.Tests.Accounts.Commands
         {
             var vHashProvider = new Mock<IHashProvider>();
             var vDocumentStore = GetEmbeddedDatabase;
-            var vWebCommandFactory = new Mock<IWebCommandFactory>();
-            var vSendEmailCommand = new Mock<ISendEmailCommand<SendConfirmationModel>>();
-            vSendEmailCommand.Setup(t => t.Execute()).Returns(true);
-            vWebCommandFactory
-                .Setup(t => t.CreateSendEmailCommand(It.IsAny<SendEmailModel<SendConfirmationModel>>()))
-                .Returns(vSendEmailCommand.Object);
+            var vAccountCommandFactory = new Mock<IAccountCommandFactory>();
+            var vSendConfirmationCommand = new Mock<ISendConfirmationCommand>();
+            vAccountCommandFactory
+                .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
+                .Returns(vSendConfirmationCommand.Object);
+            vSendConfirmationCommand.Setup(t => t.Execute()).Returns(true);
+
             
             var vCreateAccount = new CreateAccount
                                      {
@@ -107,8 +110,8 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                          Email = tEmail
                                      };
             var vRandomProvider = new Mock<IRandomProvider>();
-            
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vWebCommandFactory.Object,vRandomProvider.Object, vCreateAccount);
+
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
 
             var vResult = vCreateAccountCommand.Execute();
             Assert.AreEqual(eAccountCreationStatus.Success, vResult);
@@ -119,11 +122,12 @@ namespace RangoricMUD.Tests.Accounts.Commands
         {
             var vHashProvider = new Mock<IHashProvider>();
             var vDocumentStore = GetEmbeddedDatabase;
-            var vWebCommandFactory = new Mock<IWebCommandFactory>();
-            var vSendEmailCommand = new Mock<ISendEmailCommand<SendConfirmationModel>>();
-            vWebCommandFactory
-                .Setup(t => t.CreateSendEmailCommand(It.IsAny<SendEmailModel<SendConfirmationModel>>()))
-                .Returns(vSendEmailCommand.Object);
+            var vAccountCommandFactory = new Mock<IAccountCommandFactory>();
+            var vSendConfirmationCommand = new Mock<ISendConfirmationCommand>();
+            vAccountCommandFactory
+                .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
+                .Returns(vSendConfirmationCommand.Object);
+
             
             var vCreateAccount = new CreateAccount
                                      {
@@ -132,8 +136,8 @@ namespace RangoricMUD.Tests.Accounts.Commands
                                          Email = tEmail
                                      };
             var vRandomProvider = new Mock<IRandomProvider>();
-            
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vWebCommandFactory.Object,vRandomProvider.Object, vCreateAccount);
+
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
 
             vCreateAccountCommand.Execute();
             vHashProvider.Verify(t => t.Hash(tPassword));
@@ -145,11 +149,12 @@ namespace RangoricMUD.Tests.Accounts.Commands
             var vHashProvider = new Mock<IHashProvider>();
             var vDocumentStore = GetEmbeddedDatabase;
             var vRandomProvider = new Mock<IRandomProvider>();
-            var vWebCommandFactory = new Mock<IWebCommandFactory>();
-            var vSendEmailCommand = new Mock<ISendEmailCommand<SendConfirmationModel>>();
-            vWebCommandFactory
-                .Setup(t => t.CreateSendEmailCommand(It.IsAny<SendEmailModel<SendConfirmationModel>>()))
-                .Returns(vSendEmailCommand.Object);
+            var vAccountCommandFactory = new Mock<IAccountCommandFactory>();
+            var vSendConfirmationCommand = new Mock<ISendConfirmationCommand>();
+            vAccountCommandFactory
+                .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
+                .Returns(vSendConfirmationCommand.Object);
+
             
             var vCreateAccount = new CreateAccount
             {
@@ -158,11 +163,11 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 Email = tEmail
             };
 
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vWebCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
 
             vCreateAccountCommand.Execute();
 
-            vSendEmailCommand.Verify(t => t.Execute());
+            vSendConfirmationCommand.Verify(t => t.Execute());
 
         }
         [TestCase("ABC", "1234567890", "test@email.com")]
@@ -171,11 +176,11 @@ namespace RangoricMUD.Tests.Accounts.Commands
             var vHashProvider = new Mock<IHashProvider>();
             var vDocumentStore = GetEmbeddedDatabase;
             var vRandomProvider = new Mock<IRandomProvider>();
-            var vWebCommandFactory = new Mock<IWebCommandFactory>();
-            var vSendEmailCommand = new Mock<ISendEmailCommand<SendConfirmationModel>>();
-            vWebCommandFactory
-                .Setup(t => t.CreateSendEmailCommand(It.IsAny<SendEmailModel<SendConfirmationModel>>()))
-                .Returns(vSendEmailCommand.Object);
+            var vAccountCommandFactory = new Mock<IAccountCommandFactory>();
+            var vSendConfirmationCommand = new Mock<ISendConfirmationCommand>();
+            vAccountCommandFactory
+                .Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>()))
+                .Returns(vSendConfirmationCommand.Object);
 
             var vCreateAccount = new CreateAccount
             {
@@ -184,7 +189,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 Email = tEmail
             };
 
-            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vWebCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
+            var vCreateAccountCommand = new CreateAccountCommand(vDocumentStore, vHashProvider.Object, vAccountCommandFactory.Object, vRandomProvider.Object, vCreateAccount);
 
             vCreateAccountCommand.Execute();
 

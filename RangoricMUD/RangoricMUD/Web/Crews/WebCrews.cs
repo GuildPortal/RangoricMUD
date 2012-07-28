@@ -14,8 +14,8 @@ namespace RangoricMUD.Web.Crews
         {
             Add().OfInterface<IWebCommandFactory>().AsFactory();
             Add()
-                .OfInterface<ISendEmailCommand<SendConfirmationModel>>()
-                .WithImplementation<SendEmailCommand<SendConfirmationModel>>();
+                .OfInterface<ISendEmailCommand>()
+                .WithImplementation<SendEmailCommand>();
         }
     }
 }

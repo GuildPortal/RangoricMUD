@@ -17,6 +17,7 @@
 using Moq;
 using NUnit.Framework;
 using RangoricMUD.Accounts.Commands;
+using RangoricMUD.Accounts.Data;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Dice;
 using RangoricMUD.Games.Commands;
@@ -63,9 +64,9 @@ namespace RangoricMUD.Tests.Utilities
                                  Password = tPassword,
                                  Email = tEmail
                              };
-            var vFactory = new Mock<IWebCommandFactory>();
-            var vEmailCommand = new Mock<ISendEmailCommand<SendConfirmationModel>>();
-            vFactory.Setup(t => t.CreateSendEmailCommand(It.IsAny<SendEmailModel<SendConfirmationModel>>())).Returns(
+            var vFactory = new Mock<IAccountCommandFactory>();
+            var vEmailCommand = new Mock<ISendConfirmationCommand>();
+            vFactory.Setup(t => t.CreateSendConfirmationCommand(It.IsAny<Account>())).Returns(
                 vEmailCommand.Object);
             var vCommand = new CreateAccountCommand(tDocumentStore, new CustomHashProvider(),vFactory.Object , vRandom.Object, vModel);
             vCommand.Execute();

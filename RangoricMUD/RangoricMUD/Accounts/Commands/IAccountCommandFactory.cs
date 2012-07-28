@@ -14,6 +14,7 @@
 
 #region References
 
+using RangoricMUD.Accounts.Data;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Accounts.Queries;
 
@@ -26,6 +27,7 @@ namespace RangoricMUD.Accounts.Commands
         ICreateAccountCommand CreateCreateAccountCommand(CreateAccount tCreateAccount);
         ILoginAccountCommand CreateLoginAccountCommand(LoginAccount tLoginAccount);
         ICheckLoginQuery CreateCheckLoginQuery(string tConnectionID);
-        IConfirmAccountCommand CreateConfirmAccountCommand(ConfirmAccountPageModel tConfirmAccountPageModel);
+        IConfirmAccountCommand CreateConfirmAccountCommand(ConfirmAccountModel tConfirmAccountModel);
+        ISendConfirmationCommand CreateSendConfirmationCommand(Account tAccount);
     }
 }

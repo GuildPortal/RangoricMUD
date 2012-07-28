@@ -8,6 +8,6 @@ namespace RangoricMUD.Web.Commands
 {
     public interface IWebCommandFactory
     {
-        ISendEmailCommand<TType> CreateSendEmailCommand<TType>(SendEmailModel<TType> tSendEmailModel);
+        ISendEmailCommand CreateSendEmailCommand(SendEmailModel tSendEmailModel);
     }
 }

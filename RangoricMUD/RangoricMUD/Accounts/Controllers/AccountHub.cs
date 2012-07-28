@@ -1,20 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿#region License
+
+// RangoricMUD is licensed under the Open Game License.
+// The original code and assets provided in this repository are Open Game Content,
+// The name RangoricMUD is product identity, and can only be used as a part of the code,
+//   or in reference to this project.
+// 
+// More details and the full text of the license are available at:
+//   https://github.com/Rangoric/RangoricMUD/wiki/Open-Game-License
+// 
+// RangoricMUD's home is at: https://github.com/Rangoric/RangoricMUD
+
+#endregion
+
+#region References
+
 using System.Threading.Tasks;
-using System.Web;
 using RangoricMUD.Accounts.Commands;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Security;
 using RangoricMUD.Web;
 using SignalR.Hubs;
 
+#endregion
+
 namespace RangoricMUD.Accounts.Controllers
 {
     public class AccountHub : Hub
     {
-        private readonly ISignInPersistance mSignInPersistance;
         private readonly IAccountCommandFactory mAccountCommandFactory;
+        private readonly ISignInPersistance mSignInPersistance;
 
         public AccountHub(ISignInPersistance tSignInPersistance, IAccountCommandFactory tAccountCommandFactory)
         {
@@ -26,6 +40,7 @@ namespace RangoricMUD.Accounts.Controllers
         {
             mSignInPersistance.Logout(Context.ConnectionId);
         }
+
         public Task<bool> Login(LoginAccount tLoginAccount)
         {
             return Task.Factory.StartNew(() =>
@@ -36,7 +51,7 @@ namespace RangoricMUD.Accounts.Controllers
                                                      var vCommand =
                                                          mAccountCommandFactory.CreateLoginAccountCommand(tLoginAccount);
                                                      vResult = vCommand.Execute();
-                                                     if(vResult)
+                                                     if (vResult)
                                                      {
                                                          mSignInPersistance.Login(tLoginAccount.Name,
                                                                                   Context.ConnectionId);
@@ -44,7 +59,6 @@ namespace RangoricMUD.Accounts.Controllers
                                                  }
                                                  return vResult;
                                              });
-
         }
 
         public Task<eAccountCreationStatus> CreateAccount(CreateAccount tCreateAccount)
@@ -68,17 +82,23 @@ namespace RangoricMUD.Accounts.Controllers
                                              {
                                                  var vGood = false;
 
-                                                 if(ModelValidator.IsValid(tConfirmAccountPageModel))
+                                                 if (ModelValidator.IsValid(tConfirmAccountPageModel))
                                                  {
                                                      var vCommand =
                                                          mAccountCommandFactory.CreateLoginAccountCommand(
                                                              tConfirmAccountPageModel);
 
-                                                     if(vCommand.Execute())
+                                                     if (vCommand.Execute())
                                                      {
+                                                         var vModel = new ConfirmAccountModel
+                                                                          {
+                                                                              Name = tConfirmAccountPageModel.Name,
+                                                                              ConfirmationNumber =
+                                                                                  tConfirmAccountPageModel
+                                                                                  .ConfirmationNumber
+                                                                          };
                                                          var vConfirmCommand =
-                                                             mAccountCommandFactory.CreateConfirmAccountCommand(
-                                                                 tConfirmAccountPageModel);
+                                                             mAccountCommandFactory.CreateConfirmAccountCommand(vModel);
                                                          vGood = vConfirmCommand.Execute();
                                                      }
                                                  }

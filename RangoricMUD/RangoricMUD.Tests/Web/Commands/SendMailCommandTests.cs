@@ -10,8 +10,8 @@ namespace RangoricMUD.Tests.Web.Commands
         [Test]
         public void LeavesEmailInDropFolder()
         {
-            var vModel = new SendEmailModel<string> {View = "", ToAddress = "test@email.com", Data = "test"};
-            var vCommand = new SendEmailCommand<string>(vModel);
+            var vModel = new SendEmailModel {Body = "", ToAddress = "test@email.com", Subject = "test"};
+            var vCommand = new SendEmailCommand(vModel);
             vCommand.Execute();
         }
     }

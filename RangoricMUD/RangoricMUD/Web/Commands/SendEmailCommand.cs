@@ -4,29 +4,23 @@ using RangoricMUD.Web.Models;
 
 namespace RangoricMUD.Web.Commands
 {
-    public class SendEmailCommand<TType>:BaseCommand<bool>, ISendEmailCommand<TType>
+    public class SendEmailCommand:BaseCommand<bool>, ISendEmailCommand
     {
-        private readonly SendEmailModel<TType> mSendEmailModel;
+        private readonly SendEmailModel mSendEmailModel;
 
-        public SendEmailCommand(SendEmailModel<TType> tSendEmailModel)
+        public SendEmailCommand(SendEmailModel tSendEmailModel)
         {
             mSendEmailModel = tSendEmailModel;
         }
 
         public override bool Execute()
         {
-            var vBody = !string.IsNullOrWhiteSpace(mSendEmailModel.View)
-                            ? Extensions.RenderPartialToString(mSendEmailModel.View, mSendEmailModel.Data)
-                            : mSendEmailModel.Data.ToString();
-
-            const string vSubject = "Please confirm your new account";
-
             var vTo = mSendEmailModel.ToAddress;
             var vMessage = new MailMessage
                                {
                                    IsBodyHtml = true,
-                                   Body = vBody,
-                                   Subject = vSubject
+                                   Body = mSendEmailModel.Body,
+                                   Subject = mSendEmailModel.Subject
                                };
             vMessage.To.Add(vTo);
             var vClient = new SmtpClient();

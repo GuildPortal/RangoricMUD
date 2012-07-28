@@ -5,11 +5,10 @@ using System.Web;
 
 namespace RangoricMUD.Web.Models
 {
-    public class SendEmailModel<TType>
+    public class SendEmailModel
     {
-        public TType Data { get; set; }
-        public string View { get; set; }
-
+        public string Body { get; set; }
+        public string Subject { get; set; }
         public string ToAddress { get; set; }
     }
 }

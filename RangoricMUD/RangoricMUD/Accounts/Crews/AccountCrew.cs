@@ -34,6 +34,8 @@ namespace RangoricMUD.Accounts.Crews
             Add().OfInterface<ICreateAccountCommand>().WithImplementation<CreateAccountCommand>();
             Add().OfInterface<IAccountCommandFactory>().AsFactory();
             Add().OfInterface<ICheckLoginQuery>().WithImplementation<CheckLoginQuery>();
+            Add().OfInterface<ISendConfirmationCommand>().WithImplementation<SendConfirmationCommand>();
+            Add().OfInterface<IConfirmAccountCommand>().WithImplementation<ConfirmAccountCommand>();
         }
     }
 }
