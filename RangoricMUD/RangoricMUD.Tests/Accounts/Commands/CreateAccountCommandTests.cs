@@ -58,7 +58,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
 
             using (var vSession = vDocumentStore.OpenSession())
             {
-                var vAccount = vSession.Load<Account>(tName);
+                var vAccount = vSession.Load<Account>("Accounts/"+tName);
 
                 Assert.IsTrue(vAccount.Roles.Any(t => t == eRoles.Admin));
             }

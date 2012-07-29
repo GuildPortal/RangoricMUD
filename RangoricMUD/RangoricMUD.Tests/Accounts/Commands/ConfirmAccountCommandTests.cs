@@ -44,7 +44,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
 
             using (var vSession = vDataStore.OpenSession())
             {
-                var vAccount = vSession.Load<Account>(tName);
+                var vAccount = vSession.Load<Account>("Accounts/" + tName);
                 Assert.AreEqual(true, vAccount.IsConfirmed);
             }
         }
@@ -66,7 +66,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
 
             using (var vSession = vDataStore.OpenSession())
             {
-                var vAccount = vSession.Load<Account>(tName);
+                var vAccount = vSession.Load<Account>("Accounts/" + tName);
                 Assert.AreEqual(0, vAccount.ConfirmationNumber);
             }
         }

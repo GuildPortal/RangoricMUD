@@ -85,7 +85,7 @@ namespace RangoricMUD.Accounts.Commands
                 {
                     vAccount.Roles.Add(eRoles.Admin);
                 }
-                vSession.Store(vAccount, vAccount.Name);
+                vSession.Store(vAccount, "Accounts/" + vAccount.Name);
 
                 try
                 {

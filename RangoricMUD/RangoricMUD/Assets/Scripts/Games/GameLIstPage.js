@@ -1,11 +1,11 @@
-﻿ePages.GamePage = {};
+﻿ePages.GameListPage = {};
 
-function GamePage(tSettings) {
+function GameListPage(tSettings) {
     var vThis = this;
     vThis.AccountManager = tSettings.AccountManager;
     vThis.GameManager = tSettings.GameManager;
 
-    vThis.Page = ko.observable(ePages.GamePage);
+    vThis.Page = ko.observable(ePages.GameListPage);
     vThis.IsVisible = ko.computed(function () {
         return vThis.AccountManager.IsLoggedIn();
     });
@@ -16,10 +16,12 @@ function GamePage(tSettings) {
     });
 
     vThis.CreateGameName = ko.observable("");
+
+    vThis.GameList = vThis.GameManager.GameList;
 }
 
-GamePage.prototype = {
-    CreateGameSubmit: function () {
+GameListPage.prototype = {
+    SubmitCreateGame: function () {
         var vThis = this;
         var vData = {
             Name: vThis.CreateGameName()

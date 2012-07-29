@@ -45,7 +45,7 @@ namespace RangoricMUD.Games.Commands
 
                 var vGame = new Game {Name = mCreateGameModel.Name};
 
-                vSession.Store(vGame, vGame.Name);
+                vSession.Store(vGame, "Games/" + vGame.Name);
 
                 try
                 {

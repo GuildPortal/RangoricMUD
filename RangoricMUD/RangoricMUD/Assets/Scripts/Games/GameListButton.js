@@ -1,4 +1,4 @@
-﻿function GameButton(tSettings) {
+﻿function GameListButton(tSettings) {
     var vThis = this;
     vThis.AccountManager = tSettings.AccountManager;
     vThis.PageManager = tSettings.PageManager;
@@ -13,9 +13,9 @@
     vThis.DisplayText = ko.observable("Games");
 }
 
-GameButton.prototype = {
+GameListButton.prototype = {
     Click: function () {
         var vThis = this;
-        vThis.PageManager.ActivePage(ePages.GamePage);
+        vThis.PageManager.ActivePage(ePages.GameListPage);
     }
 }

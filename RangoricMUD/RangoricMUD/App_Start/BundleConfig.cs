@@ -53,8 +53,8 @@ namespace RangoricMUD.App_Start
                              "~/Assets/Scripts/Administration/AdminManager.js",
                              "~/Assets/Scripts/Administration/AdminButton.js",
                              "~/Assets/Scripts/Games/GameManager.js",
-                             "~/Assets/Scripts/Games/GamePage.js",
-                             "~/Assets/Scripts/Games/GameButton.js",
+                             "~/Assets/Scripts/Games/GameListPage.js",
+                             "~/Assets/Scripts/Games/GameListButton.js",
                              "~/Assets/Scripts/Startup.js");
 
             tBundleCollection.Add(vJavaScriptBundle);

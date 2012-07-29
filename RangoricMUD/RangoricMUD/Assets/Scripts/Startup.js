@@ -26,7 +26,7 @@ $(function () {
     vDependencies.PageManager =  new PageManager();
     ePages.LoginPage.ViewModel = new LoginPage(vDependencies);
     ePages.CreateAccount.ViewModel = new CreateAccountPage(vDependencies);
-    ePages.GamePage.ViewModel = new GamePage(vDependencies);
+    ePages.GameListPage.ViewModel = new GameListPage(vDependencies);
     ePages.ConfirmAccountPage.ViewModel = new ConfirmAccountPage(vDependencies);
 
     var vButtons = {};
@@ -42,7 +42,7 @@ $(function () {
     vButtons.Buttons.push(new AdminButton(vDependencies));
     
     //Game List Stuff
-    vButtons.Buttons.push(new GameButton(vDependencies));
+    vButtons.Buttons.push(new GameListButton(vDependencies));
     vDependencies.AccountManager.Start();
     vDependencies.GameManager.Start();
     

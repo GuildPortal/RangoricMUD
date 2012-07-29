@@ -14,7 +14,7 @@
     <RootNamespace>RangoricMUD</RootNamespace>
     <AssemblyName>RangoricMUD</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <MvcBuildViews>false</MvcBuildViews>
+    <MvcBuildViews>true</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -320,9 +320,9 @@
     <None Include="Assets\Scripts\Libraries\jquery.intellisense.js">
       <DependentUpon>jquery.js</DependentUpon>
     </None>
-    <Content Include="Assets\Scripts\Games\GameButton.js" />
+    <Content Include="Assets\Scripts\Games\GameListButton.js" />
     <Content Include="Assets\Scripts\Games\GameManager.js" />
-    <Content Include="Assets\Scripts\Games\GamePage.js" />
+    <Content Include="Assets\Scripts\Games\GameLIstPage.js" />
     <Content Include="Assets\Scripts\Libraries\jquery.js" />
     <Content Include="Assets\Scripts\Libraries\jquery.min.js">
       <DependentUpon>jquery.js</DependentUpon>
@@ -386,7 +386,7 @@
     <Content Include="Assets\Styles\Theme.less" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
-    <Content Include="Views\Games\GamePage.cshtml" />
+    <Content Include="Views\Games\GameListPage.cshtml" />
     <Content Include="Views\Accounts\ConfirmAccountPage.cshtml" />
   </ItemGroup>
   <ItemGroup>

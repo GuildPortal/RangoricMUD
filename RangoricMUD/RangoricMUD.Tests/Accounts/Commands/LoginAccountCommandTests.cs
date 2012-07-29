@@ -36,14 +36,12 @@ namespace RangoricMUD.Tests.Accounts.Commands
             public IDocumentStore DocumentStore;
             public LoginAccountCommand GoodLoginAccountCommand;
             public Mock<IHashProvider> HashProvider;
-            public Mock<ISignInPersistance> SignInPersistance;
         }
 
         private const string cName = "Name";
         private const string cEmail = "Email";
         private const string cPassword = "Password";
         private const string cHash = "Hash";
-        private const string cConnectionID = "ConnectionID";
 
         private TestObjects Setup()
         {
@@ -51,8 +49,6 @@ namespace RangoricMUD.Tests.Accounts.Commands
             vObjects.HashProvider = new Mock<IHashProvider>();
             vObjects.HashProvider.Setup(t => t.Hash(cPassword)).Returns(cHash);
             vObjects.HashProvider.Setup(t => t.CheckHash(cPassword, cHash)).Returns(true);
-
-            vObjects.SignInPersistance = new Mock<ISignInPersistance>();
 
             vObjects.DocumentStore = GetEmbeddedDatabase;
 

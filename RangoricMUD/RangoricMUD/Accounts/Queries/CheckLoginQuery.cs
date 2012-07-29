@@ -48,7 +48,7 @@ namespace RangoricMUD.Accounts.Queries
             Account vAccount;
             using (var vSession = mDocumentStore.OpenSession())
             {
-                vAccount = vSession.Load<Account>(vAccountName);
+                vAccount = vSession.Load<Account>("Accounts/" + vAccountName);
             }
             var vResult = new CheckLoginModel
                               {

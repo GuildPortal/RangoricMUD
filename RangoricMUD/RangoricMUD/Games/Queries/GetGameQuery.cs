@@ -43,7 +43,7 @@ namespace RangoricMUD.Games.Queries
 
                 using (var vSession = mDocumentStore.OpenSession())
                 {
-                    vResult = vSession.Load<Game>(mGetGameModel.Name);
+                    vResult = vSession.Load<Game>("Games/" + mGetGameModel.Name);
                 }
 
                 return vResult;

@@ -1,0 +1,19 @@
+﻿@model RangoricMUD.Games.Models.CreateGameModel
+<div class="GameListPage" data-bind="visible: Page() === ePages.GameListPage, if: Page() === ePages.GameListPage" >
+    <div data-bind="foreach: GameList">
+        <div data-bind="text: Name"></div>
+    </div>
+    <div>
+        <form data-bind="submit: SubmitCreateGame">
+             <fieldset>
+            <legend>Create a Game</legend>
+            @Html.LabelFor(t => t.Name)
+            @Html.TextBoxFor(t => t.Name, new {data_bind="value:CreateGameName"})
+            @Html.ValidationMessageFor(t => t.Name)
+            <div class="Buttons">
+                <button type="submit">Submit</button>
+            </div>
+        </fieldset>
+        </form>
+    </div>
+</div>

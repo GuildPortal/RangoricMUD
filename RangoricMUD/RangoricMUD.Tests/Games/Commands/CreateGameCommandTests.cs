@@ -38,10 +38,10 @@ namespace RangoricMUD.Tests.Games.Commands
             var vCommand = new CreateGameCommand(vDocumentStore, vModel);
             vCommand.Execute();
 
-            var vSession = vDocumentStore.OpenSession();
-            var vObjects = vSession.Query<Game>().Where(t => t.Name == tName);
-
-            Assert.AreEqual(1, vObjects.Count());
+            using(var vSession = vDocumentStore.OpenSession())
+            {
+                vSession.Load<Game>("Games/" + tName);
+            }
         }
 
         [TestCase("ABC")]

@@ -16,8 +16,19 @@ GameManager.prototype = {
             .createGame(tCreateGameModel)
             .done(function(tData) {
                 if(tData === 0) {
-                    //Creation Successful
+                    vThis.GetGame(tCreateGameModel.Name);
                 }
+            });
+    },
+    GetGame: function (tName) {
+        var vThis = this;
+        vThis.Hub
+            .getGame({ Name: tName })
+            .done(function(tGame) {
+                if(vThis.GameList.indexOf(tGame) >= 0) {
+                    vThis.GameList.remove(tGame);
+                }
+                vThis.GameList.push(tGame);
             });
     },
     GetGames: function () {
