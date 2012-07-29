@@ -12,8 +12,8 @@
 /// <reference path="~/Assets/Scripts/Administration/AdminManager.js"/>
 /// <reference path="~/Assets/Scripts/Administration/AdminButton.js"/>
 /// <reference path="~/Assets/Scripts/Games/GameManager.js"/>
-/// <reference path="~/Assets/Scripts/Games/GamePage.js"/>
-/// <reference path="~/Assets/Scripts/Games/GameButton.js"/>
+/// <reference path="~/Assets/Scripts/Games/GameListPage.js"/>
+/// <reference path="~/Assets/Scripts/Games/GameListButton.js"/>
 
 $(function () {
     var vDependencies = {

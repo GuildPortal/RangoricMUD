@@ -21,12 +21,15 @@ function GameListPage(tSettings) {
 }
 
 GameListPage.prototype = {
-    SubmitCreateGame: function () {
+    SubmitCreateGame: function (tForm) {
         var vThis = this;
-        var vData = {
-            Name: vThis.CreateGameName()
-        };
-        vThis.GameManager.CreateGame(vData);
+        var vForm = $(tForm);
+        if (vForm.valid()) {
+            var vData = {
+                Name: vThis.CreateGameName()
+            };
+            vThis.GameManager.CreateGame(vData);
+        }
     }
 };
 
