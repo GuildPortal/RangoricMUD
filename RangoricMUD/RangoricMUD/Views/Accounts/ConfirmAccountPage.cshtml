@@ -1,8 +1,8 @@
 ﻿@model RangoricMUD.Accounts.Models.ConfirmAccountPageModel
-<div class="ConfirmAccountPage" data-bind="visible: Page() === ePages.ConfirmAccountPage, if: Page() === ePages.ConfirmAccountPage">
+<div class="FormContainer" data-bind="visible: Page() === ePages.ConfirmAccountPage, if: Page() === ePages.ConfirmAccountPage">
     <form action="/" method="POST" data-bind="submit: Submit">
         <fieldset>
-            <legend>Please give your credentials and the Confirmation Number from the email</legend>
+            <legend>Confirm your account</legend>
 
             @Html.LabelFor(t => t.Name)
             @Html.TextBoxFor(t => t.Name, new {data_bind="value:Name"})
