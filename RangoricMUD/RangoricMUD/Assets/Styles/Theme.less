@@ -11,8 +11,8 @@
 @TextButtonSize: @BaseFontSize * 4;
 
 /* A Text Input is to be the width of 3 buttons and the margins between them */
-@TextInputWidth: @TextButtonSize * 3 + @BaseMargin;
 @TextInputBorder: @BaseMargin/2;
+@TextInputWidth: @TextButtonSize * 3 + @BaseMargin * 2;
 
 @PanelWidth: @BaseFontSize*20;
 @PanelHeight: @BaseFontSize*8;
@@ -55,45 +55,22 @@ h1 {
 }
 .Page {
 	position:absolute;
-	top:@TextButtonSize+@BaseMargin*2;
+	top:@TextButtonSize*1.5+@BaseMargin*2;
 	left:0px;
 	right:0px;
 	bottom:0px;
-	.LoginContainer	{
+	.FormContainer {
 		position:absolute;
-		right:0px;
+		right:0;
 		top:0px;
-		width:@TextInputWidth + @BaseMargin*4+@TextButtonSize;
-		height: @BaseFontSize*5+@BaseMargin*9.5;
+		width:@TextInputWidth + @BaseMargin*2;
 		label, legend,
 		input[type="text"],
 		input[type="password"]{
 			float:left;
 		}
-		.Buttons{
-			height:@TextButtonSize+@BaseMargin*2;
-			width:@TextButtonSize+@BaseMargin*2;
-			position:absolute;
-			bottom:0px;
-			right:0px;
-		}
-	}
-	.CreateAccountContainer {
-		position: absolute;
-		right:0px;
-		top:0px;
-		width:@TextInputWidth + @BaseMargin*4+@TextButtonSize;
-		label, legend,
-		input[type="text"],
-		input[type="password"]{
-			float:left;
-		}
-		.Buttons{
-			height:@TextButtonSize+@BaseMargin*2;
-			width:@TextButtonSize+@BaseMargin*2;
-			position:absolute;
-			bottom:0px;
-			right:0px;
+		button{
+			width:@TextInputWidth;
 		}
 	}
 }
@@ -107,9 +84,10 @@ button {
     width: @TextButtonSize;
     height: @TextButtonSize;
     line-height: @BaseFontSize;
-    margin: @BaseMargin;
+	margin-top: @BaseMargin;
+    margin-right: @BaseMargin;
     cursor: pointer;
-    float: left;
+    float: right;
 	padding:0px;
 }
 button:hover {
@@ -120,7 +98,7 @@ button:active {
 }
 input[type="text"],
 input[type="password"] {
-	width:@TextInputWidth;
+	width:@TextInputWidth - @TextInputBorder * 2;
 	margin:0 @BaseMargin @BaseMargin @BaseMargin;
 	font-size:@BaseFontSize;
 	border:@TextInputBorder solid @InteractionColor;

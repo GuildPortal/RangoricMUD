@@ -1,5 +1,5 @@
 ﻿@model RangoricMUD.Accounts.Models.LoginAccount
-<div class="LoginContainer" data-bind="visible: Page() === ePages.LoginPage, if: Page() === ePages.LoginPage">
+<div class="FormContainer" data-bind="visible: Page() === ePages.LoginPage, if: Page() === ePages.LoginPage">
     <form action="/" method="POST" data-bind="submit: Submit">
         <fieldset>
             <legend>Login to your account</legend>
@@ -12,9 +12,7 @@
             @Html.PasswordFor(t => t.Password, new {data_bind="value: Password"})
             @Html.ValidationMessageFor(t => t.Password)
 
-            <div class="Buttons">
-                <button type="submit">Submit</button>
-            </div>
+            <button type="submit">Submit</button>
         </fieldset>
     </form>
 </div>
