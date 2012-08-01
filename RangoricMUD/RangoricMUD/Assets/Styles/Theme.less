@@ -1,8 +1,8 @@
 
 @BackgroundColor: #afafff;
-@InteractionColor: #a020a0;
+@InteractionColor: #b030b0;
 @HighlightPercent: 5%;
-@TextInputBackground: lightness(@InteractionColor, @HighlightPercent*10);
+@TextInputBackground: lightness(@InteractionColor, @HighlightPercent*8);
 
 @BaseFontSize: 16px;
 
@@ -55,24 +55,26 @@ h1 {
 }
 .Page {
 	position:absolute;
-	top:@TextButtonSize*1.5+@BaseMargin*2;
+	top:@TextButtonSize+@BaseMargin*2;
 	left:0px;
 	right:0px;
 	bottom:0px;
 	.FormContainer {
 		position:absolute;
-		right:0px;
+		right:@BaseMargin;
 		top:0px;
 		padding:@BaseMargin;
-		width:@TextInputWidth + @BaseMargin*2;
+		width:@TextInputWidth;
 		background-color:lightness(@BackgroundColor, 0-@HighlightPercent);
 		label, legend,
 		input[type="text"],
 		input[type="password"]{
 			float:left;
+			margin-left:0px;
 		}
 		button{
 			width:@TextInputWidth;
+			margin-right:0px;
 		}
 	}
 }
@@ -110,12 +112,13 @@ input[type="password"] {
 input[type="text"]:focus,
 input[type="password"]:focus{
 	outline:none;
-	border:@TextInputBorder solid lightness(@InteractionColor, @HighlightPercent);
-	background-color: lightness(@TextInputBackground, @HighlightPercent);
+	border:@TextInputBorder solid lightness(@InteractionColor, @HighlightPercent*2);
+	background-color: lightness(@TextInputBackground, @HighlightPercent*2);
 }
 label{
 	margin:@BaseMargin @BaseMargin 0 @BaseMargin;
 }
+
 legend {
 	margin:@BaseMargin;
 }
@@ -126,12 +129,25 @@ legend {
 	margin: 0px auto;
 	.GameList {
 		.Game {
+			position:relative;
 			width:@TextButtonSize*5+@BaseMargin*4;
 			height:@TextButtonSize*3+@BaseMargin*2;
 			margin-left:@BaseMargin;
 			margin-bottom:@BaseMargin;
 			float:left;
 			background-color:lightness(@BackgroundColor, 0-@HighlightPercent);
+			button.Play{
+				position:absolute;
+				bottom:@BaseMargin;
+				right:@BaseMargin;
+				margin-right:0px;
+			}
+			button.Edit{
+				position:absolute;
+				bottom:@TextButtonSize+@BaseMargin*2;
+				right:@BaseMargin;
+				margin-right:0px;
+			}
 		}
 	}
 }
