@@ -61,9 +61,11 @@ h1 {
 	bottom:0px;
 	.FormContainer {
 		position:absolute;
-		right:0;
+		right:0px;
 		top:0px;
+		padding:@BaseMargin;
 		width:@TextInputWidth + @BaseMargin*2;
+		background-color:lightness(@BackgroundColor, 0-@HighlightPercent);
 		label, legend,
 		input[type="text"],
 		input[type="password"]{
@@ -121,14 +123,15 @@ legend {
     display: none;
 }
 .GameListPage{
-	width:@TextButtonSize*10+@BaseMargin*12;
 	margin: 0px auto;
 	.GameList {
-		width:@TextButtonSize*10+@BaseMargin*12;
-		div{
-			width:@TextButtonSize*5+@BaseMargin*6;
-			height:TextButtonSize*3+@BaseMargin*4;
+		.Game {
+			width:@TextButtonSize*5+@BaseMargin*4;
+			height:@TextButtonSize*3+@BaseMargin*2;
+			margin-left:@BaseMargin;
+			margin-bottom:@BaseMargin;
 			float:left;
+			background-color:lightness(@BackgroundColor, 0-@HighlightPercent);
 		}
 	}
 }
