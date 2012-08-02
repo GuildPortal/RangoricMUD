@@ -65,7 +65,7 @@ h1 {
 		top:0px;
 		padding:@BaseMargin;
 		width:@TextInputWidth;
-		background-color:lightness(@BackgroundColor, 0-@HighlightPercent);
+		background-color:lightness(@BackgroundColor, -@HighlightPercent/2);
 		label, legend,
 		input[type="text"],
 		input[type="password"]{
@@ -75,6 +75,7 @@ h1 {
 		button{
 			width:@TextInputWidth;
 			margin-right:0px;
+			float:left;
 		}
 	}
 }
