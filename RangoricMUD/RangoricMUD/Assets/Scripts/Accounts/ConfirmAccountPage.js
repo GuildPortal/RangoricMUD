@@ -11,6 +11,7 @@ function ConfirmAccountPage(tSettings) {
     vThis.Name = ko.observable("");
     vThis.Password = ko.observable("");
     vThis.ConfirmationNumber = ko.observable("");
+    vThis.Buttons = ko.observableArray();
 }
 
 ConfirmAccountPage.prototype = {

@@ -10,6 +10,7 @@ function LoginPage(tSettings) {
 
     vThis.Name = ko.observable("");
     vThis.Password = ko.observable("");
+    vThis.Buttons = ko.observableArray();
 }
 
 LoginPage.prototype = {

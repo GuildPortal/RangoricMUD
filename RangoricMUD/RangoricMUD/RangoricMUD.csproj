@@ -320,6 +320,7 @@
     <None Include="Assets\Scripts\Libraries\jquery.intellisense.js">
       <DependentUpon>jquery.js</DependentUpon>
     </None>
+    <Content Include="Assets\Scripts\Games\GameEditPage.js" />
     <Content Include="Assets\Scripts\Games\GameListButton.js" />
     <Content Include="Assets\Scripts\Games\GameManager.js" />
     <Content Include="Assets\Scripts\Games\GameLIstPage.js" />

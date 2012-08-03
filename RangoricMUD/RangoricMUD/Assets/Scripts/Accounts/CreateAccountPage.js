@@ -11,6 +11,7 @@ function CreateAccountPage(tSettings) {
     vThis.Name = ko.observable("");
     vThis.Password = ko.observable("");
     vThis.Email = ko.observable("");
+    vThis.Buttons = ko.observableArray();
 }
 
 CreateAccountPage.prototype = {

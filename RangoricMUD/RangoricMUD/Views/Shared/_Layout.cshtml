@@ -13,6 +13,9 @@
         <div id="Main-Menu" class="Menu" data-bind="foreach: Buttons">
             <button data-bind="text: DisplayText, visible: IsVisible, click: Click"></button>
         </div>
+        <div id="Sub-Menu" class="Sub-Menu" data-bind="foreach: Buttons">
+            <button data-bind="text: DisplayText, visible: IsVisible, click: Click"></button>
+        </div>
         @RenderBody()
 
     </body>

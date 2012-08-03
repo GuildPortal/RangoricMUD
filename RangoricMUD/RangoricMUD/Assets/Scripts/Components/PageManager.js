@@ -7,6 +7,7 @@ function HomePage() {
     vThis.IsVisible = ko.computed(function () {
         return true;
     });
+    vThis.Buttons = ko.observableArray();
 }
 
 ePages.HomePage.ViewModel = new HomePage();

@@ -1,5 +1,6 @@
 ﻿/// <reference path="~/Assets/Scripts/Libraries/jquery.js"/>
 /// <reference path="~/Assets/Scripts/Libraries/knockout.js"/>
+/// <reference path="~/Assets/Scripts/Components/Ajax.js"/>
 /// <reference path="~/Assets/Scripts/Components/Button.js"/>
 /// <reference path="~/Assets/Scripts/Components/PageManager.js"/>
 /// <reference path="~/Assets/Scripts/Accounts/AccountManager.js"/>
@@ -14,6 +15,7 @@
 /// <reference path="~/Assets/Scripts/Games/GameManager.js"/>
 /// <reference path="~/Assets/Scripts/Games/GameListPage.js"/>
 /// <reference path="~/Assets/Scripts/Games/GameListButton.js"/>
+/// <reference path="~/Assets/Scripts/Games/GameEditPage.js"/>
 
 $(function () {
     var vDependencies = {
@@ -28,6 +30,7 @@ $(function () {
     ePages.CreateAccount.ViewModel = new CreateAccountPage(vDependencies);
     ePages.GameListPage.ViewModel = new GameListPage(vDependencies);
     ePages.ConfirmAccountPage.ViewModel = new ConfirmAccountPage(vDependencies);
+    ePages.GameEditPage.ViewModel = new GameEditPage(vDependencies);
 
     var vButtons = {};
     vButtons.Buttons = ko.observableArray();
@@ -49,5 +52,7 @@ $(function () {
     $.connection.hub.start();
 
     ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);
+    
     ko.applyBindings(vDependencies.PageManager.Page, $('.Page').get()[0]);
+    ko.applyBindings(vDependencies.PageManager.Page, $('#Sub-Menu').get()[0]);
 })

@@ -4,6 +4,7 @@ function GameListPage(tSettings) {
     var vThis = this;
     vThis.AccountManager = tSettings.AccountManager;
     vThis.GameManager = tSettings.GameManager;
+    vThis.PageManager = tSettings.PageManager;
 
     vThis.Page = ko.observable(ePages.GameListPage);
     vThis.IsVisible = ko.computed(function () {
@@ -18,6 +19,7 @@ function GameListPage(tSettings) {
     vThis.CreateGameName = ko.observable("");
 
     vThis.GameList = vThis.GameManager.GameList;
+    vThis.Buttons = ko.observableArray();
 }
 
 GameListPage.prototype = {
@@ -30,6 +32,13 @@ GameListPage.prototype = {
             };
             vThis.GameManager.CreateGame(vData);
         }
+    },
+    GoEditGame:function(tName) {
+        var vThis = this;
+        return function() {
+            vThis.PageManager.ActivePage(ePages.GameEditPage);
+            ePages.GameEditPage.ViewModel.StartEditing(tName);
+        };
     }
 };
 

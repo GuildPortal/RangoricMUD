@@ -28,7 +28,7 @@ GameManager.prototype = {
                 if(vThis.GameList.indexOf(tGame) >= 0) {
                     vThis.GameList.remove(tGame);
                 }
-                vThis.GameList.push(tGame);
+                vThis.AddGame(tGame);
             });
     },
     GetGames: function () {
@@ -37,9 +37,14 @@ GameManager.prototype = {
             .getAll()
             .done(function (tList) {
                 vThis.GameList.removeAll();
-                for(var vIndex = 0;vIndex < tList.length;vIndex++) {
-                    vThis.GameList.push(tList[vIndex]);
+                for (var vIndex = 0; vIndex < tList.length; vIndex++) {
+                    var vItem = tList[vIndex];
+                    vThis.AddGame(vItem);
                 }
             });
+    },
+    AddGame:function (tGame) {
+        var vThis = this;
+        vThis.GameList.push(tGame);
     }
 }

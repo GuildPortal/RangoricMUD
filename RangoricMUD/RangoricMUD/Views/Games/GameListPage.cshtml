@@ -4,7 +4,7 @@
         <div class="Game">
             <div data-bind="text: Name"></div>
             <button class="Play">Play</button>
-            <button class="Edit">Edit</button>
+            <button class="Edit" data-bind="click: $parent.GoEditGame(Name)">Edit</button>
         </div>
     </div>
     <div class="GameList">
