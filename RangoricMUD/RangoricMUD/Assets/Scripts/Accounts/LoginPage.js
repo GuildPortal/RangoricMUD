@@ -1,6 +1,4 @@
-﻿ePages.LoginPage = {};
-
-function LoginPage(tSettings) {
+﻿function LoginPage(tSettings) {
     var vThis = this;
     vThis.AccountManager = tSettings.AccountManager;
     vThis.Page = ko.observable(ePages.LoginPage);

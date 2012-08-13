@@ -1,5 +1,4 @@
-﻿ePages.GameEditPage = {};
-function GameEditPage(tDependencies) {
+﻿function GameEditPage(tDependencies) {
     var vThis = this;
     vThis.AccountManager = tDependencies.AccountManager;
     vThis.Page = ko.observable(ePages.GameEditPage);

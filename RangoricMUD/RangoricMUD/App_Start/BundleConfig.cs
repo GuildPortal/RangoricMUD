@@ -38,25 +38,13 @@ namespace RangoricMUD.App_Start
                              "~/Assets/Scripts/Libraries/jquery.validate.unobtrusive.js",
                              "~/Assets/Scripts/Libraries/jquery.signalR.js",
                              "~/Assets/Scripts/Libraries/jquery.signalR.hubs.js",
-                             "~/Assets/Scripts/Libraries/knockout.js",
-                             "~/Assets/Scripts/Settings/Urls.js",
-                             "~/Assets/Scripts/Components/Button.js",
-                             "~/Assets/Scripts/Components/Ajax.js",
-                             "~/Assets/Scripts/Components/PageManager.js",
-                             "~/Assets/Scripts/Accounts/AccountManager.js",
-                             "~/Assets/Scripts/Accounts/LoginPage.js",
-                             "~/Assets/Scripts/Accounts/LoginButton.js",
-                             "~/Assets/Scripts/Accounts/CreateAccountPage.js",
-                             "~/Assets/Scripts/Accounts/CreateAccountButton.js",
-                             "~/Assets/Scripts/Accounts/ConfirmAccountPage.js",
-                             "~/Assets/Scripts/Accounts/ConfirmAccountButton.js",
-                             "~/Assets/Scripts/Administration/AdminManager.js",
-                             "~/Assets/Scripts/Administration/AdminButton.js",
-                             "~/Assets/Scripts/Games/GameManager.js",
-                             "~/Assets/Scripts/Games/GameListPage.js",
-                             "~/Assets/Scripts/Games/GameListButton.js",
-                             "~/Assets/Scripts/Games/GameEditPage.js",
-                             "~/Assets/Scripts/Startup.js");
+                             "~/Assets/Scripts/Libraries/knockout.js")
+                    .IncludeDirectory("~/Assets/Scripts/Components/", "*.js")
+                    .IncludeDirectory("~/Assets/Scripts/Pages/", "*.js")
+                    .IncludeDirectory("~/Assets/Scripts/Accounts/", "*.js")
+                    .IncludeDirectory("~/Assets/Scripts/Administration/", "*.js")
+                    .IncludeDirectory("~/Assets/Scripts/Games/", "*.js")
+                    .Include("~/Assets/Scripts/Startup/Startup.js");
 
             tBundleCollection.Add(vJavaScriptBundle);
         }

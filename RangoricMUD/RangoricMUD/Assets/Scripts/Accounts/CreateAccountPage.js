@@ -1,6 +1,4 @@
-﻿ePages.CreateAccount = {};
-
-function CreateAccountPage(tSettings) {
+﻿function CreateAccountPage(tSettings) {
     var vThis = this;
     vThis.AccountManager = tSettings.AccountManager;
     vThis.Page = ko.observable(ePages.CreateAccount);

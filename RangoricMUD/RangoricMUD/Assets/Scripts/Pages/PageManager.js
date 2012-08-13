@@ -1,20 +1,7 @@
-﻿var ePages = { };
-ePages.HomePage = { };
-
-function HomePage() {
+﻿function PageManager() {
     var vThis = this;
-    vThis.Page = ko.observable(ePages.HomePage);
-    vThis.IsVisible = ko.computed(function () {
-        return true;
-    });
-    vThis.Buttons = ko.observableArray();
-}
-
-ePages.HomePage.ViewModel = new HomePage();
-
-function PageManager() {
-    var vThis = this;
-    vThis.Page = ko.observable(ePages.HomePage.ViewModel);
+    vThis.PageElement = $(".Page");
+    vThis.Page = ko.observable();
     vThis.ActivePage = ko.computed({
         read: function () {
             return vThis.Page();
@@ -29,7 +16,7 @@ function PageManager() {
                     vThis.ActivePage(ePages.HomePage);
                 }
             });
-            jQuery.validator.unobtrusive.parse($(".Page"));
+            jQuery.validator.unobtrusive.parse(vThis.PageElement);
         },
         owner: vThis
     });
@@ -37,6 +24,7 @@ function PageManager() {
 
 PageManager.prototype = {
     Start: function () {
-        
+        var vThis = this;
+        vThis.ActivePage(ePages.HomePage);
     }
 }

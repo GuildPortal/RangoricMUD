@@ -1,6 +1,4 @@
-﻿ePages.GameListPage = {};
-
-function GameListPage(tSettings) {
+﻿function GameListPage(tSettings) {
     var vThis = this;
     vThis.AccountManager = tSettings.AccountManager;
     vThis.GameManager = tSettings.GameManager;

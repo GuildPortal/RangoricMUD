@@ -1,6 +1,4 @@
-﻿ePages.ConfirmAccountPage = {};
-
-function ConfirmAccountPage(tSettings) {
+﻿function ConfirmAccountPage(tSettings) {
     var vThis = this;
     vThis.AccountManager = tSettings.AccountManager;
     vThis.Page = ko.observable(ePages.ConfirmAccountPage);
