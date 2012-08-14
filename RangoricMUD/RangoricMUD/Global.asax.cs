@@ -28,7 +28,6 @@ using RangoricMUD.Web.Crews;
 using Raven.Client.Embedded;
 using SignalR;
 using SignalR.Hubs;
-using StackExchange.Profiling;
 
 #endregion
 
@@ -57,15 +56,11 @@ namespace RangoricMUD
 
         protected void Application_BeginRequest()
         {
-            if (!Request.Url.OriginalString.Contains("signalr"))
-            {
-                MiniProfiler.Start();
-            }
+
         }
 
         protected void Application_EndRequest()
         {
-            MiniProfiler.Stop(false);
         }
 
         private void Start()
@@ -76,7 +71,6 @@ namespace RangoricMUD
                              };
             vStore.Initialize();
 
-            MvcMiniProfiler.RavenDb.Profiler.AttachTo(vStore);
             mShip = new WindsorShip();
             mShip.Crew.Add(new DiceCrew());
             mShip.Crew.Add(new SecurityCrew());
