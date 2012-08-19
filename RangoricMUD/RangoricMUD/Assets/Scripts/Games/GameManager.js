@@ -3,6 +3,11 @@
     vThis.Connection = tSettings.Connection;
 
     vThis.GameList = ko.observableArray();
+    tSettings.AccountManager.IsLoggedIn.subscribe(function(tData) {
+        if (tData) {
+            vThis.GetGames();
+        }
+    });
 }
 
 GameManager.prototype = {

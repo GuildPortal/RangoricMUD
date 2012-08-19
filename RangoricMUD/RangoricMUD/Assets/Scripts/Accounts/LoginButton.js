@@ -16,6 +16,6 @@
 LoginButton.prototype = {
     Click: function () {
         var vThis = this;
-        vThis.PageManager.ActivePage(ePages.LoginPage);
+        vThis.PageManager.GoToPage("Accounts", "Login");
     }
 }

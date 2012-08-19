@@ -1,20 +1,22 @@
 ﻿@model RangoricMUD.Accounts.Models.CreateAccount
-<div class="FormContainer" data-bind="visible: Page() === ePages.CreateAccount, if: Page() === ePages.CreateAccount">
-    <form action="/" method="POST" data-bind="submit: Submit">
-        <fieldset>
-            <legend>Create your account</legend>
-            @Html.LabelFor(t => t.Name)
-            @Html.TextBoxFor(t => t.Name, new {data_bind="value:Name"})
-            @Html.ValidationMessageFor(t => t.Name)
-            @Html.LabelFor(t => t.Password)
-            @Html.PasswordFor(t => t.Password, new {data_bind="value: Password"})
-            @Html.ValidationMessageFor(t => t.Password)
-            @Html.LabelFor(t => t.Email)
-            @Html.TextBoxFor(t => t.Email, new {data_bind="value: Email"})
-            @Html.ValidationMessageFor(t => t.Email)
-            <div class="Buttons">
-                <button type="submit">Submit</button>
-            </div>
-        </fieldset>
-    </form>
+<div data-bind="if: Page() === 'Accounts/Create'">
+    <div class="FormContainer" data-bind="visible: Page() === 'Accounts/Create'">
+        <form action="/" method="POST" data-bind="submit: Submit">
+            <fieldset>
+                <legend>Create your account</legend>
+                @Html.LabelFor(t => t.Name)
+                @Html.TextBoxFor(t => t.Name, new {data_bind = "value:Name"})
+                @Html.ValidationMessageFor(t => t.Name)
+                @Html.LabelFor(t => t.Password)
+                @Html.PasswordFor(t => t.Password, new {data_bind = "value: Password"})
+                @Html.ValidationMessageFor(t => t.Password)
+                @Html.LabelFor(t => t.Email)
+                @Html.TextBoxFor(t => t.Email, new {data_bind = "value: Email"})
+                @Html.ValidationMessageFor(t => t.Email)
+                <div class="Buttons">
+                    <button type="submit">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>

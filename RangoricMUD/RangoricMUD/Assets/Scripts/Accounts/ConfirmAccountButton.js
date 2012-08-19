@@ -19,6 +19,6 @@
 ConfirmAccountButton.prototype = {
     Click: function () {
         var vThis = this;
-        vThis.PageManager.ActivePage(ePages.ConfirmAccountPage);
+        vThis.PageManager.GoToPage("Accounts", "Confirm");
     }
 }

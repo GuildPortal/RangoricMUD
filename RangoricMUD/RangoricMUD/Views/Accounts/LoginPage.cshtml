@@ -1,18 +1,20 @@
 ﻿@model RangoricMUD.Accounts.Models.LoginAccount
-<div class="FormContainer" data-bind="visible: Page() === ePages.LoginPage, if: Page() === ePages.LoginPage">
-    <form action="/" method="POST" data-bind="submit: Submit">
-        <fieldset>
-            <legend>Login to your account</legend>
+<div data-bind="if:Page() === 'Accounts/Login'">
+    <div class="FormContainer" data-bind="visible: IsVisible">
+        <form action="/" method="POST" data-bind="submit: Submit">
+            <fieldset>
+                <legend>Login to your account</legend>
 
-            @Html.LabelFor(t => t.Name)
-            @Html.TextBoxFor(t => t.Name, new {data_bind="value:Name"})
-            @Html.ValidationMessageFor(t => t.Name)
+                @Html.LabelFor(t => t.Name)
+                @Html.TextBoxFor(t => t.Name, new {data_bind = "value:Name"})
+                @Html.ValidationMessageFor(t => t.Name)
 
-            @Html.LabelFor(t => t.Password)
-            @Html.PasswordFor(t => t.Password, new {data_bind="value: Password"})
-            @Html.ValidationMessageFor(t => t.Password)
+                @Html.LabelFor(t => t.Password)
+                @Html.PasswordFor(t => t.Password, new {data_bind = "value: Password"})
+                @Html.ValidationMessageFor(t => t.Password)
 
-            <button type="submit">Submit</button>
-        </fieldset>
-    </form>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+    </div>
 </div>

@@ -16,6 +16,6 @@
 CreateAccountButton.prototype = {
     Click: function () {
         var vThis = this;
-        vThis.PageManager.ActivePage(ePages.CreateAccount);
+        vThis.PageManager.GoToPage("Accounts/Create");
     }
 }

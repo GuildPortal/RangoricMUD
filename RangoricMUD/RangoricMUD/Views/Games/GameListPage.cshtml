@@ -1,10 +1,11 @@
 ﻿@model RangoricMUD.Games.Models.CreateGameModel
-<div class="GameListPage" data-bind="visible: Page() === ePages.GameListPage, if: Page() === ePages.GameListPage" >
-    <div class="GameList" data-bind="foreach: GameList">
+<div data-bind="if: Page() === 'Games/List'">
+<div class="GameListPage" data-bind="visible: IsVisible" >
+    <div class="GameList" data-bind="foreach: List">
         <div class="Game">
             <div data-bind="text: Name"></div>
             <button class="Play">Play</button>
-            <button class="Edit" data-bind="click: $parent.GoEditGame(Name)">Edit</button>
+            <button class="Edit" data-bind="click: $parent.GoEdit(Name)">Edit</button>
         </div>
     </div>
     <div class="GameList">
@@ -13,7 +14,7 @@
                 <fieldset>
                     <legend></legend>
                     @Html.LabelFor(t => t.Name)
-                    @Html.TextBoxFor(t => t.Name, new {data_bind="value:CreateGameName"})
+                    @Html.TextBoxFor(t => t.Name, new {data_bind="value:Name"})
                     @Html.ValidationMessageFor(t => t.Name)
                     <button type="submit">Create</button>
                 </fieldset>
@@ -21,3 +22,4 @@
         </div>
     </div>
 </div>
+    </div>

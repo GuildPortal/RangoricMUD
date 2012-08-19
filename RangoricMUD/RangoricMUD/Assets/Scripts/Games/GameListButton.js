@@ -16,6 +16,6 @@
 GameListButton.prototype = {
     Click: function () {
         var vThis = this;
-        vThis.PageManager.ActivePage(ePages.GameListPage);
+        vThis.PageManager.GoToPage("Games", "List");
     }
 }
