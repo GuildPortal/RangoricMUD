@@ -319,6 +319,7 @@
     <Content Include="Assets\Scripts\Components\Controllers.js" />
     <Content Include="Assets\Scripts\Components\HashChange.js" />
     <Content Include="Assets\Scripts\Games\GamesController.js" />
+    <Content Include="Assets\Scripts\Games\PlayController.js" />
     <Content Include="Assets\Scripts\Pages\HomeController.js" />
     <Content Include="Assets\Scripts\Pages\HomePage.js" />
     <Content Include="Assets\Scripts\Pages\PageManager.js" />
@@ -392,6 +393,7 @@
     <Content Include="Views\Home\Homepage.cshtml" />
     <Content Include="Views\Games\GameListPage.cshtml" />
     <Content Include="Views\Accounts\ConfirmAccountPage.cshtml" />
+    <Content Include="Views\Games\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
