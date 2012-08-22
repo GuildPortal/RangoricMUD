@@ -303,10 +303,6 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Content Include="..\packages\RavenDB.Embedded.1.2.2064-Unstable\tools\Raven.Studio.xap">
-      <Link>Raven.Studio.xap</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\Scripts\Accounts\AccountManager.js" />
     <Content Include="Assets\Scripts\Accounts\AccountsController.js" />
     <Content Include="Assets\Scripts\Accounts\ConfirmAccountButton.js" />
