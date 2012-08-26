@@ -7,7 +7,7 @@
                     return tDependencies.AccountManager.IsLoggedIn();
                 }),
                 Name: ko.observable(""),
-                List: tDependencies.GameManager.GameList(),
+                List: tDependencies.GameManager.GameList,
                 SubmitCreateGame: function(tForm) {
                     var vThisAction = this;
                     var vForm = $(tForm);
@@ -21,6 +21,11 @@
                 GoEdit: function(tName) {
                     return function() {
                         tDependencies.PageManager.GoToPage("Games", "Edit", tName);
+                    };
+                },
+                GoPlay: function (tName) {
+                    return function() {
+                        tDependencies.PageManager.GoToPage("Play", "Start", tName);
                     };
                 }
             };

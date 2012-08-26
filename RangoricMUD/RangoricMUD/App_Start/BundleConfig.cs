@@ -31,7 +31,7 @@ namespace RangoricMUD.App_Start
 
             tBundleCollection.Add(vCssBundle);
 
-            var vJavaScriptBundle =
+            var vLibraryScriptBundle =
                 new ScriptBundle("~/Assets/Scripts")
                     .Include("~/Assets/Scripts/Libraries/jquery.js",
                              "~/Assets/Scripts/Libraries/jquery.validate.js",
@@ -46,7 +46,7 @@ namespace RangoricMUD.App_Start
                     .IncludeDirectory("~/Assets/Scripts/Games/", "*.js")
                     .Include("~/Assets/Scripts/Startup/Startup.js");
 
-            tBundleCollection.Add(vJavaScriptBundle);
+            tBundleCollection.Add(vLibraryScriptBundle);
         }
     }
 }

@@ -12,17 +12,17 @@
 /// <reference path="Scripts/jquery-1.6.2.js" />
 (function ($, window) {
     "use strict";
-
+    
     if (typeof ($) !== "function") {
         // no jQuery!
         throw "SignalR: jQuery not found. Please ensure jQuery is referenced before the SignalR.js file.";
     }
-
+    
     if (!window.JSON) {
         // no JSON!
         throw "SignalR: No JSON parser found. Please ensure json2.js is referenced before the SignalR.js file if you need to support clients without native JSON parsing support, e.g. IE<8.";
     }
-
+    
     var signalR,
         _connection,
         _pageLoaded = false,
@@ -100,7 +100,7 @@
 
         return new signalR.fn.init(url, qs, logging);
     };
-
+    
     signalR.events = events;
 
     signalR.changeState = changeState;
@@ -113,7 +113,7 @@
         reconnecting: 2,
         disconnected: 4
     };
-
+    
     signalR.hub = {
         start: function () {
             // This will get replaced with the real hub connection start method when hubs is referenced correctly
@@ -152,7 +152,7 @@
                 },
                 initialize,
                 deferred = connection.deferral || $.Deferred(),// Check to see if there is a pre-existing deferral that's being built on, if so we want to keep using it
-                parser = window.document.createElement("a");
+                parser = window.document.createElement("a");            
 
             if ($.type(options) === "function") {
                 // Support calling with single callback parameter
@@ -322,7 +322,7 @@
                         });
                     } else if ($.type(config.transport) === "object" ||
                                     $.inArray(config.transport, supportedTransports) >= 0) {
-                        // specific transport provided, as object or a named transport, e.g. "longPolling"
+                            // specific transport provided, as object or a named transport, e.g. "longPolling"
                         transports.push(config.transport);
                     } else { // default "auto"
                         transports = supportedTransports;
@@ -718,8 +718,8 @@
                         return;
                     }
                     else if (typeof event.wasClean !== "undefined" && event.wasClean === false) {
-                        // Ideally this would use the websocket.onerror handler (rather than checking wasClean in onclose) but
-                        // I found in some circumstances Chrome won't call onerror. This implementation seems to work on all browsers.
+                            // Ideally this would use the websocket.onerror handler (rather than checking wasClean in onclose) but
+                            // I found in some circumstances Chrome won't call onerror. This implementation seems to work on all browsers.
                         $(connection).trigger(events.onError, [event.reason]);
                         connection.log("Unclean disconnect from websocket." + event.reason);
                     }
@@ -1139,14 +1139,14 @@
             /// <param name="connection" type="signalR">The SignalR connection to start</param>
             var that = this,
                 initialConnectFired = false;
-
+            
             if (connection.pollXhr) {
                 connection.log("Polling xhr requests already exists, aborting.");
                 connection.stop();
             }
-
+            
             connection.messageId = null;
-
+            
             window.setTimeout(function () {
                 (function poll(instance, raiseReconnect) {
                     $(instance).trigger(events.onSending);
@@ -1414,7 +1414,7 @@
         var settings = {
             qs: null,
             logging: false,
-            useDefaultPath: true
+            useDefaultPath : true
         };
 
         $.extend(settings, options);
@@ -1429,10 +1429,10 @@
 
     hubConnection.fn.init = function (url, options) {
         var settings = {
-            qs: null,
-            logging: false,
-            useDefaultPath: true
-        },
+                qs: null,
+                logging: false,
+                useDefaultPath: true
+            },
             connection = this;
 
         $.extend(settings, options);
@@ -1484,7 +1484,7 @@
                 // Normalize the names to lowercase
                 hubName = data.Hub.toLowerCase();
                 eventName = data.Method.toLowerCase();
-
+                
                 // Trigger the local invocation event
                 proxy = this.proxies[hubName];
 
@@ -1519,4 +1519,4 @@
 
     $.hubConnection = hubConnection;
 
-}(window.jQuery, window));
+} (window.jQuery, window));
