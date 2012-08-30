@@ -25,7 +25,13 @@ namespace RangoricMUD.Tests.Web.Commands
     [TestFixture]
     public class SendMailCommandTests
     {
+        /// <summary>
+        /// Makes sure we can correctly use the app.config to send email.
+        ///     The app.config in this case, uses a drop folder.
+        /// Ignore normally, as it's an integration test.
+        /// </summary>
         [Test]
+        [Ignore]
         public void LeavesEmailInDropFolder()
         {
             var vModel = new SendEmailModel {Body = "", ToAddress = "test@email.com", Subject = "test"};
