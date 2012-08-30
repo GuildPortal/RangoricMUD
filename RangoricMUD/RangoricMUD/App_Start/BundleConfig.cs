@@ -25,14 +25,14 @@ namespace RangoricMUD.App_Start
         public static void RegisterBundles(BundleCollection tBundleCollection)
         {
             var vCssBundle =
-                new Bundle("~/Assets/Styles", new LessMinify())
+                new Bundle("~/Assets/Styles/AllStyles", new LessMinify())
                     .Include("~/Assets/Styles/Reset.less",
                              "~/Assets/Styles/Theme.less");
 
             tBundleCollection.Add(vCssBundle);
 
             var vLibraryScriptBundle =
-                new ScriptBundle("~/Assets/Scripts")
+                new ScriptBundle("~/Assets/Scripts/AllScripts")
                     .Include("~/Assets/Scripts/Libraries/jquery.js",
                              "~/Assets/Scripts/Libraries/jquery.validate.js",
                              "~/Assets/Scripts/Libraries/jquery.validate.unobtrusive.js",
