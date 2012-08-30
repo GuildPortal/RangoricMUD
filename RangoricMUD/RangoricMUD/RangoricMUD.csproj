@@ -445,6 +445,6 @@
   <Target Name="AfterBuild">
   </Target> -->
   <Target Name="BeforeBuild">
-    <Exec Command="..\..\Tools\hubify.exe /o:..\Assets\Scripts\Libraries\jquery.signalR.hubs.js" WorkingDirectory="$(TargetDir)" />
+    <Exec Command="Tools\hubify.exe /o:RangoricMUD\Assets\Scripts\Libraries\jquery.signalR.hubs.js" WorkingDirectory="$(SolutionDir)" />
   </Target>
 </Project>
