@@ -293,6 +293,7 @@
     <Compile Include="Security\IHashProvider.cs" />
     <Compile Include="Security\ISignInPersistance.cs" />
     <Compile Include="Security\SignInPersistance.cs" />
+    <Compile Include="ServerStatus\Controllers\ServerStatusHub.cs" />
     <Compile Include="Web\Commands\ISendEmailCommand.cs" />
     <Compile Include="Web\Commands\IWebCommandFactory.cs" />
     <Compile Include="Web\Commands\SendEmailCommand.cs" />
@@ -348,6 +349,7 @@
     </Content>
     <Content Include="Assets\Scripts\Libraries\knockout.js" />
     <Content Include="Assets\Scripts\Components\Urls.js" />
+    <Content Include="Assets\Scripts\Pages\ServerStatusManager.js" />
     <Content Include="Assets\Scripts\Startup\Startup.js" />
     <Content Include="Assets\Scripts\UnitTesting\Accounts\AccountManagerTests.js" />
     <Content Include="Content\qunit.css" />
