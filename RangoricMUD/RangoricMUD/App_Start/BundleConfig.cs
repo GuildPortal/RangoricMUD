@@ -44,6 +44,7 @@ namespace RangoricMUD.App_Start
                     .IncludeDirectory("~/Assets/Scripts/Accounts/", "*.js")
                     .IncludeDirectory("~/Assets/Scripts/Administration/", "*.js")
                     .IncludeDirectory("~/Assets/Scripts/Games/", "*.js")
+                    .IncludeDirectory("~/Assets/Scripts/Characters/", "*.js")
                     .Include("~/Assets/Scripts/Startup/Startup.js");
 
             tBundleCollection.Add(vLibraryScriptBundle);
