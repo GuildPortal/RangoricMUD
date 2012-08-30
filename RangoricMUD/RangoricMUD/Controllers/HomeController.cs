@@ -23,6 +23,7 @@ namespace RangoricMUD.Controllers
 {
     public class HomeController : BaseController
     {
+        [OutputCache(Duration = 3600)]
         public ViewResult Index()
         {
             return View("Index", new IndexModel());
