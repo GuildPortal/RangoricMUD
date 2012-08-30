@@ -67,7 +67,7 @@ namespace RangoricMUD
         {
             var vStore = new EmbeddableDocumentStore
                              {
-                                 ConnectionStringName = "RavenDB"
+                                 ConnectionStringName = "RAVENHQ_CONNECTION_STRING"
                              };
             vStore.Initialize();
 
