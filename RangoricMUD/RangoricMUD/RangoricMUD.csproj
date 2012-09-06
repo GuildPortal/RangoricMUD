@@ -442,13 +442,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target> -->
-  <Target Name="BeforeBuild">
+  <Target Name="BeforeBuild" Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <Exec Command="Tools\hubify.exe /o:RangoricMUD\Assets\Scripts\Libraries\jquery.signalR.hubs.js" WorkingDirectory="$(SolutionDir)" />
   </Target>
 </Project>
