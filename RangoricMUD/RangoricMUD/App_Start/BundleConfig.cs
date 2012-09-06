@@ -32,13 +32,15 @@ namespace RangoricMUD.App_Start
             tBundleCollection.Add(vCssBundle);
 
             var vLibraryScriptBundle =
-                new ScriptBundle("~/Assets/Scripts/AllScripts")
+                new ScriptBundle("~/Assets/Scripts/LibraryScripts")
                     .Include("~/Assets/Scripts/Libraries/jquery.js",
                              "~/Assets/Scripts/Libraries/jquery.validate.js",
                              "~/Assets/Scripts/Libraries/jquery.validate.unobtrusive.js",
                              "~/Assets/Scripts/Libraries/jquery.signalR.js",
                              "~/Assets/Scripts/Libraries/jquery.signalR.hubs.js",
-                             "~/Assets/Scripts/Libraries/knockout.js")
+                             "~/Assets/Scripts/Libraries/knockout.js");
+
+            var vOtherScripts = new ScriptBundle("~/Assets/Scripts/OtherScripts")
                     .IncludeDirectory("~/Assets/Scripts/Components/", "*.js")
                     .IncludeDirectory("~/Assets/Scripts/Pages/", "*.js")
                     .IncludeDirectory("~/Assets/Scripts/Accounts/", "*.js")
@@ -48,6 +50,7 @@ namespace RangoricMUD.App_Start
                     .Include("~/Assets/Scripts/Startup/Startup.js");
 
             tBundleCollection.Add(vLibraryScriptBundle);
+            tBundleCollection.Add(vOtherScripts);
         }
     }
 }

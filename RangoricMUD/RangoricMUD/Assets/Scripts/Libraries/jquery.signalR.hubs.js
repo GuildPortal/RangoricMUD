@@ -191,6 +191,18 @@
         }
     };
 
+    signalR.serverStatusHub = {
+        _: {
+            hubName: 'ServerStatusHub',
+            ignoreMembers: ['startStatusCheck'],
+            connection: function () { return signalR.hub; }
+        },
+
+        startStatusCheck: function () {
+            return invoke(this, "StartStatusCheck", $.makeArray(arguments));
+        }
+    };
+
     signalR.hub = $.hubConnection("/signalr")
         .starting(function () {
             createHubProxies(signalR, this);
