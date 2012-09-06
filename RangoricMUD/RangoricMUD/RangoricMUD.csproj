@@ -396,6 +396,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
+    <Folder Include="ServerStatus\Commands\" />
+    <Folder Include="ServerStatus\Queries\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
