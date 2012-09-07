@@ -258,6 +258,8 @@
     <Compile Include="Bootstrappers\PirateShip.cs" />
     <Compile Include="Bootstrappers\WindsorCaptain.cs" />
     <Compile Include="Bootstrappers\WindsorShip.cs" />
+    <Compile Include="Characters\Controllers\CharactersHub.cs" />
+    <Compile Include="Characters\Data\Character.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Configuration\IRangoricConfiguration.cs" />
@@ -396,6 +398,10 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
+    <Folder Include="Characters\Commands\" />
+    <Folder Include="Characters\Crews\" />
+    <Folder Include="Characters\Models\" />
+    <Folder Include="Characters\Queries\" />
     <Folder Include="ServerStatus\Commands\" />
     <Folder Include="ServerStatus\Queries\" />
   </ItemGroup>

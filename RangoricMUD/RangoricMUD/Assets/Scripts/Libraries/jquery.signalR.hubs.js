@@ -171,6 +171,14 @@
         }
     };
 
+    signalR.charactersHub = {
+        _: {
+            hubName: 'CharactersHub',
+            ignoreMembers: [],
+            connection: function () { return signalR.hub; }
+        }
+    };
+
     signalR.gameHub = {
         _: {
             hubName: 'GameHub',
