@@ -6,7 +6,6 @@
 /// <reference path="~/Assets/Scripts/Accounts/AccountManager.js"/>
 /// <reference path="~/Assets/Scripts/Accounts/LoginButton.js"/>
 /// <reference path="~/Assets/Scripts/Accounts/CreateAccountButton.js"/>
-/// <reference path="~/Assets/Scripts/Accounts/ConfirmAccountPage.js"/>
 /// <reference path="~/Assets/Scripts/Accounts/ConfirmAccountButton.js"/>
 /// <reference path="~/Assets/Scripts/Administration/AdminManager.js"/>
 /// <reference path="~/Assets/Scripts/Administration/AdminButton.js"/>
@@ -35,5 +34,4 @@ $(function () {
 
     ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);
     ko.applyBindings(vDependencies.PageManager.Page, $('.Page').get()[0]);
-    ko.applyBindings(vDependencies.PageManager.Page, $('#Sub-Menu').get()[0]);
 })
