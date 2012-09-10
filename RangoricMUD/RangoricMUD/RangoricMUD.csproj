@@ -390,6 +390,7 @@
     <Content Include="Views\Games\List.cshtml" />
     <Content Include="Views\Accounts\Confirm.cshtml" />
     <Content Include="Views\Games\Edit.cshtml" />
+    <Content Include="Views\Play\Start.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -401,7 +402,6 @@
     <Folder Include="ServerStatus\Commands\" />
     <Folder Include="ServerStatus\Queries\" />
     <Folder Include="Views\Characters\" />
-    <Folder Include="Views\Play\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
