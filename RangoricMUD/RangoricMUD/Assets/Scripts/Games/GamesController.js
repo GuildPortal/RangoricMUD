@@ -32,13 +32,18 @@
         },
         Edit:function () {
             var vName = arguments[0];
-
+            
             return {
                 Page: ko.observable("Games/Edit"),
+                Name: ko.observable(vName),
                 IsVisible: ko.computed(function() {
                     return tDependencies.AccountManager.IsLoggedIn();
                 }),
-                Name: ko.observable(vName)
+                RuleGroups: ko.observableArray([{ Text: "Character Creation", Help: "Edit the rules for character creation", Page: "Characters/EditRules/" + vName }]),
+                GoToPage: function () {
+                    var vThis = this;
+                    tDependencies.PageManager.GoToPage(vThis.Page);
+                }
             };
         }
     };

@@ -3,24 +3,25 @@
     vThis.PageElement = $(".Page");
     vThis.Page = ko.observable();
     vThis.ActivePage = ko.computed({
-        read: function () {
+        read: function() {
             return vThis.Page();
         },
-        write: function (tRoute) {
+        write: function(tRoute) {
             var vRouteData = tRoute.split('/');
-            
-            if(vRouteData.length === 1 && vRouteData[0] === "") {
+            if (vRouteData.length === 1 && vRouteData[0] === "") {
                 vRouteData = ["Home", "Index"];
             }
-
             var vControllers = tDependencies.Controllers;
             var vController = vControllers[vRouteData[0]];
-
             var vArguments = vRouteData.slice(2);
-
             var vViewModel = vController[vRouteData[1]](vArguments);
 
-            if(vThis.PageStillVisible) {
+            if (!vViewModel.IsVisible()) {
+                vViewModel = vControllers["Home"]["Index"]();
+                window.location.hash = "";
+            }
+
+            if (vThis.PageStillVisible) {
                 vThis.PageStillVisible.dispose();
             }
             vThis.Page(vViewModel);

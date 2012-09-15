@@ -30,6 +30,7 @@ namespace RangoricMUD.Controllers.Models
             LoginAccount = new LoginAccount();
             ConfirmAccountPageModel = new ConfirmAccountPageModel();
             GameListPageModel = new CreateGameModel();
+            GameEditPageModel = new EditGameModel();
         }
 
         public CreateAccount CreateAccount { get; private set; }
@@ -38,5 +39,7 @@ namespace RangoricMUD.Controllers.Models
         public ConfirmAccountPageModel ConfirmAccountPageModel { get; private set; }
 
         public CreateGameModel GameListPageModel { get; set; }
+
+        public EditGameModel GameEditPageModel { get; private set; }
     }
 }

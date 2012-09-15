@@ -1,6 +1,8 @@
 ﻿<div data-bind="if: Page() === 'Games/Edit'">
     <div id="GameEdit">
         <div class="Name" data-bind="text: Name"></div>
-        <div>Character Creation</div>
+        <div data-bind="foreach: RuleGroups">
+            <button data-bind="text:Text, attr:{'title': Help}, click: $parent.GoToPage"></button>
+        </div>
     </div>
 </div>

@@ -16,6 +16,11 @@ namespace RangoricMUD.Games.Data
 {
     public class Game
     {
+        public Game()
+        {
+            CharacterCreationRules = new CharacterCreationRules();
+        }
         public string Name { get; set; }
+        public CharacterCreationRules CharacterCreationRules { get; set; }
     }
 }

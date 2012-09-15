@@ -275,8 +275,11 @@
     <Compile Include="Games\Commands\IGameCommandFactory.cs" />
     <Compile Include="Games\Controllers\GameHub.cs" />
     <Compile Include="Games\Crews\GameCrew.cs" />
+    <Compile Include="Games\Data\CharacterCreationRules.cs" />
+    <Compile Include="Games\Data\eNameRules.cs" />
     <Compile Include="Games\Data\Game.cs" />
     <Compile Include="Games\Models\CreateGameModel.cs" />
+    <Compile Include="Games\Models\EditGameModel.cs" />
     <Compile Include="Games\Models\GetGameModel.cs" />
     <Compile Include="Games\Queries\GetAllGamesQuery.cs" />
     <Compile Include="Games\Queries\GetGameQuery.cs" />

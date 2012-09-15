@@ -3,7 +3,7 @@
         Create: function () {
             var vGame = arguments[0];
             return {
-                Page: "Characters/Create",
+                Page: ko.observable("Characters/Create"),
                 IsVisible: ko.computed(function () {
                     return tDependencies.AccountManager.IsLoggedIn();
                 })
@@ -12,7 +12,7 @@
         Select:function () {
             var vGame = arguments[0];
             return {
-                Page: "Characters/Select",
+                Page: ko.observable("Characters/Select"),
                 IsVisible: ko.computed(function() {
                     return tDependencies.AccountManager.IsLoggedIn();
                 })
@@ -22,7 +22,16 @@
             var vGame = arguments[0];
             var vCharacter = arguments[1];
             return {
-                Page: "Characters/View",
+                Page: ko.observable("Characters/View"),
+                IsVisible: ko.computed(function() {
+                    return tDependencies.AccountManager.IsLoggedIn();
+                })
+            };
+        },
+        EditRules: function () {
+            var vGame = arguments[0];
+            return {
+                Page: ko.observable("Characters/EditRules"),
                 IsVisible: ko.computed(function() {
                     return tDependencies.AccountManager.IsLoggedIn();
                 })
