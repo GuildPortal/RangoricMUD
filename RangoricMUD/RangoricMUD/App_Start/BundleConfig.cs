@@ -37,7 +37,6 @@ namespace RangoricMUD.App_Start
                              "~/Assets/Scripts/Libraries/jquery.validate.js",
                              "~/Assets/Scripts/Libraries/jquery.validate.unobtrusive.js",
                              "~/Assets/Scripts/Libraries/jquery.signalR.js",
-                             "~/Assets/Scripts/Libraries/jquery.signalR.hubs.js",
                              "~/Assets/Scripts/Libraries/knockout.js");
 
             var vOtherScripts = new ScriptBundle("~/Assets/Scripts/OtherScripts")

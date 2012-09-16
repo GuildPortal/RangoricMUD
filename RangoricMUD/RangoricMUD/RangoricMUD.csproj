@@ -258,8 +258,11 @@
     <Compile Include="Bootstrappers\PirateShip.cs" />
     <Compile Include="Bootstrappers\WindsorCaptain.cs" />
     <Compile Include="Bootstrappers\WindsorShip.cs" />
+    <Compile Include="Characters\Commands\CreateCharacterCommand.cs" />
     <Compile Include="Characters\Controllers\CharactersHub.cs" />
+    <Compile Include="Characters\Crews\CharactersCrew.cs" />
     <Compile Include="Characters\Data\Character.cs" />
+    <Compile Include="Characters\Models\CreateCharacterModel.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Configuration\IRangoricConfiguration.cs" />
@@ -318,6 +321,7 @@
     <Content Include="Assets\Scripts\Administration\AdminButton.js" />
     <Content Include="Assets\Scripts\Administration\AdminManager.js" />
     <Content Include="Assets\Scripts\Characters\CharactersController.js" />
+    <Content Include="Assets\Scripts\Characters\CharactersManager.js" />
     <Content Include="Assets\Scripts\Components\Ajax.js" />
     <Content Include="Assets\Scripts\Components\Buttons.js" />
     <Content Include="Assets\Scripts\Components\Controllers.js" />
@@ -339,7 +343,6 @@
     <None Include="Assets\Scripts\Libraries\jquery.validate.intellisense.js">
       <DependentUpon>jquery.validate.js</DependentUpon>
     </None>
-    <Content Include="Assets\Scripts\Libraries\jquery.signalR.hubs.js" />
     <Content Include="Assets\Scripts\Libraries\jquery.signalR.js" />
     <Content Include="Assets\Scripts\Libraries\jquery.signalR-0.5.2.min.js">
       <DependentUpon>jquery.signalR.js</DependentUpon>
@@ -394,17 +397,14 @@
     <Content Include="Views\Accounts\Confirm.cshtml" />
     <Content Include="Views\Games\Edit.cshtml" />
     <Content Include="Views\Play\Start.cshtml" />
+    <Content Include="Views\Characters\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
-    <Folder Include="Characters\Commands\" />
-    <Folder Include="Characters\Crews\" />
-    <Folder Include="Characters\Models\" />
     <Folder Include="Characters\Queries\" />
     <Folder Include="ServerStatus\Commands\" />
     <Folder Include="ServerStatus\Queries\" />
-    <Folder Include="Views\Characters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -449,7 +449,4 @@
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-  <Target Name="BeforeBuild" Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <Exec Command="Tools\hubify.exe /o:RangoricMUD\Assets\Scripts\Libraries\jquery.signalR.hubs.js" WorkingDirectory="$(SolutionDir)" />
-  </Target>
 </Project>

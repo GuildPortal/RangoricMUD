@@ -1,0 +1,17 @@
+﻿@model RangoricMUD.Characters.Models.CreateCharacterModel
+<div data-bind="if:Page() === 'Characters/Create'">
+    <div>
+        <form data-bind="submit: Submit">
+            <fieldset>
+                <legend>Create a New Character</legend>
+                @Html.LabelFor(t => t.ListName)
+                @Html.TextBoxFor(t => t.ListName, new {data_bind = "value: ListName"})
+                @Html.ValidationMessageFor(t => t.ListName)
+                @Html.LabelFor(t => t.Name)
+                @Html.TextBoxFor(t => t.Name, new{data_bind="value: Name"})
+                @Html.ValidationMessageFor(t => t.Name)
+                <button type="submit">Create</button>
+            </fieldset>
+        </form>
+    </div>
+</div>

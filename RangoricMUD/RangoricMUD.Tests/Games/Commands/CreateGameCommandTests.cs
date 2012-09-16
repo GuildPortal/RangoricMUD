@@ -40,7 +40,8 @@ namespace RangoricMUD.Tests.Games.Commands
 
             using(var vSession = vDocumentStore.OpenSession())
             {
-                vSession.Load<Game>("Games/" + tName);
+                Assert.IsNotNull(vSession.Load<Game>("Games/" + tName));
+
             }
         }
 

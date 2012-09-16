@@ -16,6 +16,7 @@
 
 using System.Web.Mvc;
 using RangoricMUD.Accounts.Models;
+using RangoricMUD.Characters.Models;
 using RangoricMUD.Games.Models;
 
 #endregion
@@ -31,6 +32,7 @@ namespace RangoricMUD.Controllers.Models
             ConfirmAccountPageModel = new ConfirmAccountPageModel();
             GameListPageModel = new CreateGameModel();
             GameEditPageModel = new EditGameModel();
+            CreateCharacterModel = new CreateCharacterModel();
         }
 
         public CreateAccount CreateAccount { get; private set; }
@@ -41,5 +43,7 @@ namespace RangoricMUD.Controllers.Models
         public CreateGameModel GameListPageModel { get; set; }
 
         public EditGameModel GameEditPageModel { get; private set; }
+
+        public CreateCharacterModel CreateCharacterModel { get; private set; }
     }
 }

@@ -1,3 +1,11 @@
 ﻿<div data-bind="if:Page() === 'Play/Start'">
-    
+    <div>
+        Character List
+        <div data-bind="foreach: Characters">
+            
+        </div>
+        <div>
+            <button data-bind="click: GoToCreateCharacter">Create Character</button>
+        </div>
+    </div>
 </div>

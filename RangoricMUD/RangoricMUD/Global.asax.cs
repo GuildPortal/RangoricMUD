@@ -22,6 +22,7 @@ using RangoricMUD.Accounts.Crews;
 using RangoricMUD.App_Start;
 using RangoricMUD.Bootstrappers;
 using RangoricMUD.Bootstrappers.Crews;
+using RangoricMUD.Characters.Crews;
 using RangoricMUD.Tests.Games.Crews;
 using RangoricMUD.Web;
 using RangoricMUD.Web.Crews;
@@ -79,6 +80,7 @@ namespace RangoricMUD
             mShip.Crew.Add(new ControllerCrew());
             mShip.Crew.Add(new GameCrew());
             mShip.Crew.Add(new WebCrews());
+            mShip.Crew.Add(new CharactersCrew());
             mShip.SetSail();
 
             ControllerBuilder.Current.SetControllerFactory(

@@ -205,6 +205,7 @@
     <Compile Include="Accounts\Commands\CreateAccountCommandTests.cs" />
     <Compile Include="Accounts\Commands\SendConfirmationCommandTests.cs" />
     <Compile Include="Accounts\Crews\AccountCrewTests.cs" />
+    <Compile Include="Characters\Commands\CreateCharacterCommandTests.cs" />
     <Compile Include="Games\Crews\GameCrewTests.cs" />
     <Compile Include="Accounts\Queries\CheckLoginQueryTests.cs" />
     <Compile Include="Dice\CryptoRandomProviderTest.cs" />

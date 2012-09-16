@@ -21,6 +21,7 @@ $(function () {
     vDependencies.AccountManager = new AccountManager(vDependencies);
     vDependencies.GameManager = new GameManager(vDependencies);
     vDependencies.AdminManager = new AdminManager(vDependencies);
+    vDependencies.CharactersManager = CharactersManager(vDependencies);
     vDependencies.Controllers = Controllers(vDependencies);
     
     var vButtons = new Buttons();
