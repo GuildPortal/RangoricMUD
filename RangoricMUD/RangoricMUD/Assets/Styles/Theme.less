@@ -1,43 +1,36 @@
+@Color: rgb(256,256,256);
+@UIColor: rgb(184, 72, 184);
+@BackgroundColor: rgb(176, 176, 256);
 
-@BackgroundColor: #afafff;
-@InteractionColor: #b030b0;
-@HighlightPercent: 5%;
-@TextInputBackground: lightness(@InteractionColor, @HighlightPercent*8);
+@ActiveUIColor: rgb(208,96,208);
 
-@BaseFontSize: 16px;
+@FocusBorderColor: rgb(128,16,128);
 
-@BaseMargin: @BaseFontSize/4;
-
-@TextButtonSize: @BaseFontSize * 4;
-
-/* A Text Input is to be the width of 3 buttons and the margins between them */
-@TextInputBorder: @BaseMargin/2;
-@TextInputWidth: @TextButtonSize * 3 + @BaseMargin * 2;
-
-@PanelWidth: @BaseFontSize*20;
-@PanelHeight: @BaseFontSize*8;
+@DisabledColor: rgb(0,0,0);
+@DisabledUIColor: rgb(160,160,240);
 
 
-html{
-	height:100%;
-	width:100%;
-}
+@TextBoxBackgroundColor: lightness(@UIColor, 20%);
+
+@FontSize: 16px;
+
+@Margin: @FontSize/4;
+@FocusOutlineSize: @Margin/2;
+
+@ButtonSize: @FontSize * 4;
+@TextBoxWidth: @ButtonSize * 3 + @Margin * 2;
+
 
 body {
     font-family: Verdana, Geneva, sans-serif;
-    font-size: @BaseFontSize;
+    font-size: @FontSize;
     background-color: @BackgroundColor;
-	position:absolute;
-	top:0px;
-	bottom:0px;
-	left:0px;
-	right:0px;
 }
 .Menu {
     position: absolute;
     top: 0;
     right: 0;
-    height: @TextButtonSize+@BaseMargin*2;
+    height: @ButtonSize+@Margin*2;
 	button{
 		float:right;
 	}
@@ -46,25 +39,21 @@ body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 h1 {
-    margin: @BaseMargin;
-	img {
-		height: @TextButtonSize;
-		width: @TextButtonSize*3;
-	}
+    margin: @Margin;
 }
 .Page {
 	position:absolute;
-	top:@TextButtonSize+@BaseMargin*2;
+	top:@ButtonSize+@Margin*2;
 	left:0px;
 	right:0px;
 	bottom:0px;
 	.FormContainer {
 		position:absolute;
-		right:@BaseMargin;
+		right:@Margin;
 		top:0px;
-		padding:@BaseMargin;
-		width:@TextInputWidth;
-		background-color:lightness(@BackgroundColor, -@HighlightPercent/2);
+		padding:@Margin;
+		width:@TextBoxWidth;
+		background-color:lightness(@BackgroundColor, -5%);
 		label, legend,
 		input[type="text"],
 		input[type="password"]{
@@ -72,55 +61,100 @@ h1 {
 			margin-left:0px;
 		}
 		button{
-			width:@TextInputWidth;
+			width:@TextBoxWidth;
 			margin-right:0px;
 			float:left;
 		}
 	}
 }
 button {
-    font-size: @BaseFontSize;
+    font-size: @FontSize;
     border: 0em;
-    background-color: @InteractionColor;
-    color: white;
-    text-align: center;
+    background-color: @UIColor;
+    color: @Color;
     display: block;
-    width: @TextButtonSize;
-    height: @TextButtonSize;
-    line-height: @BaseFontSize;
-	margin-top: @BaseMargin;
-    margin-right: @BaseMargin;
+    width: @ButtonSize;
+    height: @ButtonSize;
+    line-height: @FontSize;
+    margin-top: @Margin;
+    margin-right: @Margin;
     cursor: pointer;
-    float: right;
-	padding:0px;
-}
-button:hover {
-    background-color: lightness(@InteractionColor, @HighlightPercent);
-}
-button:active {
-    background-color: lightness(@InteractionColor, 0-@HighlightPercent);
+    padding: 0px;
+
+    &:hover {
+        outline: 2px solid @FocusBorderColor;
+    }
+
+    &:active {
+        background-color: @ActiveUIColor;
+    }
+
+    &:focus {
+        outline: 2px solid @FocusBorderColor;
+    }
+
+    &:disabled {
+		background-color:@DisabledUIColor;
+		color:@DisabledColor;
+		outline:none;
+		cursor:default;
+    }
 }
 input[type="text"],
 input[type="password"] {
-	width:@TextInputWidth - @TextInputBorder * 2;
-	margin:0 @BaseMargin @BaseMargin @BaseMargin;
-	font-size:@BaseFontSize;
-	border:@TextInputBorder solid @InteractionColor;
+	width:@TextBoxWidth - @FocusOutlineSize * 2;
+	margin:0 @Margin @Margin @Margin;
+	font-size:@FontSize;
+	border:@FocusOutlineSize solid @UIColor;
 	padding:0px;
-	background-color: @TextInputBackground;
+	background-color: @TextBoxBackgroundColor;
 }
 input[type="text"]:focus,
 input[type="password"]:focus{
 	outline:none;
-	border:@TextInputBorder solid lightness(@InteractionColor, @HighlightPercent*2);
-	background-color: lightness(@TextInputBackground, @HighlightPercent*2);
+	border:@FocusOutlineSize solid lightness(@UIColor,10%);
+	background-color: lightness(@TextBoxBackgroundColor, 15%);
 }
+input[type="checkbox"],
+input[type="radio"] {
+	padding:0px;
+	margin:0px;
+	width:1px;
+	height:1px;
+}
+    input[type="checkbox"] + label,
+	input[type="radio"] + label {
+	padding:0px;
+	margin:0px;
+	display: table-cell;
+	background: @UIColor;
+	color: @Color;
+    font-size: @FontSize;
+    width: @ButtonSize;
+    height: @ButtonSize;
+    line-height: @FontSize;
+    margin-top: @Margin;
+    margin-right: @Margin;
+	vertical-align:middle;
+    }
+    input[type="checkbox"]:checked + label,
+	input[type="radio"]:checked + label {
+		background-color: @ActiveUIColor;
+    }
+    input[type="checkbox"] + label:hover,
+	input[type="radio"] + label:hover{
+        outline: 2px solid @FocusBorderColor;
+    }
+    input[type="checkbox"]:focus + label,
+	input[type="radio"]:focus + label {
+        outline: 2px solid @FocusBorderColor;
+    }
 label{
-	margin:@BaseMargin @BaseMargin 0 @BaseMargin;
+	margin:@Margin @Margin 0 @Margin;
 }
 
 legend {
-	margin:@BaseMargin;
+	margin:@Margin;
 }
 .Hidden {
     display: none;
@@ -130,22 +164,22 @@ legend {
 	.GameList {
 		.Game {
 			position:relative;
-			width:@TextButtonSize*5+@BaseMargin*4;
-			height:@TextButtonSize*3+@BaseMargin*2;
-			margin-left:@BaseMargin;
-			margin-bottom:@BaseMargin;
+			width:@ButtonSize*5+@Margin*4;
+			height:@ButtonSize*3+@Margin*2;
+			margin-left:@Margin;
+			margin-bottom:@Margin;
 			float:left;
-			background-color:lightness(@BackgroundColor, 0-@HighlightPercent);
+			background-color:lightness(@BackgroundColor, -5%);
 			button.Play{
 				position:absolute;
-				bottom:@BaseMargin;
-				right:@BaseMargin;
+				bottom:@Margin;
+				right:@Margin;
 				margin-right:0px;
 			}
 			button.Edit{
 				position:absolute;
-				bottom:@TextButtonSize+@BaseMargin*2;
-				right:@BaseMargin;
+				bottom:@ButtonSize+@Margin*2;
+				right:@Margin;
 				margin-right:0px;
 			}
 		}

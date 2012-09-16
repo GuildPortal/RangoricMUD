@@ -2,6 +2,6 @@ namespace RangoricMUD.Games.Data
 {
     public class CharacterCreationRules
     {
-        public eNameRules CharacterName { get; set; }
+        public eNameRules NameRules { get; set; }
     }
 }
