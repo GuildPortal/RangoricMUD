@@ -15,6 +15,20 @@
                 }
             });
     };
+    vThis.LoadCharacters = function(tGameName) {
+        vHub.loadAll(tGameName);
+    };
+
+    vHub.LoadCharacters = function(tData) {
+        for(var vIndex = 0;vIndex < tData.length;vIndex++) {
+            var vRaw = tData[vIndex];
+            var vCharacter = {
+                ListName: ko.observable(vRaw.ListName),
+                Name: ko.observable(vRaw.Name)
+            };
+            vThis.Characters.push(vCharacter);
+        }
+    };
     
     return vThis;
 }

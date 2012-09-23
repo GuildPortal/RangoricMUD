@@ -22,6 +22,8 @@ namespace RangoricMUD.Accounts.Data
 {
     public class Account
     {
+        private List<string> mCharacters;
+
         #region IAccount Members
         /// <summary>
         /// The unique name of this account.
@@ -47,6 +49,19 @@ namespace RangoricMUD.Accounts.Data
         public List<eRoles> Roles { get; set; }
 
         public int ConfirmationNumber { get; set; }
+
+        /// <summary>
+        /// The Character IDs for this account's characters.
+        /// </summary>
+        public List<string> Characters
+        {
+            get
+            {
+                mCharacters = mCharacters ?? new List<string>();
+                return mCharacters;
+            }
+            set { mCharacters = value; }
+        }
 
         #endregion
     }

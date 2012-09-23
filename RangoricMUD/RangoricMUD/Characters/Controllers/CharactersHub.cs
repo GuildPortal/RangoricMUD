@@ -31,5 +31,16 @@ namespace RangoricMUD.Characters.Controllers
                                                  return vCommand.Execute() == eCharacterCreationStatus.Success;
                                              });
         }
+        public void LoadAll(string tGameName)
+        {
+            Task.Factory.StartNew(() =>
+                                             {
+                                                 var vAccountName = mSignInPersistance.AccountName(Context.ConnectionId);
+                                                 var vCommand =
+                                                     mCharacterCommandFactory.CreateGetAllCharactersForAccountQuery(tGameName,
+                                                                                                     vAccountName);
+                                                 Caller.LoadCharacters(vCommand.Result);
+                                             });
+        } 
     }
 }

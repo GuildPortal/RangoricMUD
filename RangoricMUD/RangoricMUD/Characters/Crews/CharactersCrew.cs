@@ -5,6 +5,7 @@ using System.Web;
 using RangoricMUD.Bootstrappers.Crews;
 using RangoricMUD.Characters.Commands;
 using RangoricMUD.Characters.Controllers;
+using RangoricMUD.Characters.Queries;
 
 namespace RangoricMUD.Characters.Crews
 {
@@ -15,6 +16,7 @@ namespace RangoricMUD.Characters.Crews
             Add().OfInterface<CharactersHub>().WithImplementation<CharactersHub>();
             Add().OfInterface<ICharactersCommandFactory>().AsFactory();
             Add().OfInterface<ICreateCharacterCommand>().WithImplementation<CreateCharacterCommand>();
+            Add().OfInterface<IGetAllCharactersForAccountQuery>().WithImplementation<GetAllCharactersForAccountQuery>();
         }
     }
 }

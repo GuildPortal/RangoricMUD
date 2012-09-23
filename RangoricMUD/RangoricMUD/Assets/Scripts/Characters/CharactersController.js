@@ -19,7 +19,7 @@
             };
         },
         Select:function () {
-            var vGame = arguments[0];
+            var vGame = arguments[0][0];
             return {
                 Page: ko.observable("Characters/Select"),
                 IsVisible: ko.computed(function() {

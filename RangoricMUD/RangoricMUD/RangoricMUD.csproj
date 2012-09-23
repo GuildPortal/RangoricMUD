@@ -262,7 +262,10 @@
     <Compile Include="Characters\Controllers\CharactersHub.cs" />
     <Compile Include="Characters\Crews\CharactersCrew.cs" />
     <Compile Include="Characters\Data\Character.cs" />
+    <Compile Include="Characters\Models\LoadAllModel.cs" />
     <Compile Include="Characters\Models\CreateCharacterModel.cs" />
+    <Compile Include="Characters\Models\ILoadAllModel.cs" />
+    <Compile Include="Characters\Queries\GetAllCharactersForAccount.cs" />
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Configuration\IRangoricConfiguration.cs" />
@@ -402,7 +405,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
-    <Folder Include="Characters\Queries\" />
     <Folder Include="ServerStatus\Commands\" />
     <Folder Include="ServerStatus\Queries\" />
   </ItemGroup>

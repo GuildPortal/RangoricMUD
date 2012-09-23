@@ -19,10 +19,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Moq;
 using NUnit.Framework;
+using RangoricMUD.Accounts.Commands;
+using RangoricMUD.Accounts.Data;
+using RangoricMUD.Accounts.Models;
 using RangoricMUD.Characters.Commands;
 using RangoricMUD.Characters.Data;
 using RangoricMUD.Characters.Models;
+using RangoricMUD.Dice;
+using RangoricMUD.Security;
 using RangoricMUD.Tests.Utilities;
 
 #endregion
@@ -46,6 +52,8 @@ namespace RangoricMUD.Tests.Characters.Commands
         public void CanExecuteCommand(string tListName, string tName)
         {
             var vDocumentStore = GetEmbeddedDatabase;
+
+            AddAccountToDataStore(vDocumentStore, cUserName, "ABC", "test@email.com");
             var vModel = new CreateCharacterModel
                              {
                                  GameName = cGameName,
@@ -62,6 +70,8 @@ namespace RangoricMUD.Tests.Characters.Commands
         public void CharacterIsInDatabase(string tListName, string tName)
         {
             var vDocumentStore = GetEmbeddedDatabase;
+
+            AddAccountToDataStore(vDocumentStore, cUserName, "ABC", "test@email.com");
             var vModel = new CreateCharacterModel
                              {
                                  GameName = cGameName,
@@ -83,6 +93,8 @@ namespace RangoricMUD.Tests.Characters.Commands
         public void CharacterDuplicateListNameFails(string tListName, string tName)
         {
             var vDocumentStore = GetEmbeddedDatabase;
+
+            AddAccountToDataStore(vDocumentStore, cUserName, "ABC", "test@email.com");
 
             var vModel = new CreateCharacterModel
             {

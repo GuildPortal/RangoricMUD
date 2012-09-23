@@ -18,8 +18,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using RangoricMUD.Accounts.Data;
 using RangoricMUD.Characters.Data;
 using RangoricMUD.Characters.Models;
+using RangoricMUD.Characters.Queries;
 using RangoricMUD.Commands;
 using Raven.Abstractions.Exceptions;
 using Raven.Client;
@@ -49,9 +51,12 @@ namespace RangoricMUD.Characters.Commands
 
                 var vCharacter = new Character {ListName = mModel.ListName, Name = mModel.Name};
 
+                var vCharacterID = "Games/" + mModel.GameName + "/" + mAccountName + "/Characters/" +
+                                   vCharacter.ListName;
                 vSession.Store(vCharacter,
-                               "Games/" + mModel.GameName + "/" + mAccountName + "/Characters/" + vCharacter.ListName);
-
+                               vCharacterID);
+                var vAccount = vSession.Load<Account>("Accounts/" + mAccountName);
+                vAccount.Characters.Add(vCharacterID);
                 try
                 {
                     vSession.SaveChanges();
@@ -78,5 +83,6 @@ namespace RangoricMUD.Characters.Commands
     public interface ICharactersCommandFactory
     {
         ICreateCharacterCommand CreateCreateCharacterCommand(CreateCharacterModel tModel, string tAccountName);
+        IGetAllCharactersForAccountQuery CreateGetAllCharactersForAccountQuery(string tGameName, string tAccountName);
     }
 }
