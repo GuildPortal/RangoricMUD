@@ -33,14 +33,11 @@ namespace RangoricMUD.Characters.Controllers
         }
         public void LoadAll(string tGameName)
         {
-            Task.Factory.StartNew(() =>
-                                             {
                                                  var vAccountName = mSignInPersistance.AccountName(Context.ConnectionId);
                                                  var vCommand =
                                                      mCharacterCommandFactory.CreateGetAllCharactersForAccountQuery(tGameName,
                                                                                                      vAccountName);
                                                  Caller.LoadCharacters(vCommand.Result);
-                                             });
         } 
     }
 }

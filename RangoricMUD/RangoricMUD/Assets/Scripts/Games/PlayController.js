@@ -8,7 +8,7 @@
                 IsVisible: ko.computed(function() {
                     return tDependencies.AccountManager.IsLoggedIn();
                 }),
-                Characters: ko.observableArray(),
+                Characters: tDependencies.CharactersManager.Characters,
                 GoToCreateCharacter: function () {
                     tDependencies.PageManager.GoToPage("Characters", "Create", vGame);
                 }
