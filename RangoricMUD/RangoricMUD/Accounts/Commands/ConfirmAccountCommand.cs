@@ -46,7 +46,8 @@ namespace RangoricMUD.Accounts.Commands
             }
             using (var vSession = mDocumentStore.OpenSession())
             {
-                var vAccount = vSession.Load<Account>("Accounts/" + mConfirmAccountModel.Name);
+                var vAccount = new Account() {Name = mConfirmAccountModel.Name};
+                vAccount = vSession.Load<Account>(vAccount.Id);
                 vGood = vAccount.ConfirmationNumber == mConfirmAccountModel.ConfirmationNumber;
                 if (vGood)
                 {

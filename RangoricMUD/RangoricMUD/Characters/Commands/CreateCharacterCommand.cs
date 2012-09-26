@@ -43,20 +43,22 @@ namespace RangoricMUD.Characters.Commands
             mDocumentStore = tDocumentStore;
         }
 
+        #region ICreateCharacterCommand Members
+
         public override eCharacterCreationStatus Execute()
         {
             using (var vSession = mDocumentStore.OpenSession())
             {
                 vSession.Advanced.UseOptimisticConcurrency = true;
 
-                var vCharacter = new Character {ListName = mModel.ListName, Name = mModel.Name};
+                var vCharacter = new Character
+                                     {Name = mModel.Name, AccountName = mAccountName, GameName = mModel.GameName};
 
-                var vCharacterID = "Games/" + mModel.GameName + "/" + mAccountName + "/Characters/" +
-                                   vCharacter.ListName;
-                vSession.Store(vCharacter,
-                               vCharacterID);
-                var vAccount = vSession.Load<Account>("Accounts/" + mAccountName);
-                vAccount.Characters.Add(vCharacterID);
+                
+                vSession.Store(vCharacter);
+                var vAccount = new Account {Name = mAccountName};
+                vAccount = vSession.Load<Account>(vAccount.Id);
+                vAccount.Characters.Add(vCharacter.Id);
                 try
                 {
                     vSession.SaveChanges();
@@ -68,6 +70,8 @@ namespace RangoricMUD.Characters.Commands
             }
             return eCharacterCreationStatus.Success;
         }
+
+        #endregion
     }
 
     public enum eCharacterCreationStatus

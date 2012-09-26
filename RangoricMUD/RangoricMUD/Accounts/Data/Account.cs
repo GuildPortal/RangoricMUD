@@ -1,10 +1,10 @@
-﻿#region License
+﻿#region LIcense
 
 // RangoricMUD is licensed under the Open Game License.
 // The original code and assets provided in this repository are Open Game Content,
 // The name RangoricMUD is product identity, and can only be used as a part of the code,
 //   or in reference to this project.
-// 
+//  
 // More details and the full text of the license are available at:
 //   https://github.com/Rangoric/RangoricMUD/wiki/Open-Game-License
 // 
@@ -24,15 +24,28 @@ namespace RangoricMUD.Accounts.Data
     {
         private List<string> mCharacters;
 
-        #region IAccount Members
+        private string mID;
+
+        public string Id
+        {
+            get
+            {
+                mID = mID ?? GenerateID();
+                return mID;
+            }
+            set { mID = value; }
+        }
+
         /// <summary>
         /// The unique name of this account.
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// The email for this account.
         /// </summary>
         public string Email { get; set; }
+
         /// <summary>
         /// The hashed password.
         /// </summary>
@@ -63,6 +76,9 @@ namespace RangoricMUD.Accounts.Data
             set { mCharacters = value; }
         }
 
-        #endregion
+        private string GenerateID()
+        {
+            return "Accounts/" + Name;
+        }
     }
 }

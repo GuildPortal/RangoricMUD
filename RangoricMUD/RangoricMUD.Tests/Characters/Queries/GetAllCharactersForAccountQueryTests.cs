@@ -26,7 +26,6 @@ namespace RangoricMUD.Tests.Characters.Queries
             var vModel = new CreateCharacterModel
             {
                 GameName = cGameName,
-                ListName = tListName,
                 Name = tName,
             };
 

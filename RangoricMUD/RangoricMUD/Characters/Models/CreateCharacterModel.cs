@@ -31,10 +31,6 @@ namespace RangoricMUD.Characters.Models
         public string Name { get; set; }
 
         [Required]
-        [StringLength(100)]
-        public string ListName { get; set; }
-
-        [Required]
         [StringLength(100, MinimumLength = 3)]
         public string GameName { get; set; }
     }

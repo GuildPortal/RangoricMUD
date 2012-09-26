@@ -57,7 +57,6 @@ namespace RangoricMUD.Tests.Characters.Commands
             var vModel = new CreateCharacterModel
                              {
                                  GameName = cGameName,
-                                 ListName = tListName,
                                  Name = tName,
                              };
 
@@ -75,7 +74,6 @@ namespace RangoricMUD.Tests.Characters.Commands
             var vModel = new CreateCharacterModel
                              {
                                  GameName = cGameName,
-                                 ListName = tListName,
                                  Name = tName,
                              };
 
@@ -86,9 +84,10 @@ namespace RangoricMUD.Tests.Characters.Commands
             using (var vSession = vDocumentStore.OpenSession())
             {
                 Assert.IsNotNull(
-                    vSession.Load<Character>("Games/" + cGameName + "/" + cUserName + "/Characters/" + tListName));
+                    vSession.Load<Character>(cGameName + "/Characters/" + cUserName + "/" + tName));
             }
         }
+
         [TestCase("ABC", "ABCD")]
         public void CharacterDuplicateListNameFails(string tListName, string tName)
         {
@@ -97,11 +96,10 @@ namespace RangoricMUD.Tests.Characters.Commands
             AddAccountToDataStore(vDocumentStore, cUserName, "ABC", "test@email.com");
 
             var vModel = new CreateCharacterModel
-            {
-                GameName = cGameName,
-                ListName = tListName,
-                Name = tName,
-            };
+                             {
+                                 GameName = cGameName,
+                                 Name = tName,
+                             };
 
             var vCommand = new CreateCharacterCommand(vDocumentStore, vModel, cUserName);
 

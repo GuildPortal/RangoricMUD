@@ -29,7 +29,8 @@ namespace RangoricMUD.Characters.Queries
                 var vReturn = new List<Character>();
                 using(var vSession = mDocumentStore.OpenSession())
                 {
-                    var vAccount = vSession.Include<Account>(t => t.Characters).Load<Account>("Accounts/" + mAccountName);
+                    var vAccount = new Account() {Name = mAccountName};
+                    vAccount = vSession.Include<Account>(t => t.Characters).Load<Account>(vAccount.Id);
 
                     foreach(var vCharacter in vAccount.Characters)
                     {
