@@ -33,11 +33,7 @@ namespace RangoricMUD.App_Start
 
             var vLibraryScriptBundle =
                 new ScriptBundle("~/Assets/Scripts/LibraryScripts")
-                    .Include("~/Assets/Scripts/Libraries/jquery.js",
-                             "~/Assets/Scripts/Libraries/jquery.validate.js",
-                             "~/Assets/Scripts/Libraries/jquery.validate.unobtrusive.js",
-                             "~/Assets/Scripts/Libraries/jquery.signalR.js",
-                             "~/Assets/Scripts/Libraries/knockout.js");
+                    .IncludeDirectory("~/Scripts/", "*.js");
 
             var vOtherScripts = new ScriptBundle("~/Assets/Scripts/OtherScripts")
                     .IncludeDirectory("~/Assets/Scripts/Components/", "*.js")
