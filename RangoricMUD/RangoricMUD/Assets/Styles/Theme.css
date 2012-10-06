@@ -1,0 +1,165 @@
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 16px;
+  background-color: #b0b0ff;
+}
+.Menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 72px;
+}
+.Menu button {
+  float: right;
+}
+.Heading {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+h1 {
+  margin: 4px;
+}
+.Page {
+  position: absolute;
+  top: 72px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+.Page .FormContainer {
+  position: absolute;
+  right: 4px;
+  top: 0px;
+  padding: 4px;
+  width: 200px;
+  background-color: #b0b0ff;
+}
+.Page .FormContainer label,
+.Page .FormContainer legend,
+.Page .FormContainer input[type="text"],
+.Page .FormContainer input[type="password"] {
+  float: left;
+  margin-left: 0px;
+}
+.Page .FormContainer button {
+  width: 200px;
+  margin-right: 0px;
+  float: left;
+}
+button {
+  font-size: 16px;
+  border: 0em;
+  background-color: #b848b8;
+  color: #ffffff;
+  display: block;
+  width: 64px;
+  height: 64px;
+  line-height: 16px;
+  margin-top: 4px;
+  margin-right: 4px;
+  cursor: pointer;
+  padding: 0px;
+}
+button:hover {
+  -moz-outline: 2px solid #801080;
+  outline: 2px solid #801080;
+}
+button:active {
+  background-color: #d060d0;
+}
+button:focus {
+  -moz-outline: 2px solid #801080;
+  outline: 2px solid #801080;
+}
+button:disabled {
+  background-color: #a0a0f0;
+  color: #000000;
+  -moz-outline: none;
+  outline: none;
+  cursor: default;
+}
+input[type="text"],
+input[type="password"] {
+  width: 196px;
+  margin: 0 4px 4px 4px;
+  font-size: 16px;
+  border: 2px solid #b848b8;
+  padding: 0px;
+  background-color: #d591d5;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  -moz-outline: none;
+  outline: none;
+  border: 2px solid 50%;
+  background-color: 50%;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0px;
+  margin: 0px;
+  width: 1px;
+  height: 1px;
+}
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  padding: 0px;
+  margin: 0px;
+  display: table-cell;
+  background: #b848b8;
+  color: #ffffff;
+  font-size: 16px;
+  width: 64px;
+  height: 64px;
+  line-height: 16px;
+  margin-top: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + label {
+  background-color: #d060d0;
+  border: 1px solid #801080;
+}
+input[type="checkbox"] + label:hover,
+input[type="radio"] + label:hover {
+  -moz-outline: 2px solid #801080;
+  outline: 2px solid #801080;
+}
+input[type="checkbox"]:focus + label,
+input[type="radio"]:focus + label {
+  -moz-outline: 2px solid #801080;
+  outline: 2px solid #801080;
+}
+label {
+  margin: 4px 4px 0 4px;
+}
+legend {
+  margin: 4px;
+}
+.Hidden {
+  display: none;
+}
+.GameListPage {
+  margin: 0px auto;
+}
+.GameListPage .GameList .Game {
+  position: relative;
+  width: 336px;
+  height: 200px;
+  margin-left: 4px;
+  margin-bottom: 4px;
+  float: left;
+  background-color: 85%;
+}
+.GameListPage .GameList .Game button.Play {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  margin-right: 0px;
+}
+.GameListPage .GameList .Game button.Edit {
+  position: absolute;
+  bottom: 72px;
+  right: 4px;
+  margin-right: 0px;
+}

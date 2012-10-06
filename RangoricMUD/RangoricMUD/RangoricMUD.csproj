@@ -315,11 +315,10 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Assets\Scripts\Accounts\AccountButtons.js" />
     <Content Include="Assets\Scripts\Accounts\AccountManager.js" />
     <Content Include="Assets\Scripts\Accounts\AccountsController.js" />
-    <Content Include="Assets\Scripts\Accounts\ConfirmAccountButton.js" />
     <Content Include="Assets\Scripts\Accounts\CreateAccountButton.js" />
-    <Content Include="Assets\Scripts\Accounts\LoginButton.js" />
     <Content Include="Assets\Scripts\Administration\AdminButton.js" />
     <Content Include="Assets\Scripts\Administration\AdminManager.js" />
     <Content Include="Assets\Scripts\Characters\CharactersController.js" />
@@ -341,6 +340,13 @@
     <Content Include="Assets\Scripts\UnitTesting\Accounts\AccountManagerTests.js" />
     <Content Include="Assets\Styles\Reset.css">
       <DependentUpon>Reset.less</DependentUpon>
+    </Content>
+    <None Include="Assets\Styles\Test.less" />
+    <Content Include="Assets\Styles\Test.css">
+      <DependentUpon>Test.less</DependentUpon>
+    </Content>
+    <Content Include="Assets\Styles\Theme.css">
+      <DependentUpon>Theme.less</DependentUpon>
     </Content>
     <Content Include="Content\qunit.css" />
     <Content Include="Global.asax" />

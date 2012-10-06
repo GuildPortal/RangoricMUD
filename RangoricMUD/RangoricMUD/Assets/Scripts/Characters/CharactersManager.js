@@ -19,7 +19,8 @@
         vHub.loadAll(tGameName);
     };
 
-    vHub.LoadCharacters = function(tData) {
+    vHub.LoadCharacters = function (tData) {
+        vThis.Characters.removeAll();
         for(var vIndex = 0;vIndex < tData.length;vIndex++) {
             var vRaw = tData[vIndex];
             var vCharacter = {
