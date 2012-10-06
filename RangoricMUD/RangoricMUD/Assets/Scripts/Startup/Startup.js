@@ -5,26 +5,25 @@
 /// <reference path="~/Assets/Scripts/Administration/AdminManager.js"/>
 /// <reference path="~/Assets/Scripts/Games/GameManager.js"/>
 
-$(function () {
+$(function() {
     var vDependencies = {
         AjaxFactory: Ajax,
         Connection: $.connection
     };
     vDependencies.PageManager = new PageManager(vDependencies);
     vDependencies.AccountManager = new AccountManager(vDependencies);
-    vDependencies.GameManager = new GameManager(vDependencies);
+    vDependencies.GameManager = GameManager(vDependencies);
     vDependencies.AdminManager = new AdminManager(vDependencies);
     vDependencies.CharactersManager = CharactersManager(vDependencies);
     vDependencies.Controllers = Controllers(vDependencies);
-    
+
     var vButtons = Buttons(vDependencies);
-    
+
     vDependencies.AccountManager.Start();
-    vDependencies.GameManager.Start();
     vDependencies.PageManager.Start();
-    
+
     $.connection.hub.start();
 
     ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);
     ko.applyBindings(vDependencies.PageManager.Page, $('.Page').get()[0]);
-})
+});

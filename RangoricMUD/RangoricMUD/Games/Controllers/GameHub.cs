@@ -1,10 +1,10 @@
-﻿#region License
+﻿#region LIcense
 
 // RangoricMUD is licensed under the Open Game License.
 // The original code and assets provided in this repository are Open Game Content,
 // The name RangoricMUD is product identity, and can only be used as a part of the code,
 //   or in reference to this project.
-// 
+//  
 // More details and the full text of the license are available at:
 //   https://github.com/Rangoric/RangoricMUD/wiki/Open-Game-License
 // 
@@ -37,7 +37,7 @@ namespace RangoricMUD.Games.Controllers
             mQueryFactory = tQueryFactory;
         }
 
-        public Task<eGameCreationStatus> CreateGame(CreateGameModel tCreateGameModel)
+        public Task CreateGame(CreateGameModel tCreateGameModel)
         {
             return
                 Task.Factory.StartNew(
@@ -46,11 +46,11 @@ namespace RangoricMUD.Games.Controllers
                             var
                                 vCommand = mCommandFactory.CreateCreateGameCommand(tCreateGameModel);
 
-                            return vCommand.Execute();
+                            vCommand.Execute();
                         });
         }
 
-        public Task<List<Game>> GetAll()
+        public Task GetAll()
         {
             return
                 Task.Factory.StartNew(
@@ -58,11 +58,11 @@ namespace RangoricMUD.Games.Controllers
                         {
                             var vQuery = mQueryFactory.CreateGetAllGamesQuery();
 
-                            return vQuery.Result;
+                            Caller.AddGames(vQuery.Result);
                         });
         }
 
-        public Task<Game> GetGame(GetGameModel tGetGameModel)
+        public Task GetGame(GetGameModel tGetGameModel)
         {
             return
                 Task.Factory.StartNew(
@@ -70,7 +70,7 @@ namespace RangoricMUD.Games.Controllers
                         {
                             var vQuery = mQueryFactory.CreateGetGameQuery(tGetGameModel);
 
-                            return vQuery.Result;
+                            Caller.AddGame(vQuery.Result);
                         });
         }
     }
