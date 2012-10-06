@@ -318,8 +318,7 @@
     <Content Include="Assets\Scripts\Accounts\AccountButtons.js" />
     <Content Include="Assets\Scripts\Accounts\AccountManager.js" />
     <Content Include="Assets\Scripts\Accounts\AccountsController.js" />
-    <Content Include="Assets\Scripts\Accounts\CreateAccountButton.js" />
-    <Content Include="Assets\Scripts\Administration\AdminButton.js" />
+    <Content Include="Assets\Scripts\Administration\AdminButtons.js" />
     <Content Include="Assets\Scripts\Administration\AdminManager.js" />
     <Content Include="Assets\Scripts\Characters\CharactersController.js" />
     <Content Include="Assets\Scripts\Characters\CharactersManager.js" />
@@ -332,7 +331,7 @@
     <Content Include="Assets\Scripts\Pages\HomeController.js" />
     <Content Include="Assets\Scripts\Pages\HomePage.js" />
     <Content Include="Assets\Scripts\Pages\PageManager.js" />
-    <Content Include="Assets\Scripts\Games\GameListButton.js" />
+    <Content Include="Assets\Scripts\Games\GameButtons.js" />
     <Content Include="Assets\Scripts\Games\GameManager.js" />
     <Content Include="Assets\Scripts\Components\Urls.js" />
     <Content Include="Assets\Scripts\Pages\ServerStatusManager.js" />
