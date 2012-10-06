@@ -339,6 +339,9 @@
     <Content Include="Assets\Scripts\Pages\ServerStatusManager.js" />
     <Content Include="Assets\Scripts\Startup\Startup.js" />
     <Content Include="Assets\Scripts\UnitTesting\Accounts\AccountManagerTests.js" />
+    <Content Include="Assets\Styles\Reset.css">
+      <DependentUpon>Reset.less</DependentUpon>
+    </Content>
     <Content Include="Content\qunit.css" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
