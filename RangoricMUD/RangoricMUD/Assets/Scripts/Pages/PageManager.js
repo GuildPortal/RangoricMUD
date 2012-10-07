@@ -17,7 +17,7 @@
             var vViewModel = vController[vRouteData[1]](vArguments);
 
             if (!vViewModel.IsVisible()) {
-                vViewModel = vControllers["Home"]["Index"]();
+                vViewModel = vControllers.Home.Index();
                 window.location.hash = "";
             }
 
@@ -33,8 +33,7 @@
             jQuery.validator.unobtrusive.parse(vThis.PageElement);
         },
         owner: vThis
-    });
-    
+    });    
 
 
     $(window).hashchange(function() {
@@ -44,14 +43,14 @@
 }
 
 PageManager.prototype = {
-    Start: function () {
+    Start: function() {
         var vThis = this;
         $(window).hashchange();
     },
-    GoToPage: function () {
+    GoToPage: function() {
         var vHash = "";
-        
-        if(arguments.length > 0) {
+
+        if (arguments.length > 0) {
             vHash = arguments[0];
         }
 
@@ -60,4 +59,4 @@ PageManager.prototype = {
         }
         window.location.hash = vHash;
     }
-}
+};

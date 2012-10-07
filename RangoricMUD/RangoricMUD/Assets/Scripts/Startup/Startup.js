@@ -13,16 +13,16 @@ $(function() {
     vDependencies.PageManager = new PageManager(vDependencies);
     vDependencies.AccountManager = AccountManager(vDependencies);
     vDependencies.GameManager = GameManager(vDependencies);
-    vDependencies.AdminManager = new AdminManager(vDependencies);
+    vDependencies.AdminManager = AdminManager(vDependencies);
     vDependencies.CharactersManager = CharactersManager(vDependencies);
     vDependencies.Controllers = Controllers(vDependencies);
 
     var vButtons = Buttons(vDependencies);
 
-    vDependencies.PageManager.Start();
 
-    $.connection.hub.start();
-
-    ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);
-    ko.applyBindings(vDependencies.PageManager.Page, $('.Page').get()[0]);
+    $.connection.hub.start(function () {
+        vDependencies.PageManager.Start();
+        ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);
+        ko.applyBindings(vDependencies.PageManager.Page, $('.Page').get()[0]);
+    });
 });
