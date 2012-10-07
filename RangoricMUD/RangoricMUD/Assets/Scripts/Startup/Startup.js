@@ -11,7 +11,7 @@ $(function() {
         Connection: $.connection
     };
     vDependencies.PageManager = new PageManager(vDependencies);
-    vDependencies.AccountManager = new AccountManager(vDependencies);
+    vDependencies.AccountManager = AccountManager(vDependencies);
     vDependencies.GameManager = GameManager(vDependencies);
     vDependencies.AdminManager = new AdminManager(vDependencies);
     vDependencies.CharactersManager = CharactersManager(vDependencies);
@@ -19,7 +19,6 @@ $(function() {
 
     var vButtons = Buttons(vDependencies);
 
-    vDependencies.AccountManager.Start();
     vDependencies.PageManager.Start();
 
     $.connection.hub.start();

@@ -1,5 +1,4 @@
 ﻿function GameManager(tSettings) {
-    var vHub = tSettings.Connection.gameHub;
     var vThis = {
         GameList: ko.observableArray(),
         CurrentGame: ko.observable(""),
@@ -8,7 +7,8 @@
         }
     };
 
-    vHub.AddGame = function(tData) {
+    var vHub = tSettings.Connection.gameHub;
+    vHub.AddGame = function (tData) {
         if (vThis.GameList.indexOf(tData) >= 0) {
             vThis.GameList.remove(tData);
         }
@@ -22,8 +22,6 @@
         }
     };
     
-    vThis.Connection = tSettings.Connection;
-
     tSettings.AccountManager.IsLoggedIn.subscribe(function(tData) {
         if (tData) {
             vHub.getAll();

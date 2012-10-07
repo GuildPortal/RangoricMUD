@@ -1,10 +1,10 @@
-﻿#region License
+﻿#region LIcense
 
 // RangoricMUD is licensed under the Open Game License.
 // The original code and assets provided in this repository are Open Game Content,
 // The name RangoricMUD is product identity, and can only be used as a part of the code,
 //   or in reference to this project.
-// 
+//  
 // More details and the full text of the license are available at:
 //   https://github.com/Rangoric/RangoricMUD/wiki/Open-Game-License
 // 
@@ -41,80 +41,89 @@ namespace RangoricMUD.Accounts.Controllers
             mSignInPersistance.Logout(Context.ConnectionId);
         }
 
-        public Task<bool> Login(LoginAccount tLoginAccount)
+        public Task Login(LoginAccount tLoginAccount)
         {
-            return Task.Factory.StartNew(() =>
-                                             {
-                                                 var vResult = false;
-                                                 if (ModelValidator.IsValid(tLoginAccount))
-                                                 {
-                                                     var vCommand =
-                                                         mAccountCommandFactory.CreateLoginAccountCommand(tLoginAccount);
-                                                     vResult = vCommand.Execute();
-                                                     if (vResult)
-                                                     {
-                                                         mSignInPersistance.Login(tLoginAccount.Name,
-                                                                                  Context.ConnectionId);
-                                                     }
-                                                 }
-                                                 return vResult;
-                                             });
+            return Task.Factory.StartNew(
+                () =>
+                    {
+                        if (ModelValidator.IsValid(tLoginAccount))
+                        {
+                            var vCommand =
+                                mAccountCommandFactory.CreateLoginAccountCommand(tLoginAccount);
+                            if (vCommand.Execute())
+                            {
+                                mSignInPersistance.Login(tLoginAccount.Name,
+                                                         Context.ConnectionId);
+                                var vQuery =
+                                    mAccountCommandFactory.CreateCheckLoginQuery(Context.ConnectionId);
+                                Caller.AddAccount(vQuery.Result);
+                            }
+                        }
+                    });
         }
 
-        public Task<eAccountCreationStatus> CreateAccount(CreateAccount tCreateAccount)
+        public Task CreateAccount(CreateAccount tCreateAccount)
         {
-            return Task.Factory.StartNew(() =>
-                                             {
-                                                 if (ModelValidator.IsValid(tCreateAccount))
-                                                 {
-                                                     var vCommand =
-                                                         mAccountCommandFactory.CreateCreateAccountCommand(
-                                                             tCreateAccount);
-                                                     return vCommand.Execute();
-                                                 }
-                                                 return eAccountCreationStatus.InvalidModel;
-                                             });
+            return Task.Factory.StartNew(
+                () =>
+                    {
+                        if (ModelValidator.IsValid(tCreateAccount))
+                        {
+                            var vCommand =
+                                mAccountCommandFactory.CreateCreateAccountCommand(
+                                    tCreateAccount);
+                            if (vCommand.Execute() == eAccountCreationStatus.Success)
+                            {
+                                mSignInPersistance.Login(tCreateAccount.Name, Context.ConnectionId);
+                                var vQuery =
+                                    mAccountCommandFactory.CreateCheckLoginQuery(Context.ConnectionId);
+                                Caller.AddAccount(vQuery.Result);
+                            }
+                        }
+                    });
         }
 
-        public Task<bool> ConfirmAccount(ConfirmAccountPageModel tConfirmAccountPageModel)
+        public Task ConfirmAccount(ConfirmAccountPageModel tConfirmAccountPageModel)
         {
-            return Task.Factory.StartNew(() =>
-                                             {
-                                                 var vGood = false;
+            return Task.Factory.StartNew(
+                () =>
+                    {
+                        var vGood = false;
 
-                                                 if (ModelValidator.IsValid(tConfirmAccountPageModel))
+                        if (ModelValidator.IsValid(tConfirmAccountPageModel))
+                        {
+                            var vCommand =
+                                mAccountCommandFactory.CreateLoginAccountCommand(
+                                    tConfirmAccountPageModel);
+
+                            if (vCommand.Execute())
+                            {
+                                var vModel = new ConfirmAccountModel
                                                  {
-                                                     var vCommand =
-                                                         mAccountCommandFactory.CreateLoginAccountCommand(
-                                                             tConfirmAccountPageModel);
+                                                     Name = tConfirmAccountPageModel.Name,
+                                                     ConfirmationNumber =
+                                                         tConfirmAccountPageModel
+                                                         .ConfirmationNumber
+                                                 };
+                                var vConfirmCommand =
+                                    mAccountCommandFactory.CreateConfirmAccountCommand(vModel);
+                                vGood = vConfirmCommand.Execute();
+                            }
+                        }
 
-                                                     if (vCommand.Execute())
-                                                     {
-                                                         var vModel = new ConfirmAccountModel
-                                                                          {
-                                                                              Name = tConfirmAccountPageModel.Name,
-                                                                              ConfirmationNumber =
-                                                                                  tConfirmAccountPageModel
-                                                                                  .ConfirmationNumber
-                                                                          };
-                                                         var vConfirmCommand =
-                                                             mAccountCommandFactory.CreateConfirmAccountCommand(vModel);
-                                                         vGood = vConfirmCommand.Execute();
-                                                     }
-                                                 }
-
-                                                 return vGood;
-                                             });
+                        Caller.AddConfirmation(vGood);
+                    });
         }
 
-        public Task<ICheckLoginModel> CheckLogin()
+        public Task CheckLogin()
         {
-            return Task.Factory.StartNew(() =>
-                                             {
-                                                 var vQuery =
-                                                     mAccountCommandFactory.CreateCheckLoginQuery(Context.ConnectionId);
-                                                 return vQuery.Result;
-                                             });
+            return Task.Factory.StartNew(
+                () =>
+                    {
+                        var vQuery =
+                            mAccountCommandFactory.CreateCheckLoginQuery(Context.ConnectionId);
+                        Caller.AddAccount(vQuery.Result);
+                    });
         }
     }
 }
