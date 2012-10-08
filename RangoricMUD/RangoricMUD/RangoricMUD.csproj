@@ -320,6 +320,7 @@
     <Content Include="Assets\Scripts\Accounts\AccountsController.js" />
     <Content Include="Assets\Scripts\Administration\AdminButtons.js" />
     <Content Include="Assets\Scripts\Administration\AdminManager.js" />
+    <Content Include="Assets\Scripts\Administration\AreasController.js" />
     <Content Include="Assets\Scripts\Characters\CharactersController.js" />
     <Content Include="Assets\Scripts\Characters\CharactersManager.js" />
     <Content Include="Assets\Scripts\Components\Ajax.js" />
@@ -335,6 +336,7 @@
     <Content Include="Assets\Scripts\Games\GameManager.js" />
     <Content Include="Assets\Scripts\Components\Urls.js" />
     <Content Include="Assets\Scripts\Pages\ServerStatusManager.js" />
+    <Content Include="Assets\Scripts\Pages\ViewModel.js" />
     <Content Include="Assets\Scripts\Startup\Startup.js" />
     <Content Include="Assets\Scripts\UnitTesting\Accounts\AccountManagerTests.js" />
     <Content Include="Assets\Styles\Reset.css">
@@ -382,6 +384,7 @@
     <Content Include="Views\Games\Edit.cshtml" />
     <Content Include="Views\Play\Start.cshtml" />
     <Content Include="Views\Characters\Create.cshtml" />
+    <Content Include="Views\Areas\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

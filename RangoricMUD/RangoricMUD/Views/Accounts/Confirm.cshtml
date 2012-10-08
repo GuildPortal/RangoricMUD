@@ -1,6 +1,7 @@
 ﻿@model RangoricMUD.Accounts.Models.ConfirmAccountPageModel
-<div data-bind="if: Page() === 'Accounts/Confirm'">
-    <div class="FormContainer" data-bind="visible: IsVisible">
+<!-- ko if:Page() === 'Accounts/Confirm' -->
+<div>
+    <div class="FormContainer">
         <form action="/" method="POST" data-bind="submit: Submit">
             <fieldset>
                 <legend>Confirm your account</legend>
@@ -24,3 +25,4 @@
         </form>
     </div>
 </div>
+<!-- /ko -->

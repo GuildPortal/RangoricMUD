@@ -1,8 +1,7 @@
-﻿@{
-    ViewBag.Title = "Homepage";
-}
-<div data-bind="if: Page() === 'Home/Index'">
-    <div class="Homepage" data-bind="visible: Page() === 'Home/Index'">
+﻿<!-- ko if:Page() === 'Home/Index' -->
+<div>
+    <div class="Homepage">
         <h2>Homepage</h2>
     </div>
 </div>
+<!-- /ko -->

@@ -31,7 +31,7 @@
             };
         },
         Edit:function () {
-            var vName = arguments[0];
+            var vName = arguments[0][0];
             
             return {
                 Page: ko.observable("Games/Edit"),

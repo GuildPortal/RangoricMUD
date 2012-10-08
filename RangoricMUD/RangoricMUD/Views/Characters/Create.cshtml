@@ -1,5 +1,6 @@
 ﻿@model RangoricMUD.Characters.Models.CreateCharacterModel
-<div data-bind="if:Page() === 'Characters/Create'">
+<!-- ko if: Page() === 'Characters/Create' -->
+<div>
     <div>
         <form data-bind="submit: Submit">
             <fieldset>
@@ -12,3 +13,4 @@
         </form>
     </div>
 </div>
+<!-- /ko -->

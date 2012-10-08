@@ -1,25 +1,27 @@
 ﻿@model RangoricMUD.Games.Models.CreateGameModel
-<div data-bind="if: Page() === 'Games/List'">
-<div class="GameListPage" data-bind="visible: IsVisible" >
-    <div class="GameList" data-bind="foreach: List">
-        <div class="Game">
-            <div data-bind="text: Name"></div>
-            <button class="Play" data-bind="click: $parent.GoPlay(Name)">Play</button>
-            <button class="Edit" data-bind="click: $parent.GoEdit(Name)">Edit</button>
+<!-- ko if:Page() === 'Games/List' -->
+<div>
+    <div class="GameListPage">
+        <div class="GameList" data-bind="foreach: List">
+            <div class="Game">
+                <div data-bind="text: Name"></div>
+                <button class="Play" data-bind="click: $parent.GoPlay(Name)">Play</button>
+                <button class="Edit" data-bind="click: $parent.GoEdit(Name)">Edit</button>
+            </div>
         </div>
-    </div>
-    <div class="GameList">
-        <div class="Game">
-            <form data-bind="submit: SubmitCreateGame">
-                <fieldset>
-                    <legend></legend>
-                    @Html.LabelFor(t => t.Name)
-                    @Html.TextBoxFor(t => t.Name, new {data_bind="value:Name"})
-                    @Html.ValidationMessageFor(t => t.Name)
-                    <button type="submit">Create</button>
-                </fieldset>
-            </form>
+        <div class="GameList">
+            <div class="Game">
+                <form data-bind="submit: SubmitCreateGame">
+                    <fieldset>
+                        <legend></legend>
+                        @Html.LabelFor(t => t.Name)
+                        @Html.TextBoxFor(t => t.Name, new {data_bind="value:Name"})
+                        @Html.ValidationMessageFor(t => t.Name)
+                        <button type="submit">Create</button>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-    </div>
+<!-- /ko -->
