@@ -40,6 +40,7 @@
                     return tDependencies.AccountManager.IsLoggedIn();
                 }),
                 RuleGroups: ko.observableArray([{ Text: "Character Creation", Help: "Edit the rules for character creation", Page: "Characters/EditRules/" + vName }]),
+                MapGroups: ko.observableArray([{ Text: "Areas", Help: "Edit the Areas", Page: "Areas/List/" + vName }]),
                 GoToPage: function () {
                     var vThis = this;
                     tDependencies.PageManager.GoToPage(vThis.Page);

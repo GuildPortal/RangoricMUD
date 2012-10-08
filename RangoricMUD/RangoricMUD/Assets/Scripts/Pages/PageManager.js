@@ -13,10 +13,13 @@
             }
             var vControllers = tDependencies.Controllers;
             var vController = vControllers[vRouteData[0]];
-            var vArguments = vRouteData.slice(2);
-            var vViewModel = vController[vRouteData[1]](vArguments);
+            var vViewModel = null;
+            if (vController && vController[vRouteData[1]]) {
+                var vArguments = vRouteData.slice(2);
+                vViewModel = vController[vRouteData[1]](vArguments);
+            }
 
-            if (!vViewModel.IsVisible()) {
+            if (vViewModel === null || !vViewModel.IsVisible()) {
                 vViewModel = vControllers.Home.Index();
                 window.location.hash = "";
             }
