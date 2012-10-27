@@ -16,6 +16,7 @@
 
 using System.Web.Mvc;
 using RangoricMUD.Accounts.Models;
+using RangoricMUD.Areas.Models;
 using RangoricMUD.Characters.Models;
 using RangoricMUD.Games.Models;
 
@@ -33,6 +34,7 @@ namespace RangoricMUD.Controllers.Models
             GameListPageModel = new CreateGameModel();
             GameEditPageModel = new EditGameModel();
             CreateCharacterModel = new CreateCharacterModel();
+            CreateAreaModel = new CreateAreaModel();
         }
 
         public CreateAccount CreateAccount { get; private set; }
@@ -45,5 +47,7 @@ namespace RangoricMUD.Controllers.Models
         public EditGameModel GameEditPageModel { get; private set; }
 
         public CreateCharacterModel CreateCharacterModel { get; private set; }
+
+        public CreateAreaModel CreateAreaModel { get; private set; }
     }
 }

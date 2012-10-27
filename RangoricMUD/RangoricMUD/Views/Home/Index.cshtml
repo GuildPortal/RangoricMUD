@@ -1,15 +1,37 @@
-﻿@model RangoricMUD.Controllers.Models.IndexModel
+﻿@using System.Web.Optimization
+@model RangoricMUD.Controllers.Models.IndexModel
 @{
     ViewBag.Title = "Index";
 }
-<div class="Page">
-    @Html.Partial("Homepage")
-    @Html.Partial("../Accounts/Login", Model.LoginAccount)
-    @Html.Partial("../Accounts/Create", Model.CreateAccount)
-    @Html.Partial("../Accounts/Confirm", Model.ConfirmAccountPageModel)
-    @Html.Partial("../Games/List", Model.GameListPageModel)
-    @Html.Partial("../Games/Edit", Model.GameEditPageModel)
-    @Html.Partial("../Play/Start")
-    @Html.Partial("../Characters/Create", Model.CreateCharacterModel)
-</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width"/>
+        <title>@ViewBag.Title</title>
+        <link type="text/css" rel="stylesheet" href="~/Assets/Styles.css"/>
+        @Scripts.Render("~/Assets/Scripts/LibraryScripts")
+        <script src="/signalR/hubs" type="text/javascript"> </script>
+        @Scripts.Render("~/Assets/Scripts/OtherScripts")
+    </head>
+    <body>
+        <div id="Main-Menu" class="Menu" data-bind="template:{ name: 'Button', foreach:Buttons}">
+        </div>
+        <div class="Page">
+            @Html.Partial("Homepage")
+            @Html.Partial("../Accounts/Login", Model.LoginAccount)
+            @Html.Partial("../Accounts/Create", Model.CreateAccount)
+            @Html.Partial("../Accounts/Confirm", Model.ConfirmAccountPageModel)
+            @Html.Partial("../Games/List", Model.GameListPageModel)
+            @Html.Partial("../Games/Edit", Model.GameEditPageModel)
+            @Html.Partial("../Play/Start")
+            @Html.Partial("../Characters/Create", Model.CreateCharacterModel)
+            @Html.Partial("../Areas/List", Model.CreateAreaModel)
+        </div>
+        @Html.Partial("../Shared/Components/Buttons")
+        <div class="RenderTarget"></div>
+    </body>
+</html>
+
 

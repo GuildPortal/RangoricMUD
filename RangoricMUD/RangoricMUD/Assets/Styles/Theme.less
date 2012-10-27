@@ -1,11 +1,5 @@
-@Color: rgb(255,255,255);
-@UIColor: rgb(184, 72, 184);
-@BackgroundColor: rgb(176, 176, 255);
-@ActiveUIColor: rgb(208,96,208);
-@FocusBorderColor: rgb(128,16,128);
-@DisabledColor: rgb(0,0,0);
-@DisabledUIColor: rgb(160,160,240);
-@TextBoxBackgroundColor: lightness(@UIColor, 20%);
+@import "Colors.less";
+@TextBoxBackgroundColor: lighten(@UIColor, 20%);
 @FontSize: 16px;
 @Margin: @FontSize / 4;
 @FocusOutlineSize: @Margin / 2;
@@ -18,7 +12,14 @@ body {
     font-size: @FontSize;
     background-color: @BackgroundColor;
 }
-
+.RenderTarget{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:-1;
+}
 .Menu {
     position: absolute;
     top: 0;
@@ -41,28 +42,28 @@ h1 {
 .Page {
     position: absolute;
     top: @ButtonSize + @Margin * 2;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
     .FormContainer {
         position: absolute;
         right: @Margin;
-        top: 0px;
+        top: 0;
         padding: @Margin;
         width: @TextBoxWidth;
-        background-color: lightness(@BackgroundColor, -5%);
+        background-color: lighten(@BackgroundColor, -5%);
 
         label, legend,
         input[type="text"],
         input[type="password"] {
             float: left;
-            margin-left: 0px;
+            margin-left: 0;
         }
 
         button {
             width: @TextBoxWidth;
-            margin-right: 0px;
+            margin-right: 0;
             float: left;
         }
     }
@@ -70,7 +71,7 @@ h1 {
 
 button {
     font-size: @FontSize;
-    border: 0em;
+    border: 0;
     background-color: @UIColor;
     color: @Color;
     display: block;
@@ -80,7 +81,7 @@ button {
     margin-top: @Margin;
     margin-right: @Margin;
     cursor: pointer;
-    padding: 0px;
+    padding: 0;
 
     &:hover {
         -moz-outline: 2px solid @FocusBorderColor;
@@ -111,7 +112,7 @@ input[type="password"] {
     margin: 0 @Margin @Margin @Margin;
     font-size: @FontSize;
     border: @FocusOutlineSize solid @UIColor;
-    padding: 0px;
+    padding: 0;
     background-color: @TextBoxBackgroundColor;
 }
 
@@ -119,22 +120,22 @@ input[type="password"] {
     input[type="password"]:focus {
         -moz-outline: none;
         outline: none;
-        border: @FocusOutlineSize solid lightness(@UIColor,10%);
-        background-color: lightness(@TextBoxBackgroundColor, 15%);
+        border: @FocusOutlineSize solid lighten(@UIColor,10%);
+        background-color: lighten(@TextBoxBackgroundColor, 15%);
     }
 
 input[type="checkbox"],
 input[type="radio"] {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     width: 1px;
     height: 1px;
 }
 
     input[type="checkbox"] + label,
     input[type="radio"] + label {
-        padding: 0px;
-        margin: 0px;
+        padding: 0;
+        margin: 0;
         display: table-cell;
         background: @UIColor;
         color: @Color;
@@ -178,7 +179,7 @@ legend {
 }
 
 .GameListPage {
-    margin: 0px auto;
+    margin: 0 auto;
 
     .GameList {
         .Game {
@@ -188,20 +189,20 @@ legend {
             margin-left: @Margin;
             margin-bottom: @Margin;
             float: left;
-            background-color: lightness(@BackgroundColor, -5%);
+            background-color: lighten(@BackgroundColor, -5%);
 
             button.Play {
                 position: absolute;
                 bottom: @Margin;
                 right: @Margin;
-                margin-right: 0px;
+                margin-right: 0;
             }
 
             button.Edit {
                 position: absolute;
                 bottom: @ButtonSize + @Margin * 2;
                 right: @Margin;
-                margin-right: 0px;
+                margin-right: 0;
             }
         }
     }

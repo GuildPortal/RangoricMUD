@@ -1,3 +1,134 @@
+/* /Assets/Styles/Reset.css */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* /Assets/Styles/Theme.css */
 body {
   font-family: Verdana, Geneva, sans-serif;
   font-size: 16px;
@@ -29,14 +160,14 @@ h1 {
 .Page {
   position: absolute;
   top: 72px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 }
 .Page .FormContainer {
   position: absolute;
   right: 4px;
-  top: 0;
+  top: 0px;
   padding: 4px;
   width: 200px;
   background-color: #9797ff;
@@ -46,16 +177,16 @@ h1 {
 .Page .FormContainer input[type="text"],
 .Page .FormContainer input[type="password"] {
   float: left;
-  margin-left: 0;
+  margin-left: 0px;
 }
 .Page .FormContainer button {
   width: 200px;
-  margin-right: 0;
+  margin-right: 0px;
   float: left;
 }
 button {
   font-size: 16px;
-  border: 0;
+  border: 0em;
   background-color: #b848b8;
   color: #ffffff;
   display: block;
@@ -65,21 +196,21 @@ button {
   margin-top: 4px;
   margin-right: 4px;
   cursor: pointer;
-  padding: 0;
+  padding: 0px;
 }
 button:hover {
   -moz-outline: 2px solid #801080;
   outline: 2px solid #801080;
 }
 button:active {
-  background-color: #c66dc6;
+  background-color: #d060d0;
 }
 button:focus {
   -moz-outline: 2px solid #801080;
   outline: 2px solid #801080;
 }
 button:disabled {
-  background-color: #7d7dff;
+  background-color: #a0a0f0;
   color: #000000;
   -moz-outline: none;
   outline: none;
@@ -91,7 +222,7 @@ input[type="password"] {
   margin: 0 4px 4px 4px;
   font-size: 16px;
   border: 2px solid #b848b8;
-  padding: 0;
+  padding: 0px;
   background-color: #d591d5;
 }
 input[type="text"]:focus,
@@ -103,15 +234,15 @@ input[type="password"]:focus {
 }
 input[type="checkbox"],
 input[type="radio"] {
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
   width: 1px;
   height: 1px;
 }
 input[type="checkbox"] + label,
 input[type="radio"] + label {
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
   display: table-cell;
   background: #b848b8;
   color: #ffffff;
@@ -125,7 +256,7 @@ input[type="radio"] + label {
 }
 input[type="checkbox"]:checked + label,
 input[type="radio"]:checked + label {
-  background-color: #c66dc6;
+  background-color: #d060d0;
   border: 1px solid #801080;
 }
 input[type="checkbox"] + label:hover,
@@ -148,7 +279,7 @@ legend {
   display: none;
 }
 .GameListPage {
-  margin: 0 auto;
+  margin: 0px auto;
 }
 .GameListPage .GameList .Game {
   position: relative;
@@ -163,11 +294,12 @@ legend {
   position: absolute;
   bottom: 4px;
   right: 4px;
-  margin-right: 0;
+  margin-right: 0px;
 }
 .GameListPage .GameList .Game button.Edit {
   position: absolute;
   bottom: 72px;
   right: 4px;
-  margin-right: 0;
+  margin-right: 0px;
 }
+

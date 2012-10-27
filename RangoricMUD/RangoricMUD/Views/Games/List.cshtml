@@ -5,8 +5,8 @@
         <div class="GameList" data-bind="foreach: List">
             <div class="Game">
                 <div data-bind="text: Name"></div>
-                <button class="Play" data-bind="click: $parent.GoPlay(Name)">Play</button>
-                <button class="Edit" data-bind="click: $parent.GoEdit(Name)">Edit</button>
+                <button class="Play" data-bind="click: $parent.GoPlay(Name())">Play</button>
+                <button class="Edit" data-bind="click: $parent.GoEdit(Name())">Edit</button>
             </div>
         </div>
         <div class="GameList">

@@ -28,5 +28,10 @@ namespace RangoricMUD.Controllers
         {
             return View("Index", new IndexModel());
         }
+
+        public ViewResult Playground()
+        {
+            return View("Playground");
+        }
     }
 }

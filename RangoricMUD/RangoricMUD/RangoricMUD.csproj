@@ -46,14 +46,10 @@
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="BCrypt.Net">
       <HintPath>..\packages\BCrypt-Official.0.1.107\lib\BCrypt.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="BouncyCastle.Crypto, Version=1.7.4137.9688, Culture=neutral, PublicKeyToken=a4292a325f69b123, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Database.1.2.2073-Unstable\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -72,53 +68,26 @@
     <Reference Include="dotless.Core">
       <HintPath>..\packages\dotless.1.3.1.0\lib\dotless.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Esent.Interop, Version=1.7.0.0, Culture=neutral, PublicKeyToken=8dd49bbdae3f61af, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Database.1.2.2073-Unstable\lib\net40\Esent.Interop.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.NRefactory, Version=3.0.0.3800, Culture=neutral, PublicKeyToken=efe927acf176eea2, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Database.1.2.2073-Unstable\lib\net40\ICSharpCode.NRefactory.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net, Version=2.9.4.1, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Database.1.2.2073-Unstable\lib\net40\Lucene.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.Spatial, Version=2.9.1.2, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Database.1.2.2073-Unstable\lib\net40\Lucene.Net.Contrib.Spatial.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="NLog">
-      <HintPath>..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Abstractions, Version=1.2.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Client.1.2.2073-Unstable\lib\net40\Raven.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Backup, Version=1.2.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Database.1.2.2073-Unstable\lib\net40\Raven.Backup.exe</HintPath>
+      <HintPath>..\packages\RavenDB.Client.1.2.2127-Unstable\lib\net40\Raven.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Client.Embedded, Version=1.2.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Embedded.1.2.2073-Unstable\lib\net40\Raven.Client.Embedded.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Embedded.1.2.2127-Unstable\lib\net40\Raven.Client.Embedded.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Client.Lightweight, Version=1.2.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Client.1.2.2073-Unstable\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Client.1.2.2127-Unstable\lib\net40\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Database, Version=1.2.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Database.1.2.2073-Unstable\lib\net40\Raven.Database.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Smuggler, Version=1.2.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Database.1.2.2073-Unstable\lib\net40\Raven.Smuggler.exe</HintPath>
+      <HintPath>..\packages\RavenDB.Database.1.2.2127-Unstable\lib\net40\Raven.Database.dll</HintPath>
     </Reference>
     <Reference Include="SignalR, Version=0.5.1.10822, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -131,10 +100,6 @@
     <Reference Include="SignalR.Hosting.Common, Version=0.5.1.10822, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SignalR.Hosting.Common.0.5.3\lib\net40\SignalR.Hosting.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Spatial4n.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9f9456e1ca16d45e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Database.1.2.2073-Unstable\lib\net40\Spatial4n.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -206,9 +171,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
     </Reference>
-    <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="WebGrease, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -240,6 +205,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\LessMinify.cs" />
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Areas\Models\CreateAreaModel.cs" />
     <Compile Include="Bootstrappers\Boot.cs" />
     <Compile Include="Bootstrappers\ControllerFactoryShip.cs" />
     <Compile Include="Bootstrappers\Crews\BaseCrew.cs" />
@@ -327,8 +293,10 @@
     <Content Include="Assets\Scripts\Components\Buttons.js" />
     <Content Include="Assets\Scripts\Components\Controllers.js" />
     <Content Include="Assets\Scripts\Components\HashChange.js" />
+    <Content Include="Assets\Scripts\Games\Game.js" />
     <Content Include="Assets\Scripts\Games\GamesController.js" />
     <Content Include="Assets\Scripts\Games\PlayController.js" />
+    <Content Include="Assets\Scripts\Graphics\Main.js" />
     <Content Include="Assets\Scripts\Pages\HomeController.js" />
     <Content Include="Assets\Scripts\Pages\HomePage.js" />
     <Content Include="Assets\Scripts\Pages\PageManager.js" />
@@ -337,20 +305,37 @@
     <Content Include="Assets\Scripts\Components\Urls.js" />
     <Content Include="Assets\Scripts\Pages\ServerStatusManager.js" />
     <Content Include="Assets\Scripts\Pages\ViewModel.js" />
+    <Content Include="Assets\Scripts\Playground\Stuff.js" />
     <Content Include="Assets\Scripts\Startup\Startup.js" />
     <Content Include="Assets\Scripts\UnitTesting\Accounts\AccountManagerTests.js" />
+    <Content Include="Assets\Styles\Colors.css">
+      <DependentUpon>Colors.less</DependentUpon>
+    </Content>
+    <Content Include="Assets\Styles\Colors.min.css">
+      <DependentUpon>Colors.less</DependentUpon>
+    </Content>
     <Content Include="Assets\Styles\Reset.css">
       <DependentUpon>Reset.less</DependentUpon>
     </Content>
-    <None Include="Assets\Styles\Test.less" />
-    <Content Include="Assets\Styles\Test.css">
-      <DependentUpon>Test.less</DependentUpon>
+    <Content Include="Assets\Styles\Reset.min.css">
+      <DependentUpon>Reset.less</DependentUpon>
+    </Content>
+    <Content Include="Assets\Styles.css">
+      <DependentUpon>Styles.css.bundle</DependentUpon>
+    </Content>
+    <Content Include="Assets\Styles.min.css">
+      <DependentUpon>Styles.css.bundle</DependentUpon>
     </Content>
     <Content Include="Assets\Styles\Theme.css">
       <DependentUpon>Theme.less</DependentUpon>
     </Content>
+    <Content Include="Assets\Styles\Theme.min.css">
+      <DependentUpon>Theme.less</DependentUpon>
+    </Content>
     <Content Include="Content\qunit.css" />
     <Content Include="Global.asax" />
+    <Content Include="Assets\Styles\Colors.less" />
+    <None Include="Assets\Styles.css.bundle" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -365,6 +350,12 @@
     </Content>
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\knockout.validation.debug.js" />
+    <Content Include="Scripts\knockout.validation.js" />
+    <Content Include="Scripts\three.js" />
+    <Content Include="Scripts\three.stats.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -385,6 +376,8 @@
     <Content Include="Views\Play\Start.cshtml" />
     <Content Include="Views\Characters\Create.cshtml" />
     <Content Include="Views\Areas\List.cshtml" />
+    <Content Include="Views\Shared\Components\Buttons.cshtml" />
+    <Content Include="Views\Home\Playground.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

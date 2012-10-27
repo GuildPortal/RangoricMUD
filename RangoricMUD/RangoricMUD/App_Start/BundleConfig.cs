@@ -24,25 +24,19 @@ namespace RangoricMUD.App_Start
     {
         public static void RegisterBundles(BundleCollection tBundleCollection)
         {
-            var vCssBundle =
-                new Bundle("~/Assets/Styles/AllStyles", new LessMinify())
-                    .Include("~/Assets/Styles/Reset.less",
-                             "~/Assets/Styles/Theme.less");
-
-            tBundleCollection.Add(vCssBundle);
-
             var vLibraryScriptBundle =
                 new ScriptBundle("~/Assets/Scripts/LibraryScripts")
                     .IncludeDirectory("~/Scripts/", "*.js");
 
             var vOtherScripts = new ScriptBundle("~/Assets/Scripts/OtherScripts")
-                    .IncludeDirectory("~/Assets/Scripts/Components/", "*.js")
-                    .IncludeDirectory("~/Assets/Scripts/Pages/", "*.js")
-                    .IncludeDirectory("~/Assets/Scripts/Accounts/", "*.js")
-                    .IncludeDirectory("~/Assets/Scripts/Administration/", "*.js")
-                    .IncludeDirectory("~/Assets/Scripts/Games/", "*.js")
-                    .IncludeDirectory("~/Assets/Scripts/Characters/", "*.js")
-                    .Include("~/Assets/Scripts/Startup/Startup.js");
+                .IncludeDirectory("~/Assets/Scripts/Components/", "*.js")
+                .IncludeDirectory("~/Assets/Scripts/Pages/", "*.js")
+                .IncludeDirectory("~/Assets/Scripts/Accounts/", "*.js")
+                .IncludeDirectory("~/Assets/Scripts/Administration/", "*.js")
+                .IncludeDirectory("~/Assets/Scripts/Games/", "*.js")
+                .IncludeDirectory("~/Assets/Scripts/Characters/", "*.js")
+                .IncludeDirectory("~/Assets/Scripts/Graphics/", "*.js")
+                .Include("~/Assets/Scripts/Startup/Startup.js");
 
             tBundleCollection.Add(vLibraryScriptBundle);
             tBundleCollection.Add(vOtherScripts);

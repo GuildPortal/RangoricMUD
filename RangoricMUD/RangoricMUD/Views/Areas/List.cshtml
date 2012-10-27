@@ -1,2 +1,31 @@
-﻿<!-- ko if: Page() === 'Areas/List' -->
+﻿@model RangoricMUD.Areas.Models.CreateAreaModel
+<!-- ko if: Page() === 'Areas/List' -->
+<div>
+    <div data-bind="text:Name"></div>
+    <div>
+        <div>Areas</div>
+        <!-- ko foreach: Areas -->
+        <div>
+            <div data-bind="Name"></div>
+            <div>
+                <button data-bind="click: $parent.GoToEdit(Name())">Edit</button>
+            </div>
+        </div>
+        <!-- /ko -->
+        <form data-bind="submit: SubmitCreateArea">
+            <fieldset>
+                <legend>Create New Area</legend>
+                @Html.LabelFor(t => t.Name)
+                @Html.TextBoxFor(t => t.Name, new {data_bind="value:Name"})
+                @Html.ValidationMessageFor(t => t.Name)
+                <button type="submit">Create</button>
+            </fieldset>
+        </form>
+        <div>
+            <div>
+                
+            </div>
+        </div>
+    </div>
+</div>
 <!-- /ko -->

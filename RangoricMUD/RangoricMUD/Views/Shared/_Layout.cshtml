@@ -1,21 +1,2 @@
 ﻿@using System.Web.Optimization
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width"/>
-        <title>@ViewBag.Title</title>
-        @Styles.Render("~/Assets/Styles/AllStyles")
-        @Scripts.Render("~/Assets/Scripts/LibraryScripts")
-        <script src="/signalR/hubs" type="text/javascript" language="javascript"></script>
-        @Scripts.Render("~/Assets/Scripts/OtherScripts")
-    </head>
-    <body>
-        <div id="Main-Menu" class="Menu" data-bind="foreach: Buttons">
-            <button data-bind="text: Text, visible: IsVisible, click: Click"></button>
-        </div>
-        @RenderBody()
 
-    </body>
-</html>

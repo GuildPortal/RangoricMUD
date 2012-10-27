@@ -32,7 +32,7 @@
         },
         Edit:function () {
             var vName = arguments[0][0];
-            
+            tDependencies.GameManager.CurrentGame(vName);
             return {
                 Page: ko.observable("Games/Edit"),
                 Name: ko.observable(vName),
