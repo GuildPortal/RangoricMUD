@@ -23,16 +23,17 @@ body {
         margin-left: @Margin;
         margin-right: @Margin;
         .ObjectWidth(5);
-        height: 24px;
+        height: 22px;
     }
 
     > div:nth-child(2) {
         float: left;
         margin-left: @Margin;
         margin-right: @Margin;
-        height: 48px;
+        height: 34px;
         font-size: 14px;
         line-height: 17px;
+		overflow:hidden;
     }
 
     > div:last-child {
@@ -40,18 +41,21 @@ body {
         .ContainerSize(5, 2);
 
         button {
-            float: left;
+            float: right;
             margin: @Margin;
             .ObjectSize(1, 1);
         }
     }
 }
-@media (min-width:736px){
+@media (min-width:576px){
     .Panel {
         .ContainerSize(5, 3);
 
+		> div:first-child{
+			height:24px;
+		}
         > div:nth-child(2) {
-			height:120px;
+			height:88px;
         }
     }
 }

@@ -140,8 +140,8 @@ body {
   background-color: #b0b0ff;
 }
 .Panel {
-  width: 360px;
-  height: 144px;
+  width: 280px;
+  height: 112px;
   background-color: rgba(144, 144, 224, 0.2);
   margin: 4px;
   float: left;
@@ -150,35 +150,39 @@ body {
   float: left;
   margin-left: 4px;
   margin-right: 4px;
-  width: 352px;
-  height: 24px;
+  width: 272px;
+  height: 22px;
 }
 .Panel > div:nth-child(2) {
   float: left;
   margin-left: 4px;
   margin-right: 4px;
-  height: 48px;
+  height: 34px;
   font-size: 14px;
   line-height: 17px;
+  overflow: hidden;
 }
 .Panel > div:last-child {
   float: left;
-  width: 360px;
-  height: 144px;
+  width: 280px;
+  height: 112px;
 }
 .Panel > div:last-child button {
-  float: left;
+  float: right;
   margin: 4px;
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 }
-@media (min-width: 736px) {
+@media (min-width: 576px) {
   .Panel {
-    width: 360px;
-    height: 216px;
+    width: 280px;
+    height: 168px;
+  }
+  .Panel > div:first-child {
+    height: 24px;
   }
   .Panel > div:nth-child(2) {
-    height: 120px;
+    height: 88px;
   }
 }
 #Scene {
