@@ -65,9 +65,6 @@
     <Reference Include="DataAnnotationsExtensions.ClientValidation">
       <HintPath>..\packages\DataAnnotationsExtensions.MVC3.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
     </Reference>
-    <Reference Include="dotless.Core">
-      <HintPath>..\packages\dotless.1.3.1.0\lib\dotless.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -141,7 +138,7 @@
     </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -167,9 +164,9 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="WebActivator, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WebActivator, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
+      <HintPath>..\packages\WebActivator.1.5.2\lib\net40\WebActivator.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -203,7 +200,6 @@
     <Compile Include="Accounts\Queries\ICheckLoginQuery.cs" />
     <Compile Include="Administration\Controllers\AdministrationHub.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\LessMinify.cs" />
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="Areas\Models\CreateAreaModel.cs" />
     <Compile Include="Bootstrappers\Boot.cs" />
@@ -292,7 +288,7 @@
     <Content Include="Assets\Scripts\Components\Ajax.js" />
     <Content Include="Assets\Scripts\Components\Buttons.js" />
     <Content Include="Assets\Scripts\Components\Controllers.js" />
-    <Content Include="Assets\Scripts\Components\HashChange.js" />
+    <Content Include="Assets\Scripts\Components\Panels.js" />
     <Content Include="Assets\Scripts\Games\Game.js" />
     <Content Include="Assets\Scripts\Games\GamesController.js" />
     <Content Include="Assets\Scripts\Games\PlayController.js" />
@@ -305,26 +301,30 @@
     <Content Include="Assets\Scripts\Components\Urls.js" />
     <Content Include="Assets\Scripts\Pages\ServerStatusManager.js" />
     <Content Include="Assets\Scripts\Pages\ViewModel.js" />
-    <Content Include="Assets\Scripts\Playground\Stuff.js" />
     <Content Include="Assets\Scripts\Startup\Startup.js" />
-    <Content Include="Assets\Scripts\UnitTesting\Accounts\AccountManagerTests.js" />
     <Content Include="Assets\Styles\Colors.css">
       <DependentUpon>Colors.less</DependentUpon>
     </Content>
     <Content Include="Assets\Styles\Colors.min.css">
       <DependentUpon>Colors.less</DependentUpon>
     </Content>
-    <Content Include="Assets\Styles\Reset.css">
-      <DependentUpon>Reset.less</DependentUpon>
+    <Content Include="Assets\Styles\Layout.css">
+      <DependentUpon>Layout.less</DependentUpon>
     </Content>
-    <Content Include="Assets\Styles\Reset.min.css">
-      <DependentUpon>Reset.less</DependentUpon>
+    <Content Include="Assets\Styles\Layout.min.css">
+      <DependentUpon>Layout.less</DependentUpon>
     </Content>
     <Content Include="Assets\Styles.css">
       <DependentUpon>Styles.css.bundle</DependentUpon>
     </Content>
     <Content Include="Assets\Styles.min.css">
       <DependentUpon>Styles.css.bundle</DependentUpon>
+    </Content>
+    <Content Include="Assets\Styles\Reset.css">
+      <DependentUpon>Reset.less</DependentUpon>
+    </Content>
+    <Content Include="Assets\Styles\Reset.min.css">
+      <DependentUpon>Reset.less</DependentUpon>
     </Content>
     <Content Include="Assets\Styles\Theme.css">
       <DependentUpon>Theme.less</DependentUpon>
@@ -336,9 +336,13 @@
     <Content Include="Global.asax" />
     <Content Include="Assets\Styles\Colors.less" />
     <None Include="Assets\Styles.css.bundle" />
+    <Content Include="Assets\Styles\Layout.less" />
+    <Content Include="Assets\Styles\Theme.less" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery.ba-hashchange.js" />
+    <Content Include="Scripts\jquery.ba-hashchange.min.js" />
     <Content Include="Scripts\jquery.signalR-0.5.3.js" />
     <Content Include="Scripts\jquery.signalR-0.5.3.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -348,8 +352,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\knockout-2.1.0.debug.js" />
-    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\knockout.mapping-latest.debug.js" />
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\knockout.validation.debug.js" />
@@ -367,7 +371,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Assets\Styles\Reset.less" />
-    <Content Include="Assets\Styles\Theme.less" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Homepage.cshtml" />
     <Content Include="Views\Games\List.cshtml" />
@@ -378,10 +381,14 @@
     <Content Include="Views\Areas\List.cshtml" />
     <Content Include="Views\Shared\Components\Buttons.cshtml" />
     <Content Include="Views\Home\Playground.cshtml" />
+    <Content Include="Views\Shared\Components\Panels.cshtml" />
+    <Content Include="Views\Shared\Components\Forms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
+    <Folder Include="Assets\Scripts\Playground\" />
+    <Folder Include="Assets\UnitTesting\Accounts\" />
     <Folder Include="ServerStatus\Commands\" />
     <Folder Include="ServerStatus\Queries\" />
   </ItemGroup>

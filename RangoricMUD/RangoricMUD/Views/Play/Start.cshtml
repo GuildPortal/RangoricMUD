@@ -3,7 +3,10 @@
     <div>
         Character List
         <div data-bind="foreach: Characters">
-            <div data-bind="text:Name"></div>
+            <div class="Panel">
+                <div data-bind="text:Name"></div>
+                <div></div>
+            </div>
         </div>
         <div>
             <button data-bind="click: GoToCreateCharacter">Create Character</button>

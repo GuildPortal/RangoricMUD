@@ -16,21 +16,121 @@
         @Scripts.Render("~/Assets/Scripts/OtherScripts")
     </head>
     <body>
-        <div id="Main-Menu" class="Menu" data-bind="template:{ name: 'Button', foreach:Buttons}">
+        <div id="Interface">
+            <div class="Panel">
+                <div>Name of this panel</div>
+                <div>
+                    Lorem Ipsum is simply dummy text of the
+                    printing and typesetting industry. Lorem Ipsum 
+                    has been the industry's standard dummy text
+                    ever since the 1500s, when an unknown printer
+                    took a galley of type and scrambled it to make a 
+                    type specimen book. It has survived not only five 
+                    centuries, but also the leap into electronic
+                </div>
+                <div>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+            </div>
+            <div class="Panel">
+                <div>Name of this panel</div>
+                <div>Description Text.<br/>2<br/>3<br/>4<br/>5</div>
+                <div>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+            </div>
+            <div class="Panel">
+                <div>Name of this panel</div>
+                <div>Description Text.<br/>2<br/>3<br/>4<br/>5</div>
+                <div>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+            </div>
+            <div class="Panel">
+                <div>Name of this panel</div>
+                <div>Description Text.<br/>2<br/>3<br/>4<br/>5</div>
+                <div>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+            </div>
+            <div class="Panel">
+                <div>Name of this panel</div>
+                <div>Description Text.<br/>2<br/>3<br/>4<br/>5</div>
+                <div>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+            </div>
+            <div class="Panel">
+                <div>Name of this panel</div>
+                <div>Description Text.<br/>2<br/>3<br/>4<br/>5</div>
+                <div>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+            </div>
+            <div class="Panel">
+                <div>Name of this panel</div>
+                <div>Description Text.<br/>2<br/>3<br/>4<br/>5</div>
+                <div>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+            </div>
+            <div class="Panel">
+                <div>Name of this panel</div>
+                <div>Description Text.<br/>2<br/>3<br/>4<br/>5</div>
+                <div>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+            </div>
+            <div class="Panel">
+                <div>Name of this panel</div>
+                <div>Description Text.<br/>2<br/>3<br/>4<br/>5</div>
+                <div>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+            </div>
+            <div data-bind="template:{ name: 'BUtton', foreach:Buttons}"></div>            
+            <div></div>
         </div>
-        <div class="Page">
-            @Html.Partial("Homepage")
-            @Html.Partial("../Accounts/Login", Model.LoginAccount)
-            @Html.Partial("../Accounts/Create", Model.CreateAccount)
-            @Html.Partial("../Accounts/Confirm", Model.ConfirmAccountPageModel)
-            @Html.Partial("../Games/List", Model.GameListPageModel)
-            @Html.Partial("../Games/Edit", Model.GameEditPageModel)
-            @Html.Partial("../Play/Start")
-            @Html.Partial("../Characters/Create", Model.CreateCharacterModel)
-            @Html.Partial("../Areas/List", Model.CreateAreaModel)
-        </div>
+        <div id="Scene"></div>
         @Html.Partial("../Shared/Components/Buttons")
-        <div class="RenderTarget"></div>
+        @Html.Partial("../Shared/Components/Panels")
+        @Html.Partial("../Shared/Components/Forms")
     </body>
 </html>
 

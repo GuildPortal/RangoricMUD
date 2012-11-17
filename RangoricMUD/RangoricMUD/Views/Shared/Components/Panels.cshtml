@@ -1,0 +1,9 @@
+﻿<script type="text/html" id="Panel">
+    <!-- ko if: IsVisible -->
+    <div class="Panel">
+        <div data-bind="text: Name"></div>
+        <div data-bind="text: Description"></div>
+        <div data-bind="template:{ name: 'Button', foreach:Buttons}"></div>
+    </div>
+    <!-- /ko -->
+</script>

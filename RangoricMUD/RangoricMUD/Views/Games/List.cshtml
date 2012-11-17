@@ -2,15 +2,10 @@
 <!-- ko if:Page() === 'Games/List' -->
 <div>
     <div class="GameListPage">
-        <div class="GameList" data-bind="foreach: List">
-            <div class="Game">
-                <div data-bind="text: Name"></div>
-                <button class="Play" data-bind="click: $parent.GoPlay(Name())">Play</button>
-                <button class="Edit" data-bind="click: $parent.GoEdit(Name())">Edit</button>
-            </div>
-        </div>
+        <div data-bind="template:{name:'Panel', foreach:Panels}"></div>
         <div class="GameList">
-            <div class="Game">
+            <div class="Game Panel">
+                <div>Create a New Game</div>
                 <form data-bind="submit: SubmitCreateGame">
                     <fieldset>
                         <legend></legend>

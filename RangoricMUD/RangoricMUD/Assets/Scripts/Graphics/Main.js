@@ -1,5 +1,5 @@
 ﻿$(function () {
-    var vTarget = $(".RenderTarget");
+    var vTarget = $("#Scene");
     var vAspectRatio = vTarget.width() / vTarget.height();
     var vCamera = new THREE.PerspectiveCamera(90, vAspectRatio, 1, 100);
     vCamera.position.z = 30;
@@ -16,7 +16,7 @@
     vScene.add(vMesh);
 
     var vRenderer = new THREE.CanvasRenderer();
-    vRenderer.setSize(vTarget.width(), vTarget.height()-3);
+    vRenderer.setSize(vTarget.width(), vTarget.height());
 
     vTarget.append(vRenderer.domElement);
 

@@ -1,0 +1,30 @@
+﻿@import "Colors.less";
+@FontSize: 16px;
+@Margin: @FontSize / 4;
+@FocusOutlineSize: @Margin / 2;
+@ButtonSize: @FontSize * 4;
+@TextBoxWidth: @ButtonSize * 3 + @Margin * 2;
+
+@Size: @FontSize * 4;
+@Margin: @FontSize / 4;
+
+.ObjectWidth(@Width:1, @Border: 0){
+	width:@Size * @Width + @Margin * (@Width - 1) * 2 - @Border * 2;
+}
+.ObjectHeight(@Height:1, @Border: 0){
+	height:@Size * @Height + @Margin * (@Height - 1) * 2 - @Border * 2;
+}
+.ObjectSize(@Width:1, @Height:1, @Border: 0){
+	.ObjectWidth(@Width, @Border);
+	.ObjectHeight(@Height, @Border);
+}
+.ContainerWidth(@Width:1){
+	width:@Size * @Width + @Margin * @Width * 2;
+}
+.ContainerHeight(@Height:1){
+	height:@Size * @Height + @Margin * @Height * 2;
+}
+.ContainerSize(@Width:1, @Height:1){
+	.ContainerWidth(@Width);
+	.ContainerHeight(@Height);
+}

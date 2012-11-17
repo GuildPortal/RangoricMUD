@@ -6,23 +6,24 @@
 /// <reference path="~/Assets/Scripts/Games/GameManager.js"/>
 
 $(function() {
-    var vDependencies = {
-        AjaxFactory: Ajax,
-        Connection: $.connection
-    };
-    vDependencies.PageManager = new PageManager(vDependencies);
-    vDependencies.AccountManager = AccountManager(vDependencies);
-    vDependencies.GameManager = GameManager(vDependencies);
-    vDependencies.AdminManager = AdminManager(vDependencies);
-    vDependencies.CharactersManager = CharactersManager(vDependencies);
-    vDependencies.Controllers = Controllers(vDependencies);
+    //var vDependencies = {
+    //    AjaxFactory: Ajax,
+    //    Connection: $.connection
+    //};
+    //vDependencies.PageManager = new PageManager(vDependencies);
+    //vDependencies.AccountManager = AccountManager(vDependencies);
+    //vDependencies.GameManager = GameManager(vDependencies);
+    //vDependencies.AdminManager = AdminManager(vDependencies);
+    //vDependencies.CharactersManager = CharactersManager(vDependencies);
+    //vDependencies.Controllers = Controllers(vDependencies);
 
-    var vButtons = Buttons(vDependencies);
+    //var vButtons = Buttons(vDependencies);
 
 
-    $.connection.hub.start(function () {
-        vDependencies.PageManager.Start();
-        ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);
-        ko.applyBindings(vDependencies.PageManager.Page, $('.Page').get()[0]);
-    });
+    //$.connection.hub.start(function () {
+    //    vDependencies.PageManager.Start();
+    //    ko.applyBindings(vButtons, $('#Main-Menu').get()[0]);
+    //    ko.applyBindings(vDependencies.PageManager.Page, $('.Page').get()[0]);
+    //});
+    
 });

@@ -2,13 +2,17 @@
 <div>
     <div id="GameEdit">
         <div class="Name" data-bind="text: Name"></div>
-        <div>Rules:</div>
-        <div data-bind="foreach: RuleGroups">
-            <button data-bind="text:Text, attr:{'title': Help}, click: $parent.GoToPage"></button>
+        <div class="Panel">
+            <div>Rules</div>
+            <div data-bind="foreach: RuleGroups">
+                <button data-bind="text:Text, attr:{'title': Help}, click: $parent.GoToPage"></button>
+            </div>
         </div>
-        <div>Map Related Fun</div>
-        <div data-bind="foreach: MapGroups">
-            <button data-bind="text:Text, attr:{'title': Help}, click: $parent.GoToPage"></button>
+        <div class="Panel">
+            <div>Map Related Fun</div>
+            <div data-bind="foreach: MapGroups">
+                <button data-bind="text:Text, attr:{'title': Help}, click: $parent.GoToPage"></button>
+            </div>
         </div>
     </div>
 </div>

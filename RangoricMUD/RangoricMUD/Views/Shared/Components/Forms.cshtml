@@ -1,0 +1,24 @@
+﻿<script type="text/html" id="Form">
+    <div class="FormContainer">
+        <form action="/" method="POST" data-bind="submit: Submit">
+            <fieldset>
+                <legend data-bind="text:Legend"></legend>
+                <!-- ko foreach: fields -->
+                <div data-bind="template: { name=Type}"></div>
+                <!-- /ko -->
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+</script>
+<script type="text/html" id="Input_Text">
+    <!-- ko if:IsVisible -->
+    <div>
+        <label data-bind="attr:{'for':Name}, text:Label"></label>
+        <input data-bind="attr:{'id':Name, 'name':Name}, value:Value" type="text"/>
+        <!-- ko if:NotValid -->
+        <div data-bind="text:ValidationMessage"></div>
+        <!-- /ko -->
+    </div>
+    <!-- /ko -->
+</script>
