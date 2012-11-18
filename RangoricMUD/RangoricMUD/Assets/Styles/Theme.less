@@ -10,7 +10,33 @@ body {
 	.Coloring;
 }
 // End Baseline
+button {
+	margin:@Margin;
+    font-size: @FontSize;
+    .Coloring('Button');
+    border: 0;
+    display: block;
+    cursor: pointer;
+    padding: 0;
 
+    &:hover {
+        outline: 2px solid @FocusBorderColor;
+    }
+
+    &:active {
+        background-color: @ActiveUIColor;
+    }
+
+    &:focus {
+        outline: 2px solid @FocusBorderColor;
+    }
+
+    &:disabled {
+        .Coloring('Disabled');
+        outline: none;
+        cursor: default;
+    }
+}
 //	Panel
 .Panel {
     .ContainerSize(5, 2);
@@ -40,9 +66,8 @@ body {
         float: left;
         .ContainerSize(5, 2);
 
-        button {
+        > button {
             float: right;
-            margin: @Margin;
             .ObjectSize(1, 1);
         }
     }
@@ -60,6 +85,45 @@ body {
     }
 }
 //	End Panel
+.Panel.Form {
+    height: auto;
+
+    > form > fieldset {
+        > legend {
+            float: left;
+            margin-left: @Margin;
+            margin-right: @Margin;
+            .ObjectWidth(5);
+            height: 22px;
+        }
+		> div > label {
+			float:left;
+			margin-left:@Margin;
+			margin-right:@Margin;
+			font-size:14px;
+		}
+		> button[type='submit']{
+			.ObjectSize(5, 1);
+		}
+    }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    .ObjectWidth(5, @FocusOutlineSize * @Margin / 2);
+    margin: 0 @Margin @Margin @Margin;
+    font-size: @FontSize;
+    border: @FocusOutlineSize solid @UIColor;
+    padding: @Margin / 2;
+    background-color: @TextBoxBackgroundColor;
+
+    &:focus {
+        outline: none;
+        border: @FocusOutlineSize solid lighten(@UIColor,10%);
+        background-color: lighten(@TextBoxBackgroundColor, 15%);
+    }
+}
 
 
 
@@ -119,55 +183,6 @@ h1 {
         }
     }
 }
-
-button {
-    font-size: @FontSize;
-    .Color('Enabled');
-    border: 0;
-    background-color: @UIColor;
-    display: block;
-    .ObjectSize(1);
-    margin-top: @Margin;
-    margin-right: @Margin;
-    cursor: pointer;
-    padding: 0;
-
-    &:hover {
-        outline: 2px solid @FocusBorderColor;
-    }
-
-    &:active {
-        background-color: @ActiveUIColor;
-    }
-
-    &:focus {
-        outline: 2px solid @FocusBorderColor;
-    }
-
-    &:disabled {
-        background-color: @DisabledUIColor;
-        .Color('Disabled');
-        outline: none;
-        cursor: default;
-    }
-}
-
-input[type="text"],
-input[type="password"] {
-	.ObjectWidth(3, @FocusOutlineSize);
-    margin: 0 @Margin @Margin @Margin;
-    font-size: @FontSize;
-    border: @FocusOutlineSize solid @UIColor;
-    padding: 0;
-    background-color: @TextBoxBackgroundColor;
-}
-
-    input[type="text"]:focus,
-    input[type="password"]:focus {
-        outline: none;
-        border: @FocusOutlineSize solid lighten(@UIColor,10%);
-        background-color: lighten(@TextBoxBackgroundColor, 15%);
-    }
 
 input[type="checkbox"],
 input[type="radio"] {

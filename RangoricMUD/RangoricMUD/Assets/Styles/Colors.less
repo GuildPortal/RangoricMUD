@@ -10,14 +10,16 @@
 
 .Color(@Type: 'Base'){
 	@Base: rgb(0,0,0);
-	@Panel: rgb(0,0,0);
+	@Panel: @Base;
 	@Button: rgb(255,255,255);
+	@Disabled: @Base;
 	color: @@Type;
 }
 .BackgroundColor(@Type: 'Base'){
 	@Base: rgb(176,176,255);
 	@Panel: rgba(144, 144, 224, 0.2);
 	@Button: rgb(184,72,184);
+	@Disabled: darken(@Button, 10%);
 	background-color:@@Type;
 
 }
