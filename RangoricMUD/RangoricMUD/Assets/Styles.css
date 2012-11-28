@@ -166,7 +166,7 @@ button:disabled {
 }
 .Panel {
   width: 280px;
-  height: 112px;
+  height: 168px;
   background-color: rgba(144, 144, 224, 0.2);
   margin: 4px;
   float: left;
@@ -176,13 +176,13 @@ button:disabled {
   margin-left: 4px;
   margin-right: 4px;
   width: 272px;
-  height: 22px;
+  height: 24px;
 }
 .Panel > div:nth-child(2) {
   float: left;
   margin-left: 4px;
   margin-right: 4px;
-  height: 34px;
+  height: 88px;
   font-size: 14px;
   line-height: 17px;
   overflow: hidden;
@@ -197,35 +197,29 @@ button:disabled {
   width: 48px;
   height: 48px;
 }
-@media (min-width: 576px) {
-  .Panel {
-    width: 280px;
-    height: 168px;
-  }
-  .Panel > div:first-child {
-    height: 24px;
-  }
-  .Panel > div:nth-child(2) {
-    height: 88px;
-  }
-}
-.Panel.Form {
+.Panel form {
   height: auto;
 }
-.Panel.Form > form > fieldset > legend {
+.Panel form > form > fieldset > legend {
   float: left;
   margin-left: 4px;
   margin-right: 4px;
   width: 272px;
   height: 22px;
 }
-.Panel.Form > form > fieldset > div > label {
+.Panel form > form > fieldset > div > label {
   float: left;
   margin-left: 4px;
   margin-right: 4px;
   font-size: 14px;
+  padding-left: 4px;
+  padding-right: 4px;
+  width: 264px;
 }
-.Panel.Form > form > fieldset > button[type='submit'] {
+.Panel form > form > fieldset > div > label.Error {
+  background-color: rgba(255, 64, 64, 0.4);
+}
+.Panel form > form > fieldset > button[type='submit'] {
   width: 272px;
   height: 48px;
 }

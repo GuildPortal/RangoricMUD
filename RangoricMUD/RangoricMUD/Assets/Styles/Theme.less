@@ -39,7 +39,7 @@ button {
 }
 //	Panel
 .Panel {
-    .ContainerSize(5, 2);
+    .ContainerSize(5, 3);
     .BackgroundColor('Panel');
     margin: @Margin;
     float: left;
@@ -49,14 +49,14 @@ button {
         margin-left: @Margin;
         margin-right: @Margin;
         .ObjectWidth(5);
-        height: 22px;
+		height:24px;
     }
 
     > div:nth-child(2) {
         float: left;
         margin-left: @Margin;
         margin-right: @Margin;
-        height: 34px;
+		height:88px;
         font-size: 14px;
         line-height: 17px;
 		overflow:hidden;
@@ -72,20 +72,8 @@ button {
         }
     }
 }
-@media (min-width:576px){
-    .Panel {
-        .ContainerSize(5, 3);
-
-		> div:first-child{
-			height:24px;
-		}
-        > div:nth-child(2) {
-			height:88px;
-        }
-    }
-}
 //	End Panel
-.Panel.Form {
+.Panel form {
     height: auto;
 
     > form > fieldset {
@@ -96,15 +84,24 @@ button {
             .ObjectWidth(5);
             height: 22px;
         }
-		> div > label {
-			float:left;
-			margin-left:@Margin;
-			margin-right:@Margin;
-			font-size:14px;
-		}
-		> button[type='submit']{
-			.ObjectSize(5, 1);
-		}
+        > div {
+            > label {
+                float: left;
+                margin-left: @Margin;
+                margin-right: @Margin;
+                font-size: 14px;
+				padding-left: @Margin;
+				padding-right:@Margin;
+				.ObjectWidth(5, @Margin);
+            }
+			> label.Error{
+                .BackgroundColor('Error');
+			}
+        }
+
+        > button[type='submit'] {
+            .ObjectSize(5, 1);
+        }
     }
 }
 
