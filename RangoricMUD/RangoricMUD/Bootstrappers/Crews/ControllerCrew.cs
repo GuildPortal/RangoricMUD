@@ -25,6 +25,7 @@ namespace RangoricMUD.Bootstrappers.Crews
         protected override void StrapOn()
         {
             Add().OfInterface<HomeController>().WithImplementation<HomeController>();
+            Add().OfInterface<FormsController>().WithImplementation<FormsController>();
         }
     }
 }

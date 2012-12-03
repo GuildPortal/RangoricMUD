@@ -39,7 +39,7 @@ namespace RangoricMUD.App_Start
 
             routes.MapRoute(
                 name: "Default",
-                url: "{action}",
+                url: "{controller}/{action}",
                 defaults: new {controller = "Home", action = "Index"}
                 );
         }

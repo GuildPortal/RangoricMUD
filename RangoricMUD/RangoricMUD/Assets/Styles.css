@@ -144,6 +144,8 @@ button {
   font-size: 16px;
   color: #ffffff;
   background-color: #b848b8;
+  width: 160px;
+  height: 34px;
   border: 0;
   display: block;
   cursor: pointer;
@@ -200,14 +202,14 @@ button:disabled {
 .Panel form {
   height: auto;
 }
-.Panel form > form > fieldset > legend {
+.Panel form > fieldset > legend {
   float: left;
   margin-left: 4px;
   margin-right: 4px;
   width: 272px;
   height: 22px;
 }
-.Panel form > form > fieldset > div > label {
+.Panel form > fieldset > div > label {
   float: left;
   margin-left: 4px;
   margin-right: 4px;
@@ -216,12 +218,11 @@ button:disabled {
   padding-right: 4px;
   width: 264px;
 }
-.Panel form > form > fieldset > div > label.Error {
+.Panel form > fieldset > div > label.Error {
   background-color: rgba(255, 64, 64, 0.4);
 }
-.Panel form > form > fieldset > button[type='submit'] {
-  width: 272px;
-  height: 48px;
+.Panel form > fieldset > button[type='submit'] {
+  float: right;
 }
 input[type="text"],
 input[type="password"],

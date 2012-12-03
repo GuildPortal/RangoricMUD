@@ -232,8 +232,8 @@
     <Compile Include="Configuration\IRangoricConfiguration.cs" />
     <Compile Include="Configuration\RangoricConfiguration.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Models\IndexModel.cs" />
     <Compile Include="Dice\CryptoRandomProvider.cs" />
     <Compile Include="Dice\IRandomProvider.cs" />
     <Compile Include="Games\Commands\CreateGameCommand.cs" />
@@ -293,6 +293,7 @@
     <Content Include="Assets\Scripts\Games\GamesController.js" />
     <Content Include="Assets\Scripts\Games\PlayController.js" />
     <Content Include="Assets\Scripts\Graphics\Main.js" />
+    <Content Include="Assets\Scripts\Menus\UnathenticatedMenu.js" />
     <Content Include="Assets\Scripts\Pages\HomeController.js" />
     <Content Include="Assets\Scripts\Pages\HomePage.js" />
     <Content Include="Assets\Scripts\Pages\PageManager.js" />
@@ -332,6 +333,7 @@
     <Content Include="Assets\Styles\Theme.min.css">
       <DependentUpon>Theme.less</DependentUpon>
     </Content>
+    <Content Include="Assets\UnitTesting\Menus\MenuButtonTests.js" />
     <Content Include="Content\qunit.css" />
     <Content Include="Global.asax" />
     <Content Include="Assets\Styles\Colors.less" />
@@ -389,6 +391,7 @@
     <Folder Include="Assets\Images\" />
     <Folder Include="Assets\Scripts\Playground\" />
     <Folder Include="Assets\UnitTesting\Accounts\" />
+    <Folder Include="Controllers\Models\" />
     <Folder Include="ServerStatus\Commands\" />
     <Folder Include="ServerStatus\Queries\" />
   </ItemGroup>

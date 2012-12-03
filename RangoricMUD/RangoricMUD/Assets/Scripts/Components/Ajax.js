@@ -1,52 +1,50 @@
 ﻿function Ajax() {
-    var vThis = this;
-    vThis.Settings = new AjaxSettings();
-}
+    var vSettings = {};
+    var vAjax = null;
 
-Ajax.prototype = {
-    Start: function() {
-        var vThis = this;
-        $.ajax(vThis.Settings);
-    }
-};
-function AjaxSettings() {
-    var vThis = this;
-}
-
-AjaxSettings.prototype = {
-    Url: function(tUrl) {
-        var vThis = this;
-        vThis.url = tUrl;
+    var vThis = {
+    };
+    vThis.Start = function() {
+        vAjax = $.ajax(vSettings);
         return vThis;
-    },
-    Type: function(tType) {
-        var vThis = this;
-        vThis.type = tType;
+    };
+    vThis.Stop = function() {
+        if (vAjax !== null && vAjax.abort) {
+            vAjax.abort();
+        }
         return vThis;
-    },
-    Success: function(tSuccess) {
-        var vThis = this;
-        vThis.success = tSuccess;
+    };
+    vThis.Url = function(tUrl) {
+        vSettings.url = tUrl;
         return vThis;
-    },
-    IsPost:function() {
-        var vThis = this;
+    };
+    vThis.Type = function(tType) {
+        vSettings.type = tType;
+        return vThis;
+    };
+    vThis.Success = function(tCallback) {
+        vSettings.success = tCallback;
+        return vThis;
+    };
+    vThis.Error = function(tCallback) {
+        vSettings.error = tCallback;
+        return vThis;
+    };
+    vThis.IsPost = function() {
         vThis.Type("POST");
         return vThis;
-    },
-    IsGet: function () {
-        var vThis = this;
+    };
+    vThis.IsGet = function() {
         vThis.Type("GET");
         return vThis;
-    },
-    IsJson:function () {
-        var vThis = this;
-        vThis.datatype = 'json';
+    };
+    vThis.IsJson = function() {
+        vSettings.datatype = "json";
         return vThis;
-    },
-    UsingData:function (tData) {
-        var vThis = this;
-        vThis.data = tData;
+    };
+    vThis.UsingData = function(tData) {
+        vSettings.data = tData;
         return vThis;
-    }
-};
+    };
+    return vThis;
+}

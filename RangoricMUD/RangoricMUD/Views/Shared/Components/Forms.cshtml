@@ -3,24 +3,25 @@
         <form action="/" method="GET" data-bind="submit: Submit">
             <fieldset>
                 <legend data-bind="text:Legend"></legend>
-                <!-- ko foreach: fields -->
-                <div data-bind="template: { name=Type}"></div>
+                <!-- ko foreach: Fields -->
+                <div data-bind="template: {name:Type}"></div>
                 <!-- /ko -->
                 <button type="submit">Submit</button>
             </fieldset>
         </form>
     </div>
 </script>
-<script type="text/html" id="Input_Text">
+<script type="text/html" id="Input_ShortString">
     <!-- ko if:IsVisible -->
-    <!-- ko if:IsPassed -->
     <label data-bind="attr:{'for':Name}, text:Label"></label>
+    <label data-bind="attr:{'for':Name}, validationMessage: Value" class="Error"></label>
+    <input data-bind="attr:{'id':Name, 'name':Name}, value:Value, validationElement: Value" type="text"/>
     <!-- /ko -->
-    <!-- ko foreach:Validation -->
-    <!-- ko if:NotPassed -->
-    <label data-bind="attr:{'for':Name}, text:Label" class="Error"></label>
-    <!-- /ko -->
-    <!-- /ko -->
-    <input data-bind="attr:{'id':Name, 'name':Name}, value:Value" type="text"/>
+</script>
+<script type="text/html" id="Input_Password">
+    <!-- ko if:IsVisible -->
+    <label data-bind="attr:{'for':Name}, text:Label"></label>
+    <label data-bind="attr:{'for':Name}, validationMessage: Value" class="Error"></label>
+    <input data-bind="attr:{'id':Name, 'name':Name}, value:Value, validationElement: Value" type="password"/>
     <!-- /ko -->
 </script>

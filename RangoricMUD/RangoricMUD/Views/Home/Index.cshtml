@@ -1,7 +1,6 @@
 ﻿@using System.Web.Optimization
-@model RangoricMUD.Controllers.Models.IndexModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Welcome to RangoricMud";
 }
 <!DOCTYPE html>
 <html>
@@ -14,16 +13,18 @@
         @Scripts.Render("~/Assets/Scripts/LibraryScripts")
         <script src="/signalR/hubs" type="text/javascript"> </script>
         @Scripts.Render("~/Assets/Scripts/OtherScripts")
-    </head>
-    <body>
-        <div id="Interface">
-            <div data-bind="template:{ name: 'Button', foreach:Buttons}"></div>            
-            <div></div>
-        </div>
-        <div id="Scene"></div>
         @Html.Partial("../Shared/Components/Buttons")
         @Html.Partial("../Shared/Components/Panels")
         @Html.Partial("../Shared/Components/Forms")
+        @Html.Partial("../Accounts/Login")
+        <script type="text/html" id="None"><!-- --></script>
+    </head>
+    <body>
+        <div id="Interface">
+            <div></div>            
+            <div></div>
+        </div>
+        <div id="Scene"></div>
     </body>
 </html>
 

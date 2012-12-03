@@ -14,8 +14,8 @@
 
 #region References
 
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using RangoricMUD.Controllers.Models;
 
 #endregion
 
@@ -24,12 +24,12 @@ namespace RangoricMUD.Controllers
     public class HomeController : BaseController
     {
         //[OutputCache(Duration = 3600)]
-        public ViewResult Index()
+        public async Task<ViewResult> Index()
         {
-            return View("Index", new IndexModel());
+            return View("Index");
         }
 
-        public ViewResult Playground()
+        public async Task<ViewResult> Playground()
         {
             return View("Playground");
         }
