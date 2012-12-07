@@ -26,39 +26,40 @@ namespace RangoricMUD.Security
 {
     public class SignInPersistance : ISignInPersistance
     {
-        private static Dictionary<string, string> Logins = new Dictionary<string, string>();
+        private const string cCookieName = "Website Authentication";
+
         #region ISignInPersistance Members
 
-        public string AccountName(string tConnectionID)
+        public string AccountName
         {
-            if (Logins.ContainsKey(tConnectionID))
+            get
             {
-                return Logins[tConnectionID];
+                string vReturn = null;
+                HttpCookie vCookie = null;
+                if (HttpContext.Current.Request.Cookies.AllKeys.Any(t => t == cCookieName))
+                {
+                    vCookie = HttpContext.Current.Request.Cookies[cCookieName];
+                }
+                if (vCookie != null)
+                {
+                    vReturn = FormsAuthentication.Decrypt(vCookie.Value).Name;
+                }
+                return vReturn;
             }
-            else
-            {
-                return null;
-            }
-
         }
 
-        public void Login(string tName, string tConnectionID)
+        public void Login(string tName)
         {
-            if(Logins.ContainsKey(tConnectionID))
-            {
-                Logins.Remove(tConnectionID);
-            }
-            Logins.Add(tConnectionID, tName);
+            var vCookie = FormsAuthentication.GetAuthCookie(tName, true);
+            vCookie.Name = cCookieName;
+            HttpContext.Current.Response.Cookies.Add(vCookie);
         }
 
         public void Logout(string tAccountName)
         {
-            var vIDs = Logins.Where(t => t.Value == tAccountName).Select(t => t.Key);
-
-            foreach(var vID in vIDs)
-            {
-                Logins.Remove(vID);
-            }
+            var vCookie = HttpContext.Current.Request.Cookies[cCookieName];
+            vCookie.Expires = DateTime.Now.AddDays(-1);
+            HttpContext.Current.Response.Cookies.Add(vCookie);
         }
 
         #endregion

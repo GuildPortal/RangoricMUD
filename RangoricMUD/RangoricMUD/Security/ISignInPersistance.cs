@@ -16,8 +16,8 @@ namespace RangoricMUD.Security
 {
     public interface ISignInPersistance
     {
-        string AccountName(string tConnectionID);
-        void Login(string tName, string tConnectionID);
+        string AccountName { get; }
+        void Login(string tName);
         void Logout(string tAccountName);
     }
 }

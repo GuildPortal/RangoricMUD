@@ -231,6 +231,7 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Configuration\IRangoricConfiguration.cs" />
     <Compile Include="Configuration\RangoricConfiguration.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -277,15 +278,18 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Assets\Scripts\001 Utilities and Settings\Services.js" />
     <Content Include="Assets\Scripts\Accounts\AccountButtons.js" />
     <Content Include="Assets\Scripts\Accounts\AccountManager.js" />
     <Content Include="Assets\Scripts\Accounts\AccountsController.js" />
+    <Content Include="Assets\Scripts\Accounts\GetAccountCommand.js" />
+    <Content Include="Assets\Scripts\Accounts\GetLoginFormCommand.js" />
     <Content Include="Assets\Scripts\Administration\AdminButtons.js" />
     <Content Include="Assets\Scripts\Administration\AdminManager.js" />
     <Content Include="Assets\Scripts\Administration\AreasController.js" />
     <Content Include="Assets\Scripts\Characters\CharactersController.js" />
     <Content Include="Assets\Scripts\Characters\CharactersManager.js" />
-    <Content Include="Assets\Scripts\Components\Ajax.js" />
+    <Content Include="Assets\Scripts\001 Utilities and Settings\Ajax.js" />
     <Content Include="Assets\Scripts\Components\Buttons.js" />
     <Content Include="Assets\Scripts\Components\Controllers.js" />
     <Content Include="Assets\Scripts\Components\Panels.js" />
@@ -382,7 +386,6 @@
     <Content Include="Views\Characters\Create.cshtml" />
     <Content Include="Views\Areas\List.cshtml" />
     <Content Include="Views\Shared\Components\Buttons.cshtml" />
-    <Content Include="Views\Home\Playground.cshtml" />
     <Content Include="Views\Shared\Components\Panels.cshtml" />
     <Content Include="Views\Shared\Components\Forms.cshtml" />
   </ItemGroup>

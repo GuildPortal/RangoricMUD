@@ -15,6 +15,7 @@
 #region References
 
 using System.Linq;
+using System.Threading.Tasks;
 using RangoricMUD.Accounts.Data;
 using RangoricMUD.Accounts.Models;
 using RangoricMUD.Commands;
@@ -25,7 +26,7 @@ using Raven.Client;
 
 namespace RangoricMUD.Accounts.Commands
 {
-    public class LoginAccountCommand : BaseCommand<bool>, ILoginAccountCommand
+    public class LoginAccountCommand : BaseCommand<Task<bool>>, ILoginAccountCommand
     {
         private readonly IDocumentStore mDocumentStore;
         private readonly IHashProvider mHashProvider;
@@ -41,7 +42,7 @@ namespace RangoricMUD.Accounts.Commands
 
         #region ILoginAccountCommand Members
 
-        public override bool Execute()
+        public override async Task<bool> Execute()
         {
             Account vAccount;
             using (var vSession = mDocumentStore.OpenSession())
@@ -54,7 +55,7 @@ namespace RangoricMUD.Accounts.Commands
                 }
             }
 
-            var vGood = mHashProvider.CheckHash(mLogin.Password, vAccount.PasswordHash);
+            var vGood = await Task.Factory.StartNew(() => mHashProvider.CheckHash(mLogin.Password, vAccount.PasswordHash));
             return vGood;
         }
 

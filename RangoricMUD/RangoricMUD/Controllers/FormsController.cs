@@ -14,6 +14,7 @@ namespace RangoricMUD.Controllers
         {
             var vForm = new
                             {
+                                Legend = "Login to your Account",
                                 Fields = new object[2]
                             };
             vForm.Fields[0] = new

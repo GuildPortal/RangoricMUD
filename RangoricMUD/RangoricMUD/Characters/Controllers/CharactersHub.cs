@@ -44,7 +44,7 @@ namespace RangoricMUD.Characters.Controllers
             return Task.Factory.StartNew(
                 () =>
                     {
-                        var vAccountName = mSignInPersistance.AccountName(Context.ConnectionId);
+                        var vAccountName = mSignInPersistance.AccountName;
                         var vCommand =
                             mCharacterCommandFactory.CreateCreateCharacterCommand(tModel,
                                                                                   vAccountName);
@@ -57,7 +57,7 @@ namespace RangoricMUD.Characters.Controllers
             return Task.Factory.StartNew(
                 () =>
                     {
-                        var vAccountName = mSignInPersistance.AccountName(Context.ConnectionId);
+                        var vAccountName = mSignInPersistance.AccountName;
                         var vCommand =
                             mCharacterCommandFactory.CreateGetAllCharactersForAccountQuery(tGameName,
                                                                                            vAccountName);

@@ -26,6 +26,7 @@ namespace RangoricMUD.Bootstrappers.Crews
         {
             Add().OfInterface<HomeController>().WithImplementation<HomeController>();
             Add().OfInterface<FormsController>().WithImplementation<FormsController>();
+            Add().OfInterface<AccountsController>().WithImplementation<AccountsController>();
         }
     }
 }

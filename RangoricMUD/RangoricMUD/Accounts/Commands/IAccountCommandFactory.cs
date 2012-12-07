@@ -26,7 +26,7 @@ namespace RangoricMUD.Accounts.Commands
     {
         ICreateAccountCommand CreateCreateAccountCommand(CreateAccount tCreateAccount);
         ILoginAccountCommand CreateLoginAccountCommand(LoginAccount tLoginAccount);
-        ICheckLoginQuery CreateCheckLoginQuery(string tConnectionID);
+        ICheckLoginQuery CreateCheckLoginQuery();
         IConfirmAccountCommand CreateConfirmAccountCommand(ConfirmAccountModel tConfirmAccountModel);
         ISendConfirmationCommand CreateSendConfirmationCommand(Account tAccount);
     }

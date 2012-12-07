@@ -85,7 +85,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
 
         [TestCase(cName, cEmail)]
         [TestCase(cEmail, cPassword)]
-        public void LoginReturnsFalseWithBadLoginInfo(string tName, string tPassword)
+        public async void LoginReturnsFalseWithBadLoginInfo(string tName, string tPassword)
         {
             var vObjects = Setup();
             var vLogin = new LoginAccount
@@ -97,7 +97,7 @@ namespace RangoricMUD.Tests.Accounts.Commands
                 vObjects.DocumentStore,
                 vObjects.HashProvider.Object,
                 vLogin);
-            var vResult = vBadLoginAccountCommand.Execute();
+            var vResult = await vBadLoginAccountCommand.Execute();
             Assert.IsFalse(vResult);
         }
 
@@ -110,10 +110,10 @@ namespace RangoricMUD.Tests.Accounts.Commands
         }
 
         [Test]
-        public void LoginReturnsTrueWhenGoodLoginInfo()
+        public async void LoginReturnsTrueWhenGoodLoginInfo()
         {
             var vObjects = Setup();
-            var vResult = vObjects.GoodLoginAccountCommand.Execute();
+            var vResult = await vObjects.GoodLoginAccountCommand.Execute();
             Assert.IsTrue(vResult);
         }
     }

@@ -14,13 +14,14 @@
 
 #region References
 
+using System.Threading.Tasks;
 using RangoricMUD.Commands;
 
 #endregion
 
 namespace RangoricMUD.Accounts.Commands
 {
-    public interface ILoginAccountCommand : ICommand<bool>
+    public interface ILoginAccountCommand : ICommand<Task<bool>>
     {
     }
 }

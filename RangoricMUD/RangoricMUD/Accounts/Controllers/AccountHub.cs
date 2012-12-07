@@ -36,83 +36,33 @@ namespace RangoricMUD.Accounts.Controllers
             mAccountCommandFactory = tAccountCommandFactory;
         }
 
-        public void Logout()
+        public async void ConfirmAccount(ConfirmAccountPageModel tConfirmAccountPageModel)
         {
-            mSignInPersistance.Logout(Context.ConnectionId);
-        }
 
-        public Task Login(LoginAccount tLoginAccount)
-        {
-            return Task.Factory.StartNew(
-                () =>
-                    {
-                        if (ModelValidator.IsValid(tLoginAccount))
-                        {
-                            var vCommand =
-                                mAccountCommandFactory.CreateLoginAccountCommand(tLoginAccount);
-                            if (vCommand.Execute())
-                            {
-                                mSignInPersistance.Login(tLoginAccount.Name,
-                                                         Context.ConnectionId);
-                                var vQuery =
-                                    mAccountCommandFactory.CreateCheckLoginQuery(Context.ConnectionId);
-                                Caller.AddAccount(vQuery.Result);
-                            }
-                        }
-                    });
-        }
+            var vGood = false;
 
-        public Task CreateAccount(CreateAccount tCreateAccount)
-        {
-            return Task.Factory.StartNew(
-                () =>
-                    {
-                        if (ModelValidator.IsValid(tCreateAccount))
-                        {
-                            var vCommand =
-                                mAccountCommandFactory.CreateCreateAccountCommand(
-                                    tCreateAccount);
-                            if (vCommand.Execute() == eAccountCreationStatus.Success)
-                            {
-                                mSignInPersistance.Login(tCreateAccount.Name, Context.ConnectionId);
-                                var vQuery =
-                                    mAccountCommandFactory.CreateCheckLoginQuery(Context.ConnectionId);
-                                Caller.AddAccount(vQuery.Result);
-                            }
-                        }
-                    });
-        }
+            if (ModelValidator.IsValid(tConfirmAccountPageModel))
+            {
+                var vCommand =
+                    mAccountCommandFactory.CreateLoginAccountCommand(
+                        tConfirmAccountPageModel);
 
-        public Task ConfirmAccount(ConfirmAccountPageModel tConfirmAccountPageModel)
-        {
-            return Task.Factory.StartNew(
-                () =>
-                    {
-                        var vGood = false;
+                if (await vCommand.Execute())
+                {
+                    var vModel = new ConfirmAccountModel
+                                     {
+                                         Name = tConfirmAccountPageModel.Name,
+                                         ConfirmationNumber =
+                                             tConfirmAccountPageModel
+                                             .ConfirmationNumber
+                                     };
+                    var vConfirmCommand =
+                        mAccountCommandFactory.CreateConfirmAccountCommand(vModel);
+                    vGood = vConfirmCommand.Execute();
+                }
+            }
 
-                        if (ModelValidator.IsValid(tConfirmAccountPageModel))
-                        {
-                            var vCommand =
-                                mAccountCommandFactory.CreateLoginAccountCommand(
-                                    tConfirmAccountPageModel);
-
-                            if (vCommand.Execute())
-                            {
-                                var vModel = new ConfirmAccountModel
-                                                 {
-                                                     Name = tConfirmAccountPageModel.Name,
-                                                     ConfirmationNumber =
-                                                         tConfirmAccountPageModel
-                                                         .ConfirmationNumber
-                                                 };
-                                var vConfirmCommand =
-                                    mAccountCommandFactory.CreateConfirmAccountCommand(vModel);
-                                vGood = vConfirmCommand.Execute();
-                            }
-                        }
-
-                        Caller.AddConfirmation(vGood);
-                    });
+            Caller.AddConfirmation(vGood);
         }
 
         public Task CheckLogin()
@@ -121,7 +71,7 @@ namespace RangoricMUD.Accounts.Controllers
                 () =>
                     {
                         var vQuery =
-                            mAccountCommandFactory.CreateCheckLoginQuery(Context.ConnectionId);
+                            mAccountCommandFactory.CreateCheckLoginQuery();
                         Caller.AddAccount(vQuery.Result);
                     });
         }

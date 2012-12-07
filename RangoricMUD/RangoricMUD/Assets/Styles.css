@@ -241,6 +241,13 @@ input[type="email"]:focus {
   border: 2px solid #c66dc6;
   background-color: #eac9ea;
 }
+#Interface > div:first-child {
+  float: right;
+}
+#Interface > div:nth-child(2) {
+  clear: both;
+  float: left;
+}
 #Scene {
   position: absolute;
   top: 0;
@@ -249,105 +256,4 @@ input[type="email"]:focus {
   right: 0;
   z-index: -1;
 }
-/*
-.Menu {
-    position: absolute;
-    top: 0;
-    right: 0;
-    .ContainerHeight;
-
-    button {
-        float: right;
-    }
-}
-
-.Heading {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-}
-
-h1 {
-    margin: @Margin;
-}
-
-.Page {
-    position: absolute;
-    top: @ButtonSize + @Margin * 2;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    .FormContainer {
-        position: absolute;
-        right: @Margin;
-        top: 0;
-        padding: @Margin;
-        .ObjectWidth(3);
-        .BackgroundColor('Panel');
-
-        label, legend,
-        input[type="text"],
-        input[type="password"] {
-            float: left;
-            margin-left: 0;
-        }
-
-        button {
-            .ObjectWidth(3);
-            margin-right: 0;
-            float: left;
-        }
-    }
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-    padding: 0;
-    margin: 0;
-    width: 1px;
-    height: 1px;
-}
-
-    input[type="checkbox"] + label,
-    input[type="radio"] + label {
-        padding: 0;
-        margin: 0;
-        display: table-cell;
-        background: @UIColor;
-        font-size: @FontSize;
-        .ObjectSize(1);
-        line-height: @FontSize;
-        margin-top: @Margin;
-        margin-right: @Margin;
-        vertical-align: middle;
-    }
-
-    input[type="checkbox"]:checked + label,
-    input[type="radio"]:checked + label {
-        background-color: @ActiveUIColor;
-        border: 1px solid @FocusBorderColor;
-    }
-
-    input[type="checkbox"] + label:hover,
-    input[type="radio"] + label:hover {
-        outline: 2px solid @FocusBorderColor;
-    }
-
-    input[type="checkbox"]:focus + label,
-    input[type="radio"]:focus + label {
-        outline: 2px solid @FocusBorderColor;
-    }
-
-label {
-}
-
-legend {
-}
-
-.Hidden {
-    display: none;
-}
-
-.GameListPage {
-    margin: 0 auto;
-}*/
 

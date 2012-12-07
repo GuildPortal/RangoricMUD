@@ -29,9 +29,5 @@ namespace RangoricMUD.Controllers
             return View("Index");
         }
 
-        public async Task<ViewResult> Playground()
-        {
-            return View("Playground");
-        }
     }
 }
